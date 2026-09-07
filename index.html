@@ -1,1 +1,119 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awam Network</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f0f3f5; text-align: center; padding: 20px; }
+        .main-container { max-width: 450px; margin: 0 auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .header { background: #2ecc71; color: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
+        .zakati-box { background: #9b59b6; color: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; cursor: pointer; }
+        .card { background: #fdfdfd; border: 2px solid #e2e8f0; padding: 15px; margin-bottom: 15px; border-radius: 10px; cursor: pointer; }
+        .page-section { display: none; background: #fff; padding: 10px; text-align: center; }
+        .btn-submit { background: #4285F4; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 10px; }
+        .btn-back { background: #7f8c8d; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; float: right; }
+        .input-style { width: 90%; padding: 8px; margin-bottom: 8px; border: 1px solid #ccc; border-radius: 5px; text-align: center; }
+        .quiz-box { background: #f9f9f9; border: 1px dashed #4285F4; padding: 15px; border-radius: 10px; text-align: right; }
+        .result-box { display: none; padding: 10px; border-radius: 5px; margin-top: 10px; font-weight: bold; }
+        .item-card { background: #f9f9f9; border: 1px solid #eee; padding: 10px; border-radius: 5px; margin-bottom: 8px; }
+    </style>
+</head>
+<body>
 
+<div class="main-container" dir="rtl">
+    <div id="home-section">
+        <div style="background: linear-gradient(135deg, #d4af37, #aa7c11); color: white; padding: 12px; border-radius: 10px; margin-bottom: 15px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h3 style="margin: 0; font-size: 14px; letter-spacing: 1px;">👑 FOUNDER & CEO</h3>
+            <h2 style="margin: 5px 0 2px 0; color: #fff; font-size: 18px;">Dewan Israr Ahmad Faridi</h2>
+            <p style="margin: 0; color: #fff; font-size: 11px;">📧 dewan.gee786@gmail.com | 📞 +923004109236</p>
+        </div>
+
+        <div class="header">
+            <h1>عوام نیٹ ورک / AWAM NETWORK</h1>
+            <p>Bila Sood Khudkaar Nizam</p>
+        </div>
+        <div class="zakati-box" onclick="openPage('zakat-section')"><h2>🌍 1. Zakat Funding (انٹرنیشنل زکوٰۃ)</h2></div>
+        <div class="card" onclick="openPage('hunar-section')"><h2>📚 2. Google AI Exam (گوگل AI امتحان)</h2></div>
+        <div class="card" onclick="openPage('jobs-section')"><h2>🛠️ 3. P2P Jobs (بغیر کمیشن مزدوری)</h2></div>
+        <div class="card" onclick="openPage('ration-section')"><h2>🌾 4. Sasta Ration (سستا راشن نیٹ ورک)</h2></div>
+    </div>
+
+    <div id="zakat-section" class="page-section">
+        <button class="btn-back" onclick="goBack('zakat-section')">Back</button>
+        <div class="zakati-box"><h2>🌍 عالمی زکوٰۃ پورٹل</h2></div>
+        <p>Zakat system live hai.</p>
+    </div>
+
+    <div id="hunar-section" class="page-section">
+        <button class="btn-back" onclick="goBack('hunar-section')">Back</button>
+        <div class="header" style="background:#34495e;"><h2>🤖 گوگل AI امتحان</h2></div>
+        <div class="quiz-box">
+            <p>سوال: کمپیوٹر کا دماغ کون سا ہے?</p>
+            <input type="radio" name="qa" id="opt1"> <label>Monitor</label><br>
+            <input type="radio" name="qa" id="opt2"> <label>CPU</label>
+        </div>
+        <button class="btn-submit" onclick="submitExam()">امتحان جمع کریں</button>
+        <div id="resultView" class="result-box"></div>
+    </div>
+
+    <div id="jobs-section" class="page-section">
+        <button class="btn-back" onclick="goBack('jobs-section')">Back</button>
+        <div class="header" style="background:#e67e22;"><h2>🛠️ بغیر کمیشن مزدوری مارکیٹ</h2></div>
+        <input type="text" id="wName" placeholder="Naam" class="input-style"><br>
+        <input type="text" id="wSkill" placeholder="Hunar" class="input-style"><br>
+        <input type="text" id="wPhone" placeholder="Mobile" class="input-style"><br>
+        <button class="btn-submit" style="background:#e67e22;" onclick="addWorker()">نام شامل کریں</button>
+        <div id="workersList" style="text-align:right; margin-top:10px;"></div>
+    </div>
+
+    <div id="ration-section" class="page-section">
+        <button class="btn-back" onclick="goBack('ration-section')">Back</button>
+        <div class="header" style="background:#27ae60;"><h2>🌾 سستا راشن نیٹ ورک</h2></div>
+        <input type="text" id="rItem" placeholder="Samaan ka Naam" class="input-style"><br>
+        <input type="text" id="rPrice" placeholder="Keemat" class="input-style"><br>
+        <input type="text" id="rContact" placeholder="Phone Number" class="input-style"><br>
+        <button class="btn-submit" style="background:#27ae60;" onclick="addRationItem()">سامان شامل کریں</button>
+        <div id="rationList" style="text-align:right; margin-top:10px;"></div>
+    </div>
+</div>
+
+<script>
+    function openPage(pageId) {
+        document.getElementById('home-section').style.display = 'none';
+        document.getElementById(pageId).style.display = 'block';
+    }
+    function goBack(pageId) {
+        document.getElementById(pageId).style.display = 'none';
+        document.getElementById('home-section').style.display = 'block';
+    }
+    function submitExam() {
+        var res = document.getElementById('resultView');
+        res.style.display = "block";
+        if(document.getElementById('opt2').checked) {
+            res.style.color = "green"; res.innerHTML = "🎉 PASS! Certificate Issued.";
+        } else {
+            res.style.color = "red"; res.innerHTML = "❌ FAILED! Try Again.";
+        }
+    }
+    function addWorker() {
+        var n = document.getElementById('wName').value;
+        var s = document.getElementById('wSkill').value;
+        var p = document.getElementById('wPhone').value;
+        if(!n || !s || !p) { alert("Fill all info!"); return; }
+        document.getElementById('workersList').innerHTML += "<div class='item-card'><strong>"+n+"</strong> ("+s+")<br>Ph: "+p+"</div>";
+        alert("Naam Shamil Ho Gaya!");
+        document.getElementById('wName').value = ""; document.getElementById('wSkill').value = ""; document.getElementById('wPhone').value = "";
+    }
+    function addRationItem() {
+        var i = document.getElementById('rItem').value;
+        var pr = document.getElementById('rPrice').value;
+        var c = document.getElementById('rContact').value;
+        if(!i || !pr || !c) { alert("Fill all info!"); return; }
+        document.getElementById('rationList').innerHTML += "<div class='item-card'><strong>"+i+"</strong><br>Price: "+pr+" | Ph: "+c+"</div>";
+        alert("Samaan Shamil Ho Gaya!");
+        document.getElementById('rItem').value = ""; document.getElementById('rPrice').value = ""; document.getElementById('rContact').value = "";
+    }
+</script>
+</body>
+</html>
