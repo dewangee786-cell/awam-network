@@ -301,72 +301,142 @@ function handleNgoConnect(event) {
 }
 </script>
 <!-- NGO PARTNER PORTAL END --><!-- ======================================================== -->
-    <!-- ======================================================== -->
-<!-- GOOGLE FIREBASE CLOUD DATABASE CONNECTION START -->
-<!-- Firebase App SDK (v8 Compatibility) -->
-<script src="https://gstatic.com"></script>
-<!-- Firebase Realtime Database SDK -->
-<script src="https://gstatic.com"></script>
+<!-- ============================================= -->
+<!-- AWAM NETWORK - FIREBASE REALTIME DATABASE    -->
+<!-- ============================================= -->
+
+<!-- Firebase App -->
+<script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-app-compat.js"></script>
+
+<!-- Firebase Realtime Database -->
+<script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-database-compat.js"></script>
 
 <script>
-// Your Web App's Firebase Configuration
+/* =============================================
+   FIREBASE CONFIGURATION
+   ============================================= */
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCPgcQjouKgdOQtcwrjBeMJYJ4Ilff9Y9M",
-  authDomain: "://firebaseapp.com",
-  projectId: "awam-network",
-  databaseURL: "https://firebaseio.com", // Agar aapka default URL mukhtalif hai toh woh lagayein
-  storageBucket: "://appspot.com",
-  messagingSenderId: "301278519256",
-  appId: "1:301278519256:web:539781e65602bd09765cad"
+    apiKey: "YOUR_FIREBASE_API_KEY",
+    authDomain: "awam-network.firebaseapp.com",
+    databaseURL: "YOUR_REALTIME_DATABASE_URL",
+    projectId: "awam-network",
+    storageBucket: "awam-network.firebasestorage.app",
+    messagingSenderId: "301278519256",
+    appId: "1:301278519256:web:539781e65602bd9765cad"
 };
 
-// Initialize Firebase
+
+/* =============================================
+   INITIALIZE FIREBASE
+   ============================================= */
+
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }
-const database = firebase.database();
-</script>
-function firebaseInitialize(config) {
-    if (!firebase.apps.length) {
-        return firebase.initializeApp(config);
-    } else {
-        return firebase.app();
-    }
-}
+
+
+/* =============================================
+   REALTIME DATABASE
+   ============================================= */
+
 const database = firebase.database();
 
-// Overriding previous handleNgoConnect to securely send data to Cloud Database
+
+/* =============================================
+   NGO REGISTRATION
+   ============================================= */
+
 function handleNgoConnect(event) {
+
     event.preventDefault();
-    
+
     const ngoData = {
-        name: document.getElementById('ngoName').value,
-        leader: document.getElementById('ngoLeader').value,
-        phone: document.getElementById('ngoPhone').value,
-        email: document.getElementById('ngoEmail').value,
-        work: document.getElementById('ngoWork').value,
-        timestamp: new Date().toLocaleString('en-PK', { timeZone: 'Asia/Karachi' })
+
+        name: document.getElementById("ngoName")?.value.trim() || "",
+
+        leader: document.getElementById("ngoLeader")?.value.trim() || "",
+
+        phone: document.getElementById("ngoPhone")?.value.trim() || "",
+
+        email: document.getElementById("ngoEmail")?.value.trim() || "",
+
+        work: document.getElementById("ngoWork")?.value.trim() || "",
+
+        timestamp: new Date().toISOString()
+
     };
 
-    // Advanced MetaFirewall Safety Filter Check
-    if (window.MetaFirewall && typeof window.MetaFirewall.validateAndEncrypt === "function") {
-        const encryptedPayload = window.MetaFirewall.validateAndEncrypt(ngoData);
-        if (!encryptedPayload) return; // Blocked by security firewall (cooldown/spam)
+
+    /* =========================================
+       BASIC VALIDATION
+       ========================================= */
+
+    if (!ngoData.name ||
+        !ngoData.leader ||
+        !ngoData.phone ||
+        !ngoData.email ||
+        !ngoData.work) {
+
+        alert("⚠️ Please complete all required fields.");
+        return;
     }
 
-    // Pushing data to Google Cloud 'ngos_registered' Node securely
-    database.ref('ngos_registered').push(ngoData)
-    .then(() => {
-        alert("🔒 کلاؤڈ سیکیورٹی الرٹ:\nاین جی او کا ڈیٹا کامیابی سے گوگل کلاؤڈ پر محفوظ ہو گیا ہے! ہم آپ سے جلد رابطہ کریں گے۔");
-        document.getElementById('ngoConnectForm').reset();
-    })
-    .catch((error) => {
-        console.error("Cloud Database Error:", error);
-        alert("❌ سیکیورٹی بلاک: ڈیٹا بیس سے رابطہ نہیں ہو سکا۔ پراجیکٹ رولز چیک کریں۔");
-    });
+
+    /* =========================================
+       SAVE TO FIREBASE
+       ========================================= */
+
+    database.ref("ngos_registered")
+        .push(ngoData)
+
+        .then(() => {
+
+            alert(
+                "🔐 Registration successful!\n\n" +
+                "Your NGO information has been securely submitted."
+            );
+
+            const form = document.getElementById("ngoConnectForm");
+
+            if (form) {
+                form.reset();
+            }
+
+        })
+
+        .catch((error) => {
+
+            console.error("Firebase Database Error:", error);
+
+            alert(
+                "❌ Registration failed.\n\n" +
+                "Please check Firebase configuration and Security Rules."
+            );
+
+        });
 }
+
+
+/* =============================================
+   FORM EVENT
+   ============================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.getElementById("ngoConnectForm");
+
+    if (form) {
+        form.addEventListener("submit", handleNgoConnect);
+    }
+
+});
+
 </script>
-<!-- GOOGLE FIREBASE CLOUD DATABASE CONNECTION END -->
+
+<!-- ============================================= -->
+<!-- FIREBASE END                                 -->
+<!-- ============================================= -->
 <!-- MULTI-LANGUAGE CHANGER & META AI ASSISTANT START -->
 <style>
 .app-addons-container {
