@@ -2,32 +2,88 @@
 <html lang="ur">
 <head>
     <meta name="google-site-verification" content="ocMPIA10VOCRgtH1UmoksehJsw5DwIT5ItfnkClN14Y" />
-    <!-- META GENERATION ADVANCED SECURITY FIREWALL START -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.github.io; script-src 'self' 'unsafe-inline' https://jsdelivr.net; style-src 'self' 'unsafe-inline' https://googleapis.com; font-src https://gstatic.com; img-src 'self' data: https:;">
-<meta http-equiv="X-Frame-Options" content="DENY">
+   <!-- META GENERATION SUPER APP SECURITY FIREWALL START -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.github.io https://*.whatsapp.com; script-src 'self' 'unsafe-inline' https://jsdelivr.net https://youtube.com https://netflix.com; style-src 'self' 'unsafe-inline' https://googleapis.com https://jsdelivr.net; font-src https://gstatic.com; img-src 'self' data: https:; frame-src 'self' https://youtube.com https://netflix.com https://facebook.com https://tiktok.com https://twitter.com https://*.whatsapp.com;">
+<meta http-equiv="X-Frame-Options" content="ALLOW-FROM https://*.github.io">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+
+<!-- FontAwesome Icons Library for Social Media Logos -->
+<link rel="stylesheet" href="https://jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
 
 <!-- Crypto-JS Library for AES-256 Encryption -->
 <script src="https://jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js" crossorigin="anonymous" defer></script>
 
+<style>
+/* Social Media Hub Styling */
+.super-app-hub {
+    background: #1a1a2e;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    font-family: Arial, sans-serif;
+}
+.hub-title {
+    color: #e2e2e2;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+.social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+.social-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+}
+.icon-yt { background: #ff0000; }
+.icon-fb { background: #1877f2; }
+.icon-tt { background: #000000; }
+.icon-li { background: #0077b5; }
+.icon-x { background: #1da1f2; }
+.icon-nf { background: #e50914; }
+.icon-wa { background: #25d366; }
+.icon-imo { background: #00a0e9; }
+.social-item i {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+.social-item span {
+    font-size: 12px;
+}
+</style>
+
 <script defer>
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. AI Firewall & Anti-Spam (Rate Limiting)
     let lastSubmissionTime = 0;
-    const cooldownPeriod = 5000; // 5 Seconds Cooldown
+    const cooldownPeriod = 5000;
 
     window.MetaFirewall = {
         validateAndEncrypt: function(dataObject) {
             const currentTime = Date.now();
             if (currentTime - lastSubmissionTime < cooldownPeriod) {
                 alert("⚠️ سیکیورٹی فلیش: بہت تیز انٹریز بلاک کر دی گئی ہیں! برائے مہربانی 5 سیکنڈ انتظار کریں۔");
-                console.error("DDoS / Spam attempt blocked by Meta Firewall.");
                 return null;
             }
             lastSubmissionTime = currentTime;
 
-            // 2. Anti-XSS Payload Sanitization
             let cleanData = {};
             for (let key in dataObject) {
                 if (dataObject.hasOwnProperty(key)) {
@@ -38,22 +94,18 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
 
-            // 3. AES-256 Bit Data Encryption
             try {
                 const secureKey = "AwamNetworkMetaSecurityKey2026";
-                const encryptedString = CryptoJS.AES.encrypt(JSON.stringify(cleanData), secureKey).toString();
-                console.log("🔒 Data securely encrypted via Meta-Gen Protocol.");
-                return encryptedString;
+                return CryptoJS.AES.encrypt(JSON.stringify(cleanData), secureKey).toString();
             } catch (e) {
-                console.error("Encryption Failed:", e);
                 return null;
             }
         }
     };
-    console.log("🛡️ Meta Generation Firewall Status: ACTIVE & SECURE");
+    console.log("🛡️ Meta Gen Super App Firewall: ON & ACTIVE");
 });
 </script>
-<!-- META GENERATION ADVANCED SECURITY FIREWALL END -->
+<!-- META GENERATION SUPER APP SECURITY FIREWALL END -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awam Network - Bila Sood Khudkaar Nizam</title>
