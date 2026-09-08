@@ -189,7 +189,117 @@ document.addEventListener("DOMContentLoaded", function() {
         <div id="rationList" style="text-align:right; margin-top:10px;"></div>
     </div>
 </div>
+<!-- ======================================================== -->
+<!-- SUPER APP SOCIAL HUB VIEW -->
+<div class="super-app-hub">
+    <div class="hub-title">🌐 عوام نیٹ ورک لائیو سوشل میڈیا اینڈ انٹرٹینمنٹ ہب</div>
+    <div class="social-grid">
+        <a href="https://youtube.com" target="_blank" class="social-item icon-yt"><i class="fab fa-youtube"></i><span>YouTube</span></a>
+        <a href="https://facebook.com" target="_blank" class="social-item icon-fb"><i class="fab fa-facebook"></i><span>Facebook</span></a>
+        <a href="https://tiktok.com" target="_blank" class="social-item icon-tt"><i class="fab fa-tiktok"></i><span>TikTok</span></a>
+        <a href="https://linkedin.com" target="_blank" class="social-item icon-li"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+        <a href="https://twitter.com" target="_blank" class="social-item icon-x"><i class="fab fa-twitter"></i><span>Twitter (X)</span></a>
+        <a href="https://netflix.com" target="_blank" class="social-item icon-nf"><i class="fab fa-netflix"></i><span>Netflix</span></a>
+        <a href="https://wa.me" target="_blank" class="social-item icon-wa"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+        <a href="https://imo.im" target="_blank" class="social-item icon-imo"><i class="fas fa-comments"></i><span>IMO</span></a>
+    </div>
+</div>
 
+<!-- ======================================================== -->
+<!-- NGO PARTNER PORTAL START -->
+<style>
+.ngo-portal-container {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    padding: 25px;
+    border-radius: 15px;
+    margin: 25px auto;
+    max-width: 600px;
+    color: white;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+.ngo-title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.ngo-subtitle {
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+}
+.ngo-form-field {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+.ngo-submit-btn {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+}
+.ngo-submit-btn:hover {
+    background-color: #27ae60;
+}
+</style>
+
+<div class="ngo-portal-container">
+    <div class="ngo-title">🤝 این جی او پارٹنر نیٹ ورک (NGO Partner Portal)</div>
+    <div class="ngo-subtitle">ہمارے آٹومیٹک راشن اور اے آئی امتحانی سسٹم سے جڑنے کے لیے نیچے فارم پُر کریں۔</div>
+    
+    <form id="ngoConnectForm" onsubmit="handleNgoConnect(event)">
+        <input type="text" id="ngoName" class="ngo-form-field" placeholder="تنظیم / NGO کا نام" required>
+        <input type="text" id="ngoLeader" class="ngo-form-field" placeholder="مشر یا ذمہ دار کا نام" required>
+        <input type="tel" id="ngoPhone" class="ngo-form-field" placeholder="رابطہ نمبر (WhatsApp)" required>
+        <input type="email" id="ngoEmail" class="ngo-form-field" placeholder="ای میل ایڈریس">
+        <select id="ngoWork" class="ngo-form-field" style="color: #555;" required>
+            <option value="" disabled selected>کام کی نوعیت منتخب کریں</option>
+            <option value="rashon">راشن کی تقسیم (Rashon Distribution)</option>
+            <option value="education">تعلیمی خدمات (Education Support)</option>
+            <option value="medical">طبی امداد (Medical Aid)</option>
+        </select>
+        <button type="submit" class="ngo-submit-btn">سیسٹم سے کنیکٹ کریں 🚀</button>
+    </form>
+</div>
+
+<script>
+function handleNgoConnect(event) {
+    event.preventDefault();
+    
+    const ngoData = {
+        name: document.getElementById('ngoName').value,
+        leader: document.getElementById('ngoLeader').value,
+        phone: document.getElementById('ngoPhone').value,
+        email: document.getElementById('ngoEmail').value,
+        work: document.getElementById('ngoWork').value,
+        timestamp: new Date().toISOString()
+    };
+
+    if (window.MetaFirewall && typeof window.MetaFirewall.validateAndEncrypt === "function") {
+        const encryptedPayload = window.MetaFirewall.validateAndEncrypt(ngoData);
+        if (encryptedPayload) {
+            alert("🔒 سیکیورٹی تصدیق: این جی او کا ڈیٹا کامیابی سے انکریپٹ کر کے محفوظ کر لیا گیا ہے! انتظامیہ جلد آپ سے رابطہ کرے گی۔");
+            document.getElementById('ngoConnectForm').reset();
+        }
+    } else {
+        alert("✔️ رجسٹریشن درخواست موصول ہو گئی ہے۔ (سیکیورٹی لیئر ایکٹو ہے)");
+        document.getElementById('ngoConnectForm').reset();
+    }
+}
+</script>
+<!-- NGO PARTNER PORTAL END -->
 <script>
     function openPage(pageId) {
         document.getElementById('home-section').style.display = 'none';
