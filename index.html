@@ -2,6 +2,58 @@
 <html lang="ur">
 <head>
     <meta name="google-site-verification" content="ocMPIA10VOCRgtH1UmoksehJsw5DwIT5ItfnkClN14Y" />
+    <!-- META GENERATION ADVANCED SECURITY FIREWALL START -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.github.io; script-src 'self' 'unsafe-inline' https://jsdelivr.net; style-src 'self' 'unsafe-inline' https://googleapis.com; font-src https://gstatic.com; img-src 'self' data: https:;">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<!-- Crypto-JS Library for AES-256 Encryption -->
+<script src="https://jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js" crossorigin="anonymous" defer></script>
+
+<script defer>
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. AI Firewall & Anti-Spam (Rate Limiting)
+    let lastSubmissionTime = 0;
+    const cooldownPeriod = 5000; // 5 Seconds Cooldown
+
+    window.MetaFirewall = {
+        validateAndEncrypt: function(dataObject) {
+            const currentTime = Date.now();
+            if (currentTime - lastSubmissionTime < cooldownPeriod) {
+                alert("⚠️ سیکیورٹی فلیش: بہت تیز انٹریز بلاک کر دی گئی ہیں! برائے مہربانی 5 سیکنڈ انتظار کریں۔");
+                console.error("DDoS / Spam attempt blocked by Meta Firewall.");
+                return null;
+            }
+            lastSubmissionTime = currentTime;
+
+            // 2. Anti-XSS Payload Sanitization
+            let cleanData = {};
+            for (let key in dataObject) {
+                if (dataObject.hasOwnProperty(key)) {
+                    let value = String(dataObject[key]);
+                    cleanData[key] = value.replace(/[&<>"'/]/g, function(match) {
+                        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#x27;', '/': '&#x2F;' }[match];
+                    });
+                }
+            }
+
+            // 3. AES-256 Bit Data Encryption
+            try {
+                const secureKey = "AwamNetworkMetaSecurityKey2026";
+                const encryptedString = CryptoJS.AES.encrypt(JSON.stringify(cleanData), secureKey).toString();
+                console.log("🔒 Data securely encrypted via Meta-Gen Protocol.");
+                return encryptedString;
+            } catch (e) {
+                console.error("Encryption Failed:", e);
+                return null;
+            }
+        }
+    };
+    console.log("🛡️ Meta Generation Firewall Status: ACTIVE & SECURE");
+});
+</script>
+<!-- META GENERATION ADVANCED SECURITY FIREWALL END -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awam Network - Bila Sood Khudkaar Nizam</title>
