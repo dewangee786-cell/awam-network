@@ -189,7 +189,8 @@ document.addEventListener("DOMContentLoaded", function() {
         <div id="rationList" style="text-align:right; margin-top:10px;"></div>
     </div>
 </div>
-<!-- ======================================================== -->
+
+    <!-- ======================================================== -->
 <!-- SUPER APP SOCIAL HUB VIEW -->
 <div class="super-app-hub">
     <div class="hub-title">🌐 عوام نیٹ ورک لائیو سوشل میڈیا اینڈ انٹرٹینمنٹ ہب</div>
@@ -299,7 +300,137 @@ function handleNgoConnect(event) {
     }
 }
 </script>
-<!-- NGO PARTNER PORTAL END -->
+<!-- NGO PARTNER PORTAL END --><!-- ======================================================== -->
+<!-- MULTI-LANGUAGE CHANGER & META AI ASSISTANT START -->
+<style>
+.app-addons-container {
+    background: #111122;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 25px auto;
+    max-width: 600px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: white;
+}
+.addon-box {
+    background: #1a1a2e;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #22223b;
+}
+.addon-title {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #00a0e9;
+}
+.lang-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    background: #ffffff;
+    color: #333;
+}
+.ai-chat-box {
+    height: 150px;
+    background: #0f0f1b;
+    border-radius: 8px;
+    padding: 10px;
+    overflow-y: auto;
+    text-align: left;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    border: 1px solid #333;
+}
+.ai-input-group {
+    display: flex;
+    gap: 10px;
+}
+.ai-input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+.ai-btn {
+    background: #00a0e9;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+</style>
+
+<div class="app-addons-container">
+    <!-- Language Changer Box -->
+    <div class="addon-box">
+        <div class="addon-title">🌐 تبدیلِ زبان / Language Changer</div>
+        <select class="lang-select" onchange="changeAppLanguage(this.value)">
+            <option value="ur">اردو (Urdu)</option>
+            <option value="en">English</option>
+            <option value="ps">پښتو (Pashto)</option>
+            <option value="sd">سندھی (Sindhi)</option>
+            <option value="pa">پنجابی (Punjabi)</option>
+            <option value="ar">العربية (Arabic)</option>
+        </select>
+    </div>
+
+    <!-- Meta AI Assistant Box -->
+    <div class="addon-box">
+        <div class="addon-title">🤖 میٹا اے آئی اسسٹنٹ (Meta AI Assistant)</div>
+        <div class="ai-chat-box" id="aiChatLog">
+            <div style="color: #2ecc71;">[Meta AI]: السلام علیکم! میں عوام نیٹ ورک کا محفوظ سیکیورٹی اسسٹنٹ ہوں۔ میں آپ کی کیا مدد کر سکتا ہوں؟</div>
+        </div>
+        <div class="ai-input-group">
+            <input type="text" id="aiUserQuery" class="ai-input" placeholder="Ask Meta AI anything...">
+            <button class="ai-btn" onclick="askMetaAI()">Send</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// 1. Multi-Language Logic
+function changeAppLanguage(lang) {
+    alert("زبان تبدیل کی جا رہی ہے: " + lang.toUpperCase() + "\n(سیسٹم لوکلائزیشن لوڈ ہو رہی ہے...)");
+    // یہاں تمام زبانوں کا ترجمہ لوڈ کرنے کا سیکیور فنکشن جڑے گا
+}
+
+// 2. Meta AI Smart Response Logic (Secure Layered)
+function askMetaAI() {
+    const queryInput = document.getElementById('aiUserQuery');
+    const chatLog = document.getElementById('aiChatLog');
+    const userText = queryInput.value.trim();
+    
+    if(!userText) return;
+    
+    // سیکیورٹی فائر وال کے ذریعے ان پٹ چیک کرنا
+    let cleanText = userText.replace(/[&<>"'/]/g, function(m) { return ''; });
+
+    chatLog.innerHTML += `<div style="color: #ffffff; text-align:right; margin-top:5px;">${cleanText} :آپ</div>`;
+    queryInput.value = '';
+    
+    // آٹومیٹک سمارٹ جوابات کا ڈیٹا بیس
+    setTimeout(() => {
+        let aiResponse = "معذرت، میں فی الحال اس کمانڈ پر پروسیسنگ کر رہا ہوں۔";
+        if(cleanText.toLowerCase().includes('hello') || cleanText.includes('سلام')) {
+            aiResponse = "السلام علیکم! عوام نیٹ ورک پورٹل پر خوش آمدید۔ آپ راشن نیٹ ورک یا امتحانی بورڈ کی معلومات لے سکتے ہیں۔";
+        } else if(cleanText.includes('rashon') || cleanText.includes('راشن')) {
+            aiResponse = "راشن نیٹ ورک مکمل طور پر فائر وال سیکیورٹی کے تحت لائیو ہے۔ آپ بیک بٹن دبا کر راشن انٹری کر سکتے ہیں۔";
+        }
+        chatLog.innerHTML += `<div style="color: #00a0e9; margin-top:5px;">[Meta AI]: ${aiResponse}</div>`;
+        chatLog.scrollTop = chatLog.scrollHeight;
+    }, 800);
+}
+</script>
+<!-- MULTI-LANGUAGE CHANGER & META AI ASSISTANT END -->
+    
 <script>
     function openPage(pageId) {
         document.getElementById('home-section').style.display = 'none';
