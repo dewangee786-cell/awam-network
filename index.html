@@ -1,624 +1,1534 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="ur" dir="rtl">
 <head>
-    <meta name="google-site-verification" content="ocMPIA10VOCRgtH1UmoksehJsw5DwIT5ItfnkClN14Y" />
-   <!-- META GENERATION SUPER APP SECURITY FIREWALL START -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.github.io https://*.whatsapp.com; script-src 'self' 'unsafe-inline' https://jsdelivr.net https://youtube.com https://netflix.com; style-src 'self' 'unsafe-inline' https://googleapis.com https://jsdelivr.net; font-src https://gstatic.com; img-src 'self' data: https:; frame-src 'self' https://youtube.com https://netflix.com https://facebook.com https://tiktok.com https://twitter.com https://*.whatsapp.com;">
-<meta http-equiv="X-Frame-Options" content="ALLOW-FROM https://*.github.io">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- FontAwesome Icons Library for Social Media Logos -->
-<link rel="stylesheet" href="https://jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
+<title>Awam Network — Bila Sood Khudkaar Nizam</title>
 
-<!-- Crypto-JS Library for AES-256 Encryption -->
-<script src="https://jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js" crossorigin="anonymous" defer></script>
+<meta name="description" content="Awam Network — Zakat, P2P Jobs, Sasta Ration, NGO Portal and Community Services.">
+<meta name="author" content="Dewan Israr Ahmad Faridi">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#198754">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
 
 <style>
-/* Social Media Hub Styling */
-.super-app-hub {
-    background: #1a1a2e;
-    padding: 20px;
-    border-radius: 15px;
-    margin: 20px auto;
-    max-width: 600px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    font-family: Arial, sans-serif;
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    padding:15px;
+    background:#eef2f5;
+    font-family:Arial,"Noto Nastaliq Urdu",sans-serif;
+    color:#222;
 }
-.hub-title {
-    color: #e2e2e2;
-    margin-bottom: 20px;
-    font-size: 1.2rem;
+
+.container{
+    max-width:650px;
+    margin:auto;
 }
-.social-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+
+.card{
+    background:#fff;
+    padding:18px;
+    margin:12px 0;
+    border-radius:16px;
+    box-shadow:0 4px 15px rgba(0,0,0,.10);
 }
-.social-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    border-radius: 10px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: transform 0.2s, box-shadow 0.2s;
-    cursor: pointer;
+
+.header{
+    background:linear-gradient(135deg,#198754,#0f5132);
+    color:white;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
 }
-.social-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+
+.founder{
+    background:linear-gradient(135deg,#d4af37,#98730d);
+    color:white;
+    text-align:center;
+    padding:14px;
+    border-radius:14px;
 }
-.icon-yt { background: #ff0000; }
-.icon-fb { background: #1877f2; }
-.icon-tt { background: #000000; }
-.icon-li { background: #0077b5; }
-.icon-x { background: #1da1f2; }
-.icon-nf { background: #e50914; }
-.icon-wa { background: #25d366; }
-.icon-imo { background: #00a0e9; }
-.social-item i {
-    font-size: 24px;
-    margin-bottom: 8px;
+
+.menu{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:12px;
 }
-.social-item span {
-    font-size: 12px;
+
+button{
+    width:100%;
+    padding:12px;
+    border:0;
+    border-radius:9px;
+    cursor:pointer;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+.menu button{
+    min-height:80px;
+    font-size:15px;
+}
+
+.btn-green{background:#198754;color:#fff}
+.btn-blue{background:#0d6efd;color:#fff}
+.btn-orange{background:#fd7e14;color:#fff}
+.btn-purple{background:#6f42c1;color:#fff}
+.btn-dark{background:#212529;color:#fff}
+.btn-red{background:#dc3545;color:#fff}
+
+.btn-google{
+    background:#fff;
+    color:#333;
+    border:1px solid #ccc;
+}
+
+input,select{
+    width:100%;
+    padding:12px;
+    margin:6px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+
+.page{
+    display:none;
+}
+
+.item{
+    background:#f8f9fa;
+    border:1px solid #ddd;
+    padding:12px;
+    border-radius:10px;
+    margin:8px 0;
+}
+
+.user-box{
+    background:#e8f5e9;
+    padding:12px;
+    border-radius:10px;
+    text-align:center;
+    margin-top:12px;
+}
+
+.install-box{
+    display:none;
+    background:#fff3cd;
+    border:1px solid #ffe69c;
+    padding:12px;
+    border-radius:12px;
+    margin-top:12px;
+}
+
+.ai-log{
+    height:190px;
+    overflow-y:auto;
+    background:#111827;
+    color:#fff;
+    padding:10px;
+    border-radius:10px;
+    text-align:left;
+}
+
+.small{
+    font-size:12px;
+    color:#666;
+}
+
+.hidden{
+    display:none!important;
+}
+
+.message{
+    padding:10px;
+    margin-top:8px;
+    border-radius:8px;
+    background:#f1f1f1;
 }
 </style>
 
-<script defer>
-document.addEventListener("DOMContentLoaded", function() {
-    let lastSubmissionTime = 0;
-    const cooldownPeriod = 5000;
-
-    window.MetaFirewall = {
-        validateAndEncrypt: function(dataObject) {
-            const currentTime = Date.now();
-            if (currentTime - lastSubmissionTime < cooldownPeriod) {
-                alert("⚠️ سیکیورٹی فلیش: بہت تیز انٹریز بلاک کر دی گئی ہیں! برائے مہربانی 5 سیکنڈ انتظار کریں۔");
-                return null;
-            }
-            lastSubmissionTime = currentTime;
-
-            let cleanData = {};
-            for (let key in dataObject) {
-                if (dataObject.hasOwnProperty(key)) {
-                    let value = String(dataObject[key]);
-                    cleanData[key] = value.replace(/[&<>"'/]/g, function(match) {
-                        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#x27;', '/': '&#x2F;' }[match];
-                    });
-                }
-            }
-
-            try {
-                const secureKey = "AwamNetworkMetaSecurityKey2026";
-                return CryptoJS.AES.encrypt(JSON.stringify(cleanData), secureKey).toString();
-            } catch (e) {
-                return null;
-            }
-        }
-    };
-    console.log("🛡️ Meta Gen Super App Firewall: ON & ACTIVE");
-});
-</script>
-<!-- META GENERATION SUPER APP SECURITY FIREWALL END -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Awam Network - Bila Sood Khudkaar Nizam</title>
-    
-    <!-- Google SEO Keywords -->
-    <meta name="description" content="Awam Network by Dewan Israr Ahmad Faridi. Bila Sood Khudkaar Nizam, Zakat Funding, Google AI Exam, aur Sasta Ration Network.">
-    <meta name="keywords" content="Awam Network, Dewan Israr Ahmad Faridi, Awam Network Pakistan, Bila Sood Nizam, Dewan Israr, Zakat Funding">
-    <meta name="author" content="Dewan Israr Ahmad Faridi">
-    <meta name="robots" content="index, follow">
-
-    <style>
-        body { font-family: sans-serif; background-color: #f0f3f5; text-align: center; padding: 20px; }
-        .main-container { max-width: 450px; margin: 0 auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .header { background: #2ecc71; color: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
-        .zakati-box { background: #9b59b6; color: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; cursor: pointer; }
-        .card { background: #fdfdfd; border: 2px solid #e2e8f0; padding: 15px; margin-bottom: 15px; border-radius: 10px; cursor: pointer; }
-        .page-section { display: none; background: #fff; padding: 10px; text-align: center; }
-        .btn-submit { background: #4285F4; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 10px; }
-        .btn-back { background: #7f8c8d; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; float: right; }
-        .input-style { width: 90%; padding: 8px; margin-bottom: 8px; border: 1px solid #ccc; border-radius: 5px; text-align: center; }
-        .quiz-box { background: #f9f9f9; border: 1px dashed #4285F4; padding: 15px; border-radius: 10px; text-align: right; }
-        .result-box { display: none; padding: 10px; border-radius: 5px; margin-top: 10px; font-weight: bold; }
-        .item-card { background: #f9f9f9; border: 1px solid #eee; padding: 10px; border-radius: 5px; margin-bottom: 8px; }
-    </style>
-</head>
-<body>
-
-<div class="main-container" dir="rtl">
-    <div id="home-section">
-        <div style="background: linear-gradient(135deg, #d4af37, #aa7c11); color: white; padding: 12px; border-radius: 10px; margin-bottom: 15px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-            <h3 style="margin: 0; font-size: 14px; letter-spacing: 1px;">👑 FOUNDER & CEO</h3>
-            <h2 style="margin: 5px 0 2px 0; color: #fff; font-size: 18px;">Dewan Israr Ahmad Faridi</h2>
-            <p style="margin: 0; color: #fff; font-size: 11px;">📧 dewan.gee786@gmail.com | 📞 +923004109236</p>
-        </div>
-
-        <div class="header">
-            <h1>عوام نیٹ ورک / AWAM NETWORK</h1>
-            <p>Bila Sood Khudkaar Nizam</p>
-        </div>
-        <div class="zakati-box" onclick="openPage('zakat-section')"><h2>🌍 1. Zakat Funding (انٹرنیشنل زکوٰۃ)</h2></div>
-        <div class="card" onclick="openPage('hunar-section')"><h2>📚 2. Google AI Exam (گوگل AI امتحان)</h2></div>
-        <div class="card" onclick="openPage('jobs-section')"><h2>🛠️ 3. P2P Jobs (بغیر کمیشن مزدوری)</h2></div>
-        <div class="card" onclick="openPage('ration-section')"><h2>🌾 4. Sasta Ration (سستا راشن نیٹ ورک)</h2></div>
-    </div>
-
-    <div id="zakat-section" class="page-section">
-        <button class="btn-back" onclick="goBack('zakat-section')">Back</button>
-        <div class="zakati-box"><h2>🌍 عالمی زکوٰۃ پورٹل</h2></div>
-        <p>Zakat system live hai.</p>
-    </div>
-
-    <div id="hunar-section" class="page-section">
-        <button class="btn-back" onclick="goBack('hunar-section')">Back</button>
-        <div class="header" style="background:#34495e;"><h2>🤖 گوگل AI امتحان</h2></div>
-        <div class="quiz-box">
-            <p>سوال: کمپیوٹر کا دماغ کون سا hai?</p>
-            <input type="radio" name="qa" id="opt1"> <label>Monitor</label><br>
-            <input type="radio" name="qa" id="opt2"> <label>CPU</label>
-        </div>
-        <button class="btn-submit" onclick="submitExam()">امتحان جمع کریں</button>
-        <div id="resultView" class="result-box"></div>
-    </div>
-
-    <div id="jobs-section" class="page-section">
-        <button class="btn-back" onclick="goBack('jobs-section')">Back</button>
-        <div class="header" style="background:#e67e22;"><h2>🛠️ بغیر کمیشن مزدوری مارکیٹ</h2></div>
-        <input type="text" id="wName" placeholder="Naam" class="input-style"><br>
-        <input type="text" id="wSkill" placeholder="Hunar" class="input-style"><br>
-        <input type="text" id="wPhone" placeholder="Mobile" class="input-style"><br>
-        <button class="btn-submit" style="background:#e67e22;" onclick="addWorker()">نام شامل کریں</button>
-        <div id="workersList" style="text-align:right; margin-top:10px;"></div>
-    </div>
-
-    <div id="ration-section" class="page-section">
-        <button class="btn-back" onclick="goBack('ration-section')">Back</button>
-        <div class="header" style="background:#27ae60;"><h2>🌾 سستا راشن نیٹ ورک</h2></div>
-        <input type="text" id="rItem" placeholder="Samaan ka Naam" class="input-style"><br>
-        <input type="text" id="rPrice" placeholder="Keemat" class="input-style"><br>
-        <input type="text" id="rContact" placeholder="Phone Number" class="input-style"><br>
-        <button class="btn-submit" style="background:#27ae60;" onclick="addRationItem()">سامان شامل کریں</button>
-        <div id="rationList" style="text-align:right; margin-top:10px;"></div>
-    </div>
-</div>
-
-    <!-- ======================================================== -->
-<!-- SUPER APP SOCIAL HUB VIEW -->
-<div class="super-app-hub">
-    <div class="hub-title">🌐 عوام نیٹ ورک لائیو سوشل میڈیا اینڈ انٹرٹینمنٹ ہب</div>
-    <div class="social-grid">
-        <a href="https://youtube.com" target="_blank" class="social-item icon-yt"><i class="fab fa-youtube"></i><span>YouTube</span></a>
-        <a href="https://facebook.com" target="_blank" class="social-item icon-fb"><i class="fab fa-facebook"></i><span>Facebook</span></a>
-        <a href="https://tiktok.com" target="_blank" class="social-item icon-tt"><i class="fab fa-tiktok"></i><span>TikTok</span></a>
-        <a href="https://linkedin.com" target="_blank" class="social-item icon-li"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
-        <a href="https://twitter.com" target="_blank" class="social-item icon-x"><i class="fab fa-twitter"></i><span>Twitter (X)</span></a>
-        <a href="https://netflix.com" target="_blank" class="social-item icon-nf"><i class="fab fa-netflix"></i><span>Netflix</span></a>
-        <a href="https://wa.me" target="_blank" class="social-item icon-wa"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
-        <a href="https://imo.im" target="_blank" class="social-item icon-imo"><i class="fas fa-comments"></i><span>IMO</span></a>
-    </div>
-</div>
-
-<!-- ======================================================== -->
-<!-- NGO PARTNER PORTAL START -->
-<style>
-.ngo-portal-container {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    padding: 25px;
-    border-radius: 15px;
-    margin: 25px auto;
-    max-width: 600px;
-    color: white;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: center;
-}
-.ngo-title {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-.ngo-subtitle {
-    font-size: 0.9rem;
-    color: #e0e0e0;
-    margin-bottom: 20px;
-}
-.ngo-form-field {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 8px;
-    box-sizing: border-box;
-    font-size: 1rem;
-}
-.ngo-submit-btn {
-    background-color: #2ecc71;
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s;
-    width: 100%;
-}
-.ngo-submit-btn:hover {
-    background-color: #27ae60;
-}
-</style>
-
-<div class="ngo-portal-container">
-    <div class="ngo-title">🤝 این جی او پارٹنر نیٹ ورک (NGO Partner Portal)</div>
-    <div class="ngo-subtitle">ہمارے آٹومیٹک راشن اور اے آئی امتحانی سسٹم سے جڑنے کے لیے نیچے فارم پُر کریں۔</div>
-    
-    <form id="ngoConnectForm" onsubmit="handleNgoConnect(event)">
-        <input type="text" id="ngoName" class="ngo-form-field" placeholder="تنظیم / NGO کا نام" required>
-        <input type="text" id="ngoLeader" class="ngo-form-field" placeholder="مشر یا ذمہ دار کا نام" required>
-        <input type="tel" id="ngoPhone" class="ngo-form-field" placeholder="رابطہ نمبر (WhatsApp)" required>
-        <input type="email" id="ngoEmail" class="ngo-form-field" placeholder="ای میل ایڈریس">
-        <select id="ngoWork" class="ngo-form-field" style="color: #555;" required>
-            <option value="" disabled selected>کام کی نوعیت منتخب کریں</option>
-            <option value="rashon">راشن کی تقسیم (Rashon Distribution)</option>
-            <option value="education">تعلیمی خدمات (Education Support)</option>
-            <option value="medical">طبی امداد (Medical Aid)</option>
-        </select>
-        <button type="submit" class="ngo-submit-btn">سیسٹم سے کنیکٹ کریں 🚀</button>
-    </form>
-</div>
-
-<script>
-function handleNgoConnect(event) {
-    event.preventDefault();
-    
-    const ngoData = {
-        name: document.getElementById('ngoName').value,
-        leader: document.getElementById('ngoLeader').value,
-        phone: document.getElementById('ngoPhone').value,
-        email: document.getElementById('ngoEmail').value,
-        work: document.getElementById('ngoWork').value,
-        timestamp: new Date().toISOString()
-    };
-
-    if (window.MetaFirewall && typeof window.MetaFirewall.validateAndEncrypt === "function") {
-        const encryptedPayload = window.MetaFirewall.validateAndEncrypt(ngoData);
-        if (encryptedPayload) {
-            alert("🔒 سیکیورٹی تصدیق: این جی او کا ڈیٹا کامیابی سے انکریپٹ کر کے محفوظ کر لیا گیا ہے! انتظامیہ جلد آپ سے رابطہ کرے گی۔");
-            document.getElementById('ngoConnectForm').reset();
-        }
-    } else {
-        alert("✔️ رجسٹریشن درخواست موصول ہو گئی ہے۔ (سیکیورٹی لیئر ایکٹو ہے)");
-        document.getElementById('ngoConnectForm').reset();
-    }
-}
-</script>
-<!-- NGO PARTNER PORTAL END --><!-- ======================================================== -->
-<!-- ============================================= -->
-<!-- AWAM NETWORK - FIREBASE REALTIME DATABASE    -->
-<!-- ============================================= -->
-
-<!-- Firebase App -->
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-app-compat.js"></script>
-
-<!-- Firebase Realtime Database -->
+<script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-database-compat.js"></script>
 
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ================= LOGIN ================= -->
+
+<section id="loginPage" class="card">
+
+    <div class="header">
+        <h1>🌐 AWAM NETWORK</h1>
+        <p>Bila Sood Khudkaar Nizam</p>
+    </div>
+
+    <h2>🔐 Login / New Account</h2>
+
+    <p>
+        Awam Network استعمال کرنے کے لیے Login یا New Account بنائیں۔
+    </p>
+
+    <button class="btn-google" onclick="googleLogin()">
+        🔵 Google / Gmail سے Continue کریں
+    </button>
+
+    <hr>
+
+    <input
+        id="phoneNumber"
+        type="tel"
+        placeholder="+923001234567">
+
+    <div id="recaptcha-container"></div>
+
+    <button class="btn-green" onclick="sendOTP()">
+        📱 Phone OTP حاصل کریں
+    </button>
+
+    <div id="otpArea" class="hidden">
+
+        <input
+            id="otpCode"
+            type="number"
+            placeholder="6 digit OTP">
+
+        <button class="btn-blue" onclick="verifyOTP()">
+            ✅ OTP Verify کریں
+        </button>
+
+    </div>
+
+    <div id="loginMessage" class="message"></div>
+
+</section>
+
+
+<!-- ================= APPLICATION ================= -->
+
+<section id="appPage" class="hidden">
+
+    <div class="founder">
+        <strong>👑 FOUNDER & CEO</strong>
+        <h2>Dewan Israr Ahmad Faridi</h2>
+        <small>Awam Network</small>
+    </div>
+
+    <div class="user-box">
+
+        <div id="userInfo">
+            Loading...
+        </div>
+
+        <button class="btn-red" onclick="logoutUser()">
+            🚪 Logout
+        </button>
+
+    </div>
+
+
+    <!-- INSTALL -->
+
+    <div id="installBox" class="install-box">
+
+        <strong>📱 Awam Network App Install کریں</strong>
+
+        <p class="small">
+            Android پر Install App کریں۔
+            iPhone پر Safari → Share → Add to Home Screen کریں۔
+        </p>
+
+        <button id="installButton" class="btn-green">
+            📲 Install Awam Network
+        </button>
+
+    </div>
+
+
+    <!-- HOME -->
+
+    <div id="homePage" class="page" style="display:block">
+
+        <div class="header">
+            <h1>عوام نیٹ ورک</h1>
+            <p>Bila Sood Khudkaar Nizam</p>
+        </div>
+
+        <div class="menu">
+
+            <button class="btn-green"
+                onclick="showPage('zakatPage')">
+                🌍 Zakat Funding
+            </button>
+
+            <button class="btn-blue"
+                onclick="showPage('examPage')">
+                🎓 AI / Computer Exam
+            </button>
+
+            <button class="btn-orange"
+                onclick="showPage('jobsPage')">
+                🛠️ P2P Jobs
+            </button>
+
+            <button class="btn-green"
+                onclick="showPage('rationPage')">
+                🌾 Sasta Ration
+            </button>
+
+            <button class="btn-purple"
+                onclick="showPage('ngoPage')">
+                🤝 NGO Portal
+            </button>
+
+            <button class="btn-dark"
+                onclick="showPage('aiPage')">
+                🤖 AI Assistant
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ZAKAT -->
+
+    <div id="zakatPage" class="page card">
+
+        <button class="btn-dark"
+            onclick="showPage('homePage')">
+            ← Back
+        </button>
+
+        <h2>🌍 عالمی زکوٰۃ پورٹل</h2>
+
+        <div class="item">
+            🔐 Zakat system authenticated users کے لیے تیار ہے۔
+        </div>
+
+        <p>
+            اس section کو بعد میں donor، beneficiary اور verification
+            system کے ساتھ مزید expand کیا جا سکتا ہے۔
+        </p>
+
+    </div>
+
+
+    <!-- EXAM -->
+
+    <div id="examPage" class="page card">
+
+        <button class="btn-dark"
+            onclick="showPage('homePage')">
+            ← Back
+        </button>
+
+        <h2>🎓 AI / Computer Exam</h2>
+
+        <p>
+            سوال: کمپیوٹر کا دماغ کون سا حصہ ہے؟
+        </p>
+
+        <label>
+            <input type="radio"
+                   name="examQuestion"
+                   value="Monitor">
+            Monitor
+        </label>
+
+        <br>
+
+        <label>
+            <input type="radio"
+                   name="examQuestion"
+                   value="CPU">
+            CPU
+        </label>
+
+        <button class="btn-blue"
+            onclick="submitExam()">
+            امتحان جمع کریں
+        </button>
+
+        <div id="examResult"></div>
+
+    </div>
+
+
+    <!-- JOBS -->
+
+    <div id="jobsPage" class="page card">
+
+        <button class="btn-dark"
+            onclick="showPage('homePage')">
+            ← Back
+        </button>
+
+        <h2>🛠️ P2P Jobs</h2>
+
+        <input id="workerName"
+               placeholder="نام">
+
+        <input id="workerSkill"
+               placeholder="ہنر">
+
+        <input id="workerPhone"
+               placeholder="موبائل نمبر">
+
+        <button class="btn-green"
+            onclick="addWorker()">
+            نام شامل کریں
+        </button>
+
+        <div id="workersList"></div>
+
+    </div>
+
+
+    <!-- RATION -->
+
+    <div id="rationPage" class="page card">
+
+        <button class="btn-dark"
+            onclick="showPage('homePage')">
+            ← Back
+        </button>
+
+        <h2>🌾 Sasta Ration Network</h2>
+
+        <input id="rationItem"
+               placeholder="سامان کا نام">
+
+        <input id="rationPrice"
+               type="number"
+               placeholder="قیمت">
+
+        <input id="rationPhone"
+               placeholder="رابطہ نمبر">
+
+        <button class="btn-green"
+            onclick="addRation()">
+            سامان شامل کریں
+        </button>
+
+        <div id="rationList"></div>
+
+    </div>
+
+
+    <!-- NGO -->
+
+    <div id="ngoPage" class="page card">
+
+        <button class="btn-dark"
+            onclick="showPage('homePage')">
+            ← Back
+        </button>
+
+        <h2>🤝 NGO Partner Portal</h2>
+
+        <input id="ngoName"
+               placeholder="NGO کا نام">
+
+        <input id="ngoLeader"
+               placeholder="ذمہ دار شخص کا نام">
+
+        <input id="ngoPhone"
+               placeholder="WhatsApp نمبر">
+
+        <input id="ngoEmail"
+               type="email"
+               placeholder="Email">
+
+        <select id="ngoWork">
+
+            <option value="">
+                کام کی نوعیت منتخب کریں
+            </option>
+
+            <option value="ration">
+                راشن کی تقسیم
+            </option>
+
+            <option value="education">
+                تعلیمی خدمات
+            </option>
+
+            <option value="medical">
+                طبی امداد
+            </option>
+
+        </select>
+
+        <button class="btn-green"
+            onclick="registerNGO()">
+            🚀 NGO Registration Submit
+        </button>
+
+    </div>
+
+
+    <!-- AI -->
+
+    <div id="aiPage" class="page card">
+
+        <button class="btn-dark"
+            onclick="showPage('homePage')">
+            ← Back
+        </button>
+
+        <h2>🤖 Awam Network AI Assistant</h2>
+
+        <div id="aiLog" class="ai-log">
+
+            <div>
+                🤖 AI: السلام علیکم!
+                Awam Network میں خوش آمدید۔
+            </div>
+
+        </div>
+
+        <input id="aiQuestion"
+               placeholder="اپنا سوال لکھیں">
+
+        <button class="btn-blue"
+            onclick="askAI()">
+            Send
+        </button>
+
+    </div>
+
+</section>
+
+</div>
+
+
 <script>
-/* =============================================
-   FIREBASE CONFIGURATION
-   ============================================= */
+
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
 
 const firebaseConfig = {
-    apiKey: "YOUR_FIREBASE_API_KEY",
-    authDomain: "awam-network.firebaseapp.com",
-    databaseURL: "YOUR_REALTIME_DATABASE_URL",
-    projectId: "awam-network",
-    storageBucket: "awam-network.firebasestorage.app",
-    messagingSenderId: "301278519256",
-    appId: "1:301278519256:web:539781e65602bd9765cad"
+
+    apiKey:
+    "AIzaSyCPgcQjOUkgOoQtcwrjBeMJfJ41lff9Y94",
+
+    authDomain:
+    "awam-network.firebaseapp.com",
+
+    databaseURL:
+    "https://awam-network-default-rtdb.firebaseio.com",
+
+    projectId:
+    "awam-network",
+
+    storageBucket:
+    "awam-network.firebasestorage.app",
+
+    messagingSenderId:
+    "301278519256",
+
+    appId:
+    "1:301278519256:web:e22860f83e4ba18f765cad"
 };
 
 
-/* =============================================
-   INITIALIZE FIREBASE
-   ============================================= */
+/* =====================================================
+   INITIALIZE
+===================================================== */
 
-if (!firebase.apps.length) {
+if(!firebase.apps.length){
     firebase.initializeApp(firebaseConfig);
 }
 
+const auth = firebase.auth();
+const db = firebase.database();
 
-/* =============================================
-   REALTIME DATABASE
-   ============================================= */
-
-const database = firebase.database();
-
-
-/* =============================================
-   NGO REGISTRATION
-   ============================================= */
-
-function handleNgoConnect(event) {
-
-    event.preventDefault();
-
-    const ngoData = {
-
-        name: document.getElementById("ngoName")?.value.trim() || "",
-
-        leader: document.getElementById("ngoLeader")?.value.trim() || "",
-
-        phone: document.getElementById("ngoPhone")?.value.trim() || "",
-
-        email: document.getElementById("ngoEmail")?.value.trim() || "",
-
-        work: document.getElementById("ngoWork")?.value.trim() || "",
-
-        timestamp: new Date().toISOString()
-
-    };
+let confirmationResult = null;
+let deferredInstallPrompt = null;
 
 
-    /* =========================================
-       BASIC VALIDATION
-       ========================================= */
+/* =====================================================
+   AUTH STATE
+===================================================== */
 
-    if (!ngoData.name ||
-        !ngoData.leader ||
-        !ngoData.phone ||
-        !ngoData.email ||
-        !ngoData.work) {
+auth.onAuthStateChanged(function(user){
 
-        alert("⚠️ Please complete all required fields.");
-        return;
-    }
+    if(user){
 
+        document
+        .getElementById("loginPage")
+        .classList.add("hidden");
 
-    /* =========================================
-       SAVE TO FIREBASE
-       ========================================= */
+        document
+        .getElementById("appPage")
+        .classList.remove("hidden");
 
-    database.ref("ngos_registered")
-        .push(ngoData)
+        const displayName =
+            user.displayName ||
+            user.phoneNumber ||
+            user.email ||
+            "User";
 
-        .then(() => {
+        document
+        .getElementById("userInfo")
+        .innerHTML =
+            "👤 <strong>" +
+            escapeHTML(displayName) +
+            "</strong><br>" +
+            "<span class='small'>" +
+            escapeHTML(
+                user.email ||
+                user.phoneNumber ||
+                ""
+            ) +
+            "</span>";
 
-            alert(
-                "🔐 Registration successful!\n\n" +
-                "Your NGO information has been securely submitted."
-            );
+        loadWorkers();
+        loadRation();
 
-            const form = document.getElementById("ngoConnectForm");
+    }else{
 
-            if (form) {
-                form.reset();
-            }
+        document
+        .getElementById("loginPage")
+        .classList.remove("hidden");
 
-        })
+        document
+        .getElementById("appPage")
+        .classList.add("hidden");
 
-        .catch((error) => {
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCVbrB6vg0wLLzfLymZ3213b249DAo5jbY",
-  authDomain: "awam-network-318ec.firebaseapp.com",
-  projectId: "awam-network-318ec",
-  storageBucket: "awam-network-318ec.firebasestorage.app",
-  messagingSenderId: "313453430241",
-  appId: "1:313453430241:web:ff517cc1fc4346e326fea0"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-            console.error("Firebase Database Error:", error);
-
-            alert(
-                "❌ Registration failed.\n\n" +
-                "Please check Firebase configuration and Security Rules."
-            );
-
-        });
-}
-
-
-/* =============================================
-   FORM EVENT
-   ============================================= */
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const form = document.getElementById("ngoConnectForm");
-
-    if (form) {
-        form.addEventListener("submit", handleNgoConnect);
     }
 
 });
 
-</script>
 
-<!-- ============================================= -->
-<!-- FIREBASE END                                 -->
-<!-- ============================================= -->
-<!-- MULTI-LANGUAGE CHANGER & META AI ASSISTANT START -->
-<style>
-.app-addons-container {
-    background: #111122;
-    padding: 20px;
-    border-radius: 15px;
-    margin: 25px auto;
-    max-width: 600px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    font-family: Arial, sans-serif;
-    text-align: center;
-    color: white;
-}
-.addon-box {
-    background: #1a1a2e;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #22223b;
-}
-.addon-title {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #00a0e9;
-}
-.lang-select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    font-size: 1rem;
-    background: #ffffff;
-    color: #333;
-}
-.ai-chat-box {
-    height: 150px;
-    background: #0f0f1b;
-    border-radius: 8px;
-    padding: 10px;
-    overflow-y: auto;
-    text-align: left;
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-    border: 1px solid #333;
-}
-.ai-input-group {
-    display: flex;
-    gap: 10px;
-}
-.ai-input {
-    flex: 1;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-}
-.ai-btn {
-    background: #00a0e9;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-}
-</style>
+/* =====================================================
+   GOOGLE LOGIN
+===================================================== */
 
-<div class="app-addons-container">
-    <!-- Language Changer Box -->
-    <div class="addon-box">
-        <div class="addon-title">🌐 تبدیلِ زبان / Language Changer</div>
-        <select class="lang-select" onchange="changeAppLanguage(this.value)">
-            <option value="ur">اردو (Urdu)</option>
-            <option value="en">English</option>
-            <option value="ps">پښتو (Pashto)</option>
-            <option value="sd">سندھی (Sindhi)</option>
-            <option value="pa">پنجابی (Punjabi)</option>
-            <option value="ar">العربية (Arabic)</option>
-        </select>
-    </div>
+function googleLogin(){
 
-    <!-- Meta AI Assistant Box -->
-    <div class="addon-box">
-        <div class="addon-title">🤖 میٹا اے آئی اسسٹنٹ (Meta AI Assistant)</div>
-        <div class="ai-chat-box" id="aiChatLog">
-            <div style="color: #2ecc71;">[Meta AI]: السلام علیکم! میں عوام نیٹ ورک کا محفوظ سیکیورٹی اسسٹنٹ ہوں۔ میں آپ کی کیا مدد کر سکتا ہوں؟</div>
-        </div>
-        <div class="ai-input-group">
-            <input type="text" id="aiUserQuery" class="ai-input" placeholder="Ask Meta AI anything...">
-            <button class="ai-btn" onclick="askMetaAI()">Send</button>
-        </div>
-    </div>
-</div>
+    const provider =
+        new firebase.auth.GoogleAuthProvider();
 
-<script>
-// 1. Multi-Language Logic
-function changeAppLanguage(lang) {
-    alert("زبان تبدیل کی جا رہی ہے: " + lang.toUpperCase() + "\n(سیسٹم لوکلائزیشن لوڈ ہو رہی ہے...)");
-    // یہاں تمام زبانوں کا ترجمہ لوڈ کرنے کا سیکیور فنکشن جڑے گا
+    provider.setCustomParameters({
+        prompt:"select_account"
+    });
+
+    auth.signInWithPopup(provider)
+
+    .catch(function(error){
+
+        showLoginMessage(
+            "❌ Google Login Error: " +
+            error.message
+        );
+
+    });
+
 }
 
-// 2. Meta AI Smart Response Logic (Secure Layered)
-function askMetaAI() {
-    const queryInput = document.getElementById('aiUserQuery');
-    const chatLog = document.getElementById('aiChatLog');
-    const userText = queryInput.value.trim();
-    
-    if(!userText) return;
-    
-    // سیکیورٹی فائر وال کے ذریعے ان پٹ چیک کرنا
-    let cleanText = userText.replace(/[&<>"'/]/g, function(m) { return ''; });
 
-    chatLog.innerHTML += `<div style="color: #ffffff; text-align:right; margin-top:5px;">${cleanText} :آپ</div>`;
-    queryInput.value = '';
-    
-    // آٹومیٹک سمارٹ جوابات کا ڈیٹا بیس
-    setTimeout(() => {
-        let aiResponse = "معذرت، میں فی الحال اس کمانڈ پر پروسیسنگ کر رہا ہوں۔";
-        if(cleanText.toLowerCase().includes('hello') || cleanText.includes('سلام')) {
-            aiResponse = "السلام علیکم! عوام نیٹ ورک پورٹل پر خوش آمدید۔ آپ راشن نیٹ ورک یا امتحانی بورڈ کی معلومات لے سکتے ہیں۔";
-        } else if(cleanText.includes('rashon') || cleanText.includes('راشن')) {
-            aiResponse = "راشن نیٹ ورک مکمل طور پر فائر وال سیکیورٹی کے تحت لائیو ہے۔ آپ بیک بٹن دبا کر راشن انٹری کر سکتے ہیں۔";
+/* =====================================================
+   PHONE OTP
+===================================================== */
+
+function sendOTP(){
+
+    const phone =
+        document
+        .getElementById("phoneNumber")
+        .value.trim();
+
+    if(!phone){
+
+        showLoginMessage(
+            "⚠️ Phone number درج کریں۔"
+        );
+
+        return;
+    }
+
+    if(!window.recaptchaVerifier){
+
+        window.recaptchaVerifier =
+            new firebase.auth.RecaptchaVerifier(
+                "recaptcha-container",
+                {
+                    size:"normal"
+                }
+            );
+
+    }
+
+    auth.signInWithPhoneNumber(
+        phone,
+        window.recaptchaVerifier
+    )
+
+    .then(function(result){
+
+        confirmationResult = result;
+
+        document
+        .getElementById("otpArea")
+        .classList.remove("hidden");
+
+        showLoginMessage(
+            "✅ OTP بھیج دیا گیا ہے۔"
+        );
+
+    })
+
+    .catch(function(error){
+
+        showLoginMessage(
+            "❌ OTP Error: " +
+            error.message
+        );
+
+        if(window.recaptchaVerifier){
+
+            window.recaptchaVerifier
+            .clear();
+
+            window.recaptchaVerifier = null;
+
         }
-        chatLog.innerHTML += `<div style="color: #00a0e9; margin-top:5px;">[Meta AI]: ${aiResponse}</div>`;
-        chatLog.scrollTop = chatLog.scrollHeight;
-    }, 800);
+
+    });
+
 }
-</script>
-<!-- MULTI-LANGUAGE CHANGER & META AI ASSISTANT END -->
-    
-<script>
-    function openPage(pageId) {
-        document.getElementById('home-section').style.display = 'none';
-        document.getElementById(pageId).style.display = 'block';
+
+
+/* =====================================================
+   VERIFY OTP
+===================================================== */
+
+function verifyOTP(){
+
+    const code =
+        document
+        .getElementById("otpCode")
+        .value.trim();
+
+    if(!confirmationResult){
+
+        showLoginMessage(
+            "⚠️ پہلے OTP حاصل کریں۔"
+        );
+
+        return;
     }
-    function goBack(pageId) {
-        document.getElementById(pageId).style.display = 'none';
-        document.getElementById('home-section').style.display = 'block';
+
+    if(!code){
+
+        showLoginMessage(
+            "⚠️ OTP درج کریں۔"
+        );
+
+        return;
     }
-    function submitExam() {
-        var res = document.getElementById('resultView');
-        res.style.display = "block";
-        if(document.getElementById('opt2').checked) {
-            res.style.color = "green"; res.innerHTML = "🎉 PASS! Certificate Issued.";
-        } else {
-            res.style.color = "red"; res.innerHTML = "❌ FAILED! Try Again.";
+
+    confirmationResult
+    .confirm(code)
+
+    .then(function(){
+
+        showLoginMessage(
+            "✅ Account/Login successful!"
+        );
+
+    })
+
+    .catch(function(error){
+
+        showLoginMessage(
+            "❌ OTP verification failed: " +
+            error.message
+        );
+
+    });
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logoutUser(){
+
+    auth.signOut()
+    .catch(function(error){
+
+        alert(
+            "Logout Error: " +
+            error.message
+        );
+
+    });
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function showPage(pageId){
+
+    document
+    .querySelectorAll(".page")
+    .forEach(function(page){
+
+        page.style.display = "none";
+
+    });
+
+    const page =
+        document.getElementById(pageId);
+
+    if(page){
+
+        page.style.display = "block";
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* =====================================================
+   EXAM
+===================================================== */
+
+function submitExam(){
+
+    const answer =
+        document.querySelector(
+            'input[name="examQuestion"]:checked'
+        );
+
+    const result =
+        document.getElementById("examResult");
+
+    if(!answer){
+
+        result.innerHTML =
+            "<div class='item'>⚠️ جواب منتخب کریں۔</div>";
+
+        return;
+    }
+
+    const status =
+        answer.value === "CPU"
+        ? "PASS"
+        : "FAIL";
+
+    if(status === "PASS"){
+
+        result.innerHTML =
+            "<div class='item' style='color:green'>" +
+            "🎉 PASS! درست جواب CPU ہے۔" +
+            "</div>";
+
+    }else{
+
+        result.innerHTML =
+            "<div class='item' style='color:red'>" +
+            "❌ FAILED! درست جواب CPU ہے۔" +
+            "</div>";
+
+    }
+
+    const user = auth.currentUser;
+
+    if(user){
+
+        db.ref(
+            "exam_results/" + user.uid
+        ).push({
+
+            answer:answer.value,
+
+            status:status,
+
+            timestamp:
+            firebase.database.ServerValue.TIMESTAMP
+
+        });
+
+    }
+
+}
+
+
+/* =====================================================
+   WORKER
+===================================================== */
+
+function addWorker(){
+
+    const user = auth.currentUser;
+
+    if(!user){
+
+        alert("پہلے Login کریں۔");
+        return;
+
+    }
+
+    const name =
+        document
+        .getElementById("workerName")
+        .value.trim();
+
+    const skill =
+        document
+        .getElementById("workerSkill")
+        .value.trim();
+
+    const phone =
+        document
+        .getElementById("workerPhone")
+        .value.trim();
+
+    if(!name || !skill || !phone){
+
+        alert(
+            "تمام معلومات مکمل کریں۔"
+        );
+
+        return;
+    }
+
+    db.ref("workers")
+      .push({
+
+        uid:user.uid,
+
+        name:name,
+
+        skill:skill,
+
+        phone:phone,
+
+        status:"pending",
+
+        timestamp:
+        firebase.database.ServerValue.TIMESTAMP
+
+      })
+
+      .then(function(){
+
+        alert(
+            "✅ Worker registration submit ہو گئی۔"
+        );
+
+        document.getElementById("workerName").value="";
+        document.getElementById("workerSkill").value="";
+        document.getElementById("workerPhone").value="";
+
+      })
+
+      .catch(function(error){
+
+        alert(
+            "❌ Database Error: " +
+            error.message
+        );
+
+      });
+
+}
+
+
+/* =====================================================
+   WORKERS
+===================================================== */
+
+function loadWorkers(){
+
+    db.ref("workers")
+      .limitToLast(20)
+      .on("value",function(snapshot){
+
+        const list =
+            document.getElementById(
+                "workersList"
+            );
+
+        if(!list) return;
+
+        list.innerHTML="";
+
+        snapshot.forEach(function(child){
+
+            const data=child.val();
+
+            list.innerHTML +=
+                "<div class='item'>" +
+
+                "<strong>" +
+                escapeHTML(data.name || "") +
+                "</strong><br>" +
+
+                "🛠️ " +
+                escapeHTML(data.skill || "") +
+                "<br>" +
+
+                "📱 " +
+                escapeHTML(data.phone || "") +
+
+                "<br>" +
+
+                "<span class='small'>" +
+                "Status: " +
+                escapeHTML(data.status || "pending") +
+                "</span>" +
+
+                "</div>";
+
+        });
+
+      });
+
+}
+
+
+/* =====================================================
+   RATION
+===================================================== */
+
+function addRation(){
+
+    const user=auth.currentUser;
+
+    if(!user){
+
+        alert("پہلے Login کریں۔");
+        return;
+
+    }
+
+    const item =
+        document
+        .getElementById("rationItem")
+        .value.trim();
+
+    const price =
+        document
+        .getElementById("rationPrice")
+        .value.trim();
+
+    const phone =
+        document
+        .getElementById("rationPhone")
+        .value.trim();
+
+    if(!item || !price || !phone){
+
+        alert(
+            "تمام معلومات مکمل کریں۔"
+        );
+
+        return;
+    }
+
+    db.ref("ration")
+      .push({
+
+        uid:user.uid,
+
+        item:item,
+
+        price:price,
+
+        phone:phone,
+
+        status:"pending",
+
+        timestamp:
+        firebase.database.ServerValue.TIMESTAMP
+
+      })
+
+      .then(function(){
+
+        alert(
+            "✅ Ration item submit ہو گیا۔"
+        );
+
+        document.getElementById("rationItem").value="";
+        document.getElementById("rationPrice").value="";
+        document.getElementById("rationPhone").value="";
+
+      })
+
+      .catch(function(error){
+
+        alert(
+            "❌ Database Error: " +
+            error.message
+        );
+
+      });
+
+}
+
+
+/* =====================================================
+   LOAD RATION
+===================================================== */
+
+function loadRation(){
+
+    db.ref("ration")
+      .limitToLast(20)
+      .on("value",function(snapshot){
+
+        const list =
+            document.getElementById(
+                "rationList"
+            );
+
+        if(!list) return;
+
+        list.innerHTML="";
+
+        snapshot.forEach(function(child){
+
+            const data=child.val();
+
+            list.innerHTML +=
+                "<div class='item'>" +
+
+                "<strong>" +
+                escapeHTML(data.item || "") +
+                "</strong><br>" +
+
+                "💰 Price: " +
+                escapeHTML(data.price || "") +
+
+                "<br>📱 " +
+                escapeHTML(data.phone || "") +
+
+                "</div>";
+
+        });
+
+      });
+
+}
+
+
+/* =====================================================
+   NGO
+===================================================== */
+
+function registerNGO(){
+
+    const user=auth.currentUser;
+
+    if(!user){
+
+        alert("پہلے Login کریں۔");
+        return;
+
+    }
+
+    const data={
+
+        uid:user.uid,
+
+        name:
+        document.getElementById("ngoName")
+        .value.trim(),
+
+        leader:
+        document.getElementById("ngoLeader")
+        .value.trim(),
+
+        phone:
+        document.getElementById("ngoPhone")
+        .value.trim(),
+
+        email:
+        document.getElementById("ngoEmail")
+        .value.trim(),
+
+        work:
+        document.getElementById("ngoWork")
+        .value,
+
+        status:"pending",
+
+        timestamp:
+        firebase.database.ServerValue.TIMESTAMP
+
+    };
+
+    if(
+        !data.name ||
+        !data.leader ||
+        !data.phone ||
+        !data.email ||
+        !data.work
+    ){
+
+        alert(
+            "تمام required fields مکمل کریں۔"
+        );
+
+        return;
+    }
+
+    db.ref("ngos_registered")
+      .push(data)
+
+      .then(function(){
+
+        alert(
+            "✅ NGO registration کامیابی سے submit ہو گئی۔"
+        );
+
+        document.getElementById("ngoName").value="";
+        document.getElementById("ngoLeader").value="";
+        document.getElementById("ngoPhone").value="";
+        document.getElementById("ngoEmail").value="";
+        document.getElementById("ngoWork").value="";
+
+      })
+
+      .catch(function(error){
+
+        alert(
+            "❌ NGO Registration Error: " +
+            error.message
+        );
+
+      });
+
+}
+
+
+/* =====================================================
+   LOCAL AI ASSISTANT
+===================================================== */
+
+function askAI(){
+
+    const input =
+        document.getElementById("aiQuestion");
+
+    const log =
+        document.getElementById("aiLog");
+
+    const text =
+        input.value.trim();
+
+    if(!text) return;
+
+    const safe =
+        escapeHTML(text);
+
+    log.innerHTML +=
+        "<div style='margin-top:8px'>" +
+        "👤 آپ: " +
+        safe +
+        "</div>";
+
+    input.value="";
+
+    let response =
+        "معذرت، میں اس سوال کا مخصوص جواب ابھی نہیں دے سکتا۔";
+
+    const lower =
+        text.toLowerCase();
+
+    if(
+        lower.includes("hello") ||
+        lower.includes("hi") ||
+        text.includes("سلام")
+    ){
+
+        response =
+            "وعلیکم السلام! Awam Network میں خوش آمدید۔";
+
+    }else if(
+        lower.includes("ration") ||
+        text.includes("راشن")
+    ){
+
+        response =
+            "Sasta Ration section میں راشن کی entry submit کریں۔";
+
+    }else if(
+        lower.includes("job") ||
+        text.includes("کام") ||
+        text.includes("مزدوری")
+    ){
+
+        response =
+            "P2P Jobs section میں اپنا ہنر اور contact information submit کریں۔";
+
+    }else if(
+        lower.includes("ngo") ||
+        text.includes("این جی او")
+    ){
+
+        response =
+            "NGO Portal میں اپنی organization کی معلومات submit کریں۔";
+
+    }
+
+    setTimeout(function(){
+
+        log.innerHTML +=
+            "<div style='margin-top:8px;color:#4ade80'>" +
+            "🤖 AI: " +
+            escapeHTML(response) +
+            "</div>";
+
+        log.scrollTop =
+            log.scrollHeight;
+
+    },500);
+
+}
+
+
+/* =====================================================
+   HTML SECURITY
+===================================================== */
+
+function escapeHTML(value){
+
+    return String(value)
+
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   LOGIN MESSAGE
+===================================================== */
+
+function showLoginMessage(message){
+
+    document.getElementById(
+        "loginMessage"
+    ).textContent=message;
+
+}
+
+
+/* =====================================================
+   ANDROID / PWA INSTALL
+===================================================== */
+
+window.addEventListener(
+    "beforeinstallprompt",
+    function(event){
+
+        event.preventDefault();
+
+        deferredInstallPrompt=event;
+
+        document.getElementById(
+            "installBox"
+        ).style.display="block";
+
+    }
+);
+
+
+document.getElementById(
+    "installButton"
+).addEventListener(
+    "click",
+    async function(){
+
+        if(!deferredInstallPrompt){
+
+            alert(
+                "Android: Browser Menu → Install App / Add to Home Screen استعمال کریں۔\n\n" +
+                "iPhone: Safari → Share → Add to Home Screen استعمال کریں۔"
+            );
+
+            return;
+
         }
+
+        deferredInstallPrompt.prompt();
+
+        await deferredInstallPrompt.userChoice;
+
+        deferredInstallPrompt=null;
+
     }
-    function addWorker() {
-        var n = document.getElementById('wName').value;
-        var s = document.getElementById('wSkill').value;
-        var p = document.getElementById('wPhone').value;
-        if(!n || !s || !p) { alert("Fill all info!"); return; }
-        document.getElementById('workersList').innerHTML += "<div class='item-card'><strong>"+n+"</strong> ("+s+")<br>Ph: "+p+"</div>";
-        alert("Naam Shamil Ho Gaya!");
-        document.getElementById('wName').value = ""; document.getElementById('wSkill').value = ""; document.getElementById('wPhone').value = "";
-    }
-    function addRationItem() {
-        var i = document.getElementById('rItem').value;
-        var pr = document.getElementById('rPrice').value;
-        var c = document.getElementById('rContact').value;
-        if(!i || !pr || !c) { alert("Fill all info!"); return; }
-        document.getElementById('rationList').innerHTML += "<div class='item-card'><strong>"+i+"</strong><br>Price: "+pr+" | Ph: "+c+"</div>";
-        alert("Samaan Shamil Ho Gaya!");
-        document.getElementById('rItem').value = ""; document.getElementById('rPrice').value = ""; document.getElementById('rContact').value = "";
-    }
+);
+
+
+/* =====================================================
+   SERVICE WORKER
+===================================================== */
+
+if("serviceWorker" in navigator){
+
+    window.addEventListener(
+        "load",
+        function(){
+
+            navigator.serviceWorker
+            .register("./sw.js")
+            .then(function(){
+
+                console.log(
+                    "Awam Network Service Worker Active"
+                );
+
+            })
+            .catch(function(error){
+
+                console.log(
+                    "Service Worker Error:",
+                    error
+                );
+
+            });
+
+        }
+    );
+
+}
+
 </script>
+
 </body>
 </html>
+{
+  "name": "Awam Network",
+  "short_name": "Awam Network",
+  "description": "Awam Network - Bila Sood Khudkaar Nizam",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#198754",
+  "orientation": "portrait",
+  "lang": "ur",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
+const CACHE_NAME = "awam-network-v1";
+
+const APP_FILES = [
+    "./",
+    "./index.html",
+    "./manifest.json"
+];
+
+self.addEventListener("install", event => {
+
+    event.waitUntil(
+
+        caches.open(CACHE_NAME)
+        .then(cache => {
+
+            return cache.addAll(APP_FILES);
+
+        })
+
+    );
+
+    self.skipWaiting();
+
+});
+
+
+self.addEventListener("activate", event => {
+
+    event.waitUntil(
+
+        caches.keys()
+        .then(keys => {
+
+            return Promise.all(
+
+                keys
+                .filter(key => key !== CACHE_NAME)
+                .map(key => caches.delete(key))
+
+            );
+
+        })
+
+    );
+
+    self.clients.claim();
+
+});
+
+
+self.addEventListener("fetch", event => {
+
+    if(event.request.method !== "GET"){
+        return;
+    }
+
+    event.respondWith(
+
+        caches.match(event.request)
+        .then(cached => {
+
+            return cached || fetch(event.request);
+
+        })
+
+        .catch(() => {
+
+            return caches.match("./index.html");
+
+        })
+
+    );
+
+});
