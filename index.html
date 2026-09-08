@@ -303,24 +303,29 @@ function handleNgoConnect(event) {
 <!-- NGO PARTNER PORTAL END --><!-- ======================================================== -->
     <!-- ======================================================== -->
 <!-- GOOGLE FIREBASE CLOUD DATABASE CONNECTION START -->
-<!-- Firebase App SDK (CDN v9) -->
+<!-- Firebase App SDK (v8 Compatibility) -->
 <script src="https://gstatic.com"></script>
 <!-- Firebase Realtime Database SDK -->
 <script src="https://gstatic.com"></script>
 
 <script>
-// Your Web App's Firebase Configuration (Directly from Israr Ahmad's Console)
+// Your Web App's Firebase Configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCPgcQjOUkgOoQtcwrjBeMJYJ41lff9Y94",
+  apiKey: "AIzaSyCPgcQjouKgdOQtcwrjBeMJYJ4Ilff9Y9M",
   authDomain: "://firebaseapp.com",
   projectId: "awam-network",
-  storageBucket: "awam-network.firebasestorage.app",
+  databaseURL: "https://firebaseio.com", // Agar aapka default URL mukhtalif hai toh woh lagayein
+  storageBucket: "://appspot.com",
   messagingSenderId: "301278519256",
   appId: "1:301278519256:web:539781e65602bd09765cad"
 };
 
 // Initialize Firebase
-const app = firebaseInitialize(firebaseConfig);
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
+const database = firebase.database();
+</script>
 function firebaseInitialize(config) {
     if (!firebase.apps.length) {
         return firebase.initializeApp(config);
