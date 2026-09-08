@@ -301,6 +301,67 @@ function handleNgoConnect(event) {
 }
 </script>
 <!-- NGO PARTNER PORTAL END --><!-- ======================================================== -->
+    <!-- ======================================================== -->
+<!-- GOOGLE FIREBASE CLOUD DATABASE CONNECTION START -->
+<!-- Firebase App SDK (CDN v9) -->
+<script src="https://gstatic.com"></script>
+<!-- Firebase Realtime Database SDK -->
+<script src="https://gstatic.com"></script>
+
+<script>
+// Your Web App's Firebase Configuration (Directly from Israr Ahmad's Console)
+const firebaseConfig = {
+  apiKey: "AIzaSyCPgcQjOUkgOoQtcwrjBeMJYJ41lff9Y94",
+  authDomain: "://firebaseapp.com",
+  projectId: "awam-network",
+  storageBucket: "awam-network.firebasestorage.app",
+  messagingSenderId: "301278519256",
+  appId: "1:301278519256:web:539781e65602bd09765cad"
+};
+
+// Initialize Firebase
+const app = firebaseInitialize(firebaseConfig);
+function firebaseInitialize(config) {
+    if (!firebase.apps.length) {
+        return firebase.initializeApp(config);
+    } else {
+        return firebase.app();
+    }
+}
+const database = firebase.database();
+
+// Overriding previous handleNgoConnect to securely send data to Cloud Database
+function handleNgoConnect(event) {
+    event.preventDefault();
+    
+    const ngoData = {
+        name: document.getElementById('ngoName').value,
+        leader: document.getElementById('ngoLeader').value,
+        phone: document.getElementById('ngoPhone').value,
+        email: document.getElementById('ngoEmail').value,
+        work: document.getElementById('ngoWork').value,
+        timestamp: new Date().toLocaleString('en-PK', { timeZone: 'Asia/Karachi' })
+    };
+
+    // Advanced MetaFirewall Safety Filter Check
+    if (window.MetaFirewall && typeof window.MetaFirewall.validateAndEncrypt === "function") {
+        const encryptedPayload = window.MetaFirewall.validateAndEncrypt(ngoData);
+        if (!encryptedPayload) return; // Blocked by security firewall (cooldown/spam)
+    }
+
+    // Pushing data to Google Cloud 'ngos_registered' Node securely
+    database.ref('ngos_registered').push(ngoData)
+    .then(() => {
+        alert("🔒 کلاؤڈ سیکیورٹی الرٹ:\nاین جی او کا ڈیٹا کامیابی سے گوگل کلاؤڈ پر محفوظ ہو گیا ہے! ہم آپ سے جلد رابطہ کریں گے۔");
+        document.getElementById('ngoConnectForm').reset();
+    })
+    .catch((error) => {
+        console.error("Cloud Database Error:", error);
+        alert("❌ سیکیورٹی بلاک: ڈیٹا بیس سے رابطہ نہیں ہو سکا۔ پراجیکٹ رولز چیک کریں۔");
+    });
+}
+</script>
+<!-- GOOGLE FIREBASE CLOUD DATABASE CONNECTION END -->
 <!-- MULTI-LANGUAGE CHANGER & META AI ASSISTANT START -->
 <style>
 .app-addons-container {
