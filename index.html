@@ -541,7 +541,18 @@ function goHome(){
 
   const app = initializeApp(firebaseConfig);
   const database = getDatabase(app);
+import { ref, set } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
 
+set(ref(database, "system_test"), {
+  status: "Awam Network V2 Connected",
+  time: new Date().toISOString()
+})
+.then(() => {
+  console.log("DATABASE TEST: SUCCESS");
+})
+.catch((error) => {
+  console.error("DATABASE TEST: FAILED", error);
+});
   console.log("Awam Network V2 Firebase Connected"); <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
   import { getDatabase } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
