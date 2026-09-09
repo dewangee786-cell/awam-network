@@ -4,300 +4,307 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Awam Network — Bila Sood Khudkaar Nizam</title>
+<title>Awam Network V2 — Bila Sood Khudkaar Nizam</title>
 
-<meta name="description" content="Awam Network — Zakat, P2P Jobs, Sasta Ration, NGO Portal and Community Services.">
+<meta name="description" content="Awam Network — Bila Sood Khudkaar Nizam">
 <meta name="author" content="Dewan Israr Ahmad Faridi">
-<meta name="robots" content="index, follow">
 <meta name="theme-color" content="#198754">
 
-<!-- PWA -->
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon-192.png">
-
 <style>
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
-    padding:15px;
-    background:#eef2f5;
-    font-family:Arial,"Noto Nastaliq Urdu",sans-serif;
+    background:#eef3f1;
     color:#222;
+    font-family:Arial,"Noto Nastaliq Urdu",sans-serif;
 }
 
 .container{
-    max-width:650px;
+    width:100%;
+    max-width:700px;
     margin:auto;
-}
-
-.card{
-    background:#fff;
-    padding:18px;
-    margin:12px 0;
-    border-radius:16px;
-    box-shadow:0 4px 15px rgba(0,0,0,.10);
+    padding:15px;
 }
 
 .header{
     background:linear-gradient(135deg,#198754,#0f5132);
     color:white;
-    padding:20px;
-    border-radius:15px;
+    padding:25px 18px;
+    border-radius:20px;
     text-align:center;
+    box-shadow:0 6px 20px rgba(0,0,0,.15);
+}
+
+.header h1{
+    margin:5px 0;
+    font-size:30px;
+}
+
+.header p{
+    margin:8px 0 0;
+    font-size:16px;
 }
 
 .founder{
+    margin-top:15px;
+    padding:18px;
     background:linear-gradient(135deg,#d4af37,#98730d);
     color:white;
+    border-radius:18px;
     text-align:center;
-    padding:14px;
-    border-radius:14px;
+}
+
+.founder h2{
+    margin:8px 0 3px;
+    font-size:21px;
+}
+
+.card{
+    background:white;
+    margin-top:15px;
+    padding:18px;
+    border-radius:18px;
+    box-shadow:0 4px 15px rgba(0,0,0,.09);
+}
+
+.section-title{
+    text-align:center;
+    margin:5px 0 15px;
 }
 
 .menu{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:10px;
-    margin-top:12px;
-}
-
-button{
-    width:100%;
-    padding:12px;
-    border:0;
-    border-radius:9px;
-    cursor:pointer;
-    font-weight:bold;
-    margin-top:8px;
+    gap:12px;
 }
 
 .menu button{
-    min-height:80px;
+    min-height:100px;
+    border:0;
+    border-radius:16px;
+    color:white;
     font-size:15px;
-}
-
-.btn-green{background:#198754;color:#fff}
-.btn-blue{background:#0d6efd;color:#fff}
-.btn-orange{background:#fd7e14;color:#fff}
-.btn-purple{background:#6f42c1;color:#fff}
-.btn-dark{background:#212529;color:#fff}
-.btn-red{background:#dc3545;color:#fff}
-
-.btn-google{
-    background:#fff;
-    color:#333;
-    border:1px solid #ccc;
-}
-
-input,select{
-    width:100%;
+    font-weight:bold;
+    cursor:pointer;
     padding:12px;
-    margin:6px 0;
-    border:1px solid #ccc;
-    border-radius:8px;
-    font-size:15px;
 }
 
-.page{
-    display:none;
+.btn-green{
+    background:#198754;
 }
 
-.item{
+.btn-blue{
+    background:#0d6efd;
+}
+
+.btn-orange{
+    background:#fd7e14;
+}
+
+.btn-purple{
+    background:#6f42c1;
+}
+
+.btn-dark{
+    background:#212529;
+}
+
+.btn-red{
+    background:#dc3545;
+}
+
+.btn-gold{
+    background:#b8860b;
+}
+
+button{
+    border:0;
+    border-radius:10px;
+    padding:12px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.info{
     background:#f8f9fa;
     border:1px solid #ddd;
-    padding:12px;
-    border-radius:10px;
-    margin:8px 0;
-}
-
-.user-box{
-    background:#e8f5e9;
-    padding:12px;
-    border-radius:10px;
-    text-align:center;
-    margin-top:12px;
-}
-
-.install-box{
-    display:none;
-    background:#fff3cd;
-    border:1px solid #ffe69c;
-    padding:12px;
+    padding:14px;
     border-radius:12px;
     margin-top:12px;
+    line-height:1.8;
 }
 
-.ai-log{
-    height:190px;
-    overflow-y:auto;
-    background:#111827;
-    color:#fff;
-    padding:10px;
-    border-radius:10px;
-    text-align:left;
+.status{
+    text-align:center;
+    padding:12px;
+    background:#e8f5e9;
+    border-radius:12px;
+    margin-top:15px;
+    color:#146c43;
+    font-weight:bold;
 }
 
-.small{
-    font-size:12px;
+.footer{
+    text-align:center;
+    padding:25px 10px;
     color:#666;
+    font-size:13px;
 }
 
 .hidden{
-    display:none!important;
+    display:none;
 }
 
-.message{
-    padding:10px;
-    margin-top:8px;
-    border-radius:8px;
-    background:#f1f1f1;
+@media(max-width:480px){
+
+    .menu{
+        grid-template-columns:1fr 1fr;
+        gap:9px;
+    }
+
+    .menu button{
+        min-height:90px;
+        font-size:13px;
+    }
+
+    .header h1{
+        font-size:25px;
+    }
 }
 </style>
-
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-database-compat.js"></script>
-
 </head>
 
 <body>
 
 <div class="container">
 
-<!-- ================= LOGIN ================= -->
-
-<section id="loginPage" class="card">
+    <!-- HEADER -->
 
     <div class="header">
-        <h1>🌐 AWAM NETWORK</h1>
-        <p>Bila Sood Khudkaar Nizam</p>
-    </div>
 
-    <h2>🔐 Login / New Account</h2>
+        <div style="font-size:45px;">🌐</div>
 
-    <p>
-        Awam Network استعمال کرنے کے لیے Login یا New Account بنائیں۔
-    </p>
+        <h1>عوام نیٹ ورک</h1>
 
-    <button class="btn-google" onclick="googleLogin()">
-        🔵 Google / Gmail سے Continue کریں
-    </button>
+        <h1>AWAM NETWORK</h1>
 
-    <hr>
-
-    <input
-        id="phoneNumber"
-        type="tel"
-        placeholder="+923001234567">
-
-    <div id="recaptcha-container"></div>
-
-    <button class="btn-green" onclick="sendOTP()">
-        📱 Phone OTP حاصل کریں
-    </button>
-
-    <div id="otpArea" class="hidden">
-
-        <input
-            id="otpCode"
-            type="number"
-            placeholder="6 digit OTP">
-
-        <button class="btn-blue" onclick="verifyOTP()">
-            ✅ OTP Verify کریں
-        </button>
-
-    </div>
-
-    <div id="loginMessage" class="message"></div>
-
-</section>
-
-
-<!-- ================= APPLICATION ================= -->
-
-<section id="appPage" class="hidden">
-
-    <div class="founder">
-        <strong>👑 FOUNDER & CEO</strong>
-        <h2>Dewan Israr Ahmad Faridi</h2>
-        <small>Awam Network</small>
-    </div>
-
-    <div class="user-box">
-
-        <div id="userInfo">
-            Loading...
-        </div>
-
-        <button class="btn-red" onclick="logoutUser()">
-            🚪 Logout
-        </button>
-
-    </div>
-
-
-    <!-- INSTALL -->
-
-    <div id="installBox" class="install-box">
-
-        <strong>📱 Awam Network App Install کریں</strong>
-
-        <p class="small">
-            Android پر Install App کریں۔
-            iPhone پر Safari → Share → Add to Home Screen کریں۔
+        <p>
+            Bila Sood Khudkaar Nizam
         </p>
 
-        <button id="installButton" class="btn-green">
-            📲 Install Awam Network
-        </button>
+    </div>
+
+
+    <!-- FOUNDER -->
+
+    <div class="founder">
+
+        <div>👑 FOUNDER & CEO</div>
+
+        <h2>
+            Dewan Israr Ahmad Faridi
+        </h2>
+
+        <small>
+            Awam Network
+        </small>
 
     </div>
 
 
-    <!-- HOME -->
+    <!-- MAIN -->
 
-    <div id="homePage" class="page" style="display:block">
+    <div class="card">
 
-        <div class="header">
-            <h1>عوام نیٹ ورک</h1>
-            <p>Bila Sood Khudkaar Nizam</p>
+        <h2 class="section-title">
+            🏠 Awam Network V2
+        </h2>
+
+        <div class="info">
+
+            <strong>
+                عوام کے لیے ایک مربوط ڈیجیٹل نیٹ ورک
+            </strong>
+
+            <br>
+
+            Zakat • Jobs • Ration • Education • NGO
+            • AI • Community Services
+
         </div>
+
+
+        <!-- MAIN MENU -->
 
         <div class="menu">
 
-            <button class="btn-green"
-                onclick="showPage('zakatPage')">
-                🌍 Zakat Funding
+            <button
+                class="btn-green"
+                onclick="openSection('zakat')">
+
+                🌍<br>
+                Zakat Funding
+
             </button>
 
-            <button class="btn-blue"
-                onclick="showPage('examPage')">
-                🎓 AI / Computer Exam
+
+            <button
+                class="btn-blue"
+                onclick="openSection('exam')">
+
+                🎓<br>
+                AI / Computer Exam
+
             </button>
 
-            <button class="btn-orange"
-                onclick="showPage('jobsPage')">
-                🛠️ P2P Jobs
+
+            <button
+                class="btn-orange"
+                onclick="openSection('jobs')">
+
+                🛠️<br>
+                P2P Jobs
+
             </button>
 
-            <button class="btn-green"
-                onclick="showPage('rationPage')">
-                🌾 Sasta Ration
+
+            <button
+                class="btn-green"
+                onclick="openSection('ration')">
+
+                🌾<br>
+                Sasta Ration
+
             </button>
 
-            <button class="btn-purple"
-                onclick="showPage('ngoPage')">
-                🤝 NGO Portal
+
+            <button
+                class="btn-purple"
+                onclick="openSection('ngo')">
+
+                🤝<br>
+                NGO Portal
+
             </button>
 
-            <button class="btn-dark"
-                onclick="showPage('aiPage')">
-                🤖 AI Assistant
+
+            <button
+                class="btn-dark"
+                onclick="openSection('ai')">
+
+                🤖<br>
+                AI Assistant
+
             </button>
 
+        </div>
+
+
+        <div class="status">
+            🟢 Awam Network V2 System Ready
         </div>
 
     </div>
@@ -305,176 +312,124 @@ input,select{
 
     <!-- ZAKAT -->
 
-    <div id="zakatPage" class="page card">
-
-        <button class="btn-dark"
-            onclick="showPage('homePage')">
-            ← Back
-        </button>
+    <div id="zakat" class="card hidden">
 
         <h2>🌍 عالمی زکوٰۃ پورٹل</h2>
 
-        <div class="item">
-            🔐 Zakat system authenticated users کے لیے تیار ہے۔
+        <div class="info">
+
+            Zakat donors اور beneficiaries کے لیے
+            ایک محفوظ digital system یہاں تیار کیا جائے گا۔
+
         </div>
 
-        <p>
-            اس section کو بعد میں donor، beneficiary اور verification
-            system کے ساتھ مزید expand کیا جا سکتا ہے۔
-        </p>
+        <button
+            class="btn-dark"
+            onclick="goHome()">
+
+            ← Back
+
+        </button>
 
     </div>
 
 
     <!-- EXAM -->
 
-    <div id="examPage" class="page card">
-
-        <button class="btn-dark"
-            onclick="showPage('homePage')">
-            ← Back
-        </button>
+    <div id="exam" class="card hidden">
 
         <h2>🎓 AI / Computer Exam</h2>
 
-        <p>
-            سوال: کمپیوٹر کا دماغ کون سا حصہ ہے؟
-        </p>
+        <div class="info">
 
-        <label>
-            <input type="radio"
-                   name="examQuestion"
-                   value="Monitor">
-            Monitor
-        </label>
+            یہاں AI-based educational exams،
+            tests اور results system بنایا جائے گا۔
 
-        <br>
+        </div>
 
-        <label>
-            <input type="radio"
-                   name="examQuestion"
-                   value="CPU">
-            CPU
-        </label>
+        <button
+            class="btn-dark"
+            onclick="goHome()">
 
-        <button class="btn-blue"
-            onclick="submitExam()">
-            امتحان جمع کریں
+            ← Back
+
         </button>
-
-        <div id="examResult"></div>
 
     </div>
 
 
     <!-- JOBS -->
 
-    <div id="jobsPage" class="page card">
-
-        <button class="btn-dark"
-            onclick="showPage('homePage')">
-            ← Back
-        </button>
+    <div id="jobs" class="card hidden">
 
         <h2>🛠️ P2P Jobs</h2>
 
-        <input id="workerName"
-               placeholder="نام">
+        <div class="info">
 
-        <input id="workerSkill"
-               placeholder="ہنر">
+            بغیر کمیشن مزدوری مارکیٹ۔
 
-        <input id="workerPhone"
-               placeholder="موبائل نمبر">
+            <br><br>
 
-        <button class="btn-green"
-            onclick="addWorker()">
-            نام شامل کریں
+            Worker اور employer کے درمیان
+            direct connection system یہاں بنایا جائے گا۔
+
+        </div>
+
+        <button
+            class="btn-dark"
+            onclick="goHome()">
+
+            ← Back
+
         </button>
-
-        <div id="workersList"></div>
 
     </div>
 
 
     <!-- RATION -->
 
-    <div id="rationPage" class="page card">
-
-        <button class="btn-dark"
-            onclick="showPage('homePage')">
-            ← Back
-        </button>
+    <div id="ration" class="card hidden">
 
         <h2>🌾 Sasta Ration Network</h2>
 
-        <input id="rationItem"
-               placeholder="سامان کا نام">
+        <div class="info">
 
-        <input id="rationPrice"
-               type="number"
-               placeholder="قیمت">
+            کم قیمت ضروری اشیاء اور
+            ration providers کا network۔
 
-        <input id="rationPhone"
-               placeholder="رابطہ نمبر">
+        </div>
 
-        <button class="btn-green"
-            onclick="addRation()">
-            سامان شامل کریں
+        <button
+            class="btn-dark"
+            onclick="goHome()">
+
+            ← Back
+
         </button>
-
-        <div id="rationList"></div>
 
     </div>
 
 
     <!-- NGO -->
 
-    <div id="ngoPage" class="page card">
-
-        <button class="btn-dark"
-            onclick="showPage('homePage')">
-            ← Back
-        </button>
+    <div id="ngo" class="card hidden">
 
         <h2>🤝 NGO Partner Portal</h2>
 
-        <input id="ngoName"
-               placeholder="NGO کا نام">
+        <div class="info">
 
-        <input id="ngoLeader"
-               placeholder="ذمہ دار شخص کا نام">
+            NGOs کو Awam Network کے
+            welfare systems کے ساتھ connect کرنے کے لیے
+            dedicated portal۔
 
-        <input id="ngoPhone"
-               placeholder="WhatsApp نمبر">
+        </div>
 
-        <input id="ngoEmail"
-               type="email"
-               placeholder="Email">
+        <button
+            class="btn-dark"
+            onclick="goHome()">
 
-        <select id="ngoWork">
+            ← Back
 
-            <option value="">
-                کام کی نوعیت منتخب کریں
-            </option>
-
-            <option value="ration">
-                راشن کی تقسیم
-            </option>
-
-            <option value="education">
-                تعلیمی خدمات
-            </option>
-
-            <option value="medical">
-                طبی امداد
-            </option>
-
-        </select>
-
-        <button class="btn-green"
-            onclick="registerNGO()">
-            🚀 NGO Registration Submit
         </button>
 
     </div>
@@ -482,1053 +437,94 @@ input,select{
 
     <!-- AI -->
 
-    <div id="aiPage" class="page card">
-
-        <button class="btn-dark"
-            onclick="showPage('homePage')">
-            ← Back
-        </button>
+    <div id="ai" class="card hidden">
 
         <h2>🤖 Awam Network AI Assistant</h2>
 
-        <div id="aiLog" class="ai-log">
+        <div class="info">
 
-            <div>
-                🤖 AI: السلام علیکم!
-                Awam Network میں خوش آمدید۔
-            </div>
+            AI Assistant کا مکمل system
+            اگلے مراحل میں securely connect کیا جائے گا۔
 
         </div>
 
-        <input id="aiQuestion"
-               placeholder="اپنا سوال لکھیں">
+        <button
+            class="btn-dark"
+            onclick="goHome()">
 
-        <button class="btn-blue"
-            onclick="askAI()">
-            Send
+            ← Back
+
         </button>
 
     </div>
 
-</section>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        © Awam Network
+
+        <br>
+
+        Bila Sood Khudkaar Nizam
+
+        <br>
+
+        V2 — Foundation Build
+
+    </div>
 
 </div>
 
 
 <script>
 
-/* =====================================================
-   FIREBASE CONFIG
-===================================================== */
-
-const firebaseConfig = {
-
-    apiKey:
-    "AIzaSyCPgcQjOUkgOoQtcwrjBeMJfJ41lff9Y94",
-
-    authDomain:
-    "awam-network.firebaseapp.com",
-
-    databaseURL:
-    "https://awam-network-default-rtdb.firebaseio.com",
-
-    projectId:
-    "awam-network",
-
-    storageBucket:
-    "awam-network.firebasestorage.app",
-
-    messagingSenderId:
-    "301278519256",
-
-    appId:
-    "1:301278519256:web:e22860f83e4ba18f765cad"
-};
-
-
-/* =====================================================
-   INITIALIZE
-===================================================== */
-
-if(!firebase.apps.length){
-    firebase.initializeApp(firebaseConfig);
-}
-
-const auth = firebase.auth();
-const db = firebase.database();
-
-let confirmationResult = null;
-let deferredInstallPrompt = null;
-
-
-/* =====================================================
-   AUTH STATE
-===================================================== */
-
-auth.onAuthStateChanged(function(user){
-
-    if(user){
-
-        document
-        .getElementById("loginPage")
-        .classList.add("hidden");
-
-        document
-        .getElementById("appPage")
-        .classList.remove("hidden");
-
-        const displayName =
-            user.displayName ||
-            user.phoneNumber ||
-            user.email ||
-            "User";
-
-        document
-        .getElementById("userInfo")
-        .innerHTML =
-            "👤 <strong>" +
-            escapeHTML(displayName) +
-            "</strong><br>" +
-            "<span class='small'>" +
-            escapeHTML(
-                user.email ||
-                user.phoneNumber ||
-                ""
-            ) +
-            "</span>";
-
-        loadWorkers();
-        loadRation();
-
-    }else{
-
-        document
-        .getElementById("loginPage")
-        .classList.remove("hidden");
-
-        document
-        .getElementById("appPage")
-        .classList.add("hidden");
-
-    }
-
-});
-
-
-/* =====================================================
-   GOOGLE LOGIN
-===================================================== */
-
-function googleLogin(){
-
-    const provider =
-        new firebase.auth.GoogleAuthProvider();
-
-    provider.setCustomParameters({
-        prompt:"select_account"
-    });
-
-    auth.signInWithPopup(provider)
-
-    .catch(function(error){
-
-        showLoginMessage(
-            "❌ Google Login Error: " +
-            error.message
-        );
-
-    });
-
-}
-
-
-/* =====================================================
-   PHONE OTP
-===================================================== */
-
-function sendOTP(){
-
-    const phone =
-        document
-        .getElementById("phoneNumber")
-        .value.trim();
-
-    if(!phone){
-
-        showLoginMessage(
-            "⚠️ Phone number درج کریں۔"
-        );
-
-        return;
-    }
-
-    if(!window.recaptchaVerifier){
-
-        window.recaptchaVerifier =
-            new firebase.auth.RecaptchaVerifier(
-                "recaptcha-container",
-                {
-                    size:"normal"
-                }
-            );
-
-    }
-
-    auth.signInWithPhoneNumber(
-        phone,
-        window.recaptchaVerifier
-    )
-
-    .then(function(result){
-
-        confirmationResult = result;
-
-        document
-        .getElementById("otpArea")
-        .classList.remove("hidden");
-
-        showLoginMessage(
-            "✅ OTP بھیج دیا گیا ہے۔"
-        );
-
-    })
-
-    .catch(function(error){
-
-        showLoginMessage(
-            "❌ OTP Error: " +
-            error.message
-        );
-
-        if(window.recaptchaVerifier){
-
-            window.recaptchaVerifier
-            .clear();
-
-            window.recaptchaVerifier = null;
-
-        }
-
-    });
-
-}
-
-
-/* =====================================================
-   VERIFY OTP
-===================================================== */
-
-function verifyOTP(){
-
-    const code =
-        document
-        .getElementById("otpCode")
-        .value.trim();
-
-    if(!confirmationResult){
-
-        showLoginMessage(
-            "⚠️ پہلے OTP حاصل کریں۔"
-        );
-
-        return;
-    }
-
-    if(!code){
-
-        showLoginMessage(
-            "⚠️ OTP درج کریں۔"
-        );
-
-        return;
-    }
-
-    confirmationResult
-    .confirm(code)
-
-    .then(function(){
-
-        showLoginMessage(
-            "✅ Account/Login successful!"
-        );
-
-    })
-
-    .catch(function(error){
-
-        showLoginMessage(
-            "❌ OTP verification failed: " +
-            error.message
-        );
-
-    });
-
-}
-
-
-/* =====================================================
-   LOGOUT
-===================================================== */
-
-function logoutUser(){
-
-    auth.signOut()
-    .catch(function(error){
-
-        alert(
-            "Logout Error: " +
-            error.message
-        );
-
-    });
-
-}
-
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-function showPage(pageId){
+function openSection(id){
 
     document
-    .querySelectorAll(".page")
-    .forEach(function(page){
+        .querySelectorAll(".card")
+        .forEach(function(card){
 
-        page.style.display = "none";
+            if(card.id){
+                card.classList.add("hidden");
+            }
 
-    });
+        });
 
-    const page =
-        document.getElementById(pageId);
+    const section =
+        document.getElementById(id);
 
-    if(page){
-
-        page.style.display = "block";
+    if(section){
+        section.classList.remove("hidden");
 
         window.scrollTo({
             top:0,
             behavior:"smooth"
         });
-
     }
-
 }
 
 
-/* =====================================================
-   EXAM
-===================================================== */
+function goHome(){
 
-function submitExam(){
+    document
+        .querySelectorAll(".card")
+        .forEach(function(card){
 
-    const answer =
-        document.querySelector(
-            'input[name="examQuestion"]:checked'
-        );
-
-    const result =
-        document.getElementById("examResult");
-
-    if(!answer){
-
-        result.innerHTML =
-            "<div class='item'>⚠️ جواب منتخب کریں۔</div>";
-
-        return;
-    }
-
-    const status =
-        answer.value === "CPU"
-        ? "PASS"
-        : "FAIL";
-
-    if(status === "PASS"){
-
-        result.innerHTML =
-            "<div class='item' style='color:green'>" +
-            "🎉 PASS! درست جواب CPU ہے۔" +
-            "</div>";
-
-    }else{
-
-        result.innerHTML =
-            "<div class='item' style='color:red'>" +
-            "❌ FAILED! درست جواب CPU ہے۔" +
-            "</div>";
-
-    }
-
-    const user = auth.currentUser;
-
-    if(user){
-
-        db.ref(
-            "exam_results/" + user.uid
-        ).push({
-
-            answer:answer.value,
-
-            status:status,
-
-            timestamp:
-            firebase.database.ServerValue.TIMESTAMP
+            if(card.id){
+                card.classList.add("hidden");
+            }
 
         });
 
-    }
-
-}
-
-
-/* =====================================================
-   WORKER
-===================================================== */
-
-function addWorker(){
-
-    const user = auth.currentUser;
-
-    if(!user){
-
-        alert("پہلے Login کریں۔");
-        return;
-
-    }
-
-    const name =
-        document
-        .getElementById("workerName")
-        .value.trim();
-
-    const skill =
-        document
-        .getElementById("workerSkill")
-        .value.trim();
-
-    const phone =
-        document
-        .getElementById("workerPhone")
-        .value.trim();
-
-    if(!name || !skill || !phone){
-
-        alert(
-            "تمام معلومات مکمل کریں۔"
-        );
-
-        return;
-    }
-
-    db.ref("workers")
-      .push({
-
-        uid:user.uid,
-
-        name:name,
-
-        skill:skill,
-
-        phone:phone,
-
-        status:"pending",
-
-        timestamp:
-        firebase.database.ServerValue.TIMESTAMP
-
-      })
-
-      .then(function(){
-
-        alert(
-            "✅ Worker registration submit ہو گئی۔"
-        );
-
-        document.getElementById("workerName").value="";
-        document.getElementById("workerSkill").value="";
-        document.getElementById("workerPhone").value="";
-
-      })
-
-      .catch(function(error){
-
-        alert(
-            "❌ Database Error: " +
-            error.message
-        );
-
-      });
-
-}
-
-
-/* =====================================================
-   WORKERS
-===================================================== */
-
-function loadWorkers(){
-
-    db.ref("workers")
-      .limitToLast(20)
-      .on("value",function(snapshot){
-
-        const list =
-            document.getElementById(
-                "workersList"
-            );
-
-        if(!list) return;
-
-        list.innerHTML="";
-
-        snapshot.forEach(function(child){
-
-            const data=child.val();
-
-            list.innerHTML +=
-                "<div class='item'>" +
-
-                "<strong>" +
-                escapeHTML(data.name || "") +
-                "</strong><br>" +
-
-                "🛠️ " +
-                escapeHTML(data.skill || "") +
-                "<br>" +
-
-                "📱 " +
-                escapeHTML(data.phone || "") +
-
-                "<br>" +
-
-                "<span class='small'>" +
-                "Status: " +
-                escapeHTML(data.status || "pending") +
-                "</span>" +
-
-                "</div>";
-
-        });
-
-      });
-
-}
-
-
-/* =====================================================
-   RATION
-===================================================== */
-
-function addRation(){
-
-    const user=auth.currentUser;
-
-    if(!user){
-
-        alert("پہلے Login کریں۔");
-        return;
-
-    }
-
-    const item =
-        document
-        .getElementById("rationItem")
-        .value.trim();
-
-    const price =
-        document
-        .getElementById("rationPrice")
-        .value.trim();
-
-    const phone =
-        document
-        .getElementById("rationPhone")
-        .value.trim();
-
-    if(!item || !price || !phone){
-
-        alert(
-            "تمام معلومات مکمل کریں۔"
-        );
-
-        return;
-    }
-
-    db.ref("ration")
-      .push({
-
-        uid:user.uid,
-
-        item:item,
-
-        price:price,
-
-        phone:phone,
-
-        status:"pending",
-
-        timestamp:
-        firebase.database.ServerValue.TIMESTAMP
-
-      })
-
-      .then(function(){
-
-        alert(
-            "✅ Ration item submit ہو گیا۔"
-        );
-
-        document.getElementById("rationItem").value="";
-        document.getElementById("rationPrice").value="";
-        document.getElementById("rationPhone").value="";
-
-      })
-
-      .catch(function(error){
-
-        alert(
-            "❌ Database Error: " +
-            error.message
-        );
-
-      });
-
-}
-
-
-/* =====================================================
-   LOAD RATION
-===================================================== */
-
-function loadRation(){
-
-    db.ref("ration")
-      .limitToLast(20)
-      .on("value",function(snapshot){
-
-        const list =
-            document.getElementById(
-                "rationList"
-            );
-
-        if(!list) return;
-
-        list.innerHTML="";
-
-        snapshot.forEach(function(child){
-
-            const data=child.val();
-
-            list.innerHTML +=
-                "<div class='item'>" +
-
-                "<strong>" +
-                escapeHTML(data.item || "") +
-                "</strong><br>" +
-
-                "💰 Price: " +
-                escapeHTML(data.price || "") +
-
-                "<br>📱 " +
-                escapeHTML(data.phone || "") +
-
-                "</div>";
-
-        });
-
-      });
-
-}
-
-
-/* =====================================================
-   NGO
-===================================================== */
-
-function registerNGO(){
-
-    const user=auth.currentUser;
-
-    if(!user){
-
-        alert("پہلے Login کریں۔");
-        return;
-
-    }
-
-    const data={
-
-        uid:user.uid,
-
-        name:
-        document.getElementById("ngoName")
-        .value.trim(),
-
-        leader:
-        document.getElementById("ngoLeader")
-        .value.trim(),
-
-        phone:
-        document.getElementById("ngoPhone")
-        .value.trim(),
-
-        email:
-        document.getElementById("ngoEmail")
-        .value.trim(),
-
-        work:
-        document.getElementById("ngoWork")
-        .value,
-
-        status:"pending",
-
-        timestamp:
-        firebase.database.ServerValue.TIMESTAMP
-
-    };
-
-    if(
-        !data.name ||
-        !data.leader ||
-        !data.phone ||
-        !data.email ||
-        !data.work
-    ){
-
-        alert(
-            "تمام required fields مکمل کریں۔"
-        );
-
-        return;
-    }
-
-    db.ref("ngos_registered")
-      .push(data)
-
-      .then(function(){
-
-        alert(
-            "✅ NGO registration کامیابی سے submit ہو گئی۔"
-        );
-
-        document.getElementById("ngoName").value="";
-        document.getElementById("ngoLeader").value="";
-        document.getElementById("ngoPhone").value="";
-        document.getElementById("ngoEmail").value="";
-        document.getElementById("ngoWork").value="";
-
-      })
-
-      .catch(function(error){
-
-        alert(
-            "❌ NGO Registration Error: " +
-            error.message
-        );
-
-      });
-
-}
-
-
-/* =====================================================
-   LOCAL AI ASSISTANT
-===================================================== */
-
-function askAI(){
-
-    const input =
-        document.getElementById("aiQuestion");
-
-    const log =
-        document.getElementById("aiLog");
-
-    const text =
-        input.value.trim();
-
-    if(!text) return;
-
-    const safe =
-        escapeHTML(text);
-
-    log.innerHTML +=
-        "<div style='margin-top:8px'>" +
-        "👤 آپ: " +
-        safe +
-        "</div>";
-
-    input.value="";
-
-    let response =
-        "معذرت، میں اس سوال کا مخصوص جواب ابھی نہیں دے سکتا۔";
-
-    const lower =
-        text.toLowerCase();
-
-    if(
-        lower.includes("hello") ||
-        lower.includes("hi") ||
-        text.includes("سلام")
-    ){
-
-        response =
-            "وعلیکم السلام! Awam Network میں خوش آمدید۔";
-
-    }else if(
-        lower.includes("ration") ||
-        text.includes("راشن")
-    ){
-
-        response =
-            "Sasta Ration section میں راشن کی entry submit کریں۔";
-
-    }else if(
-        lower.includes("job") ||
-        text.includes("کام") ||
-        text.includes("مزدوری")
-    ){
-
-        response =
-            "P2P Jobs section میں اپنا ہنر اور contact information submit کریں۔";
-
-    }else if(
-        lower.includes("ngo") ||
-        text.includes("این جی او")
-    ){
-
-        response =
-            "NGO Portal میں اپنی organization کی معلومات submit کریں۔";
-
-    }
-
-    setTimeout(function(){
-
-        log.innerHTML +=
-            "<div style='margin-top:8px;color:#4ade80'>" +
-            "🤖 AI: " +
-            escapeHTML(response) +
-            "</div>";
-
-        log.scrollTop =
-            log.scrollHeight;
-
-    },500);
-
-}
-
-
-/* =====================================================
-   HTML SECURITY
-===================================================== */
-
-function escapeHTML(value){
-
-    return String(value)
-
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-
-/* =====================================================
-   LOGIN MESSAGE
-===================================================== */
-
-function showLoginMessage(message){
-
-    document.getElementById(
-        "loginMessage"
-    ).textContent=message;
-
-}
-
-
-/* =====================================================
-   ANDROID / PWA INSTALL
-===================================================== */
-
-window.addEventListener(
-    "beforeinstallprompt",
-    function(event){
-
-        event.preventDefault();
-
-        deferredInstallPrompt=event;
-
-        document.getElementById(
-            "installBox"
-        ).style.display="block";
-
-    }
-);
-
-
-document.getElementById(
-    "installButton"
-).addEventListener(
-    "click",
-    async function(){
-
-        if(!deferredInstallPrompt){
-
-            alert(
-                "Android: Browser Menu → Install App / Add to Home Screen استعمال کریں۔\n\n" +
-                "iPhone: Safari → Share → Add to Home Screen استعمال کریں۔"
-            );
-
-            return;
-
-        }
-
-        deferredInstallPrompt.prompt();
-
-        await deferredInstallPrompt.userChoice;
-
-        deferredInstallPrompt=null;
-
-    }
-);
-
-
-/* =====================================================
-   SERVICE WORKER
-===================================================== */
-
-if("serviceWorker" in navigator){
-
-    window.addEventListener(
-        "load",
-        function(){
-
-            navigator.serviceWorker
-            .register("./sw.js")
-            .then(function(){
-
-                console.log(
-                    "Awam Network Service Worker Active"
-                );
-
-            })
-            .catch(function(error){
-
-                console.log(
-                    "Service Worker Error:",
-                    error
-                );
-
-            });
-
-        }
-    );
-
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 }
 
 </script>
 
 </body>
 </html>
-{
-  "name": "Awam Network",
-  "short_name": "Awam Network",
-  "description": "Awam Network - Bila Sood Khudkaar Nizam",
-  "start_url": "./index.html",
-  "scope": "./",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#198754",
-  "orientation": "portrait",
-  "lang": "ur",
-  "dir": "rtl",
-  "icons": [
-    {
-      "src": "icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ]
-}
-const CACHE_NAME = "awam-network-v1";
-
-const APP_FILES = [
-    "./",
-    "./index.html",
-    "./manifest.json"
-];
-
-self.addEventListener("install", event => {
-
-    event.waitUntil(
-
-        caches.open(CACHE_NAME)
-        .then(cache => {
-
-            return cache.addAll(APP_FILES);
-
-        })
-
-    );
-
-    self.skipWaiting();
-
-});
-
-
-self.addEventListener("activate", event => {
-
-    event.waitUntil(
-
-        caches.keys()
-        .then(keys => {
-
-            return Promise.all(
-
-                keys
-                .filter(key => key !== CACHE_NAME)
-                .map(key => caches.delete(key))
-
-            );
-
-        })
-
-    );
-
-    self.clients.claim();
-
-});
-
-
-self.addEventListener("fetch", event => {
-
-    if(event.request.method !== "GET"){
-        return;
-    }
-
-    event.respondWith(
-
-        caches.match(event.request)
-        .then(cached => {
-
-            return cached || fetch(event.request);
-
-        })
-
-        .catch(() => {
-
-            return caches.match("./index.html");
-
-        })
-
-    );
-
-});
