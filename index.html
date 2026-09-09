@@ -527,4 +527,23 @@ function goHome(){
 </script>
 
 </body>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getDatabase } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCVbrB6vg0wLLzfLymZ3213b249DAo5jbY",
+    authDomain: "awam-network-318ec.firebaseapp.com",
+    databaseURL: "https://awam-network-318ec-default-rtdb.firebaseio.com",
+    projectId: "awam-network-318ec",
+    storageBucket: "awam-network-318ec.firebasestorage.app",
+    messagingSenderId: "313453430241",
+    appId: "1:313453430241:web:bde7e4fecce0e07426fea0"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+
+  console.log("Awam Network V2 Firebase Connected");
+</script>  
 </html>
