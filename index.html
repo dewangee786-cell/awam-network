@@ -587,6 +587,45 @@ function goHome(){
   const app = initializeApp(firebaseConfig);
   window.database = getDatabase(app);
  </script>
-     
+    <script>
+async function addWorker() {
+
+    const name = document.getElementById("wName").value.trim();
+    const skill = document.getElementById("wSkill").value.trim();
+    const phone = document.getElementById("wPhone").value.trim();
+    const status = document.getElementById("workerStatus");
+
+    if (!name || !skill || !phone) {
+        status.classList.remove("hidden");
+        status.innerText = "Please fill Name, Skill and Phone.";
+        return;
+    }
+
+    try {
+
+        const workerData = {
+            name: name,
+            skill: skill,
+            phone: phone,
+            createdAt: Date.now()
+        };
+
+        await window.database.ref("p2p_workers").push(workerData);
+
+        status.classList.remove("hidden");
+        status.innerText = "Worker successfully registered.";
+
+        document.getElementById("wName").value = "";
+        document.getElementById("wSkill").value = "";
+        document.getElementById("wPhone").value = "";
+
+    } catch (error) {
+
+        status.classList.remove("hidden");
+        status.innerText = "Error: " + error.message;
+
+    }
+}
+</script> 
 </body>
 </html>
