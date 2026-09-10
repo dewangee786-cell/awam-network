@@ -360,20 +360,65 @@ button{
 
     <!-- JOBS -->
 
-    <div id="jobs" class="card hidden">
+   <!-- P2P JOBS -->
 
-        <h2>🛠️ P2P Jobs</h2>
+<div id="jobs" class="card hidden">
 
-        <div class="info">
+    <h2>🛠️ P2P Jobs</h2>
 
-            بغیر کمیشن مزدوری مارکیٹ۔
+    <div class="info">
+        بغیر کمیشن مزدوری مارکیٹ۔
+        <br><br>
+        Worker اپنا کام درج کریں اور employer
+        direct رابطہ کرے۔
+    </div>
 
-            <br><br>
+    <input
+        type="text"
+        id="wName"
+        placeholder="Worker Name"
+        style="width:100%;padding:12px;margin-top:12px;border:1px solid #ddd;border-radius:10px;"
+    >
 
-            Worker اور employer کے درمیان
-            direct connection system یہاں بنایا جائے گا۔
+    <input
+        type="text"
+        id="wSkill"
+        placeholder="Skill / Work"
+        style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
+    >
 
-        </div>
+    <input
+        type="tel"
+        id="wPhone"
+        placeholder="Phone / WhatsApp"
+        style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
+    >
+
+    <button
+        onclick="addWorker()"
+        class="btn-orange"
+        style="width:100%;margin-top:12px;color:white;"
+    >
+        ➕ Add Worker
+    </button>
+
+    <div id="workerStatus" class="status hidden"></div>
+
+    <div id="workersList" class="info">
+        <strong>Registered Workers</strong>
+        <br>
+        ابھی کوئی worker registered نہیں۔
+    </div>
+
+    <button
+        class="btn-dark"
+        onclick="goHome()"
+        style="margin-top:12px;color:white;"
+    >
+        ← Back
+    </button>
+
+</div>
 
         <button
             class="btn-dark"
