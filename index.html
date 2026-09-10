@@ -516,9 +516,6 @@ button{
 
     </div>
 
-</div>
-
-
 <script>
 
 function openSection(id){
@@ -563,10 +560,11 @@ function goHome(){
         top:0,
         behavior:"smooth"
     });
-}   
-    
- <script>
-     
+}
+
+</script>
+
+
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
@@ -664,11 +662,8 @@ onValue(workersRef, (snapshot) => {
 
 
         workerBox.appendChild(name);
-
         workerBox.appendChild(skill);
-
         workerBox.appendChild(phone);
-
 
         workerItems.appendChild(workerBox);
 
@@ -677,6 +672,7 @@ onValue(workersRef, (snapshot) => {
 });
 
 </script>
+
 
 <script>
 
@@ -738,9 +734,7 @@ async function addWorker() {
 
 
         document.getElementById("wName").value = "";
-
         document.getElementById("wSkill").value = "";
-
         document.getElementById("wPhone").value = "";
 
 
@@ -756,5 +750,6 @@ async function addWorker() {
 }
 
 </script>
+
 </body>
 </html>
