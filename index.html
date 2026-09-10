@@ -568,10 +568,16 @@ function goHome(){
 
 </script>
  <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-  import { getDatabase } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
 
-  const firebaseConfig = {
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+import {
+    getDatabase,
+    ref,
+    push
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
+
+const firebaseConfig = {
+
     apiKey: "AIzaSyCVbrB6vg0wLLzfLymZ3213b249DAo5jbY",
     authDomain: "awam-network-318ec.firebaseapp.com",
     databaseURL: "https://awam-network-318ec-default-rtdb.firebaseio.com",
@@ -579,63 +585,97 @@ function goHome(){
     storageBucket: "awam-network-318ec.firebasestorage.app",
     messagingSenderId: "313453430241",
     appId: "1:313453430241:web:bde7e4fecce0e07426fea0"
-  };
 
-  const app = initializeApp(firebaseConfig);
-  window.database = getDatabase(app);
- </script>
+};
+
+const app = initializeApp(firebaseConfig);
+
+const database = getDatabase(app);
+
+window.awamDatabase = database;
+window.awamRef = ref;
+window.awamPush = push;
+
 </script>
+
+
+<script>
+
 async function addWorker() {
 
-    const name = document.getElementById("wName").value.trim();
-    const skill = document.getElementById("wSkill").value.trim();
-    const phone = document.getElementById("wPhone").value.trim();
-    const status = document.getElementById("workerStatus");
+    const name =
+        document.getElementById("wName").value.trim();
+
+    const skill =
+        document.getElementById("wSkill").value.trim();
+
+    const phone =
+        document.getElementById("wPhone").value.trim();
+
+    const status =
+        document.getElementById("workerStatus");
+
 
     if (!name || !skill || !phone) {
+
         status.classList.remove("hidden");
-        status.innerText = "Please fill Name, Skill and Phone.";
+
+        status.innerText =
+            "Please fill Name, Skill and Phone.";
+
         return;
     }
+
 
     try {
 
         const workerData = {
+
             name: name,
             skill: skill,
             phone: phone,
             createdAt: Date.now()
+
         };
 
-        const response = await fetch(
-            "https://awam-network-318ec-default-rtdb.firebaseio.com/p2p_workers.json",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(workerData)
-            }
+
+        const workersRef =
+            window.awamRef(
+                window.awamDatabase,
+                "p2p_workers"
+            );
+
+
+        await window.awamPush(
+            workersRef,
+            workerData
         );
 
-        if (!response.ok) {
-            throw new Error("Firebase database save failed.");
-        }
 
         status.classList.remove("hidden");
-        status.innerText = "Worker successfully registered.";
+
+        status.innerText =
+            "Worker successfully registered.";
+
 
         document.getElementById("wName").value = "";
+
         document.getElementById("wSkill").value = "";
+
         document.getElementById("wPhone").value = "";
+
 
     } catch (error) {
 
         status.classList.remove("hidden");
-        status.innerText = "Error: " + error.message;
+
+        status.innerText =
+            "Error: " + error.message;
 
     }
+
 }
+
 </script>
 </body>
 </html>
