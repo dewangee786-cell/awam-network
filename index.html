@@ -566,7 +566,58 @@ function goHome(){
   const app = initializeApp(firebaseConfig);
   window.database = getDatabase(app);
  </script>
-    <script>
+</script>
+async function addWorker() {
 
+    const name = document.getElementById("wName").value.trim();
+    const skill = document.getElementById("wSkill").value.trim();
+    const phone = document.getElementById("wPhone").value.trim();
+    const status = document.getElementById("workerStatus");
+
+    if (!name || !skill || !phone) {
+        status.classList.remove("hidden");
+        status.innerText = "Please fill Name, Skill and Phone.";
+        return;
+    }
+
+    try {
+
+        const workerData = {
+            name: name,
+            skill: skill,
+            phone: phone,
+            createdAt: Date.now()
+        };
+
+        const response = await fetch(
+            "https://awam-network-318ec-default-rtdb.firebaseio.com/p2p_workers.json",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(workerData)
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Firebase database save failed.");
+        }
+
+        status.classList.remove("hidden");
+        status.innerText = "Worker successfully registered.";
+
+        document.getElementById("wName").value = "";
+        document.getElementById("wSkill").value = "";
+        document.getElementById("wPhone").value = "";
+
+    } catch (error) {
+
+        status.classList.remove("hidden");
+        status.innerText = "Error: " + error.message;
+
+    }
+}
+</script>
 </body>
 </html>
