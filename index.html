@@ -564,22 +564,23 @@ function goHome(){
         behavior:"smooth"
     });
 }
-
-</script>
- <script type="module">
+<script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
-const firebaseConfig = {
-
-    apiKey: "AIzaSyCVbrB6vg0wLLzfLymZ3213b249DAo5jbY",
-    authDomain: "awam-network-318ec.firebaseapp.com",
-    databaseURL: "https://awam-network-318ec-default-rtdb.firebaseio.com",import {
+import {
     getDatabase,
     ref,
     push,
     onValue
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
+
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyCVbrB6vg0wLLzfLymZ3213b249DAo5jbY",
+    authDomain: "awam-network-318ec.firebaseapp.com",
+    databaseURL: "https://awam-network-318ec-default-rtdb.firebaseio.com",
     projectId: "awam-network-318ec",
     storageBucket: "awam-network-318ec.firebasestorage.app",
     messagingSenderId: "313453430241",
@@ -587,16 +588,92 @@ const firebaseConfig = {
 
 };
 
+
 const app = initializeApp(firebaseConfig);
 
 const database = getDatabase(app);
+
 
 window.awamDatabase = database;
 window.awamRef = ref;
 window.awamPush = push;
 
-</script>
 
+/* LIVE WORKERS LIST */
+
+const workersRef = ref(database, "p2p_workers");
+
+
+onValue(workersRef, (snapshot) => {
+
+    const workerItems =
+        document.getElementById("workerItems");
+
+    if (!workerItems) {
+        return;
+    }
+
+    workerItems.innerHTML = "";
+
+
+    if (!snapshot.exists()) {
+
+        workerItems.textContent =
+            "Abhi koi worker registered nahi.";
+
+        return;
+    }
+
+
+    snapshot.forEach((childSnapshot) => {
+
+        const worker =
+            childSnapshot.val();
+
+
+        const workerBox =
+            document.createElement("div");
+
+        workerBox.className = "info";
+
+        workerBox.style.marginTop = "10px";
+
+
+        const name =
+            document.createElement("strong");
+
+        name.textContent =
+            worker.name || "";
+
+
+        const skill =
+            document.createElement("div");
+
+        skill.textContent =
+            "Skill: " + (worker.skill || "");
+
+
+        const phone =
+            document.createElement("div");
+
+        phone.textContent =
+            "Phone: " + (worker.phone || "");
+
+
+        workerBox.appendChild(name);
+
+        workerBox.appendChild(skill);
+
+        workerBox.appendChild(phone);
+
+
+        workerItems.appendChild(workerBox);
+
+    });
+
+});
+
+</script>
 
 <script>
 
