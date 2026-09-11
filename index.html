@@ -1,20 +1,21 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>International Awam Network Hub</title>
 
-<meta name="description" content="International Awam Network Hub — Secure Digital Community Services">
-<meta name="author" content="Dewan Israr Ahmad Faridi">
+<meta name="description"
+content="International Awam Network Hub — Secure Digital Community Services">
+
+<meta name="author"
+content="Dewan Israr Ahmad Faridi">
+
 <meta name="theme-color" content="#0f5132">
 
 <style>
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 html,body{
     margin:0;
@@ -35,23 +36,24 @@ body{
     padding:14px;
 }
 
-.hidden{
-    display:none !important;
-}
+.hidden{display:none!important}
 
-/* LOGIN */
+.login-box,
+.card,
+.account{
+    background:white;
+    border-radius:18px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
 
 #loginScreen{
     margin-top:30px;
 }
 
 .login-box{
-    background:white;
     border:2px solid #d4af37;
-    border-radius:22px;
     padding:28px 18px;
     text-align:center;
-    box-shadow:0 8px 25px rgba(0,0,0,.12);
 }
 
 .vip{
@@ -80,8 +82,6 @@ body{
     cursor:pointer;
 }
 
-/* HEADER */
-
 .header{
     background:linear-gradient(135deg,#0f5132,#198754);
     color:white;
@@ -91,9 +91,7 @@ body{
     box-shadow:0 7px 22px rgba(0,0,0,.15);
 }
 
-.header-icon{
-    font-size:48px;
-}
+.header-icon{font-size:48px}
 
 .header-vip{
     color:#ffd966;
@@ -112,8 +110,6 @@ body{
     font-size:21px;
 }
 
-/* FOUNDER */
-
 .founder{
     margin-top:14px;
     background:linear-gradient(135deg,#b8860b,#d4af37);
@@ -123,22 +119,14 @@ body{
     text-align:center;
 }
 
-.founder strong{
-    font-size:13px;
-}
-
 .founder h3{
     margin:7px 0 3px;
     font-size:20px;
 }
 
-/* ACCOUNT */
-
 .account{
     margin-top:14px;
-    background:white;
     border:2px solid #d4af37;
-    border-radius:17px;
     padding:14px;
     text-align:center;
 }
@@ -150,14 +138,9 @@ body{
     margin:6px 0 10px;
 }
 
-/* CARDS */
-
 .card{
-    background:white;
     margin-top:14px;
     padding:18px;
-    border-radius:18px;
-    box-shadow:0 4px 15px rgba(0,0,0,.08);
 }
 
 .info{
@@ -187,12 +170,12 @@ body{
     padding:12px;
 }
 
-.green{background:#198754;}
-.blue{background:#0d6efd;}
-.orange{background:#fd7e14;}
-.purple{background:#6f42c1;}
-.dark{background:#212529;}
-.gold{background:#b8860b;}
+.green{background:#198754}
+.blue{background:#0d6efd}
+.orange{background:#fd7e14}
+.purple{background:#6f42c1}
+.dark{background:#212529}
+.gold{background:#b8860b}
 
 .back{
     width:100%;
@@ -200,8 +183,6 @@ body{
     background:#212529;
     color:white;
 }
-
-/* FORMS */
 
 input,textarea,select{
     width:100%;
@@ -212,7 +193,9 @@ input,textarea,select{
     font-family:Arial,"Noto Nastaliq Urdu",sans-serif;
 }
 
-input:focus,textarea:focus,select:focus{
+input:focus,
+textarea:focus,
+select:focus{
     outline:2px solid #198754;
 }
 
@@ -220,6 +203,11 @@ input:focus,textarea:focus,select:focus{
     width:100%;
     color:white;
     margin-top:12px;
+    border:0;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
 }
 
 .status{
@@ -258,6 +246,16 @@ input:focus,textarea:focus,select:focus{
     color:#664d03;
     font-size:12px;
     font-weight:bold;
+    margin:2px;
+}
+
+.small-btn{
+    border:0;
+    padding:9px 12px;
+    border-radius:8px;
+    color:white;
+    cursor:pointer;
+    margin-top:8px;
 }
 
 .footer{
@@ -268,19 +266,9 @@ input:focus,textarea:focus,select:focus{
 }
 
 @media(max-width:480px){
-
-    .container{
-        padding:10px;
-    }
-
-    .header h1{
-        font-size:24px;
-    }
-
-    .menu{
-        gap:8px;
-    }
-
+    .container{padding:10px}
+    .header h1{font-size:24px}
+    .menu{gap:8px}
     .menu button{
         min-height:88px;
         font-size:13px;
@@ -293,13 +281,11 @@ input:focus,textarea:focus,select:focus{
 
 <div class="container">
 
-<!-- =====================================================
-     LOGIN
-===================================================== -->
+<!-- LOGIN -->
 
 <div id="loginScreen" class="login-box">
 
-    <div style="font-size:55px;">🌐</div>
+    <div style="font-size:55px">🌐</div>
 
     <div class="vip">
         VIP INTERNATIONAL NETWORK
@@ -309,9 +295,7 @@ input:focus,textarea:focus,select:focus{
         International Awam Network Hub
     </div>
 
-    <p>
-        Secure Digital Community Platform
-    </p>
+    <p>Secure Digital Community Platform</p>
 
     <div class="info">
         🔐 Hub access ke liye Google account se login karein.
@@ -326,711 +310,783 @@ input:focus,textarea:focus,select:focus{
 </div>
 
 
-<!-- =====================================================
-     MAIN HUB
-===================================================== -->
+<!-- MAIN HUB -->
 
 <div id="mainHub" class="hidden">
 
-    <div class="header">
+<div class="header">
 
-        <div class="header-icon">🌐</div>
+    <div class="header-icon">🌐</div>
 
-        <div class="header-vip">
-            VIP INTERNATIONAL AWAM NETWORK
-        </div>
-
-        <h1>INTERNATIONAL AWAM NETWORK</h1>
-
-        <h2>Digital Community Hub</h2>
-
-        <div>
-            Bila Sood Khudkaar Nizam
-        </div>
-
+    <div class="header-vip">
+        VIP INTERNATIONAL AWAM NETWORK
     </div>
 
+    <h1>INTERNATIONAL AWAM NETWORK</h1>
 
-    <div class="founder">
+    <h2>Digital Community Hub</h2>
 
-        <strong>👑 FOUNDER & CEO</strong>
-
-        <h3>Dewan Israr Ahmad Faridi</h3>
-
-        <small>International Awam Network</small>
-
-    </div>
-
-
-    <!-- ACCOUNT -->
-
-    <div class="account">
-
-        <strong>🔐 Secure Google Account</strong>
-
-        <div id="userEmail" class="email">
-            Authenticated User
-        </div>
-
-        <button
-            id="logoutBtn"
-            class="dark"
-            style="color:white;width:100%;">
-            Logout
-        </button>
-
-    </div>
-
-
-    <!-- =================================================
-         HOME
-    ================================================= -->
-
-    <div id="homeCard" class="card">
-
-        <h2 style="text-align:center;">
-            🌍 International Awam Network Hub
-        </h2>
-
-        <div class="info">
-
-            <strong>
-                Global Digital Community Services
-            </strong>
-
-            <br><br>
-
-            Wallet • AI • E-Commerce • Education
-            • NGO • Zakat • Security
-
-        </div>
-
-
-        <div class="menu">
-
-            <button
-                class="gold"
-                onclick="openSection('wallet')">
-                💰<br>
-                Wallet
-            </button>
-
-
-            <button
-                class="dark"
-                onclick="openSection('ai')">
-                🤖<br>
-                AI Support
-            </button>
-
-
-            <button
-                class="orange"
-                onclick="openSection('shop')">
-                🏪<br>
-                E-Commerce<br>
-                & Services
-            </button>
-
-
-            <button
-                class="blue"
-                onclick="openSection('education')">
-                🎓<br>
-                Education<br>
-                & AI Exams
-            </button>
-
-
-            <button
-                class="purple"
-                onclick="openSection('ngo')">
-                🤝<br>
-                NGO & Welfare
-            </button>
-
-
-            <button
-                class="dark"
-                onclick="openSection('admin')">
-                🔐<br>
-                Admin & Security
-            </button>
-
-        </div>
-
-
-        <div class="status">
-            🟢 Secure Hub — Google Authentication Active
-        </div>
-
-    </div>
-
-
-    <!-- =================================================
-         WALLET
-    ================================================= -->
-
-    <div id="wallet" class="card hidden">
-
-        <h2>💰 Awam Network Wallet</h2>
-
-        <div class="info">
-
-            <strong>Wallet Foundation</strong>
-
-            <br>
-
-            User-based secure wallet system.
-
-            <br><br>
-
-            Current Balance:
-
-            <strong id="walletBalance">
-                0
-            </strong>
-
-        </div>
-
-
-        <div class="info">
-
-            🔐 User Authentication
-            <br>
-            📊 Wallet Ledger
-            <br>
-            🧾 Transaction Records
-            <br>
-            🛡️ Firebase Security
-            <br>
-            💳 Future Payment Gateway
-
-        </div>
-
-
-        <button
-            class="gold action"
-            onclick="loadWallet()">
-            🔄 Refresh Wallet
-        </button>
-
-
-        <div id="walletStatus" class="status hidden"></div>
-
-
-        <button
-            class="back"
-            onclick="goHome()">
-            ← Back to Hub
-        </button>
-
-    </div>
-
-
-    <!-- =================================================
-         AI
-    ================================================= -->
-
-    <div id="ai" class="card hidden">
-
-        <h2>🤖 Awam Network AI Support</h2>
-
-        <div class="info">
-
-            AI Support interface ready.
-
-            <br><br>
-
-            User apna sawal neeche likh sakta hai.
-            Current version local support interface hai;
-            real AI API ko secure backend ke through connect
-            kiya jayega.
-
-        </div>
-
-
-        <textarea
-            id="aiQuestion"
-            rows="4"
-            placeholder="Apna sawal likhein..."></textarea>
-
-
-        <button
-            class="dark action"
-            onclick="askAI()">
-            🤖 Get Support
-        </button>
-
-
-        <div id="aiAnswer" class="info hidden"></div>
-
-
-        <button
-            class="back"
-            onclick="goHome()">
-            ← Back to Hub
-        </button>
-
-    </div>
-
-
-    <!-- =================================================
-         E-COMMERCE + P2P
-    ================================================= -->
-
-    <div id="shop" class="card hidden">
-
-        <h2>🏪 E-Commerce & Services</h2>
-
-        <div class="info">
-
-            Products, services aur P2P workers
-            isi marketplace ke andar available honge.
-
-        </div>
-
-
-        <h3>🛠️ P2P Worker Services</h3>
-
-
-        <input
-            id="wName"
-            type="text"
-            maxlength="100"
-            placeholder="Full Name">
-
-
-        <input
-            id="wCountry"
-            type="text"
-            maxlength="100"
-            placeholder="Country">
-
-
-        <input
-            id="wCity"
-            type="text"
-            maxlength="100"
-            placeholder="City">
-
-
-        <input
-            id="wSkill"
-            type="text"
-            maxlength="100"
-            placeholder="Skill / Work">
-
-
-        <input
-            id="wExperience"
-            type="text"
-            maxlength="100"
-            placeholder="Experience">
-
-
-        <input
-            id="wPhone"
-            type="tel"
-            maxlength="30"
-            placeholder="Phone / WhatsApp">
-
-
-        <div class="info">
-
-            🔐 Verification Status
-
-            <br>
-            Profile Picture:
-            <span class="badge">Pending</span>
-
-            <br>
-            ID Verification:
-            <span class="badge">Pending</span>
-
-            <br>
-            Work History:
-            <span class="badge">Pending</span>
-
-            <br>
-            Overall:
-            <span class="badge">Pending</span>
-
-        </div>
-
-
-        <button
-            class="orange action"
-            onclick="addWorker()">
-            ➕ Register Worker
-        </button>
-
-
-        <div id="workerStatus" class="status hidden"></div>
-
-
-        <h3>🌍 Registered Workers</h3>
-
-        <div id="workerItems" class="info">
-            Loading...
-        </div>
-
-
-        <h3>🛒 Marketplace Foundation</h3>
-
-        <div class="info">
-
-            Product and service marketplace is connected
-            to the same Hub architecture.
-
-            <br><br>
-
-            🛒 Products
-            <br>
-            🛠️ Services
-            <br>
-            👷 P2P Workers
-            <br>
-            🌍 International Sellers
-
-        </div>
-
-
-        <button
-            class="back"
-            onclick="goHome()">
-            ← Back to Hub
-        </button>
-
-    </div>
-
-
-    <!-- =================================================
-         EDUCATION
-    ================================================= -->
-
-    <div id="education" class="card hidden">
-
-        <h2>🎓 Education & AI Exams</h2>
-
-        <div class="info">
-
-            <strong>Education System</strong>
-
-            <br><br>
-
-            Beginner learning → IT → Practical Skills
-            → AI Lessons → Exams → Automatic Result
-
-        </div>
-
-
-        <input
-            id="studentName"
-            type="text"
-            maxlength="100"
-            placeholder="Student Name">
-
-
-        <select id="examQuestion">
-
-            <option value="">
-                Select Question
-            </option>
-
-            <option value="cpu">
-                Computer ka brain kya hota hai?
-            </option>
-
-            <option value="internet">
-                Internet kis liye use hota hai?
-            </option>
-
-        </select>
-
-
-        <select id="examAnswer">
-
-            <option value="">
-                Select Answer
-            </option>
-
-            <option value="CPU">
-                CPU
-            </option>
-
-            <option value="RAM">
-                RAM
-            </option>
-
-            <option value="Internet">
-                Internet
-            </option>
-
-            <option value="Printer">
-                Printer
-            </option>
-
-        </select>
-
-
-        <button
-            class="blue action"
-            onclick="submitExam()">
-            🎓 Submit Exam
-        </button>
-
-
-        <div id="examResult" class="status hidden"></div>
-
-
-        <button
-            class="back"
-            onclick="goHome()">
-            ← Back to Hub
-        </button>
-
-    </div>
-
-
-    <!-- =================================================
-         NGO + ZAKAT
-    ================================================= -->
-
-    <div id="ngo" class="card hidden">
-
-        <h2>🤝 NGO & Welfare</h2>
-
-        <div class="info">
-
-            NGO, welfare organizations aur
-            public welfare services ka central portal.
-
-            <br><br>
-
-            Health • Education • Orphan Care
-            • Disaster Relief • Clean Water
-            • Legal/Welfare Assistance • Zakat
-
-        </div>
-
-
-        <h3>🌍 Zakat Welfare Portal</h3>
-
-        <input
-            id="zakatName"
-            type="text"
-            maxlength="100"
-            placeholder="Full Name">
-
-
-        <input
-            id="zakatCountry"
-            type="text"
-            maxlength="100"
-            placeholder="Country">
-
-
-        <input
-            id="zakatCity"
-            type="text"
-            maxlength="100"
-            placeholder="City">
-
-
-        <select id="zakatType">
-
-            <option value="">
-                Select Type
-            </option>
-
-            <option value="donor">
-                Zakat Donor
-            </option>
-
-            <option value="beneficiary">
-                Zakat Beneficiary
-            </option>
-
-        </select>
-
-
-        <input
-            id="zakatAmount"
-            type="number"
-            min="0"
-            placeholder="Amount (optional)">
-
-
-        <button
-            class="purple action"
-            onclick="submitZakat()">
-            🤝 Submit Zakat Request
-        </button>
-
-
-        <div id="zakatStatus" class="status hidden"></div>
-
-
-        <h3>🏢 NGO Registration</h3>
-
-        <input
-            id="ngoName"
-            type="text"
-            maxlength="150"
-            placeholder="NGO Name">
-
-
-        <input
-            id="ngoLeader"
-            type="text"
-            maxlength="100"
-            placeholder="NGO Leader">
-
-
-        <input
-            id="ngoPhone"
-            type="tel"
-            maxlength="30"
-            placeholder="Phone / WhatsApp">
-
-
-        <input
-            id="ngoEmail"
-            type="email"
-            maxlength="150"
-            placeholder="Email">
-
-
-        <select id="ngoWork">
-
-            <option value="">
-                Select Welfare Work
-            </option>
-
-            <option value="education">
-                Education
-            </option>
-
-            <option value="health">
-                Health
-            </option>
-
-            <option value="ration">
-                Food / Ration Welfare
-            </option>
-
-            <option value="orphan">
-                Orphan Care
-            </option>
-
-            <option value="disaster">
-                Disaster Relief
-            </option>
-
-            <option value="water">
-                Clean Water
-            </option>
-
-            <option value="general">
-                General Welfare
-            </option>
-
-        </select>
-
-
-        <button
-            class="purple action"
-            onclick="registerNGO()">
-            🤝 Register NGO
-        </button>
-
-
-        <div id="ngoStatus" class="status hidden"></div>
-
-
-        <button
-            class="back"
-            onclick="goHome()">
-            ← Back to Hub
-        </button>
-
-    </div>
-
-
-    <!-- =================================================
-         ADMIN
-    ================================================= -->
-
-    <div id="admin" class="card hidden">
-
-        <h2>🔐 Admin & Security</h2>
-
-        <div class="info">
-
-            <strong>Security Architecture</strong>
-
-            <br><br>
-
-            🔐 Google Authentication
-            <br>
-            🛡️ Firebase Database Rules
-            <br>
-            👤 Authenticated Users
-            <br>
-            🚫 Unauthorized Access Protection
-            <br>
-            📊 Future Admin Dashboard
-            <br>
-            🧾 Audit / Activity Records
-
-        </div>
-
-
-        <div class="status">
-
-            🟢 Authentication Protected
-
-        </div>
-
-
-        <button
-            class="back"
-            onclick="goHome()">
-            ← Back to Hub
-        </button>
-
-    </div>
-
-
-    <div class="footer">
-
-        © International Awam Network
-
-        <br>
-
-        Dewan Israr Ahmad Faridi
-
-        <br>
-
-        Secure Digital Community Hub
-
-    </div>
-
-</div>
+    <div>Bila Sood Khudkaar Nizam</div>
 
 </div>
 
 
-<!-- =====================================================
-     FIREBASE
-===================================================== -->
+<div class="founder">
+
+    <strong>👑 FOUNDER & CEO</strong>
+
+    <h3>Dewan Israr Ahmad Faridi</h3>
+
+    <small>International Awam Network</small>
+
+</div>
+
+
+<!-- ACCOUNT -->
+
+<div class="account">
+
+    <strong>🔐 Secure Google Account</strong>
+
+    <div id="userEmail" class="email">
+        Authenticated User
+    </div>
+
+    <button id="logoutBtn"
+    class="dark"
+    style="color:white;width:100%;border:0;padding:12px;border-radius:10px;">
+        Logout
+    </button>
+
+</div>
+
+
+<!-- HOME -->
+
+<div id="homeCard" class="card">
+
+    <h2 style="text-align:center">
+        🌍 International Awam Network Hub
+    </h2>
+
+    <div class="info">
+
+        <strong>Global Digital Community Services</strong>
+
+        <br><br>
+
+        Wallet • AI • E-Commerce • Education
+        • NGO • Zakat • P2P • Security
+
+    </div>
+
+    <div class="menu">
+
+        <button class="gold"
+        onclick="openSection('wallet')">
+            💰<br>Wallet
+        </button>
+
+        <button class="dark"
+        onclick="openSection('ai')">
+            🤖<br>AI Support
+        </button>
+
+        <button class="orange"
+        onclick="openSection('shop')">
+            🛒<br>E-Commerce<br>& Services
+        </button>
+
+        <button class="blue"
+        onclick="openSection('education')">
+            🎓<br>Education<br>& AI Exams
+        </button>
+
+        <button class="purple"
+        onclick="openSection('ngo')">
+            🤝<br>NGO & Welfare
+        </button>
+
+        <button class="dark"
+        onclick="openSection('admin')">
+            🔐<br>Admin & Security
+        </button>
+
+    </div>
+
+    <div class="status">
+        🟢 Secure Hub — Google Authentication Active
+    </div>
+
+</div>
+
+
+<!-- WALLET -->
+
+<div id="wallet" class="card hidden">
+
+<h2>💰 Awam Network Wallet</h2>
+
+<div class="info">
+
+    <strong>Internal Wallet</strong>
+
+    <br><br>
+
+    Balance:
+    <strong id="walletBalance">0</strong> PKR
+
+    <br>
+
+    Wallet ID:
+    <span id="walletId">Loading...</span>
+
+</div>
+
+<input
+id="walletAmount"
+type="number"
+min="1"
+placeholder="Transaction amount">
+
+<select id="walletTransactionType">
+
+    <option value="">Select Transaction</option>
+    <option value="credit">Credit</option>
+    <option value="debit">Debit</option>
+
+</select>
+
+<input
+id="walletDescription"
+maxlength="200"
+placeholder="Transaction description">
+
+<button
+class="gold action"
+onclick="saveWalletTransaction()">
+    💳 Save Internal Transaction
+</button>
+
+<button
+class="dark action"
+onclick="loadWallet()">
+    🔄 Refresh Wallet
+</button>
+
+<div id="walletStatus"
+class="status hidden"></div>
+
+<h3>📒 Wallet Ledger</h3>
+
+<div id="walletLedger" class="info">
+    Loading...
+</div>
+
+<button class="back" onclick="goHome()">
+    ← Back to Hub
+</button>
+
+</div>
+
+
+<!-- AI -->
+
+<div id="ai" class="card hidden">
+
+<h2>🤖 Awam Network AI Support</h2>
+
+<div class="info">
+
+    AI Support interface active.
+
+    <br><br>
+
+    Aapka question Firebase mein support history
+    ke saath save hoga.
+
+</div>
+
+<textarea
+id="aiQuestion"
+rows="4"
+maxlength="1000"
+placeholder="Apna sawal likhein..."></textarea>
+
+<button
+class="dark action"
+onclick="askAI()">
+    🤖 Get Support
+</button>
+
+<div id="aiAnswer" class="info hidden"></div>
+
+<h3>📚 Support History</h3>
+
+<div id="aiHistory" class="info">
+    Loading...
+</div>
+
+<button class="back" onclick="goHome()">
+    ← Back to Hub
+</button>
+
+</div>
+
+
+<!-- E-COMMERCE -->
+
+<div id="shop" class="card hidden">
+
+<h2>🛒 E-Commerce & Services</h2>
+
+<div class="info">
+
+    Products aur services ko Firebase marketplace
+    mein publish karein.
+
+</div>
+
+<h3>➕ Add Product / Service</h3>
+
+<input
+id="productName"
+maxlength="150"
+placeholder="Product / Service Name">
+
+<select id="productType">
+
+    <option value="">Select Type</option>
+    <option value="product">Product</option>
+    <option value="service">Service</option>
+
+</select>
+
+<input
+id="productPrice"
+type="number"
+min="0"
+placeholder="Price">
+
+<input
+id="productLocation"
+maxlength="150"
+placeholder="Country / City">
+
+<textarea
+id="productDescription"
+rows="3"
+maxlength="1000"
+placeholder="Description"></textarea>
+
+<button
+class="orange action"
+onclick="addProduct()">
+    🛒 Publish Listing
+</button>
+
+<div id="productStatus"
+class="status hidden"></div>
+
+<h3>🌍 Live Marketplace</h3>
+
+<div id="productItems" class="info">
+    Loading...
+</div>
+
+<h3>📝 Buyer Request</h3>
+
+<input
+id="buyerListingId"
+placeholder="Listing ID">
+
+<textarea
+id="buyerMessage"
+rows="3"
+maxlength="500"
+placeholder="Apni request likhein"></textarea>
+
+<button
+class="orange action"
+onclick="createBuyerRequest()">
+    📩 Send Buyer Request
+</button>
+
+<div id="buyerStatus"
+class="status hidden"></div>
+
+
+<hr style="margin-top:25px">
+
+<h3>🛠️ P2P Worker Services</h3>
+
+<input id="wName"
+maxlength="100"
+placeholder="Full Name">
+
+<input id="wCountry"
+maxlength="100"
+placeholder="Country">
+
+<input id="wCity"
+maxlength="100"
+placeholder="City">
+
+<input id="wSkill"
+maxlength="100"
+placeholder="Skill / Work">
+
+<input id="wExperience"
+maxlength="100"
+placeholder="Experience">
+
+<input id="wPhone"
+maxlength="30"
+placeholder="Phone / WhatsApp">
+
+<div class="info">
+
+    🔐 Profile Picture:
+    <span class="badge">Pending</span>
+
+    <br>
+
+    ID Verification:
+    <span class="badge">Pending</span>
+
+    <br>
+
+    Work History:
+    <span class="badge">Pending</span>
+
+    <br>
+
+    Overall:
+    <span class="badge">Pending</span>
+
+</div>
+
+<button
+class="orange action"
+onclick="addWorker()">
+    ➕ Register Worker
+</button>
+
+<div id="workerStatus" class="status hidden"></div>
+
+<h3>🌍 Registered Workers</h3>
+
+<div id="workerItems" class="info">
+    Loading...
+</div>
+
+<button class="back" onclick="goHome()">
+    ← Back to Hub
+</button>
+
+</div>
+
+
+<!-- EDUCATION -->
+
+<div id="education" class="card hidden">
+
+<h2>🎓 Education & AI Exams</h2>
+
+<div class="info">
+
+    Beginner Learning → IT → Practical Skills
+    → AI Lessons → Exams → Automatic Result
+
+</div>
+
+<h3>📖 Lessons</h3>
+
+<select id="lessonSelect"
+onchange="showLesson()">
+
+    <option value="">Select Lesson</option>
+
+    <option value="computer">
+        Computer Basics
+    </option>
+
+    <option value="internet">
+        Internet Basics
+    </option>
+
+    <option value="ai">
+        Artificial Intelligence
+    </option>
+
+    <option value="freelancing">
+        Freelancing Basics
+    </option>
+
+</select>
+
+<div id="lessonContent"
+class="info">
+    Lesson select karein.
+</div>
+
+
+<h3>🎓 AI / MCQ Exam</h3>
+
+<input
+id="studentName"
+maxlength="100"
+placeholder="Student Name">
+
+<select id="examQuestion">
+
+    <option value="">
+        Select Question
+    </option>
+
+    <option value="cpu">
+        Computer ka brain kya hota hai?
+    </option>
+
+    <option value="internet">
+        Internet kis liye use hota hai?
+    </option>
+
+    <option value="ai">
+        AI ka full form kya hai?
+    </option>
+
+</select>
+
+<select id="examAnswer">
+
+    <option value="">
+        Select Answer
+    </option>
+
+    <option value="CPU">CPU</option>
+    <option value="RAM">RAM</option>
+    <option value="Internet">Internet</option>
+    <option value="AI">Artificial Intelligence</option>
+    <option value="Printer">Printer</option>
+
+</select>
+
+<button
+class="blue action"
+onclick="submitExam()">
+    🎓 Submit Exam
+</button>
+
+<div id="examResult"
+class="status hidden"></div>
+
+<h3>📊 My Exam Results</h3>
+
+<div id="examHistory" class="info">
+    Loading...
+</div>
+
+<button class="back" onclick="goHome()">
+    ← Back to Hub
+</button>
+
+</div>
+
+
+<!-- NGO -->
+
+<div id="ngo" class="card hidden">
+
+<h2>🤝 NGO & Welfare</h2>
+
+<div class="info">
+
+    International NGO registration aur welfare
+    assistance portal.
+
+    <br><br>
+
+    Education • Health • Orphan Care • Disaster Relief
+    • Clean Water • Legal Assistance • General Welfare
+
+</div>
+
+
+<h3>🏢 NGO Registration</h3>
+
+<input
+id="ngoName"
+maxlength="150"
+placeholder="NGO Name">
+
+<input
+id="ngoLeader"
+maxlength="100"
+placeholder="NGO Leader">
+
+<input
+id="ngoPhone"
+maxlength="30"
+placeholder="Phone / WhatsApp">
+
+<input
+id="ngoEmail"
+type="email"
+maxlength="150"
+placeholder="Email">
+
+<select id="ngoWork">
+
+    <option value="">
+        Select Welfare Work
+    </option>
+
+    <option value="education">
+        Education
+    </option>
+
+    <option value="health">
+        Health
+    </option>
+
+    <option value="orphan">
+        Orphan Care
+    </option>
+
+    <option value="disaster">
+        Disaster Relief
+    </option>
+
+    <option value="water">
+        Clean Water
+    </option>
+
+    <option value="legal">
+        Legal Assistance
+    </option>
+
+    <option value="general">
+        General Welfare
+    </option>
+
+</select>
+
+<button
+class="purple action"
+onclick="registerNGO()">
+    🤝 Register NGO
+</button>
+
+<div id="ngoStatus"
+class="status hidden"></div>
+
+
+<h3>🆘 Welfare Help Request</h3>
+
+<select id="welfareCategory">
+
+    <option value="">
+        Select Category
+    </option>
+
+    <option value="education">
+        Education Assistance
+    </option>
+
+    <option value="health">
+        Health Assistance
+    </option>
+
+    <option value="orphan">
+        Orphan Assistance
+    </option>
+
+    <option value="disaster">
+        Disaster Assistance
+    </option>
+
+    <option value="water">
+        Clean Water
+    </option>
+
+    <option value="legal">
+        Legal Assistance
+    </option>
+
+    <option value="general">
+        General Welfare
+    </option>
+
+</select>
+
+<input
+id="welfareCountry"
+maxlength="100"
+placeholder="Country">
+
+<input
+id="welfareCity"
+maxlength="100"
+placeholder="City">
+
+<textarea
+id="welfareDetails"
+rows="4"
+maxlength="1500"
+placeholder="Help request details"></textarea>
+
+<button
+class="purple action"
+onclick="submitWelfareRequest()">
+    🆘 Submit Welfare Request
+</button>
+
+<div id="welfareStatus"
+class="status hidden"></div>
+
+
+<h3>🌍 Zakat Welfare</h3>
+
+<input
+id="zakatName"
+maxlength="100"
+placeholder="Full Name">
+
+<input
+id="zakatCountry"
+maxlength="100"
+placeholder="Country">
+
+<input
+id="zakatCity"
+maxlength="100"
+placeholder="City">
+
+<select id="zakatType">
+
+    <option value="">
+        Select Type
+    </option>
+
+    <option value="donor">
+        Zakat Donor
+    </option>
+
+    <option value="beneficiary">
+        Zakat Beneficiary
+    </option>
+
+</select>
+
+<input
+id="zakatAmount"
+type="number"
+min="0"
+placeholder="Amount">
+
+<input
+id="zakatPurpose"
+maxlength="200"
+placeholder="Purpose">
+
+<textarea
+id="zakatDetails"
+rows="3"
+maxlength="1000"
+placeholder="Additional details"></textarea>
+
+<button
+class="purple action"
+onclick="submitZakat()">
+    🌍 Submit Zakat Record
+</button>
+
+<div id="zakatStatus"
+class="status hidden"></div>
+
+<h3>📋 My Welfare / Zakat Records</h3>
+
+<div id="welfareHistory" class="info">
+    Loading...
+</div>
+
+<button class="back" onclick="goHome()">
+    ← Back to Hub
+</button>
+
+</div>
+
+
+<!-- ADMIN -->
+
+<div id="admin" class="card hidden">
+
+<h2>🔐 Admin & Security</h2>
+
+<div class="info">
+
+<strong>Security Architecture</strong>
+
+<br><br>
+
+🔐 Google Authentication
+<br>
+🛡️ Firebase Database Rules
+<br>
+👤 Authenticated Users
+<br>
+🚫 Unauthorized Access Protection
+<br>
+📊 Admin Dashboard Structure
+<br>
+🧾 Audit / Activity Records
+<br>
+🔒 User Data Separation
+
+</div>
+
+<div class="status">
+    🟢 Authentication Protected
+</div>
+
+<div id="adminStatus" class="info">
+    Current user security status loading...
+</div>
+
+<button class="back" onclick="goHome()">
+    ← Back to Hub
+</button>
+
+</div>
+
+
+<div class="footer">
+
+© International Awam Network
+
+<br>
+
+Dewan Israr Ahmad Faridi
+
+<br>
+
+Secure Digital Community Hub
+
+</div>
+
+</div>
+</div>
+
+
+<!-- FIREBASE -->
 
 <script type="module">
 
 import {
     initializeApp
-} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+}
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
 import {
     getDatabase,
@@ -1038,8 +1094,10 @@ import {
     push,
     onValue,
     get,
-    set
-} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
+    set,
+    update
+}
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
 
 import {
     getAuth,
@@ -1047,8 +1105,11 @@ import {
     signInWithPopup,
     signOut,
     onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+}
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
+
+/* FIREBASE CONFIG */
 
 const firebaseConfig = {
 
@@ -1072,6 +1133,7 @@ const firebaseConfig = {
 
     appId:
     "1:313453430241:web:bde7e4fecce0e07426fea0"
+
 };
 
 
@@ -1088,14 +1150,9 @@ const googleProvider =
 new GoogleAuthProvider();
 
 
-window.awamDatabase =
-database;
-
-window.awamAuth =
-auth;
-
-window.awamUser =
-null;
+window.awamDatabase = database;
+window.awamAuth = auth;
+window.awamUser = null;
 
 
 /* GOOGLE LOGIN */
@@ -1110,7 +1167,7 @@ document
     status.classList.remove("hidden");
     status.classList.remove("error");
 
-    status.innerText =
+    status.textContent =
     "Google login starting...";
 
     try{
@@ -1128,7 +1185,7 @@ document
         status.classList.remove("hidden");
         status.classList.add("error");
 
-        status.innerText =
+        status.textContent =
         "Google Login failed: " +
         error.code;
 
@@ -1143,7 +1200,12 @@ document
 .getElementById("logoutBtn")
 .addEventListener("click",async()=>{
 
-    await signOut(auth);
+    try{
+        await signOut(auth);
+    }
+    catch(error){
+        console.error(error);
+    }
 
 });
 
@@ -1151,176 +1213,347 @@ document
 /* AUTH STATE */
 
 onAuthStateChanged(
-    auth,
-    (user)=>{
+auth,
+async(user)=>{
 
-        const login =
-        document.getElementById("loginScreen");
+    const login =
+    document.getElementById("loginScreen");
 
-        const hub =
-        document.getElementById("mainHub");
+    const hub =
+    document.getElementById("mainHub");
 
-        const email =
-        document.getElementById("userEmail");
+    const email =
+    document.getElementById("userEmail");
+
+    if(user){
+
+        window.awamUser = user;
+
+        login.classList.add("hidden");
+
+        hub.classList.remove("hidden");
+
+        email.textContent =
+        user.email ||
+        "Authenticated User";
+
+        await initializeUserProfile();
+
+        loadWallet();
+        loadWalletLedger();
+        loadProducts();
+        loadAIHistory();
+        loadExamHistory();
+        loadWelfareHistory();
+
+    }
+    else{
+
+        window.awamUser = null;
+
+        hub.classList.add("hidden");
+
+        login.classList.remove("hidden");
+
+    }
+
+});
 
 
-        if(user){
+/* USER PROFILE */
 
-            window.awamUser =
-            user;
+async function initializeUserProfile(){
 
-            login.classList.add("hidden");
+    if(!window.awamUser) return;
 
-            hub.classList.remove("hidden");
+    const userRef =
+    ref(
+        database,
+        "users/" +
+        window.awamUser.uid
+    );
 
-            email.textContent =
-            user.email ||
-            "Authenticated User";
+    try{
+
+        const snapshot =
+        await get(userRef);
+
+        if(!snapshot.exists()){
+
+            await set(
+                userRef,
+                {
+                    uid:window.awamUser.uid,
+                    email:window.awamUser.email || "",
+                    name:window.awamUser.displayName || "",
+                    photoURL:window.awamUser.photoURL || "",
+                    accountStatus:"active",
+                    createdAt:Date.now(),
+                    lastLoginAt:Date.now()
+                }
+            );
 
         }
         else{
 
-            window.awamUser =
-            null;
+            await update(
+                userRef,
+                {
+                    lastLoginAt:Date.now()
+                }
+            );
 
-            hub.classList.add("hidden");
+        }
 
-            login.classList.remove("hidden");
+        const adminStatus =
+        document.getElementById("adminStatus");
+
+        if(adminStatus){
+
+            adminStatus.innerHTML =
+            "Authenticated User<br>" +
+            "UID: " +
+            escapeHTML(window.awamUser.uid) +
+            "<br>" +
+            "Account: Active";
 
         }
 
     }
-);
+    catch(error){
+
+        console.error(
+            "User profile error:",
+            error
+        );
+
+    }
+
+}
 
 
-/* WORKERS LIVE LIST */
+/* SAFE TEXT */
+
+function escapeHTML(value){
+
+    return String(value || "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* P2P WORKERS */
 
 const workersRef =
 ref(database,"p2p_workers");
 
 onValue(
+workersRef,
+(snapshot)=>{
 
-    workersRef,
+    const box =
+    document.getElementById("workerItems");
 
-    (snapshot)=>{
+    if(!box) return;
 
-        const box =
-        document.getElementById("workerItems");
+    box.innerHTML = "";
 
-        if(!box) return;
+    if(!snapshot.exists()){
 
-        box.innerHTML = "";
+        box.textContent =
+        "Abhi koi worker registered nahi.";
 
-        if(!snapshot.exists()){
+        return;
 
-            box.textContent =
-            "Abhi koi worker registered nahi.";
+    }
 
-            return;
+    snapshot.forEach(
+    (child)=>{
 
-        }
+        const worker =
+        child.val();
+
+        const item =
+        document.createElement("div");
+
+        item.className = "item";
+
+        item.innerHTML =
+        "<strong>" +
+        escapeHTML(worker.name) +
+        "</strong><br>" +
+
+        "Country: " +
+        escapeHTML(worker.country) +
+        "<br>" +
+
+        "City: " +
+        escapeHTML(worker.city) +
+        "<br>" +
+
+        "Skill: " +
+        escapeHTML(worker.skill) +
+        "<br>" +
+
+        "Experience: " +
+        escapeHTML(worker.experience) +
+        "<br>" +
+
+        "Verification: " +
+        "<span class='badge'>" +
+        escapeHTML(
+            worker.verificationStatus ||
+            "pending"
+        ) +
+        "</span>";
+
+        box.appendChild(item);
+
+    });
+
+},
+(error)=>{
+
+    console.error(
+        "Worker read error:",
+        error
+    );
+
+    document
+    .getElementById("workerItems")
+    .textContent =
+    "Workers list temporarily unavailable.";
+
+});
 
 
-        snapshot.forEach(
-            (child)=>{
+/* ADD WORKER */
 
-                const worker =
-                child.val();
+window.addWorker =
+async function(){
 
-                const item =
-                document.createElement("div");
+    if(!window.awamUser){
 
-                item.className =
-                "item";
+        alert("Please login first.");
+        return;
 
-                item.innerHTML = "";
+    }
 
-                const name =
-                document.createElement("strong");
+    const fields = {
 
-                name.textContent =
-                worker.name || "";
+        name:
+        document.getElementById("wName")
+        .value.trim(),
 
-                item.appendChild(name);
+        country:
+        document.getElementById("wCountry")
+        .value.trim(),
 
-                item.appendChild(
-                    document.createElement("br")
-                );
+        city:
+        document.getElementById("wCity")
+        .value.trim(),
 
-                item.append(
-                    "Country: " +
-                    (worker.country || "")
-                );
+        skill:
+        document.getElementById("wSkill")
+        .value.trim(),
 
-                item.appendChild(
-                    document.createElement("br")
-                );
+        experience:
+        document.getElementById("wExperience")
+        .value.trim(),
 
-                item.append(
-                    "City: " +
-                    (worker.city || "")
-                );
+        phone:
+        document.getElementById("wPhone")
+        .value.trim()
 
-                item.appendChild(
-                    document.createElement("br")
-                );
+    };
 
-                item.append(
-                    "Skill: " +
-                    (worker.skill || "")
-                );
+    const status =
+    document.getElementById("workerStatus");
 
-                item.appendChild(
-                    document.createElement("br")
-                );
+    if(
+        !fields.name ||
+        !fields.country ||
+        !fields.city ||
+        !fields.skill ||
+        !fields.experience ||
+        !fields.phone
+    ){
 
-                item.append(
-                    "Experience: " +
-                    (worker.experience || "")
-                );
+        status.classList.remove("hidden");
+        status.classList.add("error");
 
-                item.appendChild(
-                    document.createElement("br")
-                );
+        status.textContent =
+        "All worker fields are required.";
 
-                item.append(
-                    "Verification: "
-                );
+        return;
 
-                const badge =
-                document.createElement("span");
+    }
 
-                badge.className =
-                "badge";
+    try{
 
-                badge.textContent =
-                worker.verificationStatus ||
-                "pending";
+        await push(
+            ref(database,"p2p_workers"),
+            {
 
-                item.appendChild(badge);
+                name:fields.name,
+                country:fields.country,
+                city:fields.city,
+                skill:fields.skill,
+                experience:fields.experience,
+                phone:fields.phone,
 
-                box.appendChild(item);
+                profilePictureStatus:"pending",
+                idVerificationStatus:"pending",
+                workHistoryStatus:"pending",
+                verificationStatus:"pending",
+
+                accountStatus:"active",
+                complaintCount:0,
+
+                createdAt:Date.now(),
+                updatedAt:Date.now(),
+
+                registeredBy:
+                window.awamUser.uid
 
             }
         );
 
-    },
+        status.classList.remove("hidden");
+        status.classList.remove("error");
 
-    (error)=>{
+        status.textContent =
+        "Worker successfully registered. Verification Pending.";
 
-        console.error(
-            "Worker read error:",
-            error
-        );
+        [
+            "wName",
+            "wCountry",
+            "wCity",
+            "wSkill",
+            "wExperience",
+            "wPhone"
+        ].forEach(id=>{
+            document.getElementById(id).value="";
+        });
 
-        document
-        .getElementById("workerItems")
-        .textContent =
-        "Workers list temporarily unavailable.";
+    }
+    catch(error){
+
+        console.error(error);
+
+        status.classList.remove("hidden");
+        status.classList.add("error");
+
+        status.textContent =
+        "Worker registration failed.";
 
     }
 
-);
+};
 
 
 /* WALLET */
@@ -1328,11 +1561,7 @@ onValue(
 window.loadWallet =
 async function(){
 
-    if(!window.awamUser){
-
-        return;
-
-    }
+    if(!window.awamUser) return;
 
     const walletRef =
     ref(
@@ -1376,30 +1605,30 @@ async function(){
 
         }
 
+        document
+        .getElementById("walletId")
+        .textContent =
+        window.awamUser.uid;
+
     }
     catch(error){
 
         console.error(error);
 
-        const status =
-        document.getElementById(
-            "walletStatus"
+        showStatus(
+            "walletStatus",
+            "Wallet database access failed.",
+            true
         );
-
-        status.classList.remove("hidden");
-        status.classList.add("error");
-
-        status.textContent =
-        "Wallet database access failed.";
 
     }
 
 };
 
 
-/* REGISTER WORKER */
+/* WALLET TRANSACTION */
 
-window.addWorker =
+window.saveWalletTransaction =
 async function(){
 
     if(!window.awamUser){
@@ -1409,134 +1638,212 @@ async function(){
 
     }
 
-
-    const fields = {
-
-        name:
-        document.getElementById("wName").value.trim(),
-
-        country:
-        document.getElementById("wCountry").value.trim(),
-
-        city:
-        document.getElementById("wCity").value.trim(),
-
-        skill:
-        document.getElementById("wSkill").value.trim(),
-
-        experience:
-        document.getElementById("wExperience").value.trim(),
-
-        phone:
-        document.getElementById("wPhone").value.trim()
-
-    };
-
-
-    const status =
-    document.getElementById(
-        "workerStatus"
+    const amount =
+    Number(
+        document.getElementById(
+            "walletAmount"
+        ).value
     );
 
+    const type =
+    document.getElementById(
+        "walletTransactionType"
+    ).value;
+
+    const description =
+    document.getElementById(
+        "walletDescription"
+    ).value.trim();
 
     if(
-        !fields.name ||
-        !fields.country ||
-        !fields.city ||
-        !fields.skill ||
-        !fields.experience ||
-        !fields.phone
+        !amount ||
+        amount <= 0 ||
+        !type ||
+        !description
     ){
 
-        status.classList.remove("hidden");
-        status.classList.add("error");
-
-        status.textContent =
-        "All worker fields are required.";
+        showStatus(
+            "walletStatus",
+            "Amount, type aur description required hain.",
+            true
+        );
 
         return;
 
     }
 
+    const walletRef =
+    ref(
+        database,
+        "wallets/" +
+        window.awamUser.uid
+    );
 
     try{
 
-        await push(
-            ref(database,"p2p_workers"),
+        const snapshot =
+        await get(walletRef);
+
+        const wallet =
+        snapshot.exists()
+        ? snapshot.val()
+        : {balance:0,currency:"PKR"};
+
+        let balance =
+        Number(wallet.balance || 0);
+
+        if(type === "debit"){
+
+            if(amount > balance){
+
+                showStatus(
+                    "walletStatus",
+                    "Insufficient internal wallet balance.",
+                    true
+                );
+
+                return;
+
+            }
+
+            balance -= amount;
+
+        }
+        else{
+
+            balance += amount;
+
+        }
+
+        await update(
+            walletRef,
             {
-
-                name:fields.name,
-
-                country:fields.country,
-
-                city:fields.city,
-
-                skill:fields.skill,
-
-                experience:fields.experience,
-
-                phone:fields.phone,
-
-                profilePictureStatus:"pending",
-
-                idVerificationStatus:"pending",
-
-                workHistoryStatus:"pending",
-
-                verificationStatus:"pending",
-
-                accountStatus:"active",
-
-                complaintCount:0,
-
-                createdAt:Date.now(),
-
-                updatedAt:Date.now(),
-
-                registeredBy:
-                window.awamUser.uid
-
+                balance:balance,
+                currency:"PKR",
+                updatedAt:Date.now()
             }
         );
 
+        await push(
+            ref(
+                database,
+                "wallet_ledger/" +
+                window.awamUser.uid
+            ),
+            {
+                type:type,
+                amount:amount,
+                description:description,
+                balanceAfter:balance,
+                createdAt:Date.now()
+            }
+        );
 
-        status.classList.remove("hidden");
-        status.classList.remove("error");
+        document
+        .getElementById("walletAmount")
+        .value="";
 
-        status.textContent =
-        "Worker successfully registered. Verification Pending.";
+        document
+        .getElementById("walletDescription")
+        .value="";
 
+        await loadWallet();
+        loadWalletLedger();
 
-        [
-            "wName",
-            "wCountry",
-            "wCity",
-            "wSkill",
-            "wExperience",
-            "wPhone"
-        ].forEach(id=>{
-            document.getElementById(id).value="";
-        });
+        showStatus(
+            "walletStatus",
+            "Internal wallet transaction saved.",
+            false
+        );
 
     }
     catch(error){
 
         console.error(error);
 
-        status.classList.remove("hidden");
-        status.classList.add("error");
-
-        status.textContent =
-        "Worker registration failed.";
+        showStatus(
+            "walletStatus",
+            "Wallet transaction failed.",
+            true
+        );
 
     }
 
 };
 
 
-/* ZAKAT */
+/* WALLET LEDGER */
 
-window.submitZakat =
+function loadWalletLedger(){
+
+    if(!window.awamUser) return;
+
+    const ledgerRef =
+    ref(
+        database,
+        "wallet_ledger/" +
+        window.awamUser.uid
+    );
+
+    onValue(
+    ledgerRef,
+    snapshot=>{
+
+        const box =
+        document.getElementById(
+            "walletLedger"
+        );
+
+        box.innerHTML="";
+
+        if(!snapshot.exists()){
+
+            box.textContent =
+            "No transactions yet.";
+
+            return;
+
+        }
+
+        snapshot.forEach(
+        child=>{
+
+            const data =
+            child.val();
+
+            const item =
+            document.createElement("div");
+
+            item.className="item";
+
+            item.innerHTML =
+            "<strong>" +
+            escapeHTML(data.type) +
+            "</strong><br>" +
+
+            "Amount: " +
+            escapeHTML(data.amount) +
+            " PKR<br>" +
+
+            "Description: " +
+            escapeHTML(data.description) +
+            "<br>" +
+
+            "Balance After: " +
+            escapeHTML(data.balanceAfter);
+
+            box.appendChild(item);
+
+        });
+
+    });
+
+}
+
+
+/* MARKETPLACE */
+
+window.addProduct =
 async function(){
 
     if(!window.awamUser){
@@ -1546,37 +1853,388 @@ async function(){
 
     }
 
-
-    const data = {
+    const data={
 
         name:
         document.getElementById(
-            "zakatName"
-        ).value.trim(),
-
-        country:
-        document.getElementById(
-            "zakatCountry"
-        ).value.trim(),
-
-        city:
-        document.getElementById(
-            "zakatCity"
+            "productName"
         ).value.trim(),
 
         type:
         document.getElementById(
-            "zakatType"
+            "productType"
         ).value,
 
-        amount:
+        price:
         Number(
             document.getElementById(
-                "zakatAmount"
+                "productPrice"
             ).value || 0
         ),
 
-        status:"pending",
+        location:
+        document.getElementById(
+            "productLocation"
+        ).value.trim(),
+
+        description:
+        document.getElementById(
+            "productDescription"
+        ).value.trim(),
+
+        sellerId:
+        window.awamUser.uid,
+
+        sellerEmail:
+        window.awamUser.email || "",
+
+        status:"active",
+
+        createdAt:Date.now(),
+
+        updatedAt:Date.now()
+
+    };
+
+    if(
+        !data.name ||
+        !data.type ||
+        !data.location ||
+        !data.description
+    ){
+
+        showStatus(
+            "productStatus",
+            "Product/service ki tamam required information dein.",
+            true
+        );
+
+        return;
+
+    }
+
+    try{
+
+        await push(
+            ref(database,"marketplace_listings"),
+            data
+        );
+
+        [
+            "productName",
+            "productPrice",
+            "productLocation",
+            "productDescription"
+        ].forEach(id=>{
+            document.getElementById(id).value="";
+        });
+
+        document.getElementById(
+            "productType"
+        ).value="";
+
+        showStatus(
+            "productStatus",
+            "Listing successfully published.",
+            false
+        );
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        showStatus(
+            "productStatus",
+            "Listing save failed.",
+            true
+        );
+
+    }
+
+};
+
+
+/* MARKETPLACE LIVE LIST */
+
+function loadProducts(){
+
+    const listingsRef =
+    ref(
+        database,
+        "marketplace_listings"
+    );
+
+    onValue(
+    listingsRef,
+    snapshot=>{
+
+        const box =
+        document.getElementById(
+            "productItems"
+        );
+
+        box.innerHTML="";
+
+        if(!snapshot.exists()){
+
+            box.textContent =
+            "Abhi koi live listing nahi.";
+
+            return;
+
+        }
+
+        snapshot.forEach(
+        child=>{
+
+            const data =
+            child.val();
+
+            if(data.status !== "active")
+                return;
+
+            const item =
+            document.createElement("div");
+
+            item.className="item";
+
+            item.innerHTML =
+            "<strong>" +
+            escapeHTML(data.name) +
+            "</strong><br>" +
+
+            "Type: " +
+            escapeHTML(data.type) +
+            "<br>" +
+
+            "Price: " +
+            escapeHTML(data.price) +
+            " PKR<br>" +
+
+            "Location: " +
+            escapeHTML(data.location) +
+            "<br>" +
+
+            "Description: " +
+            escapeHTML(data.description) +
+            "<br>" +
+
+            "Seller: " +
+            escapeHTML(data.sellerEmail) +
+            "<br>" +
+
+            "Listing ID: " +
+            escapeHTML(child.key);
+
+            box.appendChild(item);
+
+        });
+
+    });
+
+}
+
+
+/* BUYER REQUEST */
+
+window.createBuyerRequest =
+async function(){
+
+    if(!window.awamUser){
+
+        alert("Please login first.");
+        return;
+
+    }
+
+    const listingId =
+    document.getElementById(
+        "buyerListingId"
+    ).value.trim();
+
+    const message =
+    document.getElementById(
+        "buyerMessage"
+    ).value.trim();
+
+    if(!listingId || !message){
+
+        showStatus(
+            "buyerStatus",
+            "Listing ID aur request message required hain.",
+            true
+        );
+
+        return;
+
+    }
+
+    try{
+
+        await push(
+            ref(database,"buyer_requests"),
+            {
+
+                listingId:listingId,
+
+                buyerId:
+                window.awamUser.uid,
+
+                buyerEmail:
+                window.awamUser.email || "",
+
+                message:message,
+
+                status:"pending",
+
+                createdAt:Date.now()
+
+            }
+        );
+
+        document.getElementById(
+            "buyerListingId"
+        ).value="";
+
+        document.getElementById(
+            "buyerMessage"
+        ).value="";
+
+        showStatus(
+            "buyerStatus",
+            "Buyer request successfully submitted.",
+            false
+        );
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        showStatus(
+            "buyerStatus",
+            "Buyer request failed.",
+            true
+        );
+
+    }
+
+};
+
+
+/* EDUCATION LESSONS */
+
+window.showLesson =
+function(){
+
+    const lesson =
+    document.getElementById(
+        "lessonSelect"
+    ).value;
+
+    const box =
+    document.getElementById(
+        "lessonContent"
+    );
+
+    const lessons={
+
+        computer:
+        "<strong>Computer Basics</strong><br>" +
+        "Computer ek electronic system hai jo data ko process karta hai. " +
+        "CPU computer ka main processing unit hai.",
+
+        internet:
+        "<strong>Internet Basics</strong><br>" +
+        "Internet duniya bhar ke connected computers aur networks ka system hai. " +
+        "Is se information, communication aur online services use ki jati hain.",
+
+        ai:
+        "<strong>Artificial Intelligence</strong><br>" +
+        "AI machines ko data se learning aur intelligent tasks perform karne mein help karta hai.",
+
+        freelancing:
+        "<strong>Freelancing Basics</strong><br>" +
+        "Freelancing mein client ke liye online services provide ki jati hain, " +
+        jaise data entry, typing, design aur digital support."
+
+    };
+
+    box.innerHTML =
+    lessons[lesson] ||
+    "Lesson select karein.";
+
+};
+
+
+/* EXAM */
+
+window.submitExam =
+async function(){
+
+    if(!window.awamUser){
+
+        alert("Please login first.");
+        return;
+
+    }
+
+    const student =
+    document.getElementById(
+        "studentName"
+    ).value.trim();
+
+    const question =
+    document.getElementById(
+        "examQuestion"
+    ).value;
+
+    const answer =
+    document.getElementById(
+        "examAnswer"
+    ).value;
+
+    const result =
+    document.getElementById(
+        "examResult"
+    );
+
+    if(!student || !question || !answer){
+
+        result.classList.remove("hidden");
+        result.classList.add("error");
+
+        result.textContent =
+        "Please complete the exam.";
+
+        return;
+
+    }
+
+    const correctAnswers={
+
+        cpu:"CPU",
+        internet:"Internet",
+        ai:"AI"
+
+    };
+
+    const correct =
+    correctAnswers[question] === answer;
+
+    const examData={
+
+        studentName:student,
+        question:question,
+        answer:answer,
+        correct:correct,
+
+        result:
+        correct ? "PASS" : "FAIL",
+
+        score:
+        correct ? 100 : 0,
 
         createdAt:Date.now(),
 
@@ -1585,61 +2243,284 @@ async function(){
 
     };
 
-
-    const status =
-    document.getElementById(
-        "zakatStatus"
-    );
-
-
-    if(
-        !data.name ||
-        !data.country ||
-        !data.city ||
-        !data.type
-    ){
-
-        status.classList.remove("hidden");
-        status.classList.add("error");
-
-        status.textContent =
-        "Please complete Zakat information.";
-
-        return;
-
-    }
-
-
     try{
 
         await push(
-            ref(database,"zakat_requests"),
-            data
+            ref(database,"exam_results"),
+            examData
         );
 
-        status.classList.remove("hidden");
-        status.classList.remove("error");
+        result.classList.remove("hidden");
+        result.classList.remove("error");
 
-        status.textContent =
-        "Zakat request successfully submitted.";
+        result.textContent =
+        correct
+        ? "🎉 PASS — Score 100%"
+        : "❌ FAIL — Score 0%";
+
+        loadExamHistory();
 
     }
     catch(error){
 
         console.error(error);
 
-        status.classList.remove("hidden");
-        status.classList.add("error");
+        result.classList.remove("hidden");
+        result.classList.add("error");
 
-        status.textContent =
-        "Zakat submission failed.";
+        result.textContent =
+        "Exam result save failed.";
 
     }
 
 };
 
 
-/* NGO */
+/* EXAM HISTORY */
+
+function loadExamHistory(){
+
+    if(!window.awamUser) return;
+
+    const examRef =
+    ref(database,"exam_results");
+
+    onValue(
+    examRef,
+    snapshot=>{
+
+        const box =
+        document.getElementById(
+            "examHistory"
+        );
+
+        box.innerHTML="";
+
+        if(!snapshot.exists()){
+
+            box.textContent =
+            "No exam result yet.";
+
+            return;
+
+        }
+
+        let found=false;
+
+        snapshot.forEach(
+        child=>{
+
+            const data =
+            child.val();
+
+            if(
+                data.userId !==
+                window.awamUser.uid
+            ) return;
+
+            found=true;
+
+            const item =
+            document.createElement("div");
+
+            item.className="item";
+
+            item.innerHTML =
+            "<strong>" +
+            escapeHTML(data.result) +
+            "</strong><br>" +
+
+            "Question: " +
+            escapeHTML(data.question) +
+            "<br>" +
+
+            "Score: " +
+            escapeHTML(data.score) +
+            "%";
+
+            box.appendChild(item);
+
+        });
+
+        if(!found){
+
+            box.textContent =
+            "No personal exam result yet.";
+
+        }
+
+    });
+
+}
+
+
+/* AI SUPPORT */
+
+window.askAI =
+async function(){
+
+    if(!window.awamUser){
+
+        alert("Please login first.");
+        return;
+
+    }
+
+    const question =
+    document.getElementById(
+        "aiQuestion"
+    ).value.trim();
+
+    const answer =
+    document.getElementById(
+        "aiAnswer"
+    );
+
+    if(!question){
+
+        answer.classList.remove("hidden");
+
+        answer.textContent =
+        "Please apna sawal likhein.";
+
+        return;
+
+    }
+
+    const localAnswer =
+    "Aapka sawal receive ho gaya hai. " +
+    "Awam Network AI Support request Firebase " +
+    "mein save ho gayi hai. Real AI API ko secure " +
+    "backend ke through connect kiya ja sakta hai.";
+
+    try{
+
+        await push(
+            ref(database,"ai_support_requests"),
+            {
+
+                question:question,
+
+                answer:localAnswer,
+
+                userId:
+                window.awamUser.uid,
+
+                userEmail:
+                window.awamUser.email || "",
+
+                status:"received",
+
+                createdAt:Date.now()
+
+            }
+        );
+
+        answer.classList.remove("hidden");
+
+        answer.innerHTML =
+        "<strong>🤖 Awam Network AI Support</strong>" +
+        "<br><br>" +
+        escapeHTML(localAnswer);
+
+        document.getElementById(
+            "aiQuestion"
+        ).value="";
+
+        loadAIHistory();
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        answer.classList.remove("hidden");
+        answer.classList.add("error");
+
+        answer.textContent =
+        "AI support request save failed.";
+
+    }
+
+};
+
+
+/* AI HISTORY */
+
+function loadAIHistory(){
+
+    if(!window.awamUser) return;
+
+    const aiRef =
+    ref(
+        database,
+        "ai_support_requests"
+    );
+
+    onValue(
+    aiRef,
+    snapshot=>{
+
+        const box =
+        document.getElementById(
+            "aiHistory"
+        );
+
+        box.innerHTML="";
+
+        if(!snapshot.exists()){
+
+            box.textContent =
+            "No support history.";
+
+            return;
+
+        }
+
+        let found=false;
+
+        snapshot.forEach(
+        child=>{
+
+            const data =
+            child.val();
+
+            if(
+                data.userId !==
+                window.awamUser.uid
+            ) return;
+
+            found=true;
+
+            const item =
+            document.createElement("div");
+
+            item.className="item";
+
+            item.innerHTML =
+            "<strong>Question:</strong><br>" +
+            escapeHTML(data.question) +
+            "<br><br>" +
+            "<strong>Response:</strong><br>" +
+            escapeHTML(data.answer);
+
+            box.appendChild(item);
+
+        });
+
+        if(!found){
+
+            box.textContent =
+            "No support history.";
+
+        }
+
+    });
+
+}
+
+
+/* NGO REGISTRATION */
 
 window.registerNGO =
 async function(){
@@ -1651,8 +2532,7 @@ async function(){
 
     }
 
-
-    const data = {
+    const data={
 
         name:
         document.getElementById(
@@ -1688,13 +2568,6 @@ async function(){
 
     };
 
-
-    const status =
-    document.getElementById(
-        "ngoStatus"
-    );
-
-
     if(
         !data.name ||
         !data.leader ||
@@ -1703,16 +2576,15 @@ async function(){
         !data.work
     ){
 
-        status.classList.remove("hidden");
-        status.classList.add("error");
-
-        status.textContent =
-        "Please complete all NGO information.";
+        showStatus(
+            "ngoStatus",
+            "Please complete all NGO information.",
+            true
+        );
 
         return;
 
     }
-
 
     try{
 
@@ -1721,31 +2593,46 @@ async function(){
             data
         );
 
-        status.classList.remove("hidden");
-        status.classList.remove("error");
+        [
+            "ngoName",
+            "ngoLeader",
+            "ngoPhone",
+            "ngoEmail"
+        ].forEach(id=>{
+            document.getElementById(id).value="";
+        });
 
-        status.textContent =
-        "NGO registration submitted successfully.";
+        document.getElementById(
+            "ngoWork"
+        ).value="";
+
+        showStatus(
+            "ngoStatus",
+            "NGO registration submitted successfully.",
+            false
+        );
+
+        loadWelfareHistory();
 
     }
     catch(error){
 
         console.error(error);
 
-        status.classList.remove("hidden");
-        status.classList.add("error");
-
-        status.textContent =
-        "NGO registration failed.";
+        showStatus(
+            "ngoStatus",
+            "NGO registration failed.",
+            true
+        );
 
     }
 
 };
 
 
-/* EDUCATION / AI EXAM */
+/* WELFARE REQUEST */
 
-window.submitExam =
+window.submitWelfareRequest =
 async function(){
 
     if(!window.awamUser){
@@ -1755,77 +2642,29 @@ async function(){
 
     }
 
+    const data={
 
-    const student =
-    document.getElementById(
-        "studentName"
-    ).value.trim();
+        category:
+        document.getElementById(
+            "welfareCategory"
+        ).value,
 
-    const question =
-    document.getElementById(
-        "examQuestion"
-    ).value;
+        country:
+        document.getElementById(
+            "welfareCountry"
+        ).value.trim(),
 
-    const answer =
-    document.getElementById(
-        "examAnswer"
-    ).value;
+        city:
+        document.getElementById(
+            "welfareCity"
+        ).value.trim(),
 
+        details:
+        document.getElementById(
+            "welfareDetails"
+        ).value.trim(),
 
-    const result =
-    document.getElementById(
-        "examResult"
-    );
-
-
-    if(!student || !question || !answer){
-
-        result.classList.remove("hidden");
-        result.classList.add("error");
-
-        result.textContent =
-        "Please complete the exam.";
-
-        return;
-
-    }
-
-
-    let correct = false;
-
-
-    if(
-        question === "cpu" &&
-        answer === "CPU"
-    ){
-
-        correct = true;
-
-    }
-
-
-    if(
-        question === "internet" &&
-        answer === "Internet"
-    ){
-
-        correct = true;
-
-    }
-
-
-    const examData = {
-
-        studentName:student,
-
-        question:question,
-
-        answer:answer,
-
-        correct:correct,
-
-        result:
-        correct ? "PASS" : "FAIL",
+        status:"pending",
 
         createdAt:Date.now(),
 
@@ -1834,79 +2673,351 @@ async function(){
 
     };
 
+    if(
+        !data.category ||
+        !data.country ||
+        !data.city ||
+        !data.details
+    ){
+
+        showStatus(
+            "welfareStatus",
+            "Welfare request ki tamam information dein.",
+            true
+        );
+
+        return;
+
+    }
 
     try{
 
         await push(
-            ref(database,"exam_results"),
-            examData
+            ref(database,"welfare_requests"),
+            data
         );
 
+        document.getElementById(
+            "welfareDetails"
+        ).value="";
 
-        result.classList.remove("hidden");
-        result.classList.remove("error");
+        showStatus(
+            "welfareStatus",
+            "Welfare request successfully submitted.",
+            false
+        );
 
-        result.textContent =
-        correct
-        ? "🎉 PASS — Answer correct."
-        : "❌ FAIL — Answer incorrect.";
+        loadWelfareHistory();
 
     }
     catch(error){
 
         console.error(error);
 
-        result.classList.remove("hidden");
-        result.classList.add("error");
-
-        result.textContent =
-        "Exam result save failed.";
+        showStatus(
+            "welfareStatus",
+            "Welfare request failed.",
+            true
+        );
 
     }
 
 };
 
 
-/* AI SUPPORT */
+/* ZAKAT */
 
-window.askAI =
-function(){
+window.submitZakat =
+async function(){
 
-    const question =
+    if(!window.awamUser){
+
+        alert("Please login first.");
+        return;
+
+    }
+
+    const data={
+
+        name:
+        document.getElementById(
+            "zakatName"
+        ).value.trim(),
+
+        country:
+        document.getElementById(
+            "zakatCountry"
+        ).value.trim(),
+
+        city:
+        document.getElementById(
+            "zakatCity"
+        ).value.trim(),
+
+        type:
+        document.getElementById(
+            "zakatType"
+        ).value,
+
+        amount:
+        Number(
+            document.getElementById(
+                "zakatAmount"
+            ).value || 0
+        ),
+
+        purpose:
+        document.getElementById(
+            "zakatPurpose"
+        ).value.trim(),
+
+        details:
+        document.getElementById(
+            "zakatDetails"
+        ).value.trim(),
+
+        status:"pending",
+
+        createdAt:Date.now(),
+
+        userId:
+        window.awamUser.uid
+
+    };
+
+    const status =
     document.getElementById(
-        "aiQuestion"
-    ).value.trim();
-
-    const answer =
-    document.getElementById(
-        "aiAnswer"
+        "zakatStatus"
     );
 
+    if(
+        !data.name ||
+        !data.country ||
+        !data.city ||
+        !data.type ||
+        !data.purpose
+    ){
 
-    if(!question){
-
-        answer.classList.remove("hidden");
-
-        answer.textContent =
-        "Please apna sawal likhein.";
+        showStatus(
+            "zakatStatus",
+            "Please complete Zakat information.",
+            true
+        );
 
         return;
 
     }
 
+    if(
+        data.type === "donor" &&
+        data.amount <= 0
+    ){
 
-    answer.classList.remove("hidden");
+        showStatus(
+            "zakatStatus",
+            "Donor ke liye amount required hai.",
+            true
+        );
 
-    answer.innerHTML =
-    "<strong>🤖 Awam Network AI Support</strong>" +
-    "<br><br>" +
-    "Aapka sawal receive ho gaya hai." +
-    "<br>" +
-    "Real AI engine ko secure backend/API ke " +
-    "through next development stage mein connect " +
-    "kiya jayega.";
+        return;
+
+    }
+
+    try{
+
+        await push(
+            ref(database,"zakat_requests"),
+            data
+        );
+
+        [
+            "zakatName",
+            "zakatCountry",
+            "zakatCity",
+            "zakatAmount",
+            "zakatPurpose",
+            "zakatDetails"
+        ].forEach(id=>{
+            document.getElementById(id).value="";
+        });
+
+        document.getElementById(
+            "zakatType"
+        ).value="";
+
+        showStatus(
+            "zakatStatus",
+            "Zakat record successfully submitted.",
+            false
+        );
+
+        loadWelfareHistory();
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        showStatus(
+            "zakatStatus",
+            "Zakat submission failed.",
+            true
+        );
+
+    }
 
 };
+
+
+/* WELFARE + ZAKAT HISTORY */
+
+function loadWelfareHistory(){
+
+    if(!window.awamUser) return;
+
+    const box =
+    document.getElementById(
+        "welfareHistory"
+    );
+
+    box.textContent =
+    "Loading records...";
+
+    Promise.all([
+
+        get(
+            ref(database,"welfare_requests")
+        ),
+
+        get(
+            ref(database,"zakat_requests")
+        )
+
+    ])
+    .then(([welfareSnap,zakatSnap])=>{
+
+        box.innerHTML="";
+
+        let found=false;
+
+        if(welfareSnap.exists()){
+
+            welfareSnap.forEach(
+            child=>{
+
+                const data =
+                child.val();
+
+                if(
+                    data.userId !==
+                    window.awamUser.uid
+                ) return;
+
+                found=true;
+
+                const item =
+                document.createElement("div");
+
+                item.className="item";
+
+                item.innerHTML =
+                "<strong>🤝 Welfare Request</strong><br>" +
+                "Category: " +
+                escapeHTML(data.category) +
+                "<br>" +
+                "Status: " +
+                escapeHTML(data.status);
+
+                box.appendChild(item);
+
+            });
+
+        }
+
+        if(zakatSnap.exists()){
+
+            zakatSnap.forEach(
+            child=>{
+
+                const data =
+                child.val();
+
+                if(
+                    data.userId !==
+                    window.awamUser.uid
+                ) return;
+
+                found=true;
+
+                const item =
+                document.createElement("div");
+
+                item.className="item";
+
+                item.innerHTML =
+                "<strong>🌍 Zakat Record</strong><br>" +
+                "Type: " +
+                escapeHTML(data.type) +
+                "<br>" +
+                "Amount: " +
+                escapeHTML(data.amount) +
+                " PKR<br>" +
+                "Purpose: " +
+                escapeHTML(data.purpose) +
+                "<br>" +
+                "Status: " +
+                escapeHTML(data.status);
+
+                box.appendChild(item);
+
+            });
+
+        }
+
+        if(!found){
+
+            box.textContent =
+            "Abhi koi personal welfare/zakat record nahi.";
+
+        }
+
+    })
+    .catch(error=>{
+
+        console.error(error);
+
+        box.textContent =
+        "Records temporarily unavailable.";
+
+    });
+
+}
+
+
+/* STATUS HELPER */
+
+function showStatus(
+    id,
+    message,
+    isError
+){
+
+    const element =
+    document.getElementById(id);
+
+    if(!element) return;
+
+    element.classList.remove("hidden");
+
+    element.classList.toggle(
+        "error",
+        Boolean(isError)
+    );
+
+    element.textContent =
+    message;
+
+}
 
 
 /* NAVIGATION */
@@ -1915,17 +3026,15 @@ window.openSection =
 function(id){
 
     document
-    .querySelectorAll("#mainHub .card")
+    .querySelectorAll(
+        "#mainHub .card"
+    )
     .forEach(card=>{
-
         card.classList.add("hidden");
-
     });
-
 
     const section =
     document.getElementById(id);
-
 
     if(section){
 
@@ -1938,32 +3047,56 @@ function(id){
 
     }
 
-
     if(id === "wallet"){
 
-        window.loadWallet();
+        loadWallet();
+        loadWalletLedger();
+
+    }
+
+    if(id === "shop"){
+
+        loadProducts();
+
+    }
+
+    if(id === "education"){
+
+        loadExamHistory();
+
+    }
+
+    if(id === "ai"){
+
+        loadAIHistory();
+
+    }
+
+    if(id === "ngo"){
+
+        loadWelfareHistory();
 
     }
 
 };
 
 
+/* HOME */
+
 window.goHome =
 function(){
 
     document
-    .querySelectorAll("#mainHub .card")
+    .querySelectorAll(
+        "#mainHub .card"
+    )
     .forEach(card=>{
-
         card.classList.add("hidden");
-
     });
-
 
     document
     .getElementById("homeCard")
     .classList.remove("hidden");
-
 
     window.scrollTo({
         top:0,
@@ -1976,4 +3109,3 @@ function(){
 
 </body>
 </html>
-
