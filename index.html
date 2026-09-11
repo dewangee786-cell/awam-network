@@ -1,92 +1,179 @@
 ```html
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>International Awam Network Hub — Awam Network</title>
+<title>International Awam Network Hub</title>
 
-<meta name="description" content="International Awam Network Hub — Bila Sood Khudkaar Nizam">
+<meta name="description" content="International Awam Network Hub — Secure Digital Community Services">
 <meta name="author" content="Dewan Israr Ahmad Faridi">
-<meta name="theme-color" content="#198754">
+<meta name="theme-color" content="#0f5132">
 
 <style>
 *{
     box-sizing:border-box;
 }
 
-body{
+html,body{
     margin:0;
-    background:#eef3f1;
+    padding:0;
+    min-height:100%;
+}
+
+body{
+    background:#eef4f1;
     color:#222;
     font-family:Arial,"Noto Nastaliq Urdu",sans-serif;
 }
 
 .container{
     width:100%;
-    max-width:760px;
+    max-width:780px;
     margin:auto;
-    padding:15px;
+    padding:14px;
 }
 
-.header{
-    background:linear-gradient(135deg,#198754,#0f5132);
-    color:white;
-    padding:25px 18px;
-    border-radius:20px;
+.hidden{
+    display:none !important;
+}
+
+/* LOGIN */
+
+#loginScreen{
+    margin-top:30px;
+}
+
+.login-box{
+    background:white;
+    border:2px solid #d4af37;
+    border-radius:22px;
+    padding:28px 18px;
     text-align:center;
-    box-shadow:0 6px 20px rgba(0,0,0,.15);
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+
+.vip{
+    color:#b8860b;
+    font-weight:bold;
+    letter-spacing:1px;
+    font-size:14px;
+}
+
+.login-title{
+    color:#0f5132;
+    font-size:26px;
+    font-weight:bold;
+    margin:10px 0;
+}
+
+.google-btn{
+    width:100%;
+    background:white;
+    border:1px solid #bbb;
+    padding:14px;
+    border-radius:12px;
+    font-weight:bold;
+    font-size:16px;
+    margin-top:14px;
+    cursor:pointer;
+}
+
+/* HEADER */
+
+.header{
+    background:linear-gradient(135deg,#0f5132,#198754);
+    color:white;
+    padding:25px 15px;
+    border-radius:22px;
+    text-align:center;
+    box-shadow:0 7px 22px rgba(0,0,0,.15);
+}
+
+.header-icon{
+    font-size:48px;
+}
+
+.header-vip{
+    color:#ffd966;
+    font-weight:bold;
+    letter-spacing:1px;
+    font-size:14px;
 }
 
 .header h1{
-    margin:5px 0;
-    font-size:29px;
+    margin:7px 0;
+    font-size:28px;
 }
 
-.header p{
-    margin:8px 0 0;
-    font-size:16px;
-}
-
-.vip-title{
-    color:#d4af37;
-    font-weight:bold;
-    font-size:14px;
-    letter-spacing:1px;
-}
-
-.founder{
-    margin-top:15px;
-    padding:18px;
-    background:linear-gradient(135deg,#d4af37,#98730d);
-    color:white;
-    border-radius:18px;
-    text-align:center;
-}
-
-.founder h2{
-    margin:8px 0 3px;
+.header h2{
+    margin:4px 0;
     font-size:21px;
 }
 
-.card{
-    background:white;
-    margin-top:15px;
-    padding:18px;
+/* FOUNDER */
+
+.founder{
+    margin-top:14px;
+    background:linear-gradient(135deg,#b8860b,#d4af37);
+    color:white;
+    padding:17px;
     border-radius:18px;
-    box-shadow:0 4px 15px rgba(0,0,0,.09);
+    text-align:center;
 }
 
-.section-title{
+.founder strong{
+    font-size:13px;
+}
+
+.founder h3{
+    margin:7px 0 3px;
+    font-size:20px;
+}
+
+/* ACCOUNT */
+
+.account{
+    margin-top:14px;
+    background:white;
+    border:2px solid #d4af37;
+    border-radius:17px;
+    padding:14px;
     text-align:center;
-    margin:5px 0 15px;
+}
+
+.email{
+    direction:ltr;
+    color:#666;
+    font-size:13px;
+    margin:6px 0 10px;
+}
+
+/* CARDS */
+
+.card{
+    background:white;
+    margin-top:14px;
+    padding:18px;
+    border-radius:18px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.info{
+    background:#f7f9f8;
+    border:1px solid #dfe5e2;
+    padding:14px;
+    border-radius:12px;
+    line-height:1.8;
+    margin-top:10px;
 }
 
 .menu{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:12px;
+    gap:11px;
+    margin-top:15px;
 }
 
 .menu button{
@@ -94,157 +181,109 @@ body{
     border:0;
     border-radius:16px;
     color:white;
-    font-size:15px;
+    font-size:14px;
     font-weight:bold;
     cursor:pointer;
     padding:12px;
 }
 
-.btn-green{background:#198754;}
-.btn-blue{background:#0d6efd;}
-.btn-orange{background:#fd7e14;}
-.btn-purple{background:#6f42c1;}
-.btn-dark{background:#212529;}
-.btn-gold{background:#b8860b;}
+.green{background:#198754;}
+.blue{background:#0d6efd;}
+.orange{background:#fd7e14;}
+.purple{background:#6f42c1;}
+.dark{background:#212529;}
+.gold{background:#b8860b;}
 
-button{
-    border:0;
+.back{
+    width:100%;
+    margin-top:14px;
+    background:#212529;
+    color:white;
+}
+
+/* FORMS */
+
+input,textarea,select{
+    width:100%;
+    padding:12px;
+    margin-top:9px;
+    border:1px solid #ccc;
     border-radius:10px;
-    padding:12px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-input,
-textarea{
     font-family:Arial,"Noto Nastaliq Urdu",sans-serif;
 }
 
-input:focus,
-textarea:focus{
+input:focus,textarea:focus,select:focus{
     outline:2px solid #198754;
-    border-color:#198754;
 }
 
-.info{
-    background:#f8f9fa;
-    border:1px solid #ddd;
-    padding:14px;
-    border-radius:12px;
+.action{
+    width:100%;
+    color:white;
     margin-top:12px;
-    line-height:1.8;
 }
 
 .status{
-    text-align:center;
-    padding:12px;
+    margin-top:12px;
+    padding:11px;
+    border-radius:10px;
     background:#e8f5e9;
-    border-radius:12px;
-    margin-top:15px;
     color:#146c43;
+    text-align:center;
     font-weight:bold;
 }
 
-.error-status{
+.error{
     background:#fdecea;
     color:#b02a37;
 }
 
-.worker-box{
-    background:#fff;
+.item{
+    background:white;
     border:1px solid #ddd;
-    padding:14px;
     border-radius:12px;
+    padding:13px;
     margin-top:10px;
-    line-height:1.8;
+    line-height:1.7;
 }
 
-.worker-title{
-    font-size:18px;
-    font-weight:bold;
+.item strong{
     color:#198754;
 }
 
 .badge{
     display:inline-block;
-    padding:4px 9px;
-    border-radius:8px;
+    padding:4px 8px;
+    border-radius:7px;
     background:#fff3cd;
     color:#664d03;
     font-size:12px;
     font-weight:bold;
 }
 
-.account{
-    background:#ffffff;
-    border:2px solid #d4af37;
-    border-radius:16px;
-    padding:14px;
-    margin-top:15px;
-    text-align:center;
-}
-
-.account-email{
-    font-size:13px;
-    color:#666;
-    margin:6px 0 10px;
-    direction:ltr;
-}
-
-.login-box{
-    background:linear-gradient(135deg,#ffffff,#f4f8f6);
-    border:2px solid #d4af37;
-    border-radius:20px;
-    padding:25px 18px;
-    margin-top:15px;
-    text-align:center;
-    box-shadow:0 5px 18px rgba(0,0,0,.10);
-}
-
-.login-box h2{
-    margin:5px 0 10px;
-    color:#0f5132;
-}
-
-.google-btn{
-    width:100%;
-    background:#fff;
-    color:#222;
-    border:1px solid #ccc;
-    box-shadow:0 2px 7px rgba(0,0,0,.12);
-    font-size:15px;
-    margin-top:12px;
-}
-
-.google-btn:hover{
-    background:#f5f5f5;
-}
-
-.hidden{
-    display:none !important;
-}
-
 .footer{
     text-align:center;
+    color:#777;
+    font-size:12px;
     padding:25px 10px;
-    color:#666;
-    font-size:13px;
 }
 
 @media(max-width:480px){
 
-    .menu{
-        grid-template-columns:1fr 1fr;
-        gap:9px;
-    }
-
-    .menu button{
-        min-height:90px;
-        font-size:13px;
+    .container{
+        padding:10px;
     }
 
     .header h1{
         font-size:24px;
+    }
+
+    .menu{
+        gap:8px;
+    }
+
+    .menu button{
+        min-height:88px;
+        font-size:13px;
     }
 }
 </style>
@@ -254,656 +293,796 @@ textarea:focus{
 
 <div class="container">
 
-<!-- LOGIN SCREEN -->
+<!-- =====================================================
+     LOGIN
+===================================================== -->
 
 <div id="loginScreen" class="login-box">
 
-<div style="font-size:55px;">🌐</div>
+    <div style="font-size:55px;">🌐</div>
 
-<div class="vip-title">
-VIP INTERNATIONAL NETWORK
-</div>
+    <div class="vip">
+        VIP INTERNATIONAL NETWORK
+    </div>
 
-<h2>International Awam Network Hub</h2>
+    <div class="login-title">
+        International Awam Network Hub
+    </div>
 
-<p>
-Bila Sood Khudkaar Nizam
-</p>
+    <p>
+        Secure Digital Community Platform
+    </p>
 
-<div class="info">
-🔐 Hub access ke liye Firebase authenticated
-Google account se login karein.
-</div>
+    <div class="info">
+        🔐 Hub access ke liye Google account se login karein.
+    </div>
 
-<button
-id="googleLoginBtn"
-class="google-btn">
-🔐 Continue with Google
-</button>
+    <button id="googleLoginBtn" class="google-btn">
+        🔐 Continue with Google
+    </button>
 
-<div
-id="loginStatus"
-class="status hidden">
-Authentication starting...
-</div>
+    <div id="loginStatus" class="status hidden"></div>
 
 </div>
 
 
-<!-- MAIN HUB -->
+<!-- =====================================================
+     MAIN HUB
+===================================================== -->
 
 <div id="mainHub" class="hidden">
 
-<div class="header">
+    <div class="header">
 
-<div style="font-size:45px;">🌐</div>
+        <div class="header-icon">🌐</div>
 
-<div class="vip-title">
-VIP INTERNATIONAL AWAM NETWORK
+        <div class="header-vip">
+            VIP INTERNATIONAL AWAM NETWORK
+        </div>
+
+        <h1>INTERNATIONAL AWAM NETWORK</h1>
+
+        <h2>Digital Community Hub</h2>
+
+        <div>
+            Bila Sood Khudkaar Nizam
+        </div>
+
+    </div>
+
+
+    <div class="founder">
+
+        <strong>👑 FOUNDER & CEO</strong>
+
+        <h3>Dewan Israr Ahmad Faridi</h3>
+
+        <small>International Awam Network</small>
+
+    </div>
+
+
+    <!-- ACCOUNT -->
+
+    <div class="account">
+
+        <strong>🔐 Secure Google Account</strong>
+
+        <div id="userEmail" class="email">
+            Authenticated User
+        </div>
+
+        <button
+            id="logoutBtn"
+            class="dark"
+            style="color:white;width:100%;">
+            Logout
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         HOME
+    ================================================= -->
+
+    <div id="homeCard" class="card">
+
+        <h2 style="text-align:center;">
+            🌍 International Awam Network Hub
+        </h2>
+
+        <div class="info">
+
+            <strong>
+                Global Digital Community Services
+            </strong>
+
+            <br><br>
+
+            Wallet • AI • E-Commerce • Education
+            • NGO • Zakat • Security
+
+        </div>
+
+
+        <div class="menu">
+
+            <button
+                class="gold"
+                onclick="openSection('wallet')">
+                💰<br>
+                Wallet
+            </button>
+
+
+            <button
+                class="dark"
+                onclick="openSection('ai')">
+                🤖<br>
+                AI Support
+            </button>
+
+
+            <button
+                class="orange"
+                onclick="openSection('shop')">
+                🏪<br>
+                E-Commerce<br>
+                & Services
+            </button>
+
+
+            <button
+                class="blue"
+                onclick="openSection('education')">
+                🎓<br>
+                Education<br>
+                & AI Exams
+            </button>
+
+
+            <button
+                class="purple"
+                onclick="openSection('ngo')">
+                🤝<br>
+                NGO & Welfare
+            </button>
+
+
+            <button
+                class="dark"
+                onclick="openSection('admin')">
+                🔐<br>
+                Admin & Security
+            </button>
+
+        </div>
+
+
+        <div class="status">
+            🟢 Secure Hub — Google Authentication Active
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         WALLET
+    ================================================= -->
+
+    <div id="wallet" class="card hidden">
+
+        <h2>💰 Awam Network Wallet</h2>
+
+        <div class="info">
+
+            <strong>Wallet Foundation</strong>
+
+            <br>
+
+            User-based secure wallet system.
+
+            <br><br>
+
+            Current Balance:
+
+            <strong id="walletBalance">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            🔐 User Authentication
+            <br>
+            📊 Wallet Ledger
+            <br>
+            🧾 Transaction Records
+            <br>
+            🛡️ Firebase Security
+            <br>
+            💳 Future Payment Gateway
+
+        </div>
+
+
+        <button
+            class="gold action"
+            onclick="loadWallet()">
+            🔄 Refresh Wallet
+        </button>
+
+
+        <div id="walletStatus" class="status hidden"></div>
+
+
+        <button
+            class="back"
+            onclick="goHome()">
+            ← Back to Hub
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         AI
+    ================================================= -->
+
+    <div id="ai" class="card hidden">
+
+        <h2>🤖 Awam Network AI Support</h2>
+
+        <div class="info">
+
+            AI Support interface ready.
+
+            <br><br>
+
+            User apna sawal neeche likh sakta hai.
+            Current version local support interface hai;
+            real AI API ko secure backend ke through connect
+            kiya jayega.
+
+        </div>
+
+
+        <textarea
+            id="aiQuestion"
+            rows="4"
+            placeholder="Apna sawal likhein..."></textarea>
+
+
+        <button
+            class="dark action"
+            onclick="askAI()">
+            🤖 Get Support
+        </button>
+
+
+        <div id="aiAnswer" class="info hidden"></div>
+
+
+        <button
+            class="back"
+            onclick="goHome()">
+            ← Back to Hub
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         E-COMMERCE + P2P
+    ================================================= -->
+
+    <div id="shop" class="card hidden">
+
+        <h2>🏪 E-Commerce & Services</h2>
+
+        <div class="info">
+
+            Products, services aur P2P workers
+            isi marketplace ke andar available honge.
+
+        </div>
+
+
+        <h3>🛠️ P2P Worker Services</h3>
+
+
+        <input
+            id="wName"
+            type="text"
+            maxlength="100"
+            placeholder="Full Name">
+
+
+        <input
+            id="wCountry"
+            type="text"
+            maxlength="100"
+            placeholder="Country">
+
+
+        <input
+            id="wCity"
+            type="text"
+            maxlength="100"
+            placeholder="City">
+
+
+        <input
+            id="wSkill"
+            type="text"
+            maxlength="100"
+            placeholder="Skill / Work">
+
+
+        <input
+            id="wExperience"
+            type="text"
+            maxlength="100"
+            placeholder="Experience">
+
+
+        <input
+            id="wPhone"
+            type="tel"
+            maxlength="30"
+            placeholder="Phone / WhatsApp">
+
+
+        <div class="info">
+
+            🔐 Verification Status
+
+            <br>
+            Profile Picture:
+            <span class="badge">Pending</span>
+
+            <br>
+            ID Verification:
+            <span class="badge">Pending</span>
+
+            <br>
+            Work History:
+            <span class="badge">Pending</span>
+
+            <br>
+            Overall:
+            <span class="badge">Pending</span>
+
+        </div>
+
+
+        <button
+            class="orange action"
+            onclick="addWorker()">
+            ➕ Register Worker
+        </button>
+
+
+        <div id="workerStatus" class="status hidden"></div>
+
+
+        <h3>🌍 Registered Workers</h3>
+
+        <div id="workerItems" class="info">
+            Loading...
+        </div>
+
+
+        <h3>🛒 Marketplace Foundation</h3>
+
+        <div class="info">
+
+            Product and service marketplace is connected
+            to the same Hub architecture.
+
+            <br><br>
+
+            🛒 Products
+            <br>
+            🛠️ Services
+            <br>
+            👷 P2P Workers
+            <br>
+            🌍 International Sellers
+
+        </div>
+
+
+        <button
+            class="back"
+            onclick="goHome()">
+            ← Back to Hub
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         EDUCATION
+    ================================================= -->
+
+    <div id="education" class="card hidden">
+
+        <h2>🎓 Education & AI Exams</h2>
+
+        <div class="info">
+
+            <strong>Education System</strong>
+
+            <br><br>
+
+            Beginner learning → IT → Practical Skills
+            → AI Lessons → Exams → Automatic Result
+
+        </div>
+
+
+        <input
+            id="studentName"
+            type="text"
+            maxlength="100"
+            placeholder="Student Name">
+
+
+        <select id="examQuestion">
+
+            <option value="">
+                Select Question
+            </option>
+
+            <option value="cpu">
+                Computer ka brain kya hota hai?
+            </option>
+
+            <option value="internet">
+                Internet kis liye use hota hai?
+            </option>
+
+        </select>
+
+
+        <select id="examAnswer">
+
+            <option value="">
+                Select Answer
+            </option>
+
+            <option value="CPU">
+                CPU
+            </option>
+
+            <option value="RAM">
+                RAM
+            </option>
+
+            <option value="Internet">
+                Internet
+            </option>
+
+            <option value="Printer">
+                Printer
+            </option>
+
+        </select>
+
+
+        <button
+            class="blue action"
+            onclick="submitExam()">
+            🎓 Submit Exam
+        </button>
+
+
+        <div id="examResult" class="status hidden"></div>
+
+
+        <button
+            class="back"
+            onclick="goHome()">
+            ← Back to Hub
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         NGO + ZAKAT
+    ================================================= -->
+
+    <div id="ngo" class="card hidden">
+
+        <h2>🤝 NGO & Welfare</h2>
+
+        <div class="info">
+
+            NGO, welfare organizations aur
+            public welfare services ka central portal.
+
+            <br><br>
+
+            Health • Education • Orphan Care
+            • Disaster Relief • Clean Water
+            • Legal/Welfare Assistance • Zakat
+
+        </div>
+
+
+        <h3>🌍 Zakat Welfare Portal</h3>
+
+        <input
+            id="zakatName"
+            type="text"
+            maxlength="100"
+            placeholder="Full Name">
+
+
+        <input
+            id="zakatCountry"
+            type="text"
+            maxlength="100"
+            placeholder="Country">
+
+
+        <input
+            id="zakatCity"
+            type="text"
+            maxlength="100"
+            placeholder="City">
+
+
+        <select id="zakatType">
+
+            <option value="">
+                Select Type
+            </option>
+
+            <option value="donor">
+                Zakat Donor
+            </option>
+
+            <option value="beneficiary">
+                Zakat Beneficiary
+            </option>
+
+        </select>
+
+
+        <input
+            id="zakatAmount"
+            type="number"
+            min="0"
+            placeholder="Amount (optional)">
+
+
+        <button
+            class="purple action"
+            onclick="submitZakat()">
+            🤝 Submit Zakat Request
+        </button>
+
+
+        <div id="zakatStatus" class="status hidden"></div>
+
+
+        <h3>🏢 NGO Registration</h3>
+
+        <input
+            id="ngoName"
+            type="text"
+            maxlength="150"
+            placeholder="NGO Name">
+
+
+        <input
+            id="ngoLeader"
+            type="text"
+            maxlength="100"
+            placeholder="NGO Leader">
+
+
+        <input
+            id="ngoPhone"
+            type="tel"
+            maxlength="30"
+            placeholder="Phone / WhatsApp">
+
+
+        <input
+            id="ngoEmail"
+            type="email"
+            maxlength="150"
+            placeholder="Email">
+
+
+        <select id="ngoWork">
+
+            <option value="">
+                Select Welfare Work
+            </option>
+
+            <option value="education">
+                Education
+            </option>
+
+            <option value="health">
+                Health
+            </option>
+
+            <option value="ration">
+                Food / Ration Welfare
+            </option>
+
+            <option value="orphan">
+                Orphan Care
+            </option>
+
+            <option value="disaster">
+                Disaster Relief
+            </option>
+
+            <option value="water">
+                Clean Water
+            </option>
+
+            <option value="general">
+                General Welfare
+            </option>
+
+        </select>
+
+
+        <button
+            class="purple action"
+            onclick="registerNGO()">
+            🤝 Register NGO
+        </button>
+
+
+        <div id="ngoStatus" class="status hidden"></div>
+
+
+        <button
+            class="back"
+            onclick="goHome()">
+            ← Back to Hub
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         ADMIN
+    ================================================= -->
+
+    <div id="admin" class="card hidden">
+
+        <h2>🔐 Admin & Security</h2>
+
+        <div class="info">
+
+            <strong>Security Architecture</strong>
+
+            <br><br>
+
+            🔐 Google Authentication
+            <br>
+            🛡️ Firebase Database Rules
+            <br>
+            👤 Authenticated Users
+            <br>
+            🚫 Unauthorized Access Protection
+            <br>
+            📊 Future Admin Dashboard
+            <br>
+            🧾 Audit / Activity Records
+
+        </div>
+
+
+        <div class="status">
+
+            🟢 Authentication Protected
+
+        </div>
+
+
+        <button
+            class="back"
+            onclick="goHome()">
+            ← Back to Hub
+        </button>
+
+    </div>
+
+
+    <div class="footer">
+
+        © International Awam Network
+
+        <br>
+
+        Dewan Israr Ahmad Faridi
+
+        <br>
+
+        Secure Digital Community Hub
+
+    </div>
+
 </div>
 
-<h1>عوام نیٹ ورک</h1>
-
-<h1>AWAM NETWORK</h1>
-
-<p>Bila Sood Khudkaar Nizam</p>
-
 </div>
 
 
-<div class="founder">
-
-<div>👑 FOUNDER & CEO</div>
-
-<h2>Dewan Israr Ahmad Faridi</h2>
-
-<small>International Awam Network</small>
-
-</div>
-
-
-<!-- ACCOUNT -->
-
-<div class="account">
-
-<strong>🔐 Secure Account</strong>
-
-<div
-id="userEmail"
-class="account-email">
-Authenticated User
-</div>
-
-<button
-id="logoutBtn"
-class="btn-dark"
-style="color:white;width:100%;">
-Logout
-</button>
-
-</div>
-
-
-<!-- HUB HOME -->
-
-<div id="homeCard" class="card">
-
-<h2 class="section-title">
-🌍 International Awam Network Hub
-</h2>
-
-<div class="info">
-
-<strong>
-عوام کے لیے ایک مربوط عالمی ڈیجیٹل نیٹ ورک
-</strong>
-
-<br>
-
-Zakat • Jobs • Ration • Education • AI
-• NGO • E-Commerce • Wallet • Services
-
-</div>
-
-
-<div class="menu">
-
-<button
-class="btn-green"
-onclick="openSection('zakat')">
-🌍<br>
-Zakat Funding
-</button>
-
-<button
-class="btn-blue"
-onclick="openSection('exam')">
-🎓<br>
-Education & AI Exams
-</button>
-
-<button
-class="btn-orange"
-onclick="openSection('jobs')">
-🛠️<br>
-P2P Jobs
-</button>
-
-<button
-class="btn-green"
-onclick="openSection('ration')">
-🌾<br>
-Sasta Ration
-</button>
-
-<button
-class="btn-purple"
-onclick="openSection('ngo')">
-🤝<br>
-NGO & Welfare
-</button>
-
-<button
-class="btn-dark"
-onclick="openSection('ai')">
-🤖<br>
-AI Support
-</button>
-
-<button
-class="btn-gold"
-onclick="openSection('shop')">
-🏪<br>
-E-Commerce & Services
-</button>
-
-<button
-class="btn-blue"
-onclick="openSection('wallet')">
-💰<br>
-Wallet
-</button>
-
-<button
-class="btn-dark"
-onclick="openSection('admin')"
-style="grid-column:1 / -1;">
-🔐<br>
-Admin & Security
-</button>
-
-</div>
-
-
-<div class="status">
-🟢 International Awam Network Hub Secure & Ready
-</div>
-
-</div>
-
-
-<!-- ZAKAT -->
-
-<div id="zakat" class="card hidden">
-
-<h2>🌍 عالمی زکوٰۃ پورٹل</h2>
-
-<div class="info">
-
-Zakat donors aur beneficiaries ke liye
-secure digital system yahan develop kiya jayega.
-
-<br><br>
-
-Donor verification, beneficiary verification
-aur transparent distribution system future stages
-mein connect kiya jayega.
-
-</div>
-
-<button
-class="btn-dark"
-onclick="goHome()"
-style="color:white;">
-← Back to Hub
-</button>
-
-</div>
-
-
-<!-- EDUCATION -->
-
-<div id="exam" class="card hidden">
-
-<h2>🎓 Education & AI Exams</h2>
-
-<div class="info">
-
-AI-based education system ka objective:
-
-<br>
-• Beginner level learning
-<br>
-• IT aur practical education
-<br>
-• AI-generated lessons
-<br>
-• AI-based examinations
-<br>
-• Automatic evaluation
-<br>
-• Pass / Fail result
-<br>
-• Future certificate system
-
-</div>
-
-<button
-class="btn-dark"
-onclick="goHome()"
-style="color:white;">
-← Back to Hub
-</button>
-
-</div>
-
-
-<!-- P2P JOBS -->
-
-<div id="jobs" class="card hidden">
-
-<h2>🛠️ P2P Worker Verification</h2>
-
-<div class="info">
-
-Bina commission worker/employer network.
-Worker apni professional information register karega.
-Verification aur safety system future stages mein expand hoga.
-
-</div>
-
-
-<input
-type="text"
-id="wName"
-placeholder="Full Name"
-maxlength="100"
-autocomplete="name"
-style="width:100%;padding:12px;margin-top:12px;border:1px solid #ddd;border-radius:10px;"
->
-
-
-<input
-type="text"
-id="wCountry"
-placeholder="Country"
-maxlength="100"
-autocomplete="country-name"
-style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
->
-
-
-<input
-type="text"
-id="wCity"
-placeholder="City"
-maxlength="100"
-autocomplete="address-level2"
-style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
->
-
-
-<input
-type="text"
-id="wSkill"
-placeholder="Skill / Work"
-maxlength="100"
-style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
->
-
-
-<input
-type="text"
-id="wExperience"
-placeholder="Experience (e.g. 3 years)"
-maxlength="100"
-style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
->
-
-
-<input
-type="tel"
-id="wPhone"
-placeholder="Phone / WhatsApp"
-maxlength="30"
-autocomplete="tel"
-style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
->
-
-
-<div class="info">
-
-<strong>🔐 Verification Information</strong>
-
-<br>
-
-Profile Picture:
-<span class="badge">Pending</span>
-
-<br>
-
-ID Verification:
-<span class="badge">Pending</span>
-
-<br>
-
-Work History:
-<span class="badge">Pending</span>
-
-<br>
-
-Overall Verification:
-<span class="badge">Pending</span>
-
-</div>
-
-
-<button
-onclick="addWorker()"
-class="btn-orange"
-style="width:100%;margin-top:12px;color:white;">
-➕ Register Worker
-</button>
-
-
-<div
-id="workerStatus"
-class="status hidden">
-</div>
-
-
-<div id="workersList" class="info">
-
-<strong>Registered Workers</strong>
-
-<div
-id="workerItems"
-style="margin-top:12px;">
-Loading workers...
-</div>
-
-</div>
-
-
-<button
-class="btn-dark"
-onclick="goHome()"
-style="margin-top:12px;color:white;width:100%;">
-← Back to Hub
-</button>
-
-</div>
-
-
-<!-- RATION -->
-
-<div id="ration" class="card hidden">
-
-<h2>🌾 Sasta Ration Network</h2>
-
-<div class="info">
-
-Kam qeemat zaroori ashya aur ration providers
-ka digital network future stage mein connect kiya jayega.
-
-</div>
-
-<button
-class="btn-dark"
-onclick="goHome()"
-style="color:white;">
-← Back to Hub
-</button>
-
-</div>
-
-
-<!-- NGO -->
-
-<div id="ngo" class="card hidden">
-
-<h2>🤝 NGO & Welfare Portal</h2>
-
-<div class="info">
-
-NGOs aur welfare organizations ko
-Awam Network ke welfare systems ke saath
-connect karne ke liye dedicated portal.
-
-<br><br>
-
-Education • Health • Ration • Orphan Care
-• Disaster Relief • Clean Water • Welfare
-
-</div>
-
-<button
-class="btn-dark"
-onclick="goHome()"
-style="color:white;">
-← Back to Hub
-</button>
-
-</div>
-
-
-<!-- AI -->
-
-<div id="ai" class="card hidden">
-
-<h2>🤖 Awam Network AI Support</h2>
-
-<div class="info">
-
-AI Support system future stages mein
-securely connect kiya jayega.
-
-<br><br>
-
-AI education, assistance, information
-aur automated services ke liye foundation ready hai.
-
-</div>
-
-<button
-class="btn-dark"
-onclick="goHome()"
-style="color:white;">
-← Back to Hub
-</button>
-
-</div>
-
-
-<!-- E-COMMERCE -->
-
-<div id="shop" class="card hidden">
-
-<h2>🏪 E-Commerce & Services</h2>
-
-<div class="info">
-
-International Awam Network ke andar
-future mein products, local services,
-digital services aur community marketplace
-develop kiya jayega.
-
-<br><br>
-
-🛒 Products
-<br>
-🛠️ Services
-<br>
-🌍 International Marketplace
-<br>
-🤝 Community Sellers
-
-</div>
-
-<button
-class="btn-dark"
-onclick="goHome()"
-style="color:white;">
-← Back to Hub
-</button>
-
-</div>
-
-
-<!-- WALLET -->
-
-<div id="wallet" class="card hidden">
-
-<h2>💰 Awam Network Wallet</h2>
-
-<div class="info">
-
-Secure digital wallet system future stage mein
-authentication, transaction security aur
-proper database rules ke saath develop kiya jayega.
-
-<br><br>
-
-Wallet balance:
-<strong>Coming Soon</strong>
-
-</div>
-
-<button
-class="btn-dark"
-onclick="goHome()"
-style="color:white;">
-← Back to Hub
-</button>
-
-</div>
-
-
-<!-- ADMIN -->
-
-<div id="admin" class="card hidden">
-
-<h2>🔐 Admin & Security</h2>
-
-<div class="info">
-
-Admin control system ko normal users se
-separate rakha jayega.
-
-<br><br>
-
-🔐 Firebase Authentication
-<br>
-🛡️ Database Security Rules
-<br>
-👤 User Authentication
-<br>
-🚫 Unauthorized Access Protection
-<br>
-📊 Future Admin Dashboard
-
-</div>
-
-<button
-class="btn-dark"
-onclick="goHome()"
-style="color:white;">
-← Back to Hub
-</button>
-
-</div>
-
-
-<div class="footer">
-
-© International Awam Network
-
-<br>
-
-Bila Sood Khudkaar Nizam
-
-<br>
-
-VIP Hub — Step 8
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- FIREBASE -->
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
 
 <script type="module">
 
 import {
-initializeApp
+    initializeApp
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
 import {
-getDatabase,
-ref,
-push,
-onValue
+    getDatabase,
+    ref,
+    push,
+    onValue,
+    get,
+    set
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
 
 import {
-getAuth,
-GoogleAuthProvider,
-signInWithPopup,
-signOut,
-onAuthStateChanged
+    getAuth,
+    GoogleAuthProvider,
+    signInWithPopup,
+    signOut,
+    onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
 const firebaseConfig = {
 
-apiKey:
-"AIzaSyCVbrB6vg0wLLzfLymZ3213b249DAo5jbY",
+    apiKey:
+    "AIzaSyCVbrB6vg0wLLzfLymZ3213b249DAo5jbY",
 
-authDomain:
-"awam-network-318ec.firebaseapp.com",
+    authDomain:
+    "awam-network-318ec.firebaseapp.com",
 
-databaseURL:
-"https://awam-network-318ec-default-rtdb.firebaseio.com",
+    databaseURL:
+    "https://awam-network-318ec-default-rtdb.firebaseio.com",
 
-projectId:
-"awam-network-318ec",
+    projectId:
+    "awam-network-318ec",
 
-storageBucket:
-"awam-network-318ec.firebasestorage.app",
+    storageBucket:
+    "awam-network-318ec.firebasestorage.app",
 
-messagingSenderId:
-"313453430241",
+    messagingSenderId:
+    "313453430241",
 
-appId:
-"1:313453430241:web:bde7e4fecce0e07426fea0"
-
+    appId:
+    "1:313453430241:web:bde7e4fecce0e07426fea0"
 };
 
 
 const app =
 initializeApp(firebaseConfig);
 
-
 const database =
 getDatabase(app);
 
-
 const auth =
 getAuth(app);
-
 
 const googleProvider =
 new GoogleAuthProvider();
@@ -912,14 +1091,11 @@ new GoogleAuthProvider();
 window.awamDatabase =
 database;
 
-window.awamRef =
-ref;
-
-window.awamPush =
-push;
-
 window.awamAuth =
 auth;
+
+window.awamUser =
+null;
 
 
 /* GOOGLE LOGIN */
@@ -928,54 +1104,35 @@ document
 .getElementById("googleLoginBtn")
 .addEventListener("click",async()=>{
 
-const status =
-document.getElementById("loginStatus");
+    const status =
+    document.getElementById("loginStatus");
 
-status.classList.remove("hidden");
-status.classList.remove("error-status");
+    status.classList.remove("hidden");
+    status.classList.remove("error");
 
-status.innerText =
-"Google authentication starting...";
+    status.innerText =
+    "Google login starting...";
 
-try{
+    try{
 
-await signInWithPopup(
-auth,
-googleProvider
-);
+        await signInWithPopup(
+            auth,
+            googleProvider
+        );
 
-}
+    }
+    catch(error){
 
-catch(error){
+        console.error(error);
 
-console.error(
-"Google Login Error:",
-error
-);
+        status.classList.remove("hidden");
+        status.classList.add("error");
 
-status.classList.remove("hidden");
-status.classList.add("error-status");
+        status.innerText =
+        "Google Login failed: " +
+        error.code;
 
-if(error.code === "auth/popup-blocked"){
-
-status.innerText =
-"Popup blocked. Please allow popups and try again.";
-
-}
-else if(error.code === "auth/popup-closed-by-user"){
-
-status.innerText =
-"Login cancelled.";
-
-}
-else{
-
-status.innerText =
-"Google Login failed. Please try again.";
-
-}
-
-}
+    }
 
 });
 
@@ -986,20 +1143,7 @@ document
 .getElementById("logoutBtn")
 .addEventListener("click",async()=>{
 
-try{
-
-await signOut(auth);
-
-}
-
-catch(error){
-
-console.error(
-"Logout Error:",
-error
-);
-
-}
+    await signOut(auth);
 
 });
 
@@ -1007,450 +1151,826 @@ error
 /* AUTH STATE */
 
 onAuthStateChanged(
-auth,
-(user)=>{
+    auth,
+    (user)=>{
 
-const loginScreen =
-document.getElementById("loginScreen");
+        const login =
+        document.getElementById("loginScreen");
 
-const mainHub =
-document.getElementById("mainHub");
+        const hub =
+        document.getElementById("mainHub");
 
-const userEmail =
-document.getElementById("userEmail");
+        const email =
+        document.getElementById("userEmail");
 
-if(user){
 
-loginScreen.classList.add("hidden");
+        if(user){
 
-mainHub.classList.remove("hidden");
+            window.awamUser =
+            user;
 
-userEmail.textContent =
-user.email || "Authenticated User";
+            login.classList.add("hidden");
 
-window.awamUser =
-user;
+            hub.classList.remove("hidden");
 
-console.log(
-"Awam Network authenticated user:",
-user.uid
-);
+            email.textContent =
+            user.email ||
+            "Authenticated User";
 
-}
-else{
+        }
+        else{
 
-mainHub.classList.add("hidden");
+            window.awamUser =
+            null;
 
-loginScreen.classList.remove("hidden");
+            hub.classList.add("hidden");
 
-window.awamUser =
-null;
+            login.classList.remove("hidden");
 
-}
+        }
 
-}
+    }
 );
 
 
-/* LIVE WORKER LIST */
+/* WORKERS LIVE LIST */
 
 const workersRef =
 ref(database,"p2p_workers");
 
-
 onValue(
 
-workersRef,
+    workersRef,
 
-(snapshot)=>{
+    (snapshot)=>{
 
-const workerItems =
-document.getElementById("workerItems");
+        const box =
+        document.getElementById("workerItems");
 
-if(!workerItems){
-return;
-}
+        if(!box) return;
 
-workerItems.innerHTML = "";
+        box.innerHTML = "";
 
-if(!snapshot.exists()){
+        if(!snapshot.exists()){
 
-workerItems.textContent =
-"Abhi koi worker registered nahi.";
+            box.textContent =
+            "Abhi koi worker registered nahi.";
 
-return;
+            return;
 
-}
+        }
 
 
-snapshot.forEach(
-(childSnapshot)=>{
+        snapshot.forEach(
+            (child)=>{
 
-const worker =
-childSnapshot.val();
+                const worker =
+                child.val();
 
+                const item =
+                document.createElement("div");
 
-const workerBox =
-document.createElement("div");
+                item.className =
+                "item";
 
-workerBox.className =
-"worker-box";
+                item.innerHTML = "";
 
+                const name =
+                document.createElement("strong");
 
-const title =
-document.createElement("div");
+                name.textContent =
+                worker.name || "";
 
-title.className =
-"worker-title";
+                item.appendChild(name);
 
-title.textContent =
-worker.name || "";
+                item.appendChild(
+                    document.createElement("br")
+                );
 
+                item.append(
+                    "Country: " +
+                    (worker.country || "")
+                );
 
-const country =
-document.createElement("div");
+                item.appendChild(
+                    document.createElement("br")
+                );
 
-country.textContent =
-"Country: " +
-(worker.country || "");
+                item.append(
+                    "City: " +
+                    (worker.city || "")
+                );
 
+                item.appendChild(
+                    document.createElement("br")
+                );
 
-const city =
-document.createElement("div");
+                item.append(
+                    "Skill: " +
+                    (worker.skill || "")
+                );
 
-city.textContent =
-"City: " +
-(worker.city || "");
+                item.appendChild(
+                    document.createElement("br")
+                );
 
+                item.append(
+                    "Experience: " +
+                    (worker.experience || "")
+                );
 
-const skill =
-document.createElement("div");
+                item.appendChild(
+                    document.createElement("br")
+                );
 
-skill.textContent =
-"Skill / Work: " +
-(worker.skill || "");
+                item.append(
+                    "Verification: "
+                );
 
+                const badge =
+                document.createElement("span");
 
-const experience =
-document.createElement("div");
+                badge.className =
+                "badge";
 
-experience.textContent =
-"Experience: " +
-(worker.experience || "");
+                badge.textContent =
+                worker.verificationStatus ||
+                "pending";
 
+                item.appendChild(badge);
 
-const phone =
-document.createElement("div");
+                box.appendChild(item);
 
-phone.textContent =
-"Phone / WhatsApp: " +
-(worker.phone || "");
+            }
+        );
 
+    },
 
-const verification =
-document.createElement("div");
+    (error)=>{
 
-verification.innerHTML =
-"Verification: " +
-"<span class='badge'>" +
-(worker.verificationStatus || "Pending") +
-"</span>";
+        console.error(
+            "Worker read error:",
+            error
+        );
 
+        document
+        .getElementById("workerItems")
+        .textContent =
+        "Workers list temporarily unavailable.";
 
-workerBox.appendChild(title);
-workerBox.appendChild(country);
-workerBox.appendChild(city);
-workerBox.appendChild(skill);
-workerBox.appendChild(experience);
-workerBox.appendChild(phone);
-workerBox.appendChild(verification);
-
-workerItems.appendChild(
-workerBox
-);
-
-}
-
-);
-
-},
-
-(error)=>{
-
-const workerItems =
-document.getElementById("workerItems");
-
-if(workerItems){
-
-workerItems.textContent =
-"Workers list authentication ke baad available hogi.";
-
-}
-
-console.error(
-"Workers Read Error:",
-error
-);
-
-}
+    }
 
 );
 
 
-</script>
+/* WALLET */
 
+window.loadWallet =
+async function(){
 
-<script>
+    if(!window.awamUser){
 
-/* SECTION NAVIGATION */
+        return;
 
-function openSection(id){
+    }
 
-document
-.querySelectorAll("#mainHub .card")
-.forEach(function(card){
+    const walletRef =
+    ref(
+        database,
+        "wallets/" +
+        window.awamUser.uid
+    );
 
-if(card.id){
-card.classList.add("hidden");
-}
+    try{
 
-});
+        const snapshot =
+        await get(walletRef);
 
+        if(snapshot.exists()){
 
-const section =
-document.getElementById(id);
+            const data =
+            snapshot.val();
 
-if(section){
+            document
+            .getElementById("walletBalance")
+            .textContent =
+            Number(data.balance || 0);
 
-section.classList.remove("hidden");
+        }
+        else{
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+            await set(
+                walletRef,
+                {
+                    balance:0,
+                    currency:"PKR",
+                    createdAt:Date.now(),
+                    updatedAt:Date.now()
+                }
+            );
 
-}
+            document
+            .getElementById("walletBalance")
+            .textContent =
+            "0";
 
-}
+        }
 
+    }
+    catch(error){
 
-function goHome(){
+        console.error(error);
 
-document
-.querySelectorAll("#mainHub .card")
-.forEach(function(card){
+        const status =
+        document.getElementById(
+            "walletStatus"
+        );
 
-if(card.id){
-card.classList.add("hidden");
-}
+        status.classList.remove("hidden");
+        status.classList.add("error");
 
-});
+        status.textContent =
+        "Wallet database access failed.";
 
-document
-.getElementById("homeCard")
-.classList.remove("hidden");
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-
-/* REGISTER WORKER */
-
-async function addWorker(){
-
-const status =
-document.getElementById("workerStatus");
-
-
-if(!window.awamUser){
-
-status.classList.remove("hidden");
-status.classList.add("error-status");
-
-status.innerText =
-"Please login first.";
-
-return;
-
-}
-
-
-const name =
-document
-.getElementById("wName")
-.value
-.trim();
-
-
-const country =
-document
-.getElementById("wCountry")
-.value
-.trim();
-
-
-const city =
-document
-.getElementById("wCity")
-.value
-.trim();
-
-
-const skill =
-document
-.getElementById("wSkill")
-.value
-.trim();
-
-
-const experience =
-document
-.getElementById("wExperience")
-.value
-.trim();
-
-
-const phone =
-document
-.getElementById("wPhone")
-.value
-.trim();
-
-
-if(
-!name ||
-!country ||
-!city ||
-!skill ||
-!experience ||
-!phone
-){
-
-status.classList.remove("hidden");
-status.classList.add("error-status");
-
-status.innerText =
-"Please fill all required worker information.";
-
-return;
-
-}
-
-
-if(
-name.length > 100 ||
-country.length > 100 ||
-city.length > 100 ||
-skill.length > 100 ||
-experience.length > 100 ||
-phone.length > 30
-){
-
-status.classList.remove("hidden");
-status.classList.add("error-status");
-
-status.innerText =
-"Please enter valid information.";
-
-return;
-
-}
-
-
-try{
-
-const workerData = {
-
-name:name,
-
-country:country,
-
-city:city,
-
-skill:skill,
-
-experience:experience,
-
-phone:phone,
-
-profilePictureStatus:"pending",
-
-idVerificationStatus:"pending",
-
-workHistoryStatus:"pending",
-
-verificationStatus:"pending",
-
-accountStatus:"active",
-
-complaintCount:0,
-
-createdAt:Date.now(),
-
-updatedAt:Date.now()
+    }
 
 };
 
 
-const workersRef =
-window.awamRef(
-window.awamDatabase,
-"p2p_workers"
-);
-
-
-await window.awamPush(
-workersRef,
-workerData
-);
-
-
-status.classList.remove("hidden");
-status.classList.remove("error-status");
-
-status.innerText =
-"Worker successfully registered. Verification status: Pending.";
-
-
-document.getElementById("wName").value = "";
-document.getElementById("wCountry").value = "";
-document.getElementById("wCity").value = "";
-document.getElementById("wSkill").value = "";
-document.getElementById("wExperience").value = "";
-document.getElementById("wPhone").value = "";
-
-}
-
-catch(error){
-
-status.classList.remove("hidden");
-status.classList.add("error-status");
-
-status.innerText =
-"Registration failed. Please check Firebase security settings.";
-
-console.error(
-"Worker Registration Error:",
-error
-);
-
-}
-
-}
-
-
-window.openSection =
-openSection;
-
-window.goHome =
-goHome;
+/* REGISTER WORKER */
 
 window.addWorker =
-addWorker;
+async function(){
+
+    if(!window.awamUser){
+
+        alert("Please login first.");
+        return;
+
+    }
+
+
+    const fields = {
+
+        name:
+        document.getElementById("wName").value.trim(),
+
+        country:
+        document.getElementById("wCountry").value.trim(),
+
+        city:
+        document.getElementById("wCity").value.trim(),
+
+        skill:
+        document.getElementById("wSkill").value.trim(),
+
+        experience:
+        document.getElementById("wExperience").value.trim(),
+
+        phone:
+        document.getElementById("wPhone").value.trim()
+
+    };
+
+
+    const status =
+    document.getElementById(
+        "workerStatus"
+    );
+
+
+    if(
+        !fields.name ||
+        !fields.country ||
+        !fields.city ||
+        !fields.skill ||
+        !fields.experience ||
+        !fields.phone
+    ){
+
+        status.classList.remove("hidden");
+        status.classList.add("error");
+
+        status.textContent =
+        "All worker fields are required.";
+
+        return;
+
+    }
+
+
+    try{
+
+        await push(
+            ref(database,"p2p_workers"),
+            {
+
+                name:fields.name,
+
+                country:fields.country,
+
+                city:fields.city,
+
+                skill:fields.skill,
+
+                experience:fields.experience,
+
+                phone:fields.phone,
+
+                profilePictureStatus:"pending",
+
+                idVerificationStatus:"pending",
+
+                workHistoryStatus:"pending",
+
+                verificationStatus:"pending",
+
+                accountStatus:"active",
+
+                complaintCount:0,
+
+                createdAt:Date.now(),
+
+                updatedAt:Date.now(),
+
+                registeredBy:
+                window.awamUser.uid
+
+            }
+        );
+
+
+        status.classList.remove("hidden");
+        status.classList.remove("error");
+
+        status.textContent =
+        "Worker successfully registered. Verification Pending.";
+
+
+        [
+            "wName",
+            "wCountry",
+            "wCity",
+            "wSkill",
+            "wExperience",
+            "wPhone"
+        ].forEach(id=>{
+            document.getElementById(id).value="";
+        });
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        status.classList.remove("hidden");
+        status.classList.add("error");
+
+        status.textContent =
+        "Worker registration failed.";
+
+    }
+
+};
+
+
+/* ZAKAT */
+
+window.submitZakat =
+async function(){
+
+    if(!window.awamUser){
+
+        alert("Please login first.");
+        return;
+
+    }
+
+
+    const data = {
+
+        name:
+        document.getElementById(
+            "zakatName"
+        ).value.trim(),
+
+        country:
+        document.getElementById(
+            "zakatCountry"
+        ).value.trim(),
+
+        city:
+        document.getElementById(
+            "zakatCity"
+        ).value.trim(),
+
+        type:
+        document.getElementById(
+            "zakatType"
+        ).value,
+
+        amount:
+        Number(
+            document.getElementById(
+                "zakatAmount"
+            ).value || 0
+        ),
+
+        status:"pending",
+
+        createdAt:Date.now(),
+
+        userId:
+        window.awamUser.uid
+
+    };
+
+
+    const status =
+    document.getElementById(
+        "zakatStatus"
+    );
+
+
+    if(
+        !data.name ||
+        !data.country ||
+        !data.city ||
+        !data.type
+    ){
+
+        status.classList.remove("hidden");
+        status.classList.add("error");
+
+        status.textContent =
+        "Please complete Zakat information.";
+
+        return;
+
+    }
+
+
+    try{
+
+        await push(
+            ref(database,"zakat_requests"),
+            data
+        );
+
+        status.classList.remove("hidden");
+        status.classList.remove("error");
+
+        status.textContent =
+        "Zakat request successfully submitted.";
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        status.classList.remove("hidden");
+        status.classList.add("error");
+
+        status.textContent =
+        "Zakat submission failed.";
+
+    }
+
+};
+
+
+/* NGO */
+
+window.registerNGO =
+async function(){
+
+    if(!window.awamUser){
+
+        alert("Please login first.");
+        return;
+
+    }
+
+
+    const data = {
+
+        name:
+        document.getElementById(
+            "ngoName"
+        ).value.trim(),
+
+        leader:
+        document.getElementById(
+            "ngoLeader"
+        ).value.trim(),
+
+        phone:
+        document.getElementById(
+            "ngoPhone"
+        ).value.trim(),
+
+        email:
+        document.getElementById(
+            "ngoEmail"
+        ).value.trim(),
+
+        work:
+        document.getElementById(
+            "ngoWork"
+        ).value,
+
+        status:"pending",
+
+        createdAt:Date.now(),
+
+        registeredBy:
+        window.awamUser.uid
+
+    };
+
+
+    const status =
+    document.getElementById(
+        "ngoStatus"
+    );
+
+
+    if(
+        !data.name ||
+        !data.leader ||
+        !data.phone ||
+        !data.email ||
+        !data.work
+    ){
+
+        status.classList.remove("hidden");
+        status.classList.add("error");
+
+        status.textContent =
+        "Please complete all NGO information.";
+
+        return;
+
+    }
+
+
+    try{
+
+        await push(
+            ref(database,"ngos_registered"),
+            data
+        );
+
+        status.classList.remove("hidden");
+        status.classList.remove("error");
+
+        status.textContent =
+        "NGO registration submitted successfully.";
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        status.classList.remove("hidden");
+        status.classList.add("error");
+
+        status.textContent =
+        "NGO registration failed.";
+
+    }
+
+};
+
+
+/* EDUCATION / AI EXAM */
+
+window.submitExam =
+async function(){
+
+    if(!window.awamUser){
+
+        alert("Please login first.");
+        return;
+
+    }
+
+
+    const student =
+    document.getElementById(
+        "studentName"
+    ).value.trim();
+
+    const question =
+    document.getElementById(
+        "examQuestion"
+    ).value;
+
+    const answer =
+    document.getElementById(
+        "examAnswer"
+    ).value;
+
+
+    const result =
+    document.getElementById(
+        "examResult"
+    );
+
+
+    if(!student || !question || !answer){
+
+        result.classList.remove("hidden");
+        result.classList.add("error");
+
+        result.textContent =
+        "Please complete the exam.";
+
+        return;
+
+    }
+
+
+    let correct = false;
+
+
+    if(
+        question === "cpu" &&
+        answer === "CPU"
+    ){
+
+        correct = true;
+
+    }
+
+
+    if(
+        question === "internet" &&
+        answer === "Internet"
+    ){
+
+        correct = true;
+
+    }
+
+
+    const examData = {
+
+        studentName:student,
+
+        question:question,
+
+        answer:answer,
+
+        correct:correct,
+
+        result:
+        correct ? "PASS" : "FAIL",
+
+        createdAt:Date.now(),
+
+        userId:
+        window.awamUser.uid
+
+    };
+
+
+    try{
+
+        await push(
+            ref(database,"exam_results"),
+            examData
+        );
+
+
+        result.classList.remove("hidden");
+        result.classList.remove("error");
+
+        result.textContent =
+        correct
+        ? "🎉 PASS — Answer correct."
+        : "❌ FAIL — Answer incorrect.";
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        result.classList.remove("hidden");
+        result.classList.add("error");
+
+        result.textContent =
+        "Exam result save failed.";
+
+    }
+
+};
+
+
+/* AI SUPPORT */
+
+window.askAI =
+function(){
+
+    const question =
+    document.getElementById(
+        "aiQuestion"
+    ).value.trim();
+
+    const answer =
+    document.getElementById(
+        "aiAnswer"
+    );
+
+
+    if(!question){
+
+        answer.classList.remove("hidden");
+
+        answer.textContent =
+        "Please apna sawal likhein.";
+
+        return;
+
+    }
+
+
+    answer.classList.remove("hidden");
+
+    answer.innerHTML =
+    "<strong>🤖 Awam Network AI Support</strong>" +
+    "<br><br>" +
+    "Aapka sawal receive ho gaya hai." +
+    "<br>" +
+    "Real AI engine ko secure backend/API ke " +
+    "through next development stage mein connect " +
+    "kiya jayega.";
+
+};
+
+
+/* NAVIGATION */
+
+window.openSection =
+function(id){
+
+    document
+    .querySelectorAll("#mainHub .card")
+    .forEach(card=>{
+
+        card.classList.add("hidden");
+
+    });
+
+
+    const section =
+    document.getElementById(id);
+
+
+    if(section){
+
+        section.classList.remove("hidden");
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+
+    if(id === "wallet"){
+
+        window.loadWallet();
+
+    }
+
+};
+
+
+window.goHome =
+function(){
+
+    document
+    .querySelectorAll("#mainHub .card")
+    .forEach(card=>{
+
+        card.classList.add("hidden");
+
+    });
+
+
+    document
+    .getElementById("homeCard")
+    .classList.remove("hidden");
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+};
 
 </script>
 
