@@ -378,15 +378,43 @@ input{
         </div>
 
 
+        <!-- FULL NAME -->
+
         <input
             type="text"
             id="wName"
-            placeholder="Worker Name"
+            placeholder="Full Name"
             maxlength="100"
             autocomplete="name"
             style="width:100%;padding:12px;margin-top:12px;border:1px solid #ddd;border-radius:10px;"
         >
 
+
+        <!-- COUNTRY -->
+
+        <input
+            type="text"
+            id="wCountry"
+            placeholder="Country"
+            maxlength="100"
+            autocomplete="country-name"
+            style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
+        >
+
+
+        <!-- CITY -->
+
+        <input
+            type="text"
+            id="wCity"
+            placeholder="City"
+            maxlength="100"
+            autocomplete="address-level2"
+            style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
+        >
+
+
+        <!-- SKILL -->
 
         <input
             type="text"
@@ -396,6 +424,8 @@ input{
             style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
         >
 
+
+        <!-- PHONE -->
 
         <input
             type="tel"
@@ -755,6 +785,24 @@ onValue(
                     worker.name || "";
 
 
+                const country =
+                    document.createElement("div");
+
+
+                country.textContent =
+                    "Country: " +
+                    (worker.country || "");
+
+
+                const city =
+                    document.createElement("div");
+
+
+                city.textContent =
+                    "City: " +
+                    (worker.city || "");
+
+
                 const skill =
                     document.createElement("div");
 
@@ -774,6 +822,10 @@ onValue(
 
 
                 workerBox.appendChild(name);
+
+                workerBox.appendChild(country);
+
+                workerBox.appendChild(city);
 
                 workerBox.appendChild(skill);
 
@@ -827,6 +879,20 @@ async function addWorker(){
         .trim();
 
 
+    const country =
+        document
+        .getElementById("wCountry")
+        .value
+        .trim();
+
+
+    const city =
+        document
+        .getElementById("wCity")
+        .value
+        .trim();
+
+
     const skill =
         document
         .getElementById("wSkill")
@@ -846,19 +912,25 @@ async function addWorker(){
         .getElementById("workerStatus");
 
 
-    if(!name || !skill || !phone){
+    if(!name || !country || !city || !skill || !phone){
 
         status.classList.remove("hidden");
 
         status.innerText =
-            "Please fill Name, Skill and Phone.";
+            "Please fill Name, Country, City, Skill and Phone.";
 
         return;
 
     }
 
 
-    if(name.length > 100 || skill.length > 100 || phone.length > 30){
+    if(
+        name.length > 100 ||
+        country.length > 100 ||
+        city.length > 100 ||
+        skill.length > 100 ||
+        phone.length > 30
+    ){
 
         status.classList.remove("hidden");
 
@@ -890,6 +962,10 @@ async function addWorker(){
 
             name: name,
 
+            country: country,
+
+            city: city,
+
             skill: skill,
 
             phone: phone,
@@ -920,6 +996,16 @@ async function addWorker(){
 
         document
             .getElementById("wName")
+            .value = "";
+
+
+        document
+            .getElementById("wCountry")
+            .value = "";
+
+
+        document
+            .getElementById("wCity")
             .value = "";
 
 
