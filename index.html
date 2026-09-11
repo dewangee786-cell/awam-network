@@ -332,99 +332,104 @@ button{
         </button>
 
     </div>
-<!-- EXAM -->
-
-<div id="exam" class="card hidden">
-
-    <h2>🎓 AI / Computer Exam</h2>
-
-    <div class="info">
-
-        یہاں AI-based educational exams،
-        tests اور results system بنایا جائے گا۔
-
-    </div>
-
-    <button
-        class="btn-dark"
-        onclick="goHome()">
-
-        ← Back
-
-    </button>
-
-</div>
 
 
-<!-- JOBS -->
+    <!-- EXAM -->
 
-<div id="jobs" class="card hidden">
+    <div id="exam" class="card hidden">
 
-    <h2>🛠️ P2P Jobs</h2>
+        <h2>🎓 AI / Computer Exam</h2>
 
-    <div class="info">
+        <div class="info">
 
-        بغیر کمیشن مزدوری مارکیٹ۔
-        <br><br>
-        Worker اپنا کام درج کریں اور employer
-        direct رابطہ کرے۔
+            یہاں AI-based educational exams،
+            tests اور results system بنایا جائے گا۔
+
+        </div>
+
+        <button
+            class="btn-dark"
+            onclick="goHome()">
+
+            ← Back
+
+        </button>
 
     </div>
 
-    <input
-        type="text"
-        id="wName"
-        placeholder="Worker Name"
-        style="width:100%;padding:12px;margin-top:12px;border:1px solid #ddd;border-radius:10px;"
-    >
 
-    <input
-        type="text"
-        id="wSkill"
-        placeholder="Skill / Work"
-        style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
-    >
+    <!-- JOBS -->
 
-    <input
-        type="tel"
-        id="wPhone"
-        placeholder="Phone / WhatsApp"
-        style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
-    >
+    <div id="jobs" class="card hidden">
 
-    <button
-        onclick="addWorker()"
-        class="btn-orange"
-        style="width:100%;margin-top:12px;color:white;"
-    >
-        ➕ Add Worker
-    </button>
+        <h2>🛠️ P2P Jobs</h2>
 
-    <div id="workerStatus" class="status hidden"></div>
+        <div class="info">
 
-   <div id="workersList" class="info">
+            بغیر کمیشن مزدوری مارکیٹ۔
+            <br><br>
+            Worker اپنا کام درج کریں اور employer
+            direct رابطہ کرے۔
 
-    <strong>Registered Workers</strong>
+        </div>
 
-    <div id="workerItems" style="margin-top:12px;">
-        Loading workers...
+
+        <input
+            type="text"
+            id="wName"
+            placeholder="Worker Name"
+            style="width:100%;padding:12px;margin-top:12px;border:1px solid #ddd;border-radius:10px;"
+        >
+
+
+        <input
+            type="text"
+            id="wSkill"
+            placeholder="Skill / Work"
+            style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
+        >
+
+
+        <input
+            type="tel"
+            id="wPhone"
+            placeholder="Phone / WhatsApp"
+            style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
+        >
+
+
+        <button
+            onclick="addWorker()"
+            class="btn-orange"
+            style="width:100%;margin-top:12px;color:white;"
+        >
+            ➕ Add Worker
+        </button>
+
+
+        <div id="workerStatus" class="status hidden"></div>
+
+
+        <div id="workersList" class="info">
+
+            <strong>Registered Workers</strong>
+
+            <div id="workerItems" style="margin-top:12px;">
+                Loading workers...
+            </div>
+
+        </div>
+
+
+        <button
+            class="btn-dark"
+            onclick="goHome()"
+            style="margin-top:12px;color:white;"
+        >
+            ← Back
+        </button>
+
     </div>
-
-</div>
-
-    <button
-        class="btn-dark"
-        onclick="goHome()"
-        style="margin-top:12px;color:white;"
-    >
-        ← Back
-    </button>
-
-</div>
-
-
-
-   
 
 
     <!-- RATION -->
@@ -516,6 +521,9 @@ button{
 
     </div>
 
+</div>
+
+
 <script>
 
 function openSection(id){
@@ -534,13 +542,16 @@ function openSection(id){
         document.getElementById(id);
 
     if(section){
+
         section.classList.remove("hidden");
 
         window.scrollTo({
             top:0,
             behavior:"smooth"
         });
+
     }
+
 }
 
 
@@ -560,14 +571,20 @@ function goHome(){
         top:0,
         behavior:"smooth"
     });
+
 }
 
 </script>
 
 
+<!-- FIREBASE -->
+
 <script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
 
 import {
     getDatabase,
@@ -575,6 +592,13 @@ import {
     push,
     onValue
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
+
+
+import {
+    getAuth,
+    signInAnonymously,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
 const firebaseConfig = {
@@ -590,108 +614,225 @@ const firebaseConfig = {
 };
 
 
-const app = initializeApp(firebaseConfig);
+const app =
+    initializeApp(firebaseConfig);
 
-const database = getDatabase(app);
+
+const database =
+    getDatabase(app);
 
 
-window.awamDatabase = database;
-window.awamRef = ref;
-window.awamPush = push;
+const auth =
+    getAuth(app);
+
+
+/* MAKE FIREBASE SERVICES AVAILABLE */
+
+window.awamDatabase =
+    database;
+
+window.awamRef =
+    ref;
+
+window.awamPush =
+    push;
+
+window.awamAuth =
+    auth;
+
+
+/* ANONYMOUS AUTHENTICATION */
+
+signInAnonymously(auth)
+    .then(() => {
+
+        console.log(
+            "Awam Network Anonymous Authentication started."
+        );
+
+    })
+    .catch((error) => {
+
+        console.error(
+            "Anonymous Authentication Error:",
+            error
+        );
+
+    });
+
+
+/* AUTH STATE */
+
+onAuthStateChanged(auth, (user) => {
+
+    if(user){
+
+        window.awamUser =
+            user;
+
+        console.log(
+            "Awam Network Firebase User:",
+            user.uid
+        );
+
+    }
+
+});
 
 
 /* LIVE WORKERS LIST */
 
-const workersRef = ref(database, "p2p_workers");
+const workersRef =
+    ref(database, "p2p_workers");
 
 
-onValue(workersRef, (snapshot) => {
+onValue(
 
-    const workerItems =
-        document.getElementById("workerItems");
+    workersRef,
 
-    if (!workerItems) {
-        return;
+    (snapshot) => {
+
+        const workerItems =
+            document.getElementById("workerItems");
+
+
+        if(!workerItems){
+            return;
+        }
+
+
+        workerItems.innerHTML = "";
+
+
+        if(!snapshot.exists()){
+
+            workerItems.textContent =
+                "Abhi koi worker registered nahi.";
+
+            return;
+
+        }
+
+
+        snapshot.forEach(
+            (childSnapshot) => {
+
+                const worker =
+                    childSnapshot.val();
+
+
+                const workerBox =
+                    document.createElement("div");
+
+
+                workerBox.className =
+                    "info";
+
+
+                workerBox.style.marginTop =
+                    "10px";
+
+
+                const name =
+                    document.createElement("strong");
+
+
+                name.textContent =
+                    worker.name || "";
+
+
+                const skill =
+                    document.createElement("div");
+
+
+                skill.textContent =
+                    "Skill: " +
+                    (worker.skill || "");
+
+
+                const phone =
+                    document.createElement("div");
+
+
+                phone.textContent =
+                    "Phone: " +
+                    (worker.phone || "");
+
+
+                workerBox.appendChild(name);
+
+                workerBox.appendChild(skill);
+
+                workerBox.appendChild(phone);
+
+
+                workerItems.appendChild(
+                    workerBox
+                );
+
+            }
+        );
+
+    },
+
+    (error) => {
+
+        const workerItems =
+            document.getElementById("workerItems");
+
+
+        if(workerItems){
+
+            workerItems.textContent =
+                "Workers data access abhi secure rules ki wajah se restricted hai.";
+
+        }
+
+        console.error(
+            "Workers Read Error:",
+            error
+        );
+
     }
 
-    workerItems.innerHTML = "";
-
-
-    if (!snapshot.exists()) {
-
-        workerItems.textContent =
-            "Abhi koi worker registered nahi.";
-
-        return;
-    }
-
-
-    snapshot.forEach((childSnapshot) => {
-
-        const worker =
-            childSnapshot.val();
-
-
-        const workerBox =
-            document.createElement("div");
-
-        workerBox.className = "info";
-
-        workerBox.style.marginTop = "10px";
-
-
-        const name =
-            document.createElement("strong");
-
-        name.textContent =
-            worker.name || "";
-
-
-        const skill =
-            document.createElement("div");
-
-        skill.textContent =
-            "Skill: " + (worker.skill || "");
-
-
-        const phone =
-            document.createElement("div");
-
-        phone.textContent =
-            "Phone: " + (worker.phone || "");
-
-
-        workerBox.appendChild(name);
-        workerBox.appendChild(skill);
-        workerBox.appendChild(phone);
-
-        workerItems.appendChild(workerBox);
-
-    });
-
-});
+);
 
 </script>
 
 
 <script>
 
-async function addWorker() {
+/* ADD WORKER */
+
+async function addWorker(){
 
     const name =
-        document.getElementById("wName").value.trim();
+        document
+        .getElementById("wName")
+        .value
+        .trim();
+
 
     const skill =
-        document.getElementById("wSkill").value.trim();
+        document
+        .getElementById("wSkill")
+        .value
+        .trim();
+
 
     const phone =
-        document.getElementById("wPhone").value.trim();
+        document
+        .getElementById("wPhone")
+        .value
+        .trim();
+
 
     const status =
-        document.getElementById("workerStatus");
+        document
+        .getElementById("workerStatus");
 
 
-    if (!name || !skill || !phone) {
+    if(!name || !skill || !phone){
 
         status.classList.remove("hidden");
 
@@ -699,16 +840,34 @@ async function addWorker() {
             "Please fill Name, Skill and Phone.";
 
         return;
+
     }
 
 
-    try {
+    try{
+
+        /* WAIT FOR FIREBASE AUTH USER */
+
+        if(!window.awamUser){
+
+            status.classList.remove("hidden");
+
+            status.innerText =
+                "Security authentication starting... Please try again.";
+
+            return;
+
+        }
+
 
         const workerData = {
 
             name: name,
+
             skill: skill,
+
             phone: phone,
+
             createdAt: Date.now()
 
         };
@@ -733,17 +892,34 @@ async function addWorker() {
             "Worker successfully registered.";
 
 
-        document.getElementById("wName").value = "";
-        document.getElementById("wSkill").value = "";
-        document.getElementById("wPhone").value = "";
+        document
+            .getElementById("wName")
+            .value = "";
 
 
-    } catch (error) {
+        document
+            .getElementById("wSkill")
+            .value = "";
+
+
+        document
+            .getElementById("wPhone")
+            .value = "";
+
+
+    }
+
+    catch(error){
 
         status.classList.remove("hidden");
 
         status.innerText =
-            "Error: " + error.message;
+            "Registration failed. Secure Firebase rules will be connected in the next step.";
+
+        console.error(
+            "Worker Registration Error:",
+            error
+        );
 
     }
 
