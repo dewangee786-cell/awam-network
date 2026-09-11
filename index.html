@@ -112,14 +112,6 @@ body{
     background:#212529;
 }
 
-.btn-red{
-    background:#dc3545;
-}
-
-.btn-gold{
-    background:#b8860b;
-}
-
 button{
     border:0;
     border-radius:10px;
@@ -128,8 +120,15 @@ button{
     cursor:pointer;
 }
 
-input{
+input,
+textarea{
     font-family:Arial,"Noto Nastaliq Urdu",sans-serif;
+}
+
+input:focus,
+textarea:focus{
+    outline:2px solid #198754;
+    border-color:#198754;
 }
 
 .info{
@@ -148,6 +147,36 @@ input{
     border-radius:12px;
     margin-top:15px;
     color:#146c43;
+    font-weight:bold;
+}
+
+.error-status{
+    background:#fdecea;
+    color:#b02a37;
+}
+
+.worker-box{
+    background:#fff;
+    border:1px solid #ddd;
+    padding:14px;
+    border-radius:12px;
+    margin-top:10px;
+    line-height:1.8;
+}
+
+.worker-title{
+    font-size:18px;
+    font-weight:bold;
+    color:#198754;
+}
+
+.badge{
+    display:inline-block;
+    padding:4px 9px;
+    border-radius:8px;
+    background:#fff3cd;
+    color:#664d03;
+    font-size:12px;
     font-weight:bold;
 }
 
@@ -185,380 +214,367 @@ input{
 
 <div class="container">
 
-    <!-- HEADER -->
+<div class="header">
 
-    <div class="header">
+<div style="font-size:45px;">🌐</div>
 
-        <div style="font-size:45px;">🌐</div>
+<h1>عوام نیٹ ورک</h1>
 
-        <h1>عوام نیٹ ورک</h1>
+<h1>AWAM NETWORK</h1>
 
-        <h1>AWAM NETWORK</h1>
+<p>Bila Sood Khudkaar Nizam</p>
 
-        <p>
-            Bila Sood Khudkaar Nizam
-        </p>
+</div>
 
-    </div>
 
+<div class="founder">
 
-    <!-- FOUNDER -->
+<div>👑 FOUNDER & CEO</div>
 
-    <div class="founder">
+<h2>Dewan Israr Ahmad Faridi</h2>
 
-        <div>👑 FOUNDER & CEO</div>
+<small>Awam Network</small>
 
-        <h2>
-            Dewan Israr Ahmad Faridi
-        </h2>
+</div>
 
-        <small>
-            Awam Network
-        </small>
 
-    </div>
+<div class="card">
 
+<h2 class="section-title">
+🏠 Awam Network V2
+</h2>
 
-    <!-- MAIN -->
+<div class="info">
 
-    <div class="card">
+<strong>
+عوام کے لیے ایک مربوط ڈیجیٹل نیٹ ورک
+</strong>
 
-        <h2 class="section-title">
-            🏠 Awam Network V2
-        </h2>
+<br>
 
-        <div class="info">
+Zakat • Jobs • Ration • Education • NGO
+• AI • Community Services
 
-            <strong>
-                عوام کے لیے ایک مربوط ڈیجیٹل نیٹ ورک
-            </strong>
+</div>
 
-            <br>
 
-            Zakat • Jobs • Ration • Education • NGO
-            • AI • Community Services
+<div class="menu">
 
-        </div>
+<button
+class="btn-green"
+onclick="openSection('zakat')">
+🌍<br>
+Zakat Funding
+</button>
 
+<button
+class="btn-blue"
+onclick="openSection('exam')">
+🎓<br>
+AI / Computer Exam
+</button>
 
-        <!-- MAIN MENU -->
+<button
+class="btn-orange"
+onclick="openSection('jobs')">
+🛠️<br>
+P2P Jobs
+</button>
 
-        <div class="menu">
+<button
+class="btn-green"
+onclick="openSection('ration')">
+🌾<br>
+Sasta Ration
+</button>
 
-            <button
-                class="btn-green"
-                onclick="openSection('zakat')">
+<button
+class="btn-purple"
+onclick="openSection('ngo')">
+🤝<br>
+NGO Portal
+</button>
 
-                🌍<br>
-                Zakat Funding
+<button
+class="btn-dark"
+onclick="openSection('ai')">
+🤖<br>
+AI Assistant
+</button>
 
-            </button>
+</div>
 
 
-            <button
-                class="btn-blue"
-                onclick="openSection('exam')">
+<div class="status">
+🟢 Awam Network V2 System Ready
+</div>
 
-                🎓<br>
-                AI / Computer Exam
+</div>
 
-            </button>
 
+<!-- ZAKAT -->
 
-            <button
-                class="btn-orange"
-                onclick="openSection('jobs')">
+<div id="zakat" class="card hidden">
 
-                🛠️<br>
-                P2P Jobs
+<h2>🌍 عالمی زکوٰۃ پورٹل</h2>
 
-            </button>
+<div class="info">
 
+Zakat donors اور beneficiaries کے لیے
+ایک محفوظ digital system یہاں تیار کیا جائے گا۔
 
-            <button
-                class="btn-green"
-                onclick="openSection('ration')">
+</div>
 
-                🌾<br>
-                Sasta Ration
+<button
+class="btn-dark"
+onclick="goHome()">
+← Back
+</button>
 
-            </button>
+</div>
 
 
-            <button
-                class="btn-purple"
-                onclick="openSection('ngo')">
+<!-- EXAM -->
 
-                🤝<br>
-                NGO Portal
+<div id="exam" class="card hidden">
 
-            </button>
+<h2>🎓 AI / Computer Exam</h2>
 
+<div class="info">
 
-            <button
-                class="btn-dark"
-                onclick="openSection('ai')">
+یہاں AI-based educational exams،
+tests اور results system بنایا جائے گا۔
 
-                🤖<br>
-                AI Assistant
+</div>
 
-            </button>
+<button
+class="btn-dark"
+onclick="goHome()">
+← Back
+</button>
 
-        </div>
+</div>
 
 
-        <div class="status">
-            🟢 Awam Network V2 System Ready
-        </div>
+<!-- P2P JOBS -->
 
-    </div>
+<div id="jobs" class="card hidden">
 
+<h2>🛠️ P2P Worker Verification</h2>
 
-    <!-- ZAKAT -->
+<div class="info">
 
-    <div id="zakat" class="card hidden">
+بغیر کمیشن مزدوری مارکیٹ۔
+Worker اپنی professional profile درج کرے گا۔
+Verification اور safety system اگلے stages میں مزید expand ہوگا۔
 
-        <h2>🌍 عالمی زکوٰۃ پورٹل</h2>
+</div>
 
-        <div class="info">
 
-            Zakat donors اور beneficiaries کے لیے
-            ایک محفوظ digital system یہاں تیار کیا جائے گا۔
+<!-- FULL NAME -->
 
-        </div>
+<input
+type="text"
+id="wName"
+placeholder="Full Name"
+maxlength="100"
+autocomplete="name"
+style="width:100%;padding:12px;margin-top:12px;border:1px solid #ddd;border-radius:10px;"
+>
 
-        <button
-            class="btn-dark"
-            onclick="goHome()">
 
-            ← Back
+<!-- COUNTRY -->
 
-        </button>
+<input
+type="text"
+id="wCountry"
+placeholder="Country"
+maxlength="100"
+autocomplete="country-name"
+style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
+>
 
-    </div>
 
+<!-- CITY -->
 
-    <!-- EXAM -->
+<input
+type="text"
+id="wCity"
+placeholder="City"
+maxlength="100"
+autocomplete="address-level2"
+style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
+>
 
-    <div id="exam" class="card hidden">
 
-        <h2>🎓 AI / Computer Exam</h2>
+<!-- SKILL -->
 
-        <div class="info">
+<input
+type="text"
+id="wSkill"
+placeholder="Skill / Work"
+maxlength="100"
+style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
+>
 
-            یہاں AI-based educational exams،
-            tests اور results system بنایا جائے گا۔
 
-        </div>
+<!-- EXPERIENCE -->
 
-        <button
-            class="btn-dark"
-            onclick="goHome()">
+<input
+type="text"
+id="wExperience"
+placeholder="Experience (e.g. 3 years)"
+maxlength="100"
+style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
+>
 
-            ← Back
 
-        </button>
+<!-- PHONE -->
 
-    </div>
+<input
+type="tel"
+id="wPhone"
+placeholder="Phone / WhatsApp"
+maxlength="30"
+autocomplete="tel"
+style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
+>
 
 
-    <!-- JOBS -->
+<div class="info">
 
-    <div id="jobs" class="card hidden">
+<strong>🔐 Verification Information</strong>
 
-        <h2>🛠️ P2P Jobs</h2>
+<br>
 
-        <div class="info">
+Profile Picture:
+<span class="badge">Pending</span>
 
-            بغیر کمیشن مزدوری مارکیٹ۔
-            <br><br>
-            Worker اپنا کام درج کریں اور employer
-            direct رابطہ کرے۔
+<br>
 
-        </div>
+ID Verification:
+<span class="badge">Pending</span>
 
+<br>
 
-        <!-- FULL NAME -->
+Work History:
+<span class="badge">To be added</span>
 
-        <input
-            type="text"
-            id="wName"
-            placeholder="Full Name"
-            maxlength="100"
-            autocomplete="name"
-            style="width:100%;padding:12px;margin-top:12px;border:1px solid #ddd;border-radius:10px;"
-        >
+</div>
 
 
-        <!-- COUNTRY -->
+<button
+onclick="addWorker()"
+class="btn-orange"
+style="width:100%;margin-top:12px;color:white;">
+➕ Register Worker
+</button>
 
-        <input
-            type="text"
-            id="wCountry"
-            placeholder="Country"
-            maxlength="100"
-            autocomplete="country-name"
-            style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
-        >
 
+<div id="workerStatus" class="status hidden"></div>
 
-        <!-- CITY -->
 
-        <input
-            type="text"
-            id="wCity"
-            placeholder="City"
-            maxlength="100"
-            autocomplete="address-level2"
-            style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
-        >
+<div id="workersList" class="info">
 
+<strong>Registered Workers</strong>
 
-        <!-- SKILL -->
+<div id="workerItems" style="margin-top:12px;">
+Loading workers...
+</div>
 
-        <input
-            type="text"
-            id="wSkill"
-            placeholder="Skill / Work"
-            maxlength="100"
-            style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
-        >
+</div>
 
 
-        <!-- PHONE -->
+<button
+class="btn-dark"
+onclick="goHome()"
+style="margin-top:12px;color:white;">
+← Back
+</button>
 
-        <input
-            type="tel"
-            id="wPhone"
-            placeholder="Phone / WhatsApp"
-            maxlength="30"
-            autocomplete="tel"
-            style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
-        >
+</div>
 
 
-        <button
-            onclick="addWorker()"
-            class="btn-orange"
-            style="width:100%;margin-top:12px;color:white;"
-        >
-            ➕ Add Worker
-        </button>
+<!-- RATION -->
 
+<div id="ration" class="card hidden">
 
-        <div id="workerStatus" class="status hidden"></div>
+<h2>🌾 Sasta Ration Network</h2>
 
+<div class="info">
 
-        <div id="workersList" class="info">
+کم قیمت ضروری اشیاء اور
+ration providers کا network۔
 
-            <strong>Registered Workers</strong>
+</div>
 
-            <div id="workerItems" style="margin-top:12px;">
-                Loading workers...
-            </div>
+<button
+class="btn-dark"
+onclick="goHome()">
+← Back
+</button>
 
-        </div>
+</div>
 
 
-        <button
-            class="btn-dark"
-            onclick="goHome()"
-            style="margin-top:12px;color:white;"
-        >
-            ← Back
-        </button>
+<!-- NGO -->
 
-    </div>
+<div id="ngo" class="card hidden">
 
+<h2>🤝 NGO Partner Portal</h2>
 
-    <!-- RATION -->
+<div class="info">
 
-    <div id="ration" class="card hidden">
+NGOs کو Awam Network کے
+welfare systems کے ساتھ connect کرنے کے لیے
+dedicated portal۔
 
-        <h2>🌾 Sasta Ration Network</h2>
+</div>
 
-        <div class="info">
+<button
+class="btn-dark"
+onclick="goHome()">
+← Back
+</button>
 
-            کم قیمت ضروری اشیاء اور
-            ration providers کا network۔
+</div>
 
-        </div>
 
-        <button
-            class="btn-dark"
-            onclick="goHome()">
+<!-- AI -->
 
-            ← Back
+<div id="ai" class="card hidden">
 
-        </button>
+<h2>🤖 Awam Network AI Assistant</h2>
 
-    </div>
+<div class="info">
 
+AI Assistant کا مکمل system
+اگلے مراحل میں securely connect کیا جائے گا۔
 
-    <!-- NGO -->
+</div>
 
-    <div id="ngo" class="card hidden">
+<button
+class="btn-dark"
+onclick="goHome()">
+← Back
+</button>
 
-        <h2>🤝 NGO Partner Portal</h2>
+</div>
 
-        <div class="info">
 
-            NGOs کو Awam Network کے
-            welfare systems کے ساتھ connect کرنے کے لیے
-            dedicated portal۔
+<div class="footer">
 
-        </div>
+© Awam Network
 
-        <button
-            class="btn-dark"
-            onclick="goHome()">
+<br>
 
-            ← Back
+Bila Sood Khudkaar Nizam
 
-        </button>
+<br>
 
-    </div>
+V2 — P2P Verification Foundation
 
-
-    <!-- AI -->
-
-    <div id="ai" class="card hidden">
-
-        <h2>🤖 Awam Network AI Assistant</h2>
-
-        <div class="info">
-
-            AI Assistant کا مکمل system
-            اگلے مراحل میں securely connect کیا جائے گا۔
-
-        </div>
-
-        <button
-            class="btn-dark"
-            onclick="goHome()">
-
-            ← Back
-
-        </button>
-
-    </div>
-
-
-    <!-- FOOTER -->
-
-    <div class="footer">
-
-        © Awam Network
-
-        <br>
-
-        Bila Sood Khudkaar Nizam
-
-        <br>
-
-        V2 — Foundation Build
-
-    </div>
+</div>
 
 </div>
 
@@ -567,49 +583,49 @@ input{
 
 function openSection(id){
 
-    document
-        .querySelectorAll(".card")
-        .forEach(function(card){
+document
+.querySelectorAll(".card")
+.forEach(function(card){
 
-            if(card.id){
-                card.classList.add("hidden");
-            }
+if(card.id){
+card.classList.add("hidden");
+}
 
-        });
+});
 
-    const section =
-        document.getElementById(id);
+const section =
+document.getElementById(id);
 
-    if(section){
+if(section){
 
-        section.classList.remove("hidden");
+section.classList.remove("hidden");
 
-        window.scrollTo({
-            top:0,
-            behavior:"smooth"
-        });
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
-    }
+}
 
 }
 
 
 function goHome(){
 
-    document
-        .querySelectorAll(".card")
-        .forEach(function(card){
+document
+.querySelectorAll(".card")
+.forEach(function(card){
 
-            if(card.id){
-                card.classList.add("hidden");
-            }
+if(card.id){
+card.classList.add("hidden");
+}
 
-        });
+});
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 }
 
@@ -621,245 +637,277 @@ function goHome(){
 <script type="module">
 
 import {
-    initializeApp
+initializeApp
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
 
 import {
-    getDatabase,
-    ref,
-    push,
-    onValue
+getDatabase,
+ref,
+push,
+onValue
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
 
 
 import {
-    getAuth,
-    signInAnonymously,
-    onAuthStateChanged
+getAuth,
+signInAnonymously,
+onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyCVbrB6vg0wLLzfLymZ3213b249DAo5jbY",
-    authDomain: "awam-network-318ec.firebaseapp.com",
-    databaseURL: "https://awam-network-318ec-default-rtdb.firebaseio.com",
-    projectId: "awam-network-318ec",
-    storageBucket: "awam-network-318ec.firebasestorage.app",
-    messagingSenderId: "313453430241",
-    appId: "1:313453430241:web:bde7e4fecce0e07426fea0"
+apiKey:
+"AIzaSyCVbrB6vg0wLLzfLymZ3213b249DAo5jbY",
+
+authDomain:
+"awam-network-318ec.firebaseapp.com",
+
+databaseURL:
+"https://awam-network-318ec-default-rtdb.firebaseio.com",
+
+projectId:
+"awam-network-318ec",
+
+storageBucket:
+"awam-network-318ec.firebasestorage.app",
+
+messagingSenderId:
+"313453430241",
+
+appId:
+"1:313453430241:web:bde7e4fecce0e07426fea0"
 
 };
 
 
 const app =
-    initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 
 const database =
-    getDatabase(app);
+getDatabase(app);
 
 
 const auth =
-    getAuth(app);
+getAuth(app);
 
-
-/* MAKE FIREBASE SERVICES AVAILABLE */
 
 window.awamDatabase =
-    database;
+database;
 
 window.awamRef =
-    ref;
+ref;
 
 window.awamPush =
-    push;
+push;
 
 window.awamAuth =
-    auth;
+auth;
 
-
-/* ANONYMOUS AUTHENTICATION */
 
 signInAnonymously(auth)
-    .then(() => {
+.then(() => {
 
-        console.log(
-            "Awam Network Anonymous Authentication started."
-        );
+console.log(
+"Awam Network Anonymous Authentication started."
+);
 
-    })
-    .catch((error) => {
+})
+.catch((error) => {
 
-        console.error(
-            "Anonymous Authentication Error:",
-            error
-        );
-
-    });
-
-
-/* AUTH STATE */
-
-onAuthStateChanged(auth, (user) => {
-
-    if(user){
-
-        window.awamUser =
-            user;
-
-        console.log(
-            "Awam Network Firebase User:",
-            user.uid
-        );
-
-    } else {
-
-        window.awamUser =
-            null;
-
-    }
+console.error(
+"Anonymous Authentication Error:",
+error
+);
 
 });
 
 
-/* LIVE WORKERS LIST */
+onAuthStateChanged(auth,(user)=>{
+
+if(user){
+
+window.awamUser =
+user;
+
+console.log(
+"Awam Network Firebase User:",
+user.uid
+);
+
+}else{
+
+window.awamUser =
+null;
+
+}
+
+});
+
+
+/* LIVE WORKER LIST */
 
 const workersRef =
-    ref(database, "p2p_workers");
+ref(database,"p2p_workers");
 
 
 onValue(
 
-    workersRef,
+workersRef,
 
-    (snapshot) => {
+(snapshot)=>{
 
-        const workerItems =
-            document.getElementById("workerItems");
-
-
-        if(!workerItems){
-            return;
-        }
+const workerItems =
+document.getElementById("workerItems");
 
 
-        workerItems.innerHTML = "";
+if(!workerItems){
+return;
+}
 
 
-        if(!snapshot.exists()){
-
-            workerItems.textContent =
-                "Abhi koi worker registered nahi.";
-
-            return;
-
-        }
+workerItems.innerHTML = "";
 
 
-        snapshot.forEach(
-            (childSnapshot) => {
+if(!snapshot.exists()){
 
-                const worker =
-                    childSnapshot.val();
+workerItems.textContent =
+"Abhi koi worker registered nahi.";
 
+return;
 
-                const workerBox =
-                    document.createElement("div");
-
-
-                workerBox.className =
-                    "info";
+}
 
 
-                workerBox.style.marginTop =
-                    "10px";
+snapshot.forEach(
+(childSnapshot)=>{
+
+const worker =
+childSnapshot.val();
 
 
-                const name =
-                    document.createElement("strong");
+const workerBox =
+document.createElement("div");
 
 
-                name.textContent =
-                    worker.name || "";
+workerBox.className =
+"worker-box";
 
 
-                const country =
-                    document.createElement("div");
+const title =
+document.createElement("div");
 
 
-                country.textContent =
-                    "Country: " +
-                    (worker.country || "");
+title.className =
+"worker-title";
 
 
-                const city =
-                    document.createElement("div");
+title.textContent =
+worker.name || "";
 
 
-                city.textContent =
-                    "City: " +
-                    (worker.city || "");
+const country =
+document.createElement("div");
 
 
-                const skill =
-                    document.createElement("div");
+country.textContent =
+"Country: " +
+(worker.country || "");
 
 
-                skill.textContent =
-                    "Skill: " +
-                    (worker.skill || "");
+const city =
+document.createElement("div");
 
 
-                const phone =
-                    document.createElement("div");
+city.textContent =
+"City: " +
+(worker.city || "");
 
 
-                phone.textContent =
-                    "Phone: " +
-                    (worker.phone || "");
+const skill =
+document.createElement("div");
 
 
-                workerBox.appendChild(name);
-
-                workerBox.appendChild(country);
-
-                workerBox.appendChild(city);
-
-                workerBox.appendChild(skill);
-
-                workerBox.appendChild(phone);
+skill.textContent =
+"Skill / Work: " +
+(worker.skill || "");
 
 
-                workerItems.appendChild(
-                    workerBox
-                );
-
-            }
-        );
-
-    },
-
-    (error) => {
-
-        const workerItems =
-            document.getElementById("workerItems");
+const experience =
+document.createElement("div");
 
 
-        if(workerItems){
+experience.textContent =
+"Experience: " +
+(worker.experience || "");
 
-            workerItems.textContent =
-                "Workers list secure authentication ke baad available hogi.";
 
-        }
+const phone =
+document.createElement("div");
 
-        console.error(
-            "Workers Read Error:",
-            error
-        );
 
-    }
+phone.textContent =
+"Phone / WhatsApp: " +
+(worker.phone || "");
+
+
+const verification =
+document.createElement("div");
+
+
+verification.innerHTML =
+"Verification: " +
+"<span class='badge'>" +
+(worker.verificationStatus || "Pending") +
+"</span>";
+
+
+workerBox.appendChild(title);
+
+workerBox.appendChild(country);
+
+workerBox.appendChild(city);
+
+workerBox.appendChild(skill);
+
+workerBox.appendChild(experience);
+
+workerBox.appendChild(phone);
+
+workerBox.appendChild(verification);
+
+
+workerItems.appendChild(
+workerBox
+);
+
+}
+
+);
+
+},
+
+(error)=>{
+
+const workerItems =
+document.getElementById("workerItems");
+
+
+if(workerItems){
+
+workerItems.textContent =
+"Workers list secure authentication ke baad available hogi.";
+
+}
+
+console.error(
+"Workers Read Error:",
+error
+);
+
+}
 
 );
 
@@ -868,172 +916,199 @@ onValue(
 
 <script>
 
-/* ADD WORKER */
+/* REGISTER WORKER */
 
 async function addWorker(){
 
-    const name =
-        document
-        .getElementById("wName")
-        .value
-        .trim();
+const name =
+document
+.getElementById("wName")
+.value
+.trim();
 
 
-    const country =
-        document
-        .getElementById("wCountry")
-        .value
-        .trim();
+const country =
+document
+.getElementById("wCountry")
+.value
+.trim();
 
 
-    const city =
-        document
-        .getElementById("wCity")
-        .value
-        .trim();
+const city =
+document
+.getElementById("wCity")
+.value
+.trim();
 
 
-    const skill =
-        document
-        .getElementById("wSkill")
-        .value
-        .trim();
+const skill =
+document
+.getElementById("wSkill")
+.value
+.trim();
 
 
-    const phone =
-        document
-        .getElementById("wPhone")
-        .value
-        .trim();
+const experience =
+document
+.getElementById("wExperience")
+.value
+.trim();
 
 
-    const status =
-        document
-        .getElementById("workerStatus");
+const phone =
+document
+.getElementById("wPhone")
+.value
+.trim();
 
 
-    if(!name || !country || !city || !skill || !phone){
-
-        status.classList.remove("hidden");
-
-        status.innerText =
-            "Please fill Name, Country, City, Skill and Phone.";
-
-        return;
-
-    }
+const status =
+document
+.getElementById("workerStatus");
 
 
-    if(
-        name.length > 100 ||
-        country.length > 100 ||
-        city.length > 100 ||
-        skill.length > 100 ||
-        phone.length > 30
-    ){
+if(
+!name ||
+!country ||
+!city ||
+!skill ||
+!experience ||
+!phone
+){
 
-        status.classList.remove("hidden");
+status.classList.remove("hidden");
 
-        status.innerText =
-            "Please enter valid information.";
+status.classList.add("error-status");
 
-        return;
+status.innerText =
+"Please fill all required worker information.";
 
-    }
+return;
 
-
-    try{
-
-        /* WAIT FOR FIREBASE AUTH USER */
-
-        if(!window.awamUser){
-
-            status.classList.remove("hidden");
-
-            status.innerText =
-                "Security authentication starting... Please try again.";
-
-            return;
-
-        }
+}
 
 
-        const workerData = {
+if(
+name.length > 100 ||
+country.length > 100 ||
+city.length > 100 ||
+skill.length > 100 ||
+experience.length > 100 ||
+phone.length > 30
+){
 
-            name: name,
+status.classList.remove("hidden");
 
-            country: country,
+status.classList.add("error-status");
 
-            city: city,
+status.innerText =
+"Please enter valid information.";
 
-            skill: skill,
+return;
 
-            phone: phone,
-
-            createdAt: Date.now()
-
-        };
-
-
-        const workersRef =
-            window.awamRef(
-                window.awamDatabase,
-                "p2p_workers"
-            );
+}
 
 
-        await window.awamPush(
-            workersRef,
-            workerData
-        );
+if(!window.awamUser){
+
+status.classList.remove("hidden");
+
+status.classList.add("error-status");
+
+status.innerText =
+"Security authentication starting... Please try again.";
+
+return;
+
+}
 
 
-        status.classList.remove("hidden");
+try{
 
-        status.innerText =
-            "Worker successfully registered.";
+const workerData = {
+
+name:name,
+
+country:country,
+
+city:city,
+
+skill:skill,
+
+experience:experience,
+
+phone:phone,
+
+profilePictureStatus:"pending",
+
+idVerificationStatus:"pending",
+
+workHistoryStatus:"pending",
+
+verificationStatus:"pending",
+
+accountStatus:"active",
+
+complaintCount:0,
+
+createdAt:Date.now(),
+
+updatedAt:Date.now()
+
+};
 
 
-        document
-            .getElementById("wName")
-            .value = "";
+const workersRef =
+window.awamRef(
+window.awamDatabase,
+"p2p_workers"
+);
 
 
-        document
-            .getElementById("wCountry")
-            .value = "";
+await window.awamPush(
+workersRef,
+workerData
+);
 
 
-        document
-            .getElementById("wCity")
-            .value = "";
+status.classList.remove("hidden");
+
+status.classList.remove("error-status");
+
+status.innerText =
+"Worker successfully registered. Verification status: Pending.";
 
 
-        document
-            .getElementById("wSkill")
-            .value = "";
+document.getElementById("wName").value = "";
+
+document.getElementById("wCountry").value = "";
+
+document.getElementById("wCity").value = "";
+
+document.getElementById("wSkill").value = "";
+
+document.getElementById("wExperience").value = "";
+
+document.getElementById("wPhone").value = "";
 
 
-        document
-            .getElementById("wPhone")
-            .value = "";
+}
 
+catch(error){
 
-    }
+status.classList.remove("hidden");
 
-    catch(error){
+status.classList.add("error-status");
 
-        status.classList.remove("hidden");
+status.innerText =
+"Registration failed. Please check Firebase security settings.";
 
-        status.innerText =
-            "Registration failed. Please check Firebase security settings.";
+console.error(
+"Worker Registration Error:",
+error
+);
 
-        console.error(
-            "Worker Registration Error:",
-            error
-        );
-
-    }
+}
 
 }
 
