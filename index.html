@@ -1,12 +1,13 @@
+```html
 <!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Awam Network V2 — Bila Sood Khudkaar Nizam</title>
+<title>International Awam Network Hub — Awam Network</title>
 
-<meta name="description" content="Awam Network — Bila Sood Khudkaar Nizam">
+<meta name="description" content="International Awam Network Hub — Bila Sood Khudkaar Nizam">
 <meta name="author" content="Dewan Israr Ahmad Faridi">
 <meta name="theme-color" content="#198754">
 
@@ -24,7 +25,7 @@ body{
 
 .container{
     width:100%;
-    max-width:700px;
+    max-width:760px;
     margin:auto;
     padding:15px;
 }
@@ -40,12 +41,19 @@ body{
 
 .header h1{
     margin:5px 0;
-    font-size:30px;
+    font-size:29px;
 }
 
 .header p{
     margin:8px 0 0;
     font-size:16px;
+}
+
+.vip-title{
+    color:#d4af37;
+    font-weight:bold;
+    font-size:14px;
+    letter-spacing:1px;
 }
 
 .founder{
@@ -92,25 +100,12 @@ body{
     padding:12px;
 }
 
-.btn-green{
-    background:#198754;
-}
-
-.btn-blue{
-    background:#0d6efd;
-}
-
-.btn-orange{
-    background:#fd7e14;
-}
-
-.btn-purple{
-    background:#6f42c1;
-}
-
-.btn-dark{
-    background:#212529;
-}
+.btn-green{background:#198754;}
+.btn-blue{background:#0d6efd;}
+.btn-orange{background:#fd7e14;}
+.btn-purple{background:#6f42c1;}
+.btn-dark{background:#212529;}
+.btn-gold{background:#b8860b;}
 
 button{
     border:0;
@@ -180,15 +175,60 @@ textarea:focus{
     font-weight:bold;
 }
 
+.account{
+    background:#ffffff;
+    border:2px solid #d4af37;
+    border-radius:16px;
+    padding:14px;
+    margin-top:15px;
+    text-align:center;
+}
+
+.account-email{
+    font-size:13px;
+    color:#666;
+    margin:6px 0 10px;
+    direction:ltr;
+}
+
+.login-box{
+    background:linear-gradient(135deg,#ffffff,#f4f8f6);
+    border:2px solid #d4af37;
+    border-radius:20px;
+    padding:25px 18px;
+    margin-top:15px;
+    text-align:center;
+    box-shadow:0 5px 18px rgba(0,0,0,.10);
+}
+
+.login-box h2{
+    margin:5px 0 10px;
+    color:#0f5132;
+}
+
+.google-btn{
+    width:100%;
+    background:#fff;
+    color:#222;
+    border:1px solid #ccc;
+    box-shadow:0 2px 7px rgba(0,0,0,.12);
+    font-size:15px;
+    margin-top:12px;
+}
+
+.google-btn:hover{
+    background:#f5f5f5;
+}
+
+.hidden{
+    display:none !important;
+}
+
 .footer{
     text-align:center;
     padding:25px 10px;
     color:#666;
     font-size:13px;
-}
-
-.hidden{
-    display:none;
 }
 
 @media(max-width:480px){
@@ -204,7 +244,7 @@ textarea:focus{
     }
 
     .header h1{
-        font-size:25px;
+        font-size:24px;
     }
 }
 </style>
@@ -214,9 +254,53 @@ textarea:focus{
 
 <div class="container">
 
+<!-- LOGIN SCREEN -->
+
+<div id="loginScreen" class="login-box">
+
+<div style="font-size:55px;">🌐</div>
+
+<div class="vip-title">
+VIP INTERNATIONAL NETWORK
+</div>
+
+<h2>International Awam Network Hub</h2>
+
+<p>
+Bila Sood Khudkaar Nizam
+</p>
+
+<div class="info">
+🔐 Hub access ke liye Firebase authenticated
+Google account se login karein.
+</div>
+
+<button
+id="googleLoginBtn"
+class="google-btn">
+🔐 Continue with Google
+</button>
+
+<div
+id="loginStatus"
+class="status hidden">
+Authentication starting...
+</div>
+
+</div>
+
+
+<!-- MAIN HUB -->
+
+<div id="mainHub" class="hidden">
+
 <div class="header">
 
 <div style="font-size:45px;">🌐</div>
+
+<div class="vip-title">
+VIP INTERNATIONAL AWAM NETWORK
+</div>
 
 <h1>عوام نیٹ ورک</h1>
 
@@ -233,27 +317,51 @@ textarea:focus{
 
 <h2>Dewan Israr Ahmad Faridi</h2>
 
-<small>Awam Network</small>
+<small>International Awam Network</small>
 
 </div>
 
 
-<div class="card">
+<!-- ACCOUNT -->
+
+<div class="account">
+
+<strong>🔐 Secure Account</strong>
+
+<div
+id="userEmail"
+class="account-email">
+Authenticated User
+</div>
+
+<button
+id="logoutBtn"
+class="btn-dark"
+style="color:white;width:100%;">
+Logout
+</button>
+
+</div>
+
+
+<!-- HUB HOME -->
+
+<div id="homeCard" class="card">
 
 <h2 class="section-title">
-🏠 Awam Network V2
+🌍 International Awam Network Hub
 </h2>
 
 <div class="info">
 
 <strong>
-عوام کے لیے ایک مربوط ڈیجیٹل نیٹ ورک
+عوام کے لیے ایک مربوط عالمی ڈیجیٹل نیٹ ورک
 </strong>
 
 <br>
 
-Zakat • Jobs • Ration • Education • NGO
-• AI • Community Services
+Zakat • Jobs • Ration • Education • AI
+• NGO • E-Commerce • Wallet • Services
 
 </div>
 
@@ -271,7 +379,7 @@ Zakat Funding
 class="btn-blue"
 onclick="openSection('exam')">
 🎓<br>
-AI / Computer Exam
+Education & AI Exams
 </button>
 
 <button
@@ -292,21 +400,43 @@ Sasta Ration
 class="btn-purple"
 onclick="openSection('ngo')">
 🤝<br>
-NGO Portal
+NGO & Welfare
 </button>
 
 <button
 class="btn-dark"
 onclick="openSection('ai')">
 🤖<br>
-AI Assistant
+AI Support
+</button>
+
+<button
+class="btn-gold"
+onclick="openSection('shop')">
+🏪<br>
+E-Commerce & Services
+</button>
+
+<button
+class="btn-blue"
+onclick="openSection('wallet')">
+💰<br>
+Wallet
+</button>
+
+<button
+class="btn-dark"
+onclick="openSection('admin')"
+style="grid-column:1 / -1;">
+🔐<br>
+Admin & Security
 </button>
 
 </div>
 
 
 <div class="status">
-🟢 Awam Network V2 System Ready
+🟢 International Awam Network Hub Secure & Ready
 </div>
 
 </div>
@@ -320,37 +450,59 @@ AI Assistant
 
 <div class="info">
 
-Zakat donors اور beneficiaries کے لیے
-ایک محفوظ digital system یہاں تیار کیا جائے گا۔
+Zakat donors aur beneficiaries ke liye
+secure digital system yahan develop kiya jayega.
+
+<br><br>
+
+Donor verification, beneficiary verification
+aur transparent distribution system future stages
+mein connect kiya jayega.
 
 </div>
 
 <button
 class="btn-dark"
-onclick="goHome()">
-← Back
+onclick="goHome()"
+style="color:white;">
+← Back to Hub
 </button>
 
 </div>
 
 
-<!-- EXAM -->
+<!-- EDUCATION -->
 
 <div id="exam" class="card hidden">
 
-<h2>🎓 AI / Computer Exam</h2>
+<h2>🎓 Education & AI Exams</h2>
 
 <div class="info">
 
-یہاں AI-based educational exams،
-tests اور results system بنایا جائے گا۔
+AI-based education system ka objective:
+
+<br>
+• Beginner level learning
+<br>
+• IT aur practical education
+<br>
+• AI-generated lessons
+<br>
+• AI-based examinations
+<br>
+• Automatic evaluation
+<br>
+• Pass / Fail result
+<br>
+• Future certificate system
 
 </div>
 
 <button
 class="btn-dark"
-onclick="goHome()">
-← Back
+onclick="goHome()"
+style="color:white;">
+← Back to Hub
 </button>
 
 </div>
@@ -364,14 +516,12 @@ onclick="goHome()">
 
 <div class="info">
 
-بغیر کمیشن مزدوری مارکیٹ۔
-Worker اپنی professional profile درج کرے گا۔
-Verification اور safety system اگلے stages میں مزید expand ہوگا۔
+Bina commission worker/employer network.
+Worker apni professional information register karega.
+Verification aur safety system future stages mein expand hoga.
 
 </div>
 
-
-<!-- FULL NAME -->
 
 <input
 type="text"
@@ -383,8 +533,6 @@ style="width:100%;padding:12px;margin-top:12px;border:1px solid #ddd;border-radi
 >
 
 
-<!-- COUNTRY -->
-
 <input
 type="text"
 id="wCountry"
@@ -394,8 +542,6 @@ autocomplete="country-name"
 style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
 >
 
-
-<!-- CITY -->
 
 <input
 type="text"
@@ -407,8 +553,6 @@ style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radi
 >
 
 
-<!-- SKILL -->
-
 <input
 type="text"
 id="wSkill"
@@ -418,8 +562,6 @@ style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radi
 >
 
 
-<!-- EXPERIENCE -->
-
 <input
 type="text"
 id="wExperience"
@@ -428,8 +570,6 @@ maxlength="100"
 style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
 >
 
-
-<!-- PHONE -->
 
 <input
 type="tel"
@@ -458,7 +598,12 @@ ID Verification:
 <br>
 
 Work History:
-<span class="badge">To be added</span>
+<span class="badge">Pending</span>
+
+<br>
+
+Overall Verification:
+<span class="badge">Pending</span>
 
 </div>
 
@@ -471,14 +616,19 @@ style="width:100%;margin-top:12px;color:white;">
 </button>
 
 
-<div id="workerStatus" class="status hidden"></div>
+<div
+id="workerStatus"
+class="status hidden">
+</div>
 
 
 <div id="workersList" class="info">
 
 <strong>Registered Workers</strong>
 
-<div id="workerItems" style="margin-top:12px;">
+<div
+id="workerItems"
+style="margin-top:12px;">
 Loading workers...
 </div>
 
@@ -488,8 +638,8 @@ Loading workers...
 <button
 class="btn-dark"
 onclick="goHome()"
-style="margin-top:12px;color:white;">
-← Back
+style="margin-top:12px;color:white;width:100%;">
+← Back to Hub
 </button>
 
 </div>
@@ -503,15 +653,16 @@ style="margin-top:12px;color:white;">
 
 <div class="info">
 
-کم قیمت ضروری اشیاء اور
-ration providers کا network۔
+Kam qeemat zaroori ashya aur ration providers
+ka digital network future stage mein connect kiya jayega.
 
 </div>
 
 <button
 class="btn-dark"
-onclick="goHome()">
-← Back
+onclick="goHome()"
+style="color:white;">
+← Back to Hub
 </button>
 
 </div>
@@ -521,20 +672,26 @@ onclick="goHome()">
 
 <div id="ngo" class="card hidden">
 
-<h2>🤝 NGO Partner Portal</h2>
+<h2>🤝 NGO & Welfare Portal</h2>
 
 <div class="info">
 
-NGOs کو Awam Network کے
-welfare systems کے ساتھ connect کرنے کے لیے
-dedicated portal۔
+NGOs aur welfare organizations ko
+Awam Network ke welfare systems ke saath
+connect karne ke liye dedicated portal.
+
+<br><br>
+
+Education • Health • Ration • Orphan Care
+• Disaster Relief • Clean Water • Welfare
 
 </div>
 
 <button
 class="btn-dark"
-onclick="goHome()">
-← Back
+onclick="goHome()"
+style="color:white;">
+← Back to Hub
 </button>
 
 </div>
@@ -544,19 +701,124 @@ onclick="goHome()">
 
 <div id="ai" class="card hidden">
 
-<h2>🤖 Awam Network AI Assistant</h2>
+<h2>🤖 Awam Network AI Support</h2>
 
 <div class="info">
 
-AI Assistant کا مکمل system
-اگلے مراحل میں securely connect کیا جائے گا۔
+AI Support system future stages mein
+securely connect kiya jayega.
+
+<br><br>
+
+AI education, assistance, information
+aur automated services ke liye foundation ready hai.
 
 </div>
 
 <button
 class="btn-dark"
-onclick="goHome()">
-← Back
+onclick="goHome()"
+style="color:white;">
+← Back to Hub
+</button>
+
+</div>
+
+
+<!-- E-COMMERCE -->
+
+<div id="shop" class="card hidden">
+
+<h2>🏪 E-Commerce & Services</h2>
+
+<div class="info">
+
+International Awam Network ke andar
+future mein products, local services,
+digital services aur community marketplace
+develop kiya jayega.
+
+<br><br>
+
+🛒 Products
+<br>
+🛠️ Services
+<br>
+🌍 International Marketplace
+<br>
+🤝 Community Sellers
+
+</div>
+
+<button
+class="btn-dark"
+onclick="goHome()"
+style="color:white;">
+← Back to Hub
+</button>
+
+</div>
+
+
+<!-- WALLET -->
+
+<div id="wallet" class="card hidden">
+
+<h2>💰 Awam Network Wallet</h2>
+
+<div class="info">
+
+Secure digital wallet system future stage mein
+authentication, transaction security aur
+proper database rules ke saath develop kiya jayega.
+
+<br><br>
+
+Wallet balance:
+<strong>Coming Soon</strong>
+
+</div>
+
+<button
+class="btn-dark"
+onclick="goHome()"
+style="color:white;">
+← Back to Hub
+</button>
+
+</div>
+
+
+<!-- ADMIN -->
+
+<div id="admin" class="card hidden">
+
+<h2>🔐 Admin & Security</h2>
+
+<div class="info">
+
+Admin control system ko normal users se
+separate rakha jayega.
+
+<br><br>
+
+🔐 Firebase Authentication
+<br>
+🛡️ Database Security Rules
+<br>
+👤 User Authentication
+<br>
+🚫 Unauthorized Access Protection
+<br>
+📊 Future Admin Dashboard
+
+</div>
+
+<button
+class="btn-dark"
+onclick="goHome()"
+style="color:white;">
+← Back to Hub
 </button>
 
 </div>
@@ -564,7 +826,7 @@ onclick="goHome()">
 
 <div class="footer">
 
-© Awam Network
+© International Awam Network
 
 <br>
 
@@ -572,64 +834,13 @@ Bila Sood Khudkaar Nizam
 
 <br>
 
-V2 — P2P Verification Foundation
+VIP Hub — Step 8
 
 </div>
 
 </div>
 
-
-<script>
-
-function openSection(id){
-
-document
-.querySelectorAll(".card")
-.forEach(function(card){
-
-if(card.id){
-card.classList.add("hidden");
-}
-
-});
-
-const section =
-document.getElementById(id);
-
-if(section){
-
-section.classList.remove("hidden");
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-}
-
-
-function goHome(){
-
-document
-.querySelectorAll(".card")
-.forEach(function(card){
-
-if(card.id){
-card.classList.add("hidden");
-}
-
-});
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-</script>
+</div>
 
 
 <!-- FIREBASE -->
@@ -640,7 +851,6 @@ import {
 initializeApp
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
-
 import {
 getDatabase,
 ref,
@@ -648,10 +858,11 @@ push,
 onValue
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
 
-
 import {
 getAuth,
-signInAnonymously,
+GoogleAuthProvider,
+signInWithPopup,
+signOut,
 onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
@@ -694,6 +905,10 @@ const auth =
 getAuth(app);
 
 
+const googleProvider =
+new GoogleAuthProvider();
+
+
 window.awamDatabase =
 database;
 
@@ -707,44 +922,134 @@ window.awamAuth =
 auth;
 
 
-signInAnonymously(auth)
-.then(() => {
+/* GOOGLE LOGIN */
 
-console.log(
-"Awam Network Anonymous Authentication started."
+document
+.getElementById("googleLoginBtn")
+.addEventListener("click",async()=>{
+
+const status =
+document.getElementById("loginStatus");
+
+status.classList.remove("hidden");
+status.classList.remove("error-status");
+
+status.innerText =
+"Google authentication starting...";
+
+try{
+
+await signInWithPopup(
+auth,
+googleProvider
 );
 
-})
-.catch((error) => {
+}
+
+catch(error){
 
 console.error(
-"Anonymous Authentication Error:",
+"Google Login Error:",
 error
 );
+
+status.classList.remove("hidden");
+status.classList.add("error-status");
+
+if(error.code === "auth/popup-blocked"){
+
+status.innerText =
+"Popup blocked. Please allow popups and try again.";
+
+}
+else if(error.code === "auth/popup-closed-by-user"){
+
+status.innerText =
+"Login cancelled.";
+
+}
+else{
+
+status.innerText =
+"Google Login failed. Please try again.";
+
+}
+
+}
 
 });
 
 
-onAuthStateChanged(auth,(user)=>{
+/* LOGOUT */
+
+document
+.getElementById("logoutBtn")
+.addEventListener("click",async()=>{
+
+try{
+
+await signOut(auth);
+
+}
+
+catch(error){
+
+console.error(
+"Logout Error:",
+error
+);
+
+}
+
+});
+
+
+/* AUTH STATE */
+
+onAuthStateChanged(
+auth,
+(user)=>{
+
+const loginScreen =
+document.getElementById("loginScreen");
+
+const mainHub =
+document.getElementById("mainHub");
+
+const userEmail =
+document.getElementById("userEmail");
 
 if(user){
+
+loginScreen.classList.add("hidden");
+
+mainHub.classList.remove("hidden");
+
+userEmail.textContent =
+user.email || "Authenticated User";
 
 window.awamUser =
 user;
 
 console.log(
-"Awam Network Firebase User:",
+"Awam Network authenticated user:",
 user.uid
 );
 
-}else{
+}
+else{
+
+mainHub.classList.add("hidden");
+
+loginScreen.classList.remove("hidden");
 
 window.awamUser =
 null;
 
 }
 
-});
+}
+);
 
 
 /* LIVE WORKER LIST */
@@ -762,14 +1067,11 @@ workersRef,
 const workerItems =
 document.getElementById("workerItems");
 
-
 if(!workerItems){
 return;
 }
 
-
 workerItems.innerHTML = "";
-
 
 if(!snapshot.exists()){
 
@@ -791,7 +1093,6 @@ childSnapshot.val();
 const workerBox =
 document.createElement("div");
 
-
 workerBox.className =
 "worker-box";
 
@@ -799,10 +1100,8 @@ workerBox.className =
 const title =
 document.createElement("div");
 
-
 title.className =
 "worker-title";
-
 
 title.textContent =
 worker.name || "";
@@ -810,7 +1109,6 @@ worker.name || "";
 
 const country =
 document.createElement("div");
-
 
 country.textContent =
 "Country: " +
@@ -820,7 +1118,6 @@ country.textContent =
 const city =
 document.createElement("div");
 
-
 city.textContent =
 "City: " +
 (worker.city || "");
@@ -828,7 +1125,6 @@ city.textContent =
 
 const skill =
 document.createElement("div");
-
 
 skill.textContent =
 "Skill / Work: " +
@@ -838,7 +1134,6 @@ skill.textContent =
 const experience =
 document.createElement("div");
 
-
 experience.textContent =
 "Experience: " +
 (worker.experience || "");
@@ -846,7 +1141,6 @@ experience.textContent =
 
 const phone =
 document.createElement("div");
-
 
 phone.textContent =
 "Phone / WhatsApp: " +
@@ -856,7 +1150,6 @@ phone.textContent =
 const verification =
 document.createElement("div");
 
-
 verification.innerHTML =
 "Verification: " +
 "<span class='badge'>" +
@@ -865,19 +1158,12 @@ verification.innerHTML =
 
 
 workerBox.appendChild(title);
-
 workerBox.appendChild(country);
-
 workerBox.appendChild(city);
-
 workerBox.appendChild(skill);
-
 workerBox.appendChild(experience);
-
 workerBox.appendChild(phone);
-
 workerBox.appendChild(verification);
-
 
 workerItems.appendChild(
 workerBox
@@ -894,11 +1180,10 @@ workerBox
 const workerItems =
 document.getElementById("workerItems");
 
-
 if(workerItems){
 
 workerItems.textContent =
-"Workers list secure authentication ke baad available hogi.";
+"Workers list authentication ke baad available hogi.";
 
 }
 
@@ -911,14 +1196,88 @@ error
 
 );
 
+
 </script>
 
 
 <script>
 
+/* SECTION NAVIGATION */
+
+function openSection(id){
+
+document
+.querySelectorAll("#mainHub .card")
+.forEach(function(card){
+
+if(card.id){
+card.classList.add("hidden");
+}
+
+});
+
+
+const section =
+document.getElementById(id);
+
+if(section){
+
+section.classList.remove("hidden");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+}
+
+
+function goHome(){
+
+document
+.querySelectorAll("#mainHub .card")
+.forEach(function(card){
+
+if(card.id){
+card.classList.add("hidden");
+}
+
+});
+
+document
+.getElementById("homeCard")
+.classList.remove("hidden");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
 /* REGISTER WORKER */
 
 async function addWorker(){
+
+const status =
+document.getElementById("workerStatus");
+
+
+if(!window.awamUser){
+
+status.classList.remove("hidden");
+status.classList.add("error-status");
+
+status.innerText =
+"Please login first.";
+
+return;
+
+}
+
 
 const name =
 document
@@ -962,11 +1321,6 @@ document
 .trim();
 
 
-const status =
-document
-.getElementById("workerStatus");
-
-
 if(
 !name ||
 !country ||
@@ -977,7 +1331,6 @@ if(
 ){
 
 status.classList.remove("hidden");
-
 status.classList.add("error-status");
 
 status.innerText =
@@ -998,25 +1351,10 @@ phone.length > 30
 ){
 
 status.classList.remove("hidden");
-
 status.classList.add("error-status");
 
 status.innerText =
 "Please enter valid information.";
-
-return;
-
-}
-
-
-if(!window.awamUser){
-
-status.classList.remove("hidden");
-
-status.classList.add("error-status");
-
-status.innerText =
-"Security authentication starting... Please try again.";
 
 return;
 
@@ -1072,7 +1410,6 @@ workerData
 
 
 status.classList.remove("hidden");
-
 status.classList.remove("error-status");
 
 status.innerText =
@@ -1080,24 +1417,17 @@ status.innerText =
 
 
 document.getElementById("wName").value = "";
-
 document.getElementById("wCountry").value = "";
-
 document.getElementById("wCity").value = "";
-
 document.getElementById("wSkill").value = "";
-
 document.getElementById("wExperience").value = "";
-
 document.getElementById("wPhone").value = "";
-
 
 }
 
 catch(error){
 
 status.classList.remove("hidden");
-
 status.classList.add("error-status");
 
 status.innerText =
@@ -1112,7 +1442,18 @@ error
 
 }
 
+
+window.openSection =
+openSection;
+
+window.goHome =
+goHome;
+
+window.addWorker =
+addWorker;
+
 </script>
 
 </body>
 </html>
+```
