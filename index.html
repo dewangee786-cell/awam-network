@@ -128,6 +128,10 @@ button{
     cursor:pointer;
 }
 
+input{
+    font-family:Arial,"Noto Nastaliq Urdu",sans-serif;
+}
+
 .info{
     background:#f8f9fa;
     border:1px solid #ddd;
@@ -378,6 +382,8 @@ button{
             type="text"
             id="wName"
             placeholder="Worker Name"
+            maxlength="100"
+            autocomplete="name"
             style="width:100%;padding:12px;margin-top:12px;border:1px solid #ddd;border-radius:10px;"
         >
 
@@ -386,6 +392,7 @@ button{
             type="text"
             id="wSkill"
             placeholder="Skill / Work"
+            maxlength="100"
             style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
         >
 
@@ -394,6 +401,8 @@ button{
             type="tel"
             id="wPhone"
             placeholder="Phone / WhatsApp"
+            maxlength="30"
+            autocomplete="tel"
             style="width:100%;padding:12px;margin-top:10px;border:1px solid #ddd;border-radius:10px;"
         >
 
@@ -675,6 +684,11 @@ onAuthStateChanged(auth, (user) => {
             user.uid
         );
 
+    } else {
+
+        window.awamUser =
+            null;
+
     }
 
 });
@@ -784,7 +798,7 @@ onValue(
         if(workerItems){
 
             workerItems.textContent =
-                "Workers data access abhi secure rules ki wajah se restricted hai.";
+                "Workers list secure authentication ke baad available hogi.";
 
         }
 
@@ -838,6 +852,18 @@ async function addWorker(){
 
         status.innerText =
             "Please fill Name, Skill and Phone.";
+
+        return;
+
+    }
+
+
+    if(name.length > 100 || skill.length > 100 || phone.length > 30){
+
+        status.classList.remove("hidden");
+
+        status.innerText =
+            "Please enter valid information.";
 
         return;
 
@@ -914,7 +940,7 @@ async function addWorker(){
         status.classList.remove("hidden");
 
         status.innerText =
-            "Registration failed. Secure Firebase rules will be connected in the next step.";
+            "Registration failed. Please check Firebase security settings.";
 
         console.error(
             "Worker Registration Error:",
