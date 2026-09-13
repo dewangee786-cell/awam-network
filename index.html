@@ -5,11 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>International Awam Network Hub V2</title>
   
-  <!-- 📊 GOOGLE SEO AUTOMATION -->
   <meta name="description" content="All-in-one platform for Welfare, P2P Jobs, and Education secured by Google Cloud.">
   <meta name="robots" content="index, follow">
 
-  <!-- 💰 GOOGLE ADSENSE AUTO ADS -->
+  <!-- 💰 GOOGLE ADSENSE AUTO ADS MODULE -->
   <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
 
   <style>
@@ -18,20 +17,17 @@
     .hidden{display:none!important}
     
     #loginScreen{min-height:100vh; display:flex; align-items:center; justify-content:center; background:#f8fafc;}
-    .login-box{width:400px; background:#fff; border:1px solid var(--line); border-radius:24px; padding:40px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.05)}
-    .google-btn{width:100%; border:0; border-radius:12px; padding:14px; background:#111827; color:#fff; font-weight:700;}
+    .login-box{width:360px; background:#fff; border:1px solid var(--line); border-radius:24px; padding:35px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.05)}
+    .google-btn{width:100%; border:0; border-radius:12px; padding:14px; background:#111827; color:#fff; font-weight:700; cursor:pointer;}
     
     #app{min-height:100vh; display:flex}
     .sidebar{width:260px; background:#0b1220; color:#fff; padding:20px; display:flex; flex-direction:column; justify-content:space-between}
-    .nav button{width:100%; border:0; background:transparent; color:#cbd5e1; text-align:left; padding:12px; margin:5px 0; border-radius:8px}
+    .nav button{width:100%; border:0; background:transparent; color:#cbd5e1; text-align:left; padding:12px; margin:5px 0; border-radius:8px; cursor:pointer;}
     .nav button.active, .nav button:hover{background:rgba(37,99,235,0.2); color:#fff}
     .main{flex:1; padding:30px}
     .card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:20px; margin-bottom:20px}
     .ad-container {margin:20px 0; padding:10px; background:#f8fafc; border:1px dashed var(--line); text-align:center; font-size:11px}
   </style>
-
-  <!-- 🛡️ GOOGLE reCAPTCHA V3 -->
-  <script src="https://google.com"></script>
 </head>
 <body>
 
@@ -76,7 +72,7 @@
         <div class="card">
           <h3>SECURE WALLET BALANCE</h3>
           <h2 style="color:var(--success)" id="lblWallet">0.00 PKR</h2>
-          <p style="font-size:12px; color:var(--muted)">🔒 Cryptographically Locked Server-Side</p>
+          <p style="font-size:12px; color:var(--muted)">🔒 Locked Server-Side</p>
         </div>
       </div>
 
@@ -96,11 +92,10 @@
 
   <script type="module">
     import { initializeApp } from "https://gstatic.com";
-    import { initializeAppCheck, ReCaptchaV3Provider } from "https://gstatic.com";
-    import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://gstatic.com";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://gstatic.com";
     import { getDatabase, ref, onValue } from "https://gstatic.com";
 
-    // 🔗 APKI REAL CONFIGURATION COPIED FROM SCREENSHOT
+    // 🔗 APKI REAL CONFIGURATION FROM SCREENSHOT
     const firebaseConfig = {
       apiKey: "AIzaSyCvbrB6vgOwLLzFLymZ3213b249DAn5jbY",
       authDomain: "://firebaseapp.com",
@@ -112,22 +107,18 @@
     };
 
     const app = initializeApp(firebaseConfig);
-    
-    const appCheck = initializeAppCheck(app, {
-      provider: new ReCaptchaV3Provider('YOUR_RECAPTCHA_V3_KEY'),
-      isTokenAutoRefreshEnabled: true
-    });
-
     const auth = getAuth(app);
     const database = getDatabase(app);
     const googleProvider = new GoogleAuthProvider();
 
-    document.getElementById('btnGoogleLogin').addEventListener('click', () => {
-      grecaptcha.ready(() => {
-        grecaptcha.execute('YOUR_RECAPTCHA_V3_KEY', {action: 'login'}).then(async () => {
-          await signInWithPopup(auth, googleProvider);
-        });
-      });
+    // Direct login trigger without reCAPTCHA barrier
+    document.getElementById('btnGoogleLogin').addEventListener('click', async () => {
+      try {
+        await signInWithPopup(auth, googleProvider);
+      } catch (error) {
+        console.error("Auth Error: ", error);
+        alert("Login failed! Make sure your Firebase domain setup allows 'dewangee786-cell.github.io'.");
+      }
     });
 
     onAuthStateChanged(auth, (user) => {
