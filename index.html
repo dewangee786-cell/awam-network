@@ -17,11 +17,8 @@ body{
   direction:rtl;
 }
 
-.hidden{
-  display:none!important;
-}
+.hidden{display:none!important}
 
-/* ===== LOGIN SCREEN ===== */
 #loginScreen{
   min-height:100vh;
   display:flex;
@@ -72,9 +69,7 @@ body{
   cursor:pointer;
 }
 
-.google-btn:hover{
-  background:#2563eb;
-}
+.google-btn:hover{background:#2563eb}
 
 .login-status{
   margin-top:15px;
@@ -82,7 +77,6 @@ body{
   font-size:12px;
 }
 
-/* ===== MAIN APP ===== */
 #app{
   min-height:100vh;
   display:flex;
@@ -167,13 +161,9 @@ body{
   margin-top:0;
 }
 
-.page{
-  display:none;
-}
+.page{display:none}
 
-.page.active{
-  display:block;
-}
+.page.active{display:block}
 
 .btn{
   border:0;
@@ -185,21 +175,11 @@ body{
   background:#2563eb;
 }
 
-.btn-success{
-  background:#16a34a;
-}
+.btn-success{background:#16a34a}
+.btn-danger{background:#dc2626}
+.btn-warning{background:#d97706}
 
-.btn-danger{
-  background:#dc2626;
-}
-
-.btn-warning{
-  background:#d97706;
-}
-
-.form-group{
-  margin-bottom:15px;
-}
+.form-group{margin-bottom:15px}
 
 .form-group label{
   display:block;
@@ -216,17 +196,13 @@ body{
   font-size:14px;
 }
 
-/* ===== DASHBOARD ===== */
 .wallet{
   background:linear-gradient(135deg,#166534,#16a34a);
   color:#fff;
 }
 
-.wallet h2{
-  font-size:30px;
-}
+.wallet h2{font-size:30px}
 
-/* ===== COURSE ===== */
 .course-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -246,7 +222,6 @@ body{
   background:#eff6ff;
 }
 
-/* ===== PRODUCTS ===== */
 .product-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -260,13 +235,6 @@ body{
   border-radius:14px;
 }
 
-.product-price{
-  color:#16a34a;
-  font-size:20px;
-  font-weight:bold;
-}
-
-/* ===== P2P ===== */
 .worker-card{
   background:#f8fafc;
   border:1px solid #e5e7eb;
@@ -275,7 +243,6 @@ body{
   margin-bottom:10px;
 }
 
-/* ===== WELFARE ===== */
 .welfare-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -289,12 +256,9 @@ body{
   border-radius:14px;
 }
 
-/* ===== MOBILE ===== */
 @media(max-width:800px){
 
-  #app{
-    display:block;
-  }
+  #app{display:block}
 
   .sidebar{
     width:100%;
@@ -302,9 +266,7 @@ body{
     padding:12px;
   }
 
-  .sidebar h2{
-    text-align:center;
-  }
+  .sidebar h2{text-align:center}
 
   .nav{
     display:grid;
@@ -317,9 +279,7 @@ body{
     font-size:12px;
   }
 
-  .main{
-    padding:12px;
-  }
+  .main{padding:12px}
 
   .topbar{
     flex-direction:column;
@@ -331,10 +291,6 @@ body{
 
 <body>
 
-<!-- =========================================================
-     SECURE GOOGLE LOGIN
-========================================================= -->
-
 <div id="loginScreen">
 
   <div class="login-box">
@@ -343,13 +299,9 @@ body{
 
     <h1>International Awam Network Hub</h1>
 
-    <p>
-      Secure Digital Community Platform
-    </p>
+    <p>Secure Digital Community Platform</p>
 
-    <p>
-      E-Commerce • Education • P2P • Welfare
-    </p>
+    <p>E-Commerce • Education • P2P • Welfare</p>
 
     <button id="btnGoogleLogin" class="google-btn">
       🔐 Sign in with Google
@@ -362,13 +314,7 @@ body{
 </div>
 
 
-<!-- =========================================================
-     MAIN APPLICATION
-========================================================= -->
-
 <div id="app" class="hidden">
-
-  <!-- SIDEBAR -->
 
   <aside class="sidebar">
 
@@ -408,11 +354,9 @@ body{
 
     </div>
 
-
     <div>
 
-      <div id="userName"
-           style="font-weight:bold;">
+      <div id="userName" style="font-weight:bold;">
         Verifying User...
       </div>
 
@@ -432,39 +376,30 @@ body{
   </aside>
 
 
-  <!-- MAIN -->
-
   <main class="main">
-
-    <!-- CLOCK -->
 
     <div class="topbar">
 
       <div>
+
         <div style="font-size:11px;color:#94a3b8;">
           NETWORK OPERATIONAL TIME
         </div>
 
-        <div id="digitalDate"
-             class="digital-date">
+        <div id="digitalDate" class="digital-date">
           Loading...
         </div>
+
       </div>
 
-      <div id="digitalClock"
-           class="digital-clock">
+      <div id="digitalClock" class="digital-clock">
         00:00:00
       </div>
 
     </div>
 
 
-    <!-- =====================================================
-         DASHBOARD
-    ====================================================== -->
-
-    <section id="page-dashboard"
-             class="page active">
+    <section id="page-dashboard" class="page active">
 
       <div class="card wallet">
 
@@ -487,13 +422,9 @@ body{
 
         <h2>👑 Founder & CEO</h2>
 
-        <h3>
-          Dewan Israr Ahmad Faridi
-        </h3>
+        <h3>Dewan Israr Ahmad Faridi</h3>
 
-        <p>
-          International Awam Network Hub
-        </p>
+        <p>International Awam Network Hub</p>
 
       </div>
 
@@ -513,12 +444,7 @@ body{
     </section>
 
 
-    <!-- =====================================================
-         E-COMMERCE
-    ====================================================== -->
-
-    <section id="page-ecommerce"
-             class="page">
+    <section id="page-ecommerce" class="page">
 
       <div class="card">
 
@@ -599,12 +525,7 @@ body{
     </section>
 
 
-    <!-- =====================================================
-         EDUCATION
-    ====================================================== -->
-
-    <section id="page-education"
-             class="page">
+    <section id="page-education" class="page">
 
       <div class="card">
 
@@ -655,12 +576,7 @@ body{
     </section>
 
 
-    <!-- =====================================================
-         P2P
-    ====================================================== -->
-
-    <section id="page-p2p"
-             class="page">
+    <section id="page-p2p" class="page">
 
       <div class="card">
 
@@ -679,11 +595,10 @@ body{
 
           <label>Full Name</label>
 
-          <input
-            id="p2pName"
-            class="form-control"
-            type="text"
-            placeholder="Full Name">
+          <input id="p2pName"
+                 class="form-control"
+                 type="text"
+                 placeholder="Full Name">
 
         </div>
 
@@ -692,11 +607,10 @@ body{
 
           <label>Country</label>
 
-          <input
-            id="p2pCountry"
-            class="form-control"
-            type="text"
-            placeholder="Country">
+          <input id="p2pCountry"
+                 class="form-control"
+                 type="text"
+                 placeholder="Country">
 
         </div>
 
@@ -705,11 +619,10 @@ body{
 
           <label>City</label>
 
-          <input
-            id="p2pCity"
-            class="form-control"
-            type="text"
-            placeholder="City">
+          <input id="p2pCity"
+                 class="form-control"
+                 type="text"
+                 placeholder="City">
 
         </div>
 
@@ -718,11 +631,10 @@ body{
 
           <label>Skill / Work</label>
 
-          <input
-            id="p2pSkill"
-            class="form-control"
-            type="text"
-            placeholder="Skill / Work">
+          <input id="p2pSkill"
+                 class="form-control"
+                 type="text"
+                 placeholder="Skill / Work">
 
         </div>
 
@@ -731,11 +643,10 @@ body{
 
           <label>Experience</label>
 
-          <input
-            id="p2pExperience"
-            class="form-control"
-            type="text"
-            placeholder="Experience">
+          <input id="p2pExperience"
+                 class="form-control"
+                 type="text"
+                 placeholder="Experience">
 
         </div>
 
@@ -744,21 +655,17 @@ body{
 
           <label>Phone / WhatsApp</label>
 
-          <input
-            id="p2pPhone"
-            class="form-control"
-            type="text"
-            placeholder="Phone / WhatsApp">
+          <input id="p2pPhone"
+                 class="form-control"
+                 type="text"
+                 placeholder="Phone / WhatsApp">
 
         </div>
 
 
-        <button
-          class="btn btn-success"
-          onclick="registerP2P()">
-
+        <button class="btn btn-success"
+                onclick="registerP2P()">
           Register Workforce Profile
-
         </button>
 
         <div id="p2pStatus"
@@ -781,12 +688,7 @@ body{
     </section>
 
 
-    <!-- =====================================================
-         WELFARE
-    ====================================================== -->
-
-    <section id="page-welfare"
-             class="page">
+    <section id="page-welfare" class="page">
 
       <div class="card">
 
@@ -850,12 +752,7 @@ body{
     </section>
 
 
-    <!-- =====================================================
-         MASTER ADMIN
-    ====================================================== -->
-
-    <section id="page-admin"
-             class="page">
+    <section id="page-admin" class="page">
 
       <div class="card"
            style="border:2px solid #dc2626;">
@@ -879,10 +776,9 @@ body{
 
           <label>Target User UID</label>
 
-          <input
-            id="adminUid"
-            class="form-control"
-            type="text">
+          <input id="adminUid"
+                 class="form-control"
+                 type="text">
 
         </div>
 
@@ -891,29 +787,22 @@ body{
 
           <label>Amount PKR</label>
 
-          <input
-            id="adminAmount"
-            class="form-control"
-            type="number">
+          <input id="adminAmount"
+                 class="form-control"
+                 type="number">
 
         </div>
 
 
-        <button
-          class="btn btn-success"
-          onclick="adminTransaction('credit')">
-
+        <button class="btn btn-success"
+                onclick="adminTransaction('credit')">
           Grant Balance
-
         </button>
 
 
-        <button
-          class="btn btn-danger"
-          onclick="adminTransaction('debit')">
-
+        <button class="btn btn-danger"
+                onclick="adminTransaction('debit')">
           Deduct Balance
-
         </button>
 
 
@@ -929,10 +818,6 @@ body{
 
 </div>
 
-
-<!-- =========================================================
-     FIREBASE
-========================================================= -->
 
 <script type="module">
 
@@ -959,14 +844,12 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 
-/* =========================================================
-   FIREBASE CONFIG
-========================================================= */
+/* CURRENT FIREBASE CONFIG — AWAM NETWORK V2 */
 
 const firebaseConfig = {
 
   apiKey:
-    "AIzaSyCvbrB6vgOwLLzFLymZ3213b249DAn5jbY",
+    "AIzaSyCVbrB6vg0wLLzfLymZ3213b249DAo5jbY",
 
   authDomain:
     "awam-network-318ec.firebaseapp.com",
@@ -977,18 +860,17 @@ const firebaseConfig = {
   projectId:
     "awam-network-318ec",
 
+  storageBucket:
+    "awam-network-318ec.firebasestorage.app",
+
   messagingSenderId:
-    "313453438241",
+    "313453430241",
 
   appId:
-    "1:313453438241:web:19189b495154fc7326fea0"
+    "1:313453430241:web:bde7e4fecce0e07426fea0"
 
 };
 
-
-/* =========================================================
-   INITIALIZE FIREBASE
-========================================================= */
 
 const firebaseApp =
   initializeApp(firebaseConfig);
@@ -1000,10 +882,6 @@ const database =
   getDatabase(firebaseApp);
 
 
-/* =========================================================
-   GOOGLE PROVIDER
-========================================================= */
-
 const googleProvider =
   new GoogleAuthProvider();
 
@@ -1011,10 +889,6 @@ googleProvider.setCustomParameters({
   prompt:"select_account"
 });
 
-
-/* =========================================================
-   GOOGLE LOGIN
-========================================================= */
 
 const googleLoginButton =
   document.getElementById("btnGoogleLogin");
@@ -1049,7 +923,10 @@ if(googleLoginButton){
         );
 
         loginStatus.innerText =
-          "Login Error: " + error.message;
+          "Login Error: " +
+          error.code +
+          " - " +
+          error.message;
 
         googleLoginButton.disabled = false;
 
@@ -1061,10 +938,6 @@ if(googleLoginButton){
 }
 
 
-/* =========================================================
-   REDIRECT RESULT
-========================================================= */
-
 getRedirectResult(auth)
 .catch(function(error){
 
@@ -1073,12 +946,14 @@ getRedirectResult(auth)
     error
   );
 
+  loginStatus.innerText =
+    "Login Error: " +
+    error.code +
+    " - " +
+    error.message;
+
 });
 
-
-/* =========================================================
-   AUTH STATE
-========================================================= */
 
 onAuthStateChanged(
   auth,
@@ -1086,21 +961,14 @@ onAuthStateChanged(
 
     if(user){
 
-      /* Hide Login */
-
       document
         .getElementById("loginScreen")
         .classList.add("hidden");
-
-
-      /* Show App */
 
       document
         .getElementById("app")
         .classList.remove("hidden");
 
-
-      /* User Information */
 
       document
         .getElementById("userName")
@@ -1115,8 +983,6 @@ onAuthStateChanged(
           user.email ||
           "";
 
-
-      /* Super Admin */
 
       if(
         user.email ===
@@ -1135,8 +1001,6 @@ onAuthStateChanged(
 
       }
 
-
-      /* Wallet */
 
       const walletRef =
         ref(
@@ -1164,15 +1028,11 @@ onAuthStateChanged(
       );
 
 
-      /* P2P */
-
       loadP2P();
 
     }
 
     else{
-
-      /* Login Required */
 
       document
         .getElementById("loginScreen")
@@ -1187,10 +1047,6 @@ onAuthStateChanged(
   }
 );
 
-
-/* =========================================================
-   LOGOUT
-========================================================= */
 
 window.logoutUser =
 async function(){
@@ -1211,10 +1067,6 @@ async function(){
 };
 
 
-/* =========================================================
-   P2P REGISTRATION
-========================================================= */
-
 window.registerP2P =
 async function(){
 
@@ -1223,9 +1075,7 @@ async function(){
 
   if(!user){
 
-    alert(
-      "Please login first."
-    );
+    alert("Please login first.");
 
     return;
 
@@ -1298,24 +1148,14 @@ async function(){
       {
 
         name:name,
-
         country:country,
-
         city:city,
-
         skill:skill,
-
         experience:experience,
-
         phone:phone,
-
         uid:user.uid,
-
-        createdAt:
-          Date.now(),
-
-        status:
-          "pending"
+        createdAt:Date.now(),
+        status:"pending"
 
       }
     );
@@ -1366,10 +1206,6 @@ async function(){
 
 };
 
-
-/* =========================================================
-   LOAD P2P
-========================================================= */
 
 function loadP2P(){
 
@@ -1449,10 +1285,6 @@ function loadP2P(){
 }
 
 
-/* =========================================================
-   SAFE HTML
-========================================================= */
-
 function escapeHTML(value){
 
   return String(value || "")
@@ -1464,10 +1296,6 @@ function escapeHTML(value){
 
 }
 
-
-/* =========================================================
-   ADMIN TRANSACTION
-========================================================= */
 
 window.adminTransaction =
 async function(type){
@@ -1549,9 +1377,7 @@ async function(type){
       currentBalance -= amount;
 
       if(currentBalance < 0){
-
         currentBalance = 0;
-
       }
 
     }
@@ -1580,10 +1406,6 @@ async function(type){
 
 };
 
-
-/* =========================================================
-   DIGITAL CLOCK
-========================================================= */
 
 function updateClock(){
 
@@ -1623,10 +1445,6 @@ setInterval(
 </script>
 
 
-<!-- =========================================================
-     PAGE SWITCH SYSTEM
-========================================================= -->
-
 <script>
 
 function switchPage(pageName){
@@ -1647,18 +1465,14 @@ function switchPage(pageName){
 
 
   if(target){
-
     target.classList.add("active");
-
   }
 
 
   document
     .querySelectorAll(".nav button")
     .forEach(function(button){
-
       button.classList.remove("active");
-
     });
 
 }
