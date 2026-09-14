@@ -42,14 +42,17 @@
     .course-card{border:1px solid var(--line); padding:15px; border-radius:12px; cursor:pointer; background:#f8fafc; text-align:center;}
     .course-card:hover{border-color:var(--primary); background:#eff6ff;}
     
-    /* 🛒 Advanced Marketplace Interface */
     .market-filter-bar{display:flex; gap:10px; margin-bottom:20px;}
     .product-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:20px; margin-top:15px;}
     .product-card{border:1px solid var(--line); padding:20px; border-radius:var(--radius); background:#fff; position:relative; box-shadow:0 4px 10px rgba(0,0,0,0.01); display:flex; flex-direction:column; justify-content:space-between;}
     .product-price{font-size:19px; font-weight:bold; color:var(--success); margin:10px 0;}
     .badge-type{position:absolute; top:12px; right:12px; padding:4px 8px; font-size:11px; font-weight:bold; border-radius:20px; color:#fff;}
-    
     .agreement-box {background:#fff5f5; border:1px solid #feb2b2; padding:12px; border-radius:8px; margin:10px 0; font-size:12px; color:#c53030;}
+
+    /* 🤝 P2P Workforce Dashboard Layout Styles */
+    .job-list-container{display:flex; flex-direction:column; gap:15px; margin-top:15px;}
+    .job-item-card{border:1px solid var(--line); border-radius:var(--radius); padding:20px; background:#fff; position:relative;}
+    .job-budget-badge{position:absolute; top:20px; right:20px; font-size:18px; font-weight:bold; color:var(--primary);}
   </style>
 </head>
 <body>
@@ -109,7 +112,7 @@
       <div id="page-adminPanel" class="page">
         <div class="card" style="border:2px solid var(--danger)">
           <h3 style="color:var(--danger)">🔒 Master Super Admin Engine</h3>
-          <p>Welcome, Creator. Manage wallet structures and verify global network shops.</p>
+          <p>Welcome, Creator. Monitor financial logs, verify merchant shops, and audit escrow pipelines.</p>
           <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
           
           <h4>💰 Super Admin Financial Controls</h4>
@@ -119,35 +122,34 @@
           <button class="btn-action" style="background:var(--danger)" onclick="triggerServerTransaction('debit')">Deduct Balance</button>
           
           <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
-          
           <h4>🏬 Shopkeeper Applications Verification Pipeline</h4>
           <div id="adminShopRequestsContainer"><p>No pending verification applications found.</p></div>
         </div>
       </div>
 
-      <!-- 🛒 CLIENT MULTI-VENDOR MARKETPLACE MALL -->
+      <!-- E-COMMERCE MALL -->
       <div id="page-ecommerce" class="page">
         <div class="card" id="sellerProfileStatusCard">
           <h3>🏬 Merchant Shop Workspace</h3>
-          <p>Register your corporate firm or store profile under official KYC protocols to unlock B2B, B2C, or P2P trades.</p>
+          <p>Register your store profile under official KYC protocols to unlock B2B or B2C trade systems.</p>
           <button class="btn-action" onclick="toggleShopRegisterForm()">Register New Merchant Shop</button>
           
-          <!-- Vendor Registration Form -->
           <div id="shopRegistrationForm" class="hidden" style="margin-top:20px; border-top:1px solid var(--line); padding-top:20px;">
-            <div class="form-group"><label>Shop Name</label><input type="text" id="txtShopName" class="form-control" placeholder="e.g. Al-Hamd Traders"></div>
-            <div class="form-group"><label>City</label><input type="text" id="txtShopCity" class="form-control" placeholder="e.g. Pakpattan"></div>
-            <div class="form-group"><label>CNIC / National ID Registration</label><input type="text" id="txtShopId" class="form-control" placeholder="36402-XXXXXXXX-X"></div>
-            <div class="form-group"><label>Authentic Bank Account Name & Title</label><input type="text" id="txtShopBankName" class="form-control" placeholder="e.g. Allied Bank Limited"></div>
-            <div class="form-group"><label>Bank Account IBAN Number</label><input type="text" id="txtShopIban" class="form-control" placeholder="PKXXHNBA00XXXXXXXXXXXXXXXX"></div>
+            <div class="form-group"><label>Shop Name</label><input type="text" id="txtShopName" class="form-control"></div>
+            <div class="form-group"><label>City</label><input type="text" id="txtShopCity" class="form-control"></div>
+            <div class="form-group"><label>CNIC ID Registration</label><input type="text" id="txtShopId" class="form-control"></div>
+            <div class="form-group"><label>Bank Title Name</label><input type="text" id="txtShopBankName" class="form-control"></div>
+            <div class="form-group"><label>Bank Account IBAN</label><input type="text" id="txtShopIban" class="form-control"></div>
             <button class="btn-action" style="background:var(--success);" onclick="submitShopApplication()">Submit Shop for Verification</button>
           </div>
 
-          <!-- Product Listing Portal for Verified Shops -->
           <div id="verifiedShopControlArea" class="hidden" style="margin-top:20px; border-top:1px solid var(--line); padding-top:20px; background:#f8fafc; padding:15px; border-radius:12px;">
             <h4 style="color:var(--primary);">➕ Launch Product Item onto Global Grid</h4>
             <div class="form-group">
-              <label>Select Project Trade Protocol Category</label>
+              <label>Select Category Category</label>
               <select id="selProdType" class="form-control">
-                <option value="B2C">B2C Retail (Standard Client Sale)</option>
-                <option value="B2B">B2B Commercial Corporate (Bulk Wholesale)</option>
-                <option value="P2P">P2P Peer-to-Peer (Used/Direct Exchanges)</option>
+                <option value="B2C">B2C Retail</option>
+                <option value="B2B">B2B Bulk Wholesales</option>
+                <option value="P2P">P2P Used Items</option>
+              </select>
+            </div>
