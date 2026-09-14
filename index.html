@@ -1,423 +1,1669 @@
-
-<script type="module">
-
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-    import {
-      getAuth,
-      signInWithRedirect,
-      getRedirectResult,
-      GoogleAuthProvider,
-      onAuthStateChanged
-    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-    import {
-      getDatabase,
-      ref,
-      onValue,
-      set,
-      get,
-      push
-    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 <!DOCTYPE html>
 <html lang="ur">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Awam Network</title>
+
+<title>International Awam Network Hub v2</title>
+
 <style>
-body { font-family: sans-serif; background-color: #f0f3f5; text-align: center; padding: 20px; direction: rtl; }
-.main-container { max-width: 450px; margin: 0 auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-.header { background: #2ecc71; color: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center; }
-.zakati-box { background: #9b59b6; color: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; cursor: pointer; text-align: center; }
-.card { background: #fdfdfd; border: 2px solid #e2e8f0; padding: 15px; margin-bottom: 15px; border-radius: 10px; cursor: pointer; text-align: center; }
-h2 { margin: 0 0 5px 0; font-size: 18px; color: #2c3e50; }
-p { margin: 0; font-size: 13px; color: #555; }
+*{box-sizing:border-box}
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCvbrB6vgOwLLzFLymZ3213b249DAn5jbY",
-      authDomain: "awam-network-318ec.firebaseapp.com",
-      databaseURL: "https://awam-network-318ec-default-rtdb.firebaseio.com",
-      projectId: "awam-network-318ec",
-      messagingSenderId: "313453438241",
-      appId: "1:313453438241:web:19189b495154fc7326fea0"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const database = getDatabase(app);
-
-    const googleProvider = new GoogleAuthProvider();
-    googleProvider.setCustomParameters({
-      prompt: "select_account"
-    });
-
-    let currentSelectedTrack = "";
-    let trackLessonsArray = [];
-    let activeLessonIndex = 0;
-    let quizTimerInterval = null;
-    let proctorExamActive = false;
-
-    // Secure Google Login
-    const googleLoginBtn = document.getElementById("btnGoogleLogin");
-
-    if (googleLoginBtn) {
-      googleLoginBtn.addEventListener("click", async () => {
-        try {
-          await signInWithRedirect(auth, googleProvider);
-        } catch (error) {
-          console.error("Google Login Error:", error);
-          alert("Google Login Error: " + error.message);
-        }
-      });
-    }
-
-    // Google Redirect Result
-    getRedirectResult(auth).catch((error) => {
-      console.error("Google Redirect Error:", error);
-    });
-
-    // Authentication State
-    onAuthStateChanged(auth, (user) => {
-
-      if (user) {
-
-        document.getElementById("loginScreen")?.classList.add("hidden");
-        document.getElementById("app")?.classList.remove("hidden");
-
-        const userName = document.getElementById("userName");
-        const userEmail = document.getElementById("userEmail");
-
-        if (userName) {
-          userName.innerText = user.displayName || "Verified User";
-        }
-
-        if (userEmail) {
-          userEmail.innerText = user.email || "";
-        }
-
-        // Super Admin
-        if (user.email === "dewan.gee786@gmail.com") {
-
-          document.getElementById("superAdminSection")?.classList.remove("hidden");
-
-          if (typeof loadAdminTuitionTickets === "function") {
-            loadAdminTuitionTickets();
-          }
-
-        } else {
-
-          document.getElementById("superAdminSection")?.classList.add("hidden");
-
-        }
-
-        // Wallet
-        onValue(
-          ref(database, "wallets/" + user.uid + "/balance"),
-          (snapshot) => {
-
-            const walletLabel = document.getElementById("lblWallet");
-
-            if (walletLabel) {
-              walletLabel.innerText =
-                (snapshot.val() ? snapshot.val() : "0.00") + " PKR";
-            }
-.page-section { display: none; background: #fff; padding: 10px; border-radius: 10px; text-align: center; }
-.btn-submit { background: #4285F4; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-size: 16px; width: 95%; margin-top: 10px; }
-.btn-back { background: #7f8c8d; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin-bottom: 15px; float: right; }
-.input-style { width: 90%; padding: 8px; margin-bottom: 8px; border: 1px solid #ccc; border-radius: 5px; text-align: center; font-size: 14px; }
-.quiz-box { background: #f9f9f9; border: 1px dashed #4285F4; padding: 15px; border-radius: 10px; text-align: right; }
-.result-box { display: none; padding: 10px; border-radius: 5px; margin-top: 10px; font-weight: bold; border: 2px solid #ccc; text-align: center; }
-.worker-card { background: #f9f9f9; border: 1px solid #eee; padding: 10px; border-radius: 5px; margin-bottom: 8px; text-align: right; }
-.ration-card { background: #fff; border: 2px solid #27ae60; padding: 12px; border-radius: 8px; margin-bottom: 10px; text-align: right; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-
-          }
-        );
-
-      } else {
-/* ===== LOGIN POPUP STYLES ===== */
-#login-overlay {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6); display: none; align-items: center;
-  justify-content: center; z-index: 999; direction: rtl;
+body{
+  margin:0;
+  font-family:sans-serif;
+  background:#f0f3f5;
+  color:#2c3e50;
+  direction:rtl;
 }
-.btn-login-open {
-  background: #4285F4; color: white; border: none; padding: 8px 16px;
-  border-radius: 6px; cursor: pointer; font-size: 13px; margin-bottom: 12px;
+
+.hidden{
+  display:none!important;
 }
-.site-footer {
-  margin-top: 15px; padding-top: 12px; border-top: 1px solid #eee;
-  font-size: 12px; color: #888; text-align: center;
+
+/* ===== LOGIN SCREEN ===== */
+#loginScreen{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
 }
-.site-footer a { color: #4285F4; text-decoration: none; }
-#login-box {
-  background: white; width: 90%; max-width: 380px; border-radius: 15px;
-  padding: 25px 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.3); text-align: center;
+
+.login-box{
+  width:100%;
+  max-width:420px;
+  background:#fff;
+  padding:35px 25px;
+  border-radius:22px;
+  text-align:center;
+  box-shadow:0 10px 35px rgba(0,0,0,.12);
+  border:1px solid #e5e7eb;
 }
-#login-box h2 { color: #2c3e50; margin-bottom: 5px; }
-#login-box p.sub { color: #777; font-size: 13px; margin-bottom: 18px; }
-.login-tabs { display: flex; margin-bottom: 15px; border-radius: 8px; overflow: hidden; border: 1px solid #ddd; }
-.login-tab { flex: 1; padding: 10px; cursor: pointer; background: #f5f5f5; font-size: 14px; font-weight: bold; color: #555; }
-.login-tab.active { background: #4285F4; color: white; }
-.login-panel { display: none; text-align: right; }
-.login-panel.active { display: block; }
-.btn-gmail { background: #ffffff; color: #444; border: 1px solid #ccc; }
-.btn-number { background: #27ae60; }
-.login-error { color: #e74c3c; font-size: 12px; margin-top: 6px; display: none; text-align: center; }
-#user-badge {
-  display: none; background: #2c3e50; color: white; padding: 8px 12px;
-  border-radius: 8px; margin-bottom: 12px; font-size: 13px; text-align: center;
+
+.login-logo{
+  font-size:45px;
+  margin-bottom:10px;
 }
-#user-badge span.logout { color: #ff7675; cursor: pointer; font-weight: bold; margin-right: 8px; }
+
+.login-box h1{
+  margin:5px 0;
+  color:#1e293b;
+  font-size:25px;
+}
+
+.login-box p{
+  color:#64748b;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.google-btn{
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:15px;
+  margin-top:20px;
+  background:#111827;
+  color:#fff;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.google-btn:hover{
+  background:#2563eb;
+}
+
+.login-status{
+  margin-top:15px;
+  color:#dc2626;
+  font-size:12px;
+}
+
+/* ===== MAIN APP ===== */
+#app{
+  min-height:100vh;
+  display:flex;
+}
+
+.sidebar{
+  width:260px;
+  min-height:100vh;
+  background:#0b1220;
+  color:#fff;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.sidebar h2{
+  color:#fff;
+  margin-top:0;
+}
+
+.nav button{
+  width:100%;
+  border:0;
+  background:transparent;
+  color:#cbd5e1;
+  text-align:right;
+  padding:13px;
+  margin:4px 0;
+  border-radius:9px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.nav button:hover,
+.nav button.active{
+  background:#2563eb;
+  color:#fff;
+}
+
+.main{
+  flex:1;
+  padding:25px;
+  overflow-y:auto;
+}
+
+.topbar{
+  background:#1e293b;
+  color:#fff;
+  padding:16px 20px;
+  border-radius:14px;
+  margin-bottom:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+
+.digital-clock{
+  font-size:22px;
+  font-weight:bold;
+  color:#38bdf8;
+  font-family:monospace;
+}
+
+.digital-date{
+  color:#cbd5e1;
+  font-size:12px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:20px;
+  box-shadow:0 4px 12px rgba(0,0,0,.03);
+}
+
+.card h2,
+.card h3{
+  margin-top:0;
+}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.btn{
+  border:0;
+  padding:11px 16px;
+  border-radius:9px;
+  cursor:pointer;
+  font-weight:bold;
+  color:#fff;
+  background:#2563eb;
+}
+
+.btn-success{
+  background:#16a34a;
+}
+
+.btn-danger{
+  background:#dc2626;
+}
+
+.btn-warning{
+  background:#d97706;
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+.form-group label{
+  display:block;
+  font-weight:bold;
+  font-size:13px;
+  margin-bottom:6px;
+}
+
+.form-control{
+  width:100%;
+  padding:11px;
+  border:1px solid #d1d5db;
+  border-radius:9px;
+  font-size:14px;
+}
+
+/* ===== DASHBOARD ===== */
+.wallet{
+  background:linear-gradient(135deg,#166534,#16a34a);
+  color:#fff;
+}
+
+.wallet h2{
+  font-size:30px;
+}
+
+/* ===== COURSE ===== */
+.course-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+
+.course-card{
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  padding:18px;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+.course-card:hover{
+  border-color:#2563eb;
+  background:#eff6ff;
+}
+
+/* ===== PRODUCTS ===== */
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:18px;
+}
+
+.product-card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  padding:18px;
+  border-radius:14px;
+}
+
+.product-price{
+  color:#16a34a;
+  font-size:20px;
+  font-weight:bold;
+}
+
+/* ===== P2P ===== */
+.worker-card{
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:10px;
+}
+
+/* ===== WELFARE ===== */
+.welfare-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:18px;
+}
+
+.welfare-card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  padding:18px;
+  border-radius:14px;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:800px){
+
+  #app{
+    display:block;
+  }
+
+  .sidebar{
+    width:100%;
+    min-height:auto;
+    padding:12px;
+  }
+
+  .sidebar h2{
+    text-align:center;
+  }
+
+  .nav{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:4px;
+  }
+
+  .nav button{
+    text-align:center;
+    font-size:12px;
+  }
+
+  .main{
+    padding:12px;
+  }
+
+  .topbar{
+    flex-direction:column;
+    text-align:center;
+  }
+}
 </style>
 </head>
+
 <body>
 
-        document.getElementById("loginScreen")?.classList.remove("hidden");
-        document.getElementById("app")?.classList.add("hidden");
-<!-- ===== LOGIN POPUP ===== -->
-<div id="login-overlay">
-  <div id="login-box">
-    <button class="btn-back" style="float:left;" onclick="closeLogin()">✕ بند کریں</button>
-    <div style="clear:both;"></div>
-    <h2>🔐 عوام نیٹ ورک میں خوش آمدید</h2>
-    <p class="sub">جاری رکھنے کے لیے لاگ ان کریں</p>
+<!-- =========================================================
+     SECURE GOOGLE LOGIN
+========================================================= -->
+
+<div id="loginScreen">
+
+  <div class="login-box">
+
+    <div class="login-logo">🌍</div>
+
+    <h1>International Awam Network Hub</h1>
+
+    <p>
+      Secure Digital Community Platform
+    </p>
+
+    <p>
+      E-Commerce • Education • P2P • Welfare
+    </p>
+
+    <button id="btnGoogleLogin" class="google-btn">
+      🔐 Sign in with Google
+    </button>
+
+    <div id="loginStatus" class="login-status"></div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     MAIN APPLICATION
+========================================================= -->
+
+<div id="app" class="hidden">
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar">
+
+    <div>
+
+      <h2>🌍 AWAM NETWORK</h2>
+
+      <div class="nav">
+
+        <button class="active" onclick="switchPage('dashboard')">
+          📊 Dashboard
+        </button>
+
+        <button onclick="switchPage('ecommerce')">
+          🛒 E-Commerce & Services
+        </button>
+
+        <button onclick="switchPage('education')">
+          🎓 Education & AI
+        </button>
+
+        <button onclick="switchPage('p2p')">
+          🤝 P2P Workforce
+        </button>
+
+        <button onclick="switchPage('welfare')">
+          ❤️ NGO & Welfare
+        </button>
+
+        <button id="adminButton"
+                class="hidden"
+                onclick="switchPage('admin')">
+          ⚙️ Master Admin
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div>
+
+      <div id="userName"
+           style="font-weight:bold;">
+        Verifying User...
+      </div>
+
+      <div id="userEmail"
+           style="font-size:11px;color:#94a3b8;">
+        Connecting...
+      </div>
+
+      <button
+        onclick="logoutUser()"
+        style="margin-top:12px;width:100%;padding:9px;border:0;border-radius:8px;cursor:pointer;">
+        🚪 Logout
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <!-- CLOCK -->
+
+    <div class="topbar">
+
+      <div>
+        <div style="font-size:11px;color:#94a3b8;">
+          NETWORK OPERATIONAL TIME
+        </div>
+
+        <div id="digitalDate"
+             class="digital-date">
+          Loading...
+        </div>
+      </div>
+
+      <div id="digitalClock"
+           class="digital-clock">
+        00:00:00
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         DASHBOARD
+    ====================================================== -->
+
+    <section id="page-dashboard"
+             class="page active">
+
+      <div class="card wallet">
+
+        <div style="font-size:13px;">
+          🔒 SECURE INTERNAL WALLET
+        </div>
+
+        <h2 id="walletBalance">
+          0.00 PKR
+        </h2>
+
+        <div style="font-size:12px;">
+          Firebase secured account ledger
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <h2>👑 Founder & CEO</h2>
+
+        <h3>
+          Dewan Israr Ahmad Faridi
+        </h3>
+
+        <p>
+          International Awam Network Hub
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h2>🌍 International Awam Network</h2>
+
+        <p>
+          One digital platform connecting
+          Education, AI, E-Commerce, P2P
+          Workforce and Social Welfare.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         E-COMMERCE
+    ====================================================== -->
+
+    <section id="page-ecommerce"
+             class="page">
+
+      <div class="card">
+
+        <h2>🛒 E-Commerce & Services</h2>
+
+        <p>
+          Products, services and future P2P marketplace.
+        </p>
+
+      </div>
+
+
+      <div class="product-grid">
+
+        <div class="product-card">
+
+          <h3>🛍️ Products</h3>
+
+          <p>
+            Buy and sell products through the
+            International marketplace.
+          </p>
+
+          <button class="btn">
+            Explore Products
+          </button>
+
+        </div>
+
+
+        <div class="product-card">
+
+          <h3>🤝 P2P Services</h3>
+
+          <p>
+            Connect buyers with verified service providers.
+          </p>
+
+          <button class="btn">
+            Explore Services
+          </button>
+
+        </div>
+
+
+        <div class="product-card">
+
+          <h3>🚚 Future Dispatch</h3>
+
+          <p>
+            Future truck dispatch and logistics automation.
+          </p>
+
+          <button class="btn">
+            Coming Soon
+          </button>
+
+        </div>
+
+
+        <div class="product-card">
+
+          <h3>🌐 Global Marketplace</h3>
+
+          <p>
+            Future integration for international
+            e-commerce and dropshipping.
+          </p>
+
+          <button class="btn">
+            Coming Soon
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         EDUCATION
+    ====================================================== -->
+
+    <section id="page-education"
+             class="page">
+
+      <div class="card">
+
+        <h2>🎓 Education & AI Academy</h2>
+
+        <p>
+          AI-powered learning system from beginner
+          level to advanced technology.
+        </p>
+
+      </div>
+
+
+      <div class="course-grid">
+
+        <div class="course-card">
+          <h3>💻 Computer Basics</h3>
+          <p>Beginner to advanced computer skills.</p>
+        </div>
+
+        <div class="course-card">
+          <h3>👨‍💻 Programming</h3>
+          <p>Programming and software development.</p>
+        </div>
+
+        <div class="course-card">
+          <h3>🤖 Artificial Intelligence</h3>
+          <p>AI learning and practical training.</p>
+        </div>
+
+        <div class="course-card">
+          <h3>🛒 E-Commerce</h3>
+          <p>Amazon, eBay, Shopify, Daraz and more.</p>
+        </div>
+
+        <div class="course-card">
+          <h3>📦 Dropshipping</h3>
+          <p>Modern online business training.</p>
+        </div>
+
+        <div class="course-card">
+          <h3>📝 AI Exams</h3>
+          <p>Future automated tests and assessment.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         P2P
+    ====================================================== -->
+
+    <section id="page-p2p"
+             class="page">
+
+      <div class="card">
+
+        <h2>🤝 P2P Workforce</h2>
+
+        <p>
+          Register skills and connect workers with opportunities.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="form-group">
+
+          <label>Full Name</label>
+
+          <input
+            id="p2pName"
+            class="form-control"
+            type="text"
+            placeholder="Full Name">
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>Country</label>
+
+          <input
+            id="p2pCountry"
+            class="form-control"
+            type="text"
+            placeholder="Country">
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>City</label>
+
+          <input
+            id="p2pCity"
+            class="form-control"
+            type="text"
+            placeholder="City">
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>Skill / Work</label>
+
+          <input
+            id="p2pSkill"
+            class="form-control"
+            type="text"
+            placeholder="Skill / Work">
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>Experience</label>
+
+          <input
+            id="p2pExperience"
+            class="form-control"
+            type="text"
+            placeholder="Experience">
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>Phone / WhatsApp</label>
+
+          <input
+            id="p2pPhone"
+            class="form-control"
+            type="text"
+            placeholder="Phone / WhatsApp">
+
+        </div>
+
+
+        <button
+          class="btn btn-success"
+          onclick="registerP2P()">
+
+          Register Workforce Profile
+
+        </button>
+
+        <div id="p2pStatus"
+             style="margin-top:12px;font-size:13px;">
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>Registered Workforce</h3>
+
+        <div id="p2pList">
+          Loading...
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         WELFARE
+    ====================================================== -->
+
+    <section id="page-welfare"
+             class="page">
+
+      <div class="card">
+
+        <h2>❤️ NGO & Social Welfare</h2>
+
+        <p>
+          Humanitarian and social welfare initiatives
+          for communities worldwide.
+        </p>
+
+      </div>
+
+
+      <div class="welfare-grid">
+
+        <div class="welfare-card">
+
+          <h3>🎓 Education Support</h3>
+
+          <p>
+            Support education and learning opportunities.
+          </p>
+
+        </div>
+
+
+        <div class="welfare-card">
+
+          <h3>🏥 Health Support</h3>
+
+          <p>
+            Future welfare and healthcare assistance.
+          </p>
+
+        </div>
+
+
+        <div class="welfare-card">
+
+          <h3>💧 Clean Water</h3>
+
+          <p>
+            Clean water and environmental initiatives.
+          </p>
+
+        </div>
+
+
+        <div class="welfare-card">
+
+          <h3>🤲 Zakat & Assistance</h3>
+
+          <p>
+            Future controlled welfare funding system.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MASTER ADMIN
+    ====================================================== -->
+
+    <section id="page-admin"
+             class="page">
+
+      <div class="card"
+           style="border:2px solid #dc2626;">
+
+        <h2 style="color:#dc2626;">
+          🔒 Master Super Admin Core
+        </h2>
+
+        <p>
+          Authorized Founder/Super Admin control area.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>💰 Financial Control</h3>
+
+        <div class="form-group">
+
+          <label>Target User UID</label>
+
+          <input
+            id="adminUid"
+            class="form-control"
+            type="text">
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>Amount PKR</label>
+
+          <input
+            id="adminAmount"
+            class="form-control"
+            type="number">
+
+        </div>
+
+
+        <button
+          class="btn btn-success"
+          onclick="adminTransaction('credit')">
+
+          Grant Balance
+
+        </button>
+
+
+        <button
+          class="btn btn-danger"
+          onclick="adminTransaction('debit')">
+
+          Deduct Balance
+
+        </button>
+
+
+        <div id="adminStatus"
+             style="margin-top:12px;">
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<!-- =========================================================
+     FIREBASE
+========================================================= -->
+
+<script type="module">
+
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getAuth,
+  signInWithRedirect,
+  getRedirectResult,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+  getDatabase,
+  ref,
+  onValue,
+  push,
+  set,
+  get
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+
+/* =========================================================
+   FIREBASE CONFIG
+========================================================= */
+
+const firebaseConfig = {
+
+  apiKey:
+    "AIzaSyCvbrB6vgOwLLzFLymZ3213b249DAn5jbY",
+
+  authDomain:
+    "awam-network-318ec.firebaseapp.com",
+
+  databaseURL:
+    "https://awam-network-318ec-default-rtdb.firebaseio.com",
+
+  projectId:
+    "awam-network-318ec",
+
+  messagingSenderId:
+    "313453438241",
+
+  appId:
+    "1:313453438241:web:19189b495154fc7326fea0"
+
+};
+
+
+/* =========================================================
+   INITIALIZE FIREBASE
+========================================================= */
+
+const firebaseApp =
+  initializeApp(firebaseConfig);
+
+const auth =
+  getAuth(firebaseApp);
+
+const database =
+  getDatabase(firebaseApp);
+
+
+/* =========================================================
+   GOOGLE PROVIDER
+========================================================= */
+
+const googleProvider =
+  new GoogleAuthProvider();
+
+googleProvider.setCustomParameters({
+  prompt:"select_account"
+});
+
+
+/* =========================================================
+   GOOGLE LOGIN
+========================================================= */
+
+const googleLoginButton =
+  document.getElementById("btnGoogleLogin");
+
+const loginStatus =
+  document.getElementById("loginStatus");
+
+
+if(googleLoginButton){
+
+  googleLoginButton.addEventListener(
+    "click",
+    async function(){
+
+      try{
+
+        loginStatus.innerText =
+          "Opening secure Google Login...";
+
+        googleLoginButton.disabled = true;
+
+        await signInWithRedirect(
+          auth,
+          googleProvider
+        );
+
+      }catch(error){
+
+        console.error(
+          "Google Login Error:",
+          error
+        );
+
+        loginStatus.innerText =
+          "Login Error: " + error.message;
+
+        googleLoginButton.disabled = false;
 
       }
-    <div class="login-tabs">
-      <div class="login-tab active" id="tab-gmail" onclick="switchTab('gmail')">📧 Gmail سے لاگ ان</div>
-      <div class="login-tab" id="tab-number" onclick="switchTab('number')">📱 نمبر سے لاگ ان</div>
-    </div>
 
-    });
-    <!-- Gmail Login Panel -->
-    <div class="login-panel active" id="panel-gmail">
-      <input type="text" id="gmailInput" class="input-style" placeholder="آپ کا نام" style="text-align:center;">
-      <input type="email" id="gmailEmail" class="input-style" placeholder="yourname@gmail.com" style="text-align:center;">
-      <button class="btn-submit btn-gmail" onclick="loginWithGmail()">📧 Gmail سے لاگ ان کریں</button>
-    </div>
+    }
+  );
 
-    /*
-     * IMPORTANT:
-     * Neeche ka aapka existing Education,
-     * E-Commerce, P2P, Wallet, NGO,
-     * Admin aur Exam code bilkul same rahega.
-     */
-    <!-- Number Login Panel -->
-    <div class="login-panel" id="panel-number">
-      <input type="text" id="numberNameInput" class="input-style" placeholder="آپ کا نام" style="text-align:center;">
-      <input type="tel" id="numberInput" class="input-style" placeholder="03XXXXXXXXX" style="text-align:center;">
-      <button class="btn-submit btn-number" onclick="loginWithNumber()">📱 نمبر سے لاگ ان کریں</button>
-    </div>
+}
 
-    <p class="login-error" id="loginError"></p>
-  </div>
-</div>
 
-<div class="main-container">
-<!-- HOME PAGE -->
-<div id="home-section">
+/* =========================================================
+   REDIRECT RESULT
+========================================================= */
 
-<!-- LOGGED-IN USER BADGE -->
-<div id="user-badge"><span class="logout" onclick="logoutUser()">لاگ آؤٹ</span> <span id="user-badge-text"></span></div>
-<button id="login-open-btn" class="btn-login-open" onclick="openLogin()">🔐 لاگ ان کریں</button>
+getRedirectResult(auth)
+.catch(function(error){
 
-<!-- FOUNDER & CEO INFORMATION BOX -->
-<div style="background: linear-gradient(135deg, #d4af37, #aa7c11); color: white; padding: 12px; border-radius: 10px; margin-bottom: 15px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-<h3 style="margin: 0; font-size: 14px; letter-spacing: 1px;">👑 FOUNDER & CEO</h3>
-<h2 style="margin: 5px 0 2px 0; color: #fff; font-size: 18px;">Dewan Israr Ahmad Faridi</h2>
-<p style="margin: 0; color: #fff; font-size: 11px;">📧 dewan.gee786@gmail.com | 📞 +923004109236</p>
-</div>
+  console.error(
+    "Google Redirect Error:",
+    error
+  );
 
-<div class="header">
-<h1>عوام نیٹ ورک / AWAM NETWORK</h1>
-<p>Bila Sood Khudkaar Nizam</p>
-</div>
-<div class="zakati-box" onclick="openPage('zakat-section')"><h2>🌍 1. Zakat Funding (انٹرنیشنل زکوٰۃ)</h2></div>
-<div class="card" onclick="openPage('hunar-section')"><h2>📚 2. Google AI Exam (گوگل AI امتحان)</h2></div>
-<div class="card" onclick="openPage('jobs-section')"><h2>🛠️ 3. P2P Jobs (بغیر کمیشن مزدوری)</h2></div>
-<div class="card" onclick="openPage('ration-section')"><h2>🌾 4. Sasta Ration (سستا راشن نیٹ ورک)</h2></div>
-</div>
+});
 
-<!-- ZAKAT PAGE -->
-<div id="zakat-section" class="page-section">
-<button class="btn-back" onclick="goBack('zakat-section')">پیچھے جائیں</button>
-<div style="clear: both;"></div>
-<div class="zakati-box" style="cursor: default;"><h2>🌍 عالمی زکوٰۃ پورٹل</h2></div>
-<p style="padding: 20px;">زکوٰۃ فنڈنگ پیج کامیابی سے لائیو ہے۔</p>
-</div>
 
-<!-- HUNAR PAGE -->
-<div id="hunar-section" class="page-section">
-<button class="btn-back" onclick="goBack('hunar-section')">پیچھے جائیں</button>
-<div style="clear: both;"></div>
-<div class="header" style="background:#34495e;"><h2>🤖 گوگل AI امتحانی مرکز</h2></div>
-<div class="quiz-box">
-<p>سوال: کمپیوٹر کا دماغ (Brain) کس ہارڈ ویئر کو کہا جاتا ہے؟</p>
-<input type="radio" name="qa" id="opt1"> <label>مانیٹر (Monitor)</label><br>
-<input type="radio" name="qa" id="opt2"> <label>سی پی یو (CPU)</label>
-</div>
-<button class="btn-submit" onclick="submitExam()">امتحان جمع کریں</button>
-<div id="resultView" class="result-box"></div>
-</div>
+/* =========================================================
+   AUTH STATE
+========================================================= */
 
-<!-- JOBS PAGE -->
-<div id="jobs-section" class="page-section">
-<button class="btn-back" onclick="goBack('jobs-section')">پیچھے جائیں</button>
-<div style="clear: both;"></div>
-<div class="header" style="background:#e67e22;"><h2>🛠️ بغیر کمیشن مزدوری مارکیٹ</h2></div>
-<div style="border:1px solid #ddd; padding:10px; border-radius:8px; margin-bottom:15px;">
-<input type="text" id="wName" placeholder="آپ کا نام" class="input-style"><br>
-<input type="text" id="wSkill" placeholder="آپ کا ہنر" class="input-style"><br>
-<input type="text" id="wPhone" placeholder="موبائل نمبر" class="input-style"><br>
-<button class="btn-submit" style="background:#e67e22;" onclick="addWorker()">نام شامل کریں</button>
-</div>
-<div id="workersList">
-<div class="worker-card"><strong>محمد اسلم</strong> (ڈیٹا اینٹری)<br>فون: 03001234567</div>
-</div>
-</div>
+onAuthStateChanged(
+  auth,
+  function(user){
 
-<!-- RATION PAGE -->
-<div id="ration-section" class="page-section">
-<button class="btn-back" onclick="goBack('ration-section')">پیچھے جائیں</button>
-<div style="clear: both;"></div>
-<div class="header" style="background:#27ae60;"><h2>🌾 سستا راشن اور ہول سیل مارکیٹ</h2></div>
+    if(user){
 
-<div style="border:1px solid #ddd; padding:10px; border-radius:8px; margin-bottom:15px;">
-<input type="text" id="rItem" placeholder="سامان کا نام" class="input-style"><br>
-<input type="text" id="rPrice" placeholder="ہول سیل قیمت" class="input-style"><br>
-<input type="text" id="rContact" placeholder="فون نمبر" class="input-style"><br>
-<button class="btn-submit" style="background:#27ae60;" onclick="addRationItem()">سامان شامل کریں</button>
-</div>
+      /* Hide Login */
 
-<div id="rationList">
-<div class="ration-card">
-<strong>سستے آلو (ڈائریکٹ فارم سٹاک)</strong><br>
-قیمت: 40 روپے فی کلو <br>
-<span style="color:#27ae60;">رابطہ: 03019876543</span>
-</div>
-</div>
-</div>
+      document
+        .getElementById("loginScreen")
+        .classList.add("hidden");
 
-<div class="site-footer">
-<a href="privacy-policy.html" target="_blank">Privacy Policy / رازداری کی پالیسی</a>
-</div>
-</div>
+
+      /* Show App */
+
+      document
+        .getElementById("app")
+        .classList.remove("hidden");
+
+
+      /* User Information */
+
+      document
+        .getElementById("userName")
+        .innerText =
+          user.displayName ||
+          "Verified User";
+
+
+      document
+        .getElementById("userEmail")
+        .innerText =
+          user.email ||
+          "";
+
+
+      /* Super Admin */
+
+      if(
+        user.email ===
+        "dewan.gee786@gmail.com"
+      ){
+
+        document
+          .getElementById("adminButton")
+          .classList.remove("hidden");
+
+      }else{
+
+        document
+          .getElementById("adminButton")
+          .classList.add("hidden");
+
+      }
+
+
+      /* Wallet */
+
+      const walletRef =
+        ref(
+          database,
+          "wallets/" +
+          user.uid +
+          "/balance"
+        );
+
+
+      onValue(
+        walletRef,
+        function(snapshot){
+
+          const balance =
+            snapshot.val();
+
+          document
+            .getElementById("walletBalance")
+            .innerText =
+              (balance || 0) +
+              " PKR";
+
+        }
+      );
+
+
+      /* P2P */
+
+      loadP2P();
+
+    }
+
+    else{
+
+      /* Login Required */
+
+      document
+        .getElementById("loginScreen")
+        .classList.remove("hidden");
+
+      document
+        .getElementById("app")
+        .classList.add("hidden");
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+window.logoutUser =
+async function(){
+
+  try{
+
+    await signOut(auth);
+
+  }catch(error){
+
+    alert(
+      "Logout Error: " +
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =========================================================
+   P2P REGISTRATION
+========================================================= */
+
+window.registerP2P =
+async function(){
+
+  const user =
+    auth.currentUser;
+
+  if(!user){
+
+    alert(
+      "Please login first."
+    );
+
+    return;
+
+  }
+
+
+  const name =
+    document
+      .getElementById("p2pName")
+      .value.trim();
+
+  const country =
+    document
+      .getElementById("p2pCountry")
+      .value.trim();
+
+  const city =
+    document
+      .getElementById("p2pCity")
+      .value.trim();
+
+  const skill =
+    document
+      .getElementById("p2pSkill")
+      .value.trim();
+
+  const experience =
+    document
+      .getElementById("p2pExperience")
+      .value.trim();
+
+  const phone =
+    document
+      .getElementById("p2pPhone")
+      .value.trim();
+
+
+  if(
+    !name ||
+    !country ||
+    !city ||
+    !skill ||
+    !experience ||
+    !phone
+  ){
+
+    document
+      .getElementById("p2pStatus")
+      .innerText =
+        "Please complete all fields.";
+
+    return;
+
+  }
+
+
+  try{
+
+    const workerRef =
+      push(
+        ref(
+          database,
+          "p2p_workers"
+        )
+      );
+
+
+    await set(
+      workerRef,
+      {
+
+        name:name,
+
+        country:country,
+
+        city:city,
+
+        skill:skill,
+
+        experience:experience,
+
+        phone:phone,
+
+        uid:user.uid,
+
+        createdAt:
+          Date.now(),
+
+        status:
+          "pending"
+
+      }
+    );
+
+
+    document
+      .getElementById("p2pStatus")
+      .innerText =
+        "✅ Workforce profile registered successfully.";
+
+
+    document
+      .getElementById("p2pName")
+      .value="";
+
+    document
+      .getElementById("p2pCountry")
+      .value="";
+
+    document
+      .getElementById("p2pCity")
+      .value="";
+
+    document
+      .getElementById("p2pSkill")
+      .value="";
+
+    document
+      .getElementById("p2pExperience")
+      .value="";
+
+    document
+      .getElementById("p2pPhone")
+      .value="";
+
+
+  }catch(error){
+
+    console.error(error);
+
+    document
+      .getElementById("p2pStatus")
+      .innerText =
+        "❌ Database Error: " +
+        error.message;
+
+  }
+
+};
+
+
+/* =========================================================
+   LOAD P2P
+========================================================= */
+
+function loadP2P(){
+
+  const list =
+    document
+      .getElementById("p2pList");
+
+
+  onValue(
+
+    ref(
+      database,
+      "p2p_workers"
+    ),
+
+    function(snapshot){
+
+      list.innerHTML="";
+
+      if(!snapshot.exists()){
+
+        list.innerHTML =
+          "<p>No registered workforce yet.</p>";
+
+        return;
+
+      }
+
+
+      snapshot.forEach(
+        function(child){
+
+          const data =
+            child.val();
+
+
+          const div =
+            document.createElement("div");
+
+          div.className =
+            "worker-card";
+
+
+          div.innerHTML =
+
+            "<strong>" +
+            escapeHTML(data.name) +
+            "</strong><br>" +
+
+            "🌍 " +
+            escapeHTML(data.country) +
+            " / " +
+            escapeHTML(data.city) +
+            "<br>" +
+
+            "🛠️ " +
+            escapeHTML(data.skill) +
+            "<br>" +
+
+            "💼 " +
+            escapeHTML(data.experience) +
+            "<br>" +
+
+            "📱 " +
+            escapeHTML(data.phone);
+
+
+          list.appendChild(div);
+
+        }
+      );
+
+    }
+
+  );
+
+}
+
+
+/* =========================================================
+   SAFE HTML
+========================================================= */
+
+function escapeHTML(value){
+
+  return String(value || "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   ADMIN TRANSACTION
+========================================================= */
+
+window.adminTransaction =
+async function(type){
+
+  const user =
+    auth.currentUser;
+
+  if(
+    !user ||
+    user.email !==
+    "dewan.gee786@gmail.com"
+  ){
+
+    alert(
+      "Unauthorized Admin Access."
+    );
+
+    return;
+
+  }
+
+
+  const targetUid =
+    document
+      .getElementById("adminUid")
+      .value.trim();
+
+  const amount =
+    Number(
+      document
+        .getElementById("adminAmount")
+        .value
+    );
+
+
+  if(
+    !targetUid ||
+    !amount ||
+    amount <= 0
+  ){
+
+    document
+      .getElementById("adminStatus")
+      .innerText =
+        "Enter valid UID and amount.";
+
+    return;
+
+  }
+
+
+  try{
+
+    const balanceRef =
+      ref(
+        database,
+        "wallets/" +
+        targetUid +
+        "/balance"
+      );
+
+
+    const snapshot =
+      await get(balanceRef);
+
+
+    let currentBalance =
+      Number(
+        snapshot.val() || 0
+      );
+
+
+    if(type === "credit"){
+
+      currentBalance += amount;
+
+    }else{
+
+      currentBalance -= amount;
+
+      if(currentBalance < 0){
+
+        currentBalance = 0;
+
+      }
+
+    }
+
+
+    await set(
+      balanceRef,
+      currentBalance
+    );
+
+
+    document
+      .getElementById("adminStatus")
+      .innerText =
+        "✅ Transaction completed.";
+
+  }catch(error){
+
+    document
+      .getElementById("adminStatus")
+      .innerText =
+        "❌ " +
+        error.message;
+
+  }
+
+};
+
+
+/* =========================================================
+   DIGITAL CLOCK
+========================================================= */
+
+function updateClock(){
+
+  const now =
+    new Date();
+
+
+  document
+    .getElementById("digitalClock")
+    .innerText =
+      now.toLocaleTimeString();
+
+
+  document
+    .getElementById("digitalDate")
+    .innerText =
+      now.toLocaleDateString(
+        undefined,
+        {
+          weekday:"long",
+          year:"numeric",
+          month:"long",
+          day:"numeric"
+        }
+      );
+
+}
+
+
+updateClock();
+
+setInterval(
+  updateClock,
+  1000
+);
+
+</script>
+
+
+<!-- =========================================================
+     PAGE SWITCH SYSTEM
+========================================================= -->
 
 <script>
-/* ===== LOGIN LOGIC ===== */
-function openLogin() {
-  document.getElementById('login-overlay').style.display = 'flex';
-}
-function closeLogin() {
-  document.getElementById('login-overlay').style.display = 'none';
-}
-function switchTab(type) {
-  document.getElementById('tab-gmail').classList.toggle('active', type === 'gmail');
-  document.getElementById('tab-number').classList.toggle('active', type === 'number');
-  document.getElementById('panel-gmail').classList.toggle('active', type === 'gmail');
-  document.getElementById('panel-number').classList.toggle('active', type === 'number');
-  hideError();
-}
 
-function showError(msg) {
-  var e = document.getElementById('loginError');
-  e.innerText = msg;
-  e.style.display = 'block';
-}
-function hideError() {
-  document.getElementById('loginError').style.display = 'none';
-}
+function switchPage(pageName){
 
-function loginWithGmail() {
-  var name = document.getElementById('gmailInput').value.trim();
-  var email = document.getElementById('gmailEmail').value.trim();
-  if (!name) { showError('براہ کرم اپنا نام درج کریں۔'); return; }
-  if (!/^[^\s@]+@gmail\.com$/i.test(email)) {
-    showError('براہ کرم درست Gmail ایڈریس درج کریں (مثال: name@gmail.com)');
-    return;
+  document
+    .querySelectorAll(".page")
+    .forEach(function(page){
+
+      page.classList.remove("active");
+
+    });
+
+
+  const target =
+    document.getElementById(
+      "page-" + pageName
+    );
+
+
+  if(target){
+
+    target.classList.add("active");
+
   }
-  completeLogin(name, email);
+
+
+  document
+    .querySelectorAll(".nav button")
+    .forEach(function(button){
+
+      button.classList.remove("active");
+
+    });
+
 }
 
-function loginWithNumber() {
-  var name = document.getElementById('numberNameInput').value.trim();
-  var number = document.getElementById('numberInput').value.trim();
-  if (!name) { showError('براہ کرم اپنا نام درج کریں۔'); return; }
-  if (!/^03[0-9]{9}$/.test(number)) {
-    showError('براہ کرم درست موبائل نمبر درج کریں (مثال: 03001234567)');
-    return;
-  }
-  completeLogin(name, number);
-}
-
-function completeLogin(name, idValue) {
-  hideError();
-  document.getElementById('login-overlay').style.display = 'none';
-  var badge = document.getElementById('user-badge');
-  badge.style.display = 'block';
-  document.getElementById('login-open-btn').style.display = 'none';
-  document.getElementById('user-badge-text').innerText = '👋 خوش آمدید، ' + name + ' (' + idValue + ')';
-  window.currentUser = { name: name, id: idValue };
-}
-
-function logoutUser() {
-  document.getElementById('user-badge').style.display = 'none';
-  document.getElementById('login-open-btn').style.display = 'inline-block';
-  document.getElementById('login-overlay').style.display = 'none';
-  window.currentUser = null;
-}
-
-/* ===== EXISTING APP LOGIC ===== */
-function openPage(pageId) {
-document.getElementById('home-section').style.display = 'none';
-document.getElementById(pageId).style.display = 'block';
-}
-function goBack(pageId) {
-document.getElementById(pageId).style.display = 'none';
-document.getElementById('home-section').style.display = 'block';
-if(document.getElementById('resultView')) {
-document.getElementById('resultView').style.display = 'none'; }
-}
-function submitExam() {
-var resultDiv = document.getElementById('resultView');
-resultDiv.style.display = "block";
-if(document.getElementById('opt2').checked) {
-resultDiv.style.borderColor = "#2ecc71";
-resultDiv.style.color = "#27ae60";
-resultDiv.style.background = "#e8f5e9";
-resultDiv.innerHTML = "🎉 پاس! بلاک چین سرٹیفکیٹ جاری ہو گیا۔";
-} else {
-resultDiv.style.borderColor = "#e74c3c";
-resultDiv.style.color = "#c0392b";
-resultDiv.style.background = "#fce4d6";
-resultDiv.innerHTML = "❌ فیل! دوبارہ کوشش کریں۔";
-}
-}
-function addWorker() {
-var name = document.getElementById('wName').value;
-var skill = document.getElementById('wSkill').value;
-var phone = document.getElementById('wPhone').value;
-if(!name || !skill || !phone) { alert("تمام معلومات درج کریں!"); return; }
-var list = document.getElementById('workersList');
-list.innerHTML = "<div class='worker-card'><strong>"+name+"</strong> ("+skill+")<br>فون: "+phone+"</div>" + list.innerHTML;
-alert("نام شامل ہو گیا!");
-document.getElementById('wName').value = "";
-document.getElementById('wSkill').value = "";
-document.getElementById('wPhone').value = "";
-}
-function addRationItem() {
-var i = document.getElementById('rItem').value;
-var pr = document.getElementById('rPrice').value;
-var c = document.getElementById('rContact').value;
-if(!i || !pr || !c) { alert("تمام معلومات درج کریں!"); return; }
-var list = document.getElementById('rationList');
-list.innerHTML = "<div class='ration-card'><strong>"+i+"</strong><br>قیمت: "+pr+"<br>رابطہ: "+c+"</div>" + list.innerHTML;
-alert("سامان شامل ہو گیا!");
-document.getElementById('rItem').value = "";
-document.getElementById('rPrice').value = "";
-document.getElementById('rContact').value = "";
-}
 </script>
+
 </body>
 </html>
