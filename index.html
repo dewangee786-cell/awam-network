@@ -1,48 +1,160 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy - Awam Network</title>
-<style>
-body { font-family: sans-serif; background-color: #f0f3f5; padding: 20px; direction: rtl; }
-.container { max-width: 700px; margin: 0 auto; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-h1 { color: #2c3e50; text-align: center; }
-h2 { color: #2c3e50; margin-top: 25px; font-size: 18px; }
-p, li { color: #444; line-height: 1.8; font-size: 14px; }
-.updated { color: #888; font-size: 12px; text-align: center; margin-bottom: 20px; }
-.back-link { display: inline-block; margin-bottom: 15px; color: #4285F4; text-decoration: none; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>International Awam Network Hub V2</title>
+
+  <!-- 📊 GOOGLE SEO AUTOMATION -->
+  <meta name="description" content="All-in-one platform for Welfare, P2P Jobs, and Education secured by Google Cloud.">
+  <meta name="robots" content="index, follow">
+
+  <!-- 💰 GOOGLE ADSENSE AUTO ADS -->
+  <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
+
+  <style>
+    :root{ --bg:#f4f7fb; --panel:#ffffff; --dark:#0b1220; --text:#172033; --muted:#718096; --line:#e5eaf2; --primary:#2563eb; --success:#16a34a; --danger:#dc2626; --radius:16px; }
+    *{box-sizing:border-box} body{margin:0; font-family:sans-serif; background:var(--bg); color:var(--text)}
+    .hidden{display:none!important}
+
+    #loginScreen{min-height:100vh; display:flex; align-items:center; justify-content:center; background:#f8fafc;}
+    .login-box{width:400px; background:#fff; border:1px solid var(--line); border-radius:24px; padding:40px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.05)}
+    .google-btn{width:100%; border:0; border-radius:12px; padding:14px; background:#111827; color:#fff; font-weight:700; cursor:pointer;}
+
+    #app{min-height:100vh; display:flex}
+    .sidebar{width:260px; background:#0b1220; color:#fff; padding:20px; display:flex; flex-direction:column; justify-content:space-between}
+    .nav button{width:100%; border:0; background:transparent; color:#cbd5e1; text-align:left; padding:12px; margin:5px 0; border-radius:8px; cursor:pointer;}
+    .nav button.active, .nav button:hover{background:rgba(37,99,235,0.2); color:#fff}
+    .main{flex:1; padding:30px}
+    .card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:20px; margin-bottom:20px}
+    .ad-container {margin:20px 0; padding:10px; background:#f8fafc; border:1px dashed var(--line); text-align:center; font-size:11px}
+    
+    .page{display:none}
+    .page.active{display:block}
+    .form-group{margin-bottom:15px; text-align:left;}
+    .form-group label{display:block; margin-bottom:5px; font-weight:bold; font-size:14px;}
+    .form-control{width:100%; padding:10px; border:1px solid var(--line); border-radius:8px;}
+    .btn-action{padding:10px 15px; background:var(--primary); color:#fff; border:0; border-radius:8px; cursor:pointer; margin-right:5px;}
+    
+    /* Academic Portal Styles */
+    .course-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:15px; margin-top:15px;}
+    .course-card{border:1px solid var(--line); padding:15px; border-radius:12px; cursor:pointer; background:#f8fafc; text-align:center; transition:0.2s;}
+    .course-card:hover{border-color:var(--primary); background:#eff6ff;}
+    .quiz-option{display:block; background:#f8fafc; border:1px solid var(--line); padding:12px; margin:8px 0; border-radius:8px; cursor:pointer;}
+    .quiz-option input{margin-right:10px;}
+    .timer-badge{display:inline-block; padding:6px 12px; background:var(--danger); color:#fff; border-radius:30px; font-weight:bold; font-size:13px; margin-bottom:15px;}
+    .nav-btn-container{display:flex; justify-content:space-between; margin-top:20px;}
+    .disabled-click{pointer-events:none; opacity:0.6;}
+  </style>
 </head>
 <body>
-<div class="container">
-<a class="back-link" href="index.html">← ہوم پیج پر واپس جائیں</a>
-<h1>رازداری کی پالیسی (Privacy Policy)</h1>
-<p class="updated">آخری اپڈیٹ: ستمبر 2026</p>
 
-<h2>1. تعارف</h2>
-<p>عوام نیٹ ورک (Awam Network) ایک کمیونٹی پلیٹ فارم ہے جو زکوٰۃ فنڈنگ، ہنر مندی کے امتحانات، مزدوری مارکیٹ، اور سستے راشن نیٹ ورک کی سہولت فراہم کرتا ہے۔ یہ پالیسی بتاتی ہے کہ ہم آپ کی معلومات کیسے جمع، استعمال اور محفوظ کرتے ہیں۔</p>
+  <!-- SECURE LOGIN DOOR -->
+  <div id="loginScreen">
+    <div class="login-box">
+      <h2>Awam Network Hub v2</h2>
+      <p>Secure Enterprise Gateway Powered by Google Cloud Engine.</p>
+      <button class="google-btn" id="btnGoogleLogin">Sign in with Verified Google Account</button>
+    </div>
+  </div>
 
-<h2>2. ہم کون سی معلومات جمع کرتے ہیں</h2>
-<ul>
-<li>نام اور رابطہ نمبر (لاگ ان اور فارمز کے دوران)</li>
-<li>ای میل ایڈریس (اگر Gmail سے لاگ ان کریں)</li>
-<li>ہنر، کام اور راشن سے متعلق تفصیلات جو آپ خود درج کریں</li>
-</ul>
+  <!-- AUTOMATED DASHBOARD SYSTEM -->
+  <div id="app" class="hidden">
+    <div class="sidebar">
+      <div>
+        <h3>AWAM NETWORK</h3>
+        <div class="nav">
+          <button class="active" onclick="switchPage('dashboard')">📊 Dashboard</button>
+          <button onclick="switchPage('ecommerce')">🛒 E-Commerce Store</button>
+          <button onclick="switchPage('education')">🎓 Tech Academy</button>
+          <button onclick="switchPage('p2p')">🤝 P2P Workforce</button>
+          <button onclick="switchPage('welfare')">❤️ Social Welfare</button>
+          <div id="superAdminSection" class="hidden">
+            <button onclick="switchPage('adminPanel')" style="color:#f43f5e">⚙️ Master Admin Core</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div id="userName" style="font-weight:700">Verifying User...</div>
+        <div id="userEmail" style="font-size:11px; color:#94a3b8">Loading secure link...</div>
+      </div>
+    </div>
 
-<h2>3. معلومات کا استعمال</h2>
-<p>آپ کی معلومات صرف پلیٹ فارم کی سہولیات (جیسے مزدوری کی فہرست، راشن نیٹ ورک، اور امتحانی نتائج دکھانے) کے لیے استعمال ہوتی ہیں۔ ہم آپ کا ڈیٹا کسی تیسرے فریق کو فروخت نہیں کرتے۔</p>
+    <div class="main">
+      <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXX" data-ad-slot="12345678" data-ad-format="auto"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
 
-<h2>4. ڈیٹا کا تحفظ</h2>
-<p>ہم آپ کی معلومات کو محفوظ رکھنے کی پوری کوشش کرتے ہیں، تاہم انٹرنیٹ پر کوئی بھی نظام مکمل طور پر محفوظ نہیں ہو سکتا۔</p>
+      <!-- DASHBOARD PAGE -->
+      <div id="page-dashboard" class="page active">
+        <div class="card">
+          <h3>SECURE WALLET BALANCE</h3>
+          <h2 style="color:var(--success)" id="lblWallet">0.00 PKR</h2>
+          <p style="font-size:12px; color:var(--muted)">🔒 Cryptographically Locked Server-Side</p>
+        </div>
+      </div>
 
-<h2>5. آپ کے حقوق</h2>
-<p>آپ کسی بھی وقت اپنی معلومات کو تبدیل یا حذف کروانے کے لیے نیچے دیے گئے رابطے پر ای میل کر سکتے ہیں۔</p>
+      <!-- MASTER SUPER ADMIN PANEL -->
+      <div id="page-adminPanel" class="page">
+        <div class="card" style="border:2px solid var(--danger)">
+          <h3 style="color:var(--danger)">🔒 Master Super Admin Engine</h3>
+          <p>Welcome, Creator. Gemini Automation Bot is tracking fraud, evaluating exams, and distributing user workloads natively.</p>
+          
+          <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
+          
+          <h4>💰 Super Admin Financial Controls</h4>
+          <div class="form-group">
+            <label>User Unique ID (UID)</label>
+            <input type="text" id="txtAdminTargetUid" class="form-control" placeholder="Paste user UID here...">
+          </div>
+          <div class="form-group">
+            <label>Amount (PKR)</label>
+            <input type="number" id="txtAdminAmount" class="form-control" placeholder="e.g. 5000">
+          </div>
+          <button class="btn-action" style="background:var(--success)" onclick="triggerServerTransaction('credit')">Grant Secure Balance</button>
+          <button class="btn-action" style="background:var(--danger)" onclick="triggerServerTransaction('debit')">Deduct/Freeze Balance</button>
 
-<h2>6. ہم سے رابطہ</h2>
-<p>سوالات یا شکایات کے لیے رابطہ کریں:<br>
-📧 dewan.gee786@gmail.com<br>
-📞 +923004109236</p>
-</div>
-</body>
-</html>
+          <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
+
+          <h4>🎓 Curriculum Management: Upload Lesson / Quiz</h4>
+          <div class="form-group">
+            <label>Select Track Course</label>
+            <select id="selAdminTrack" class="form-control">
+              <option value="basic_it">Basic Computer Literacy</option>
+              <option value="fullstack_web">Fullstack Software Specialist</option>
+              <option value="cloud_cyber">Cloud Systems & Cyber Security</option>
+              <option value="ai_data">AI & Modern Data Engineering</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Lesson Topic/Title</label><input type="text" id="txtLessonTitle" class="form-control"></div>
+          <div class="form-group"><label>Theory Text Content</label><textarea id="txtLessonTheory" class="form-control" rows="3"></textarea></div>
+          <div class="form-group"><label>Daily Practical Task Objective</label><input type="text" id="txtLessonPractical" class="form-control"></div>
+          
+          <div style="background:#f8fafc; padding:10px; border-radius:8px; margin-top:10px; border:1px solid var(--line);">
+            <h5>Associated Next-Day Test Question</h5>
+            <div class="form-group"><label>Question</label><input type="text" id="txtQuizQ" class="form-control"></div>
+            <div class="form-group"><label>Option A</label><input type="text" id="txtQuizA" class="form-control"></div>
+            <div class="form-group"><label>Option B</label><input type="text" id="txtQuizB" class="form-control"></div>
+            <div class="form-group"><label>Option C</label><input type="text" id="txtQuizC" class="form-control"></div>
+            <div class="form-group"><label>Option D</label><input type="text" id="txtQuizD" class="form-control"></div>
+            <div class="form-group"><label>Correct Answer Letter (A, B, C, or D)</label><input type="text" id="txtQuizCorrect" class="form-control"></div>
+          </div>
+          <br>
+          <button class="btn-action" style="width:100%;" onclick="publishAutomatedLesson()">Publish Day Task to Network Engine</button>
+          
+          <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
+          <h4>🤝 Live Manual Tuition Work Requests</h4>
+          <div id="adminTuitionRequestsContainer"><p>No pending assistance requests.</p></div>
+        </div>
+      </div>
+
+      <!-- TECH ACADEMY PORTAL (WORLD CLASS EDUCATION ENVIRONMENT) -->
+      <div id="page-education" class="page">
+        <!-- Course Selection Dashboard -->
+        <div id="courseSelectionScreen" class="card">
+          <h3>🎓 Next-Generation IT Specialist Academy</h3>
+          <p>Select your specialized track program to start learning cutting-edge technologies natively from basic to advanced levels.</p>
+          <div class="course-grid">
+            <div class="course-card" onclick="startSpecializedTrack('basic_it')">💻<h5>Basic IT Specialist</h5><small>Operating Systems, Internet, Office Automation</small></div>
+            <div class="course-card" onclick="startSpecializedTrack('fullstack_web')">🌐<h5>Fullstack Web Developer</h5><small>HTML5, JS, Node.js, SQL, System Architecture</small></div>
