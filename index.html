@@ -90,18 +90,19 @@
     </div>
   </div>
 
+  <!-- Sahi aur complete Firebase Scripts Links -->
   <script type="module">
     import { initializeApp } from "https://gstatic.com";
     import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://gstatic.com";
     import { getDatabase, ref, onValue } from "https://gstatic.com";
 
-    // 🔗 APKI REAL CONFIGURATION FROM SCREENSHOT
+    // 🔗 Mukammal aur sahi links ke sath real keys configuration
     const firebaseConfig = {
       apiKey: "AIzaSyCvbrB6vgOwLLzFLymZ3213b249DAn5jbY",
-      authDomain: "://firebaseapp.com",
-      databaseURL: "https://firebaseio.com",
+      authDomain: "awam-network-318ec.firebaseapp.com",
+      databaseURL: "https://awam-network-318ec-default-rtdb.firebaseio.com",
       projectId: "awam-network-318ec",
-      storageBucket: "://appspot.com",
+      storageBucket: "awam-network-318ec.appspot.com",
       messagingSenderId: "313453438241",
       appId: "1:313453438241:web:19189b495154fc7326fea0"
     };
@@ -111,13 +112,12 @@
     const database = getDatabase(app);
     const googleProvider = new GoogleAuthProvider();
 
-    // Direct login trigger without reCAPTCHA barrier
     document.getElementById('btnGoogleLogin').addEventListener('click', async () => {
       try {
         await signInWithPopup(auth, googleProvider);
       } catch (error) {
-        console.error("Auth Error: ", error);
-        alert("Login failed! Make sure your Firebase domain setup allows 'dewangee786-cell.github.io'.");
+        console.error("Auth Error Details: ", error);
+        alert("Login failed! " + error.message);
       }
     });
 
@@ -128,7 +128,7 @@
         document.getElementById('userName').innerText = user.displayName;
         document.getElementById('userEmail').innerText = user.email;
 
-        // 🔒 EMAIL BYPASS CHECK FOR SUPER ADMIN
+        // 🔒 SUPER ADMIN EMAIL BYPASS
         if (user.email === 'dewan.gee786@gmail.com') {
           document.getElementById('superAdminSection').classList.remove('hidden');
         } else {
