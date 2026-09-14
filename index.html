@@ -3,298 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Awam Network</title>
+<title>Privacy Policy - Awam Network</title>
 <style>
-body { font-family: sans-serif; background-color: #f0f3f5; text-align: center; padding: 20px; direction: rtl; }
-.main-container { max-width: 450px; margin: 0 auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-.header { background: #2ecc71; color: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center; }
-.zakati-box { background: #9b59b6; color: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; cursor: pointer; text-align: center; }
-.card { background: #fdfdfd; border: 2px solid #e2e8f0; padding: 15px; margin-bottom: 15px; border-radius: 10px; cursor: pointer; text-align: center; }
-h2 { margin: 0 0 5px 0; font-size: 18px; color: #2c3e50; }
-p { margin: 0; font-size: 13px; color: #555; }
-
-.page-section { display: none; background: #fff; padding: 10px; border-radius: 10px; text-align: center; }
-.btn-submit { background: #4285F4; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-size: 16px; width: 95%; margin-top: 10px; }
-.btn-back { background: #7f8c8d; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin-bottom: 15px; float: right; }
-.input-style { width: 90%; padding: 8px; margin-bottom: 8px; border: 1px solid #ccc; border-radius: 5px; text-align: center; font-size: 14px; }
-.quiz-box { background: #f9f9f9; border: 1px dashed #4285F4; padding: 15px; border-radius: 10px; text-align: right; }
-.result-box { display: none; padding: 10px; border-radius: 5px; margin-top: 10px; font-weight: bold; border: 2px solid #ccc; text-align: center; }
-.worker-card { background: #f9f9f9; border: 1px solid #eee; padding: 10px; border-radius: 5px; margin-bottom: 8px; text-align: right; }
-.ration-card { background: #fff; border: 2px solid #27ae60; padding: 12px; border-radius: 8px; margin-bottom: 10px; text-align: right; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-
-/* ===== LOGIN POPUP STYLES ===== */
-#login-overlay {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6); display: none; align-items: center;
-  justify-content: center; z-index: 999; direction: rtl;
-}
-.btn-login-open {
-  background: #4285F4; color: white; border: none; padding: 8px 16px;
-  border-radius: 6px; cursor: pointer; font-size: 13px; margin-bottom: 12px;
-}
-.site-footer {
-  margin-top: 15px; padding-top: 12px; border-top: 1px solid #eee;
-  font-size: 12px; color: #888; text-align: center;
-}
-.site-footer a { color: #4285F4; text-decoration: none; }
-#login-box {
-  background: white; width: 90%; max-width: 380px; border-radius: 15px;
-  padding: 25px 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.3); text-align: center;
-}
-#login-box h2 { color: #2c3e50; margin-bottom: 5px; }
-#login-box p.sub { color: #777; font-size: 13px; margin-bottom: 18px; }
-.login-tabs { display: flex; margin-bottom: 15px; border-radius: 8px; overflow: hidden; border: 1px solid #ddd; }
-.login-tab { flex: 1; padding: 10px; cursor: pointer; background: #f5f5f5; font-size: 14px; font-weight: bold; color: #555; }
-.login-tab.active { background: #4285F4; color: white; }
-.login-panel { display: none; text-align: right; }
-.login-panel.active { display: block; }
-.btn-gmail { background: #ffffff; color: #444; border: 1px solid #ccc; }
-.btn-number { background: #27ae60; }
-.login-error { color: #e74c3c; font-size: 12px; margin-top: 6px; display: none; text-align: center; }
-#user-badge {
-  display: none; background: #2c3e50; color: white; padding: 8px 12px;
-  border-radius: 8px; margin-bottom: 12px; font-size: 13px; text-align: center;
-}
-#user-badge span.logout { color: #ff7675; cursor: pointer; font-weight: bold; margin-right: 8px; }
+body { font-family: sans-serif; background-color: #f0f3f5; padding: 20px; direction: rtl; }
+.container { max-width: 700px; margin: 0 auto; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+h1 { color: #2c3e50; text-align: center; }
+h2 { color: #2c3e50; margin-top: 25px; font-size: 18px; }
+p, li { color: #444; line-height: 1.8; font-size: 14px; }
+.updated { color: #888; font-size: 12px; text-align: center; margin-bottom: 20px; }
+.back-link { display: inline-block; margin-bottom: 15px; color: #4285F4; text-decoration: none; }
 </style>
 </head>
 <body>
+<div class="container">
+<a class="back-link" href="index.html">← ہوم پیج پر واپس جائیں</a>
+<h1>رازداری کی پالیسی (Privacy Policy)</h1>
+<p class="updated">آخری اپڈیٹ: ستمبر 2026</p>
 
-<!-- ===== LOGIN POPUP ===== -->
-<div id="login-overlay">
-  <div id="login-box">
-    <button class="btn-back" style="float:left;" onclick="closeLogin()">✕ بند کریں</button>
-    <div style="clear:both;"></div>
-    <h2>🔐 عوام نیٹ ورک میں خوش آمدید</h2>
-    <p class="sub">جاری رکھنے کے لیے لاگ ان کریں</p>
+<h2>1. تعارف</h2>
+<p>عوام نیٹ ورک (Awam Network) ایک کمیونٹی پلیٹ فارم ہے جو زکوٰۃ فنڈنگ، ہنر مندی کے امتحانات، مزدوری مارکیٹ، اور سستے راشن نیٹ ورک کی سہولت فراہم کرتا ہے۔ یہ پالیسی بتاتی ہے کہ ہم آپ کی معلومات کیسے جمع، استعمال اور محفوظ کرتے ہیں۔</p>
 
-    <div class="login-tabs">
-      <div class="login-tab active" id="tab-gmail" onclick="switchTab('gmail')">📧 Gmail سے لاگ ان</div>
-      <div class="login-tab" id="tab-number" onclick="switchTab('number')">📱 نمبر سے لاگ ان</div>
-    </div>
+<h2>2. ہم کون سی معلومات جمع کرتے ہیں</h2>
+<ul>
+<li>نام اور رابطہ نمبر (لاگ ان اور فارمز کے دوران)</li>
+<li>ای میل ایڈریس (اگر Gmail سے لاگ ان کریں)</li>
+<li>ہنر، کام اور راشن سے متعلق تفصیلات جو آپ خود درج کریں</li>
+</ul>
 
-    <!-- Gmail Login Panel -->
-    <div class="login-panel active" id="panel-gmail">
-      <input type="text" id="gmailInput" class="input-style" placeholder="آپ کا نام" style="text-align:center;">
-      <input type="email" id="gmailEmail" class="input-style" placeholder="yourname@gmail.com" style="text-align:center;">
-      <button class="btn-submit btn-gmail" onclick="loginWithGmail()">📧 Gmail سے لاگ ان کریں</button>
-    </div>
+<h2>3. معلومات کا استعمال</h2>
+<p>آپ کی معلومات صرف پلیٹ فارم کی سہولیات (جیسے مزدوری کی فہرست، راشن نیٹ ورک، اور امتحانی نتائج دکھانے) کے لیے استعمال ہوتی ہیں۔ ہم آپ کا ڈیٹا کسی تیسرے فریق کو فروخت نہیں کرتے۔</p>
 
-    <!-- Number Login Panel -->
-    <div class="login-panel" id="panel-number">
-      <input type="text" id="numberNameInput" class="input-style" placeholder="آپ کا نام" style="text-align:center;">
-      <input type="tel" id="numberInput" class="input-style" placeholder="03XXXXXXXXX" style="text-align:center;">
-      <button class="btn-submit btn-number" onclick="loginWithNumber()">📱 نمبر سے لاگ ان کریں</button>
-    </div>
+<h2>4. ڈیٹا کا تحفظ</h2>
+<p>ہم آپ کی معلومات کو محفوظ رکھنے کی پوری کوشش کرتے ہیں، تاہم انٹرنیٹ پر کوئی بھی نظام مکمل طور پر محفوظ نہیں ہو سکتا۔</p>
 
-    <p class="login-error" id="loginError"></p>
-  </div>
+<h2>5. آپ کے حقوق</h2>
+<p>آپ کسی بھی وقت اپنی معلومات کو تبدیل یا حذف کروانے کے لیے نیچے دیے گئے رابطے پر ای میل کر سکتے ہیں۔</p>
+
+<h2>6. ہم سے رابطہ</h2>
+<p>سوالات یا شکایات کے لیے رابطہ کریں:<br>
+📧 dewan.gee786@gmail.com<br>
+📞 +923004109236</p>
 </div>
-
-<div class="main-container">
-<!-- HOME PAGE -->
-<div id="home-section">
-
-<!-- LOGGED-IN USER BADGE -->
-<div id="user-badge"><span class="logout" onclick="logoutUser()">لاگ آؤٹ</span> <span id="user-badge-text"></span></div>
-<button id="login-open-btn" class="btn-login-open" onclick="openLogin()">🔐 لاگ ان کریں</button>
-
-<!-- FOUNDER & CEO INFORMATION BOX -->
-<div style="background: linear-gradient(135deg, #d4af37, #aa7c11); color: white; padding: 12px; border-radius: 10px; margin-bottom: 15px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-<h3 style="margin: 0; font-size: 14px; letter-spacing: 1px;">👑 FOUNDER & CEO</h3>
-<h2 style="margin: 5px 0 2px 0; color: #fff; font-size: 18px;">Dewan Israr Ahmad Faridi</h2>
-<p style="margin: 0; color: #fff; font-size: 11px;">📧 dewan.gee786@gmail.com | 📞 +923004109236</p>
-</div>
-
-<div class="header">
-<h1>عوام نیٹ ورک / AWAM NETWORK</h1>
-<p>Bila Sood Khudkaar Nizam</p>
-</div>
-<div class="zakati-box" onclick="openPage('zakat-section')"><h2>🌍 1. Zakat Funding (انٹرنیشنل زکوٰۃ)</h2></div>
-<div class="card" onclick="openPage('hunar-section')"><h2>📚 2. Google AI Exam (گوگل AI امتحان)</h2></div>
-<div class="card" onclick="openPage('jobs-section')"><h2>🛠️ 3. P2P Jobs (بغیر کمیشن مزدوری)</h2></div>
-<div class="card" onclick="openPage('ration-section')"><h2>🌾 4. Sasta Ration (سستا راشن نیٹ ورک)</h2></div>
-</div>
-
-<!-- ZAKAT PAGE -->
-<div id="zakat-section" class="page-section">
-<button class="btn-back" onclick="goBack('zakat-section')">پیچھے جائیں</button>
-<div style="clear: both;"></div>
-<div class="zakati-box" style="cursor: default;"><h2>🌍 عالمی زکوٰۃ پورٹل</h2></div>
-<p style="padding: 20px;">زکوٰۃ فنڈنگ پیج کامیابی سے لائیو ہے۔</p>
-</div>
-
-<!-- HUNAR PAGE -->
-<div id="hunar-section" class="page-section">
-<button class="btn-back" onclick="goBack('hunar-section')">پیچھے جائیں</button>
-<div style="clear: both;"></div>
-<div class="header" style="background:#34495e;"><h2>🤖 گوگل AI امتحانی مرکز</h2></div>
-<div class="quiz-box">
-<p>سوال: کمپیوٹر کا دماغ (Brain) کس ہارڈ ویئر کو کہا جاتا ہے؟</p>
-<input type="radio" name="qa" id="opt1"> <label>مانیٹر (Monitor)</label><br>
-<input type="radio" name="qa" id="opt2"> <label>سی پی یو (CPU)</label>
-</div>
-<button class="btn-submit" onclick="submitExam()">امتحان جمع کریں</button>
-<div id="resultView" class="result-box"></div>
-</div>
-
-<!-- JOBS PAGE -->
-<div id="jobs-section" class="page-section">
-<button class="btn-back" onclick="goBack('jobs-section')">پیچھے جائیں</button>
-<div style="clear: both;"></div>
-<div class="header" style="background:#e67e22;"><h2>🛠️ بغیر کمیشن مزدوری مارکیٹ</h2></div>
-<div style="border:1px solid #ddd; padding:10px; border-radius:8px; margin-bottom:15px;">
-<input type="text" id="wName" placeholder="آپ کا نام" class="input-style"><br>
-<input type="text" id="wSkill" placeholder="آپ کا ہنر" class="input-style"><br>
-<input type="text" id="wPhone" placeholder="موبائل نمبر" class="input-style"><br>
-<button class="btn-submit" style="background:#e67e22;" onclick="addWorker()">نام شامل کریں</button>
-</div>
-<div id="workersList">
-<div class="worker-card"><strong>محمد اسلم</strong> (ڈیٹا اینٹری)<br>فون: 03001234567</div>
-</div>
-</div>
-
-<!-- RATION PAGE -->
-<div id="ration-section" class="page-section">
-<button class="btn-back" onclick="goBack('ration-section')">پیچھے جائیں</button>
-<div style="clear: both;"></div>
-<div class="header" style="background:#27ae60;"><h2>🌾 سستا راشن اور ہول سیل مارکیٹ</h2></div>
-
-<div style="border:1px solid #ddd; padding:10px; border-radius:8px; margin-bottom:15px;">
-<input type="text" id="rItem" placeholder="سامان کا نام" class="input-style"><br>
-<input type="text" id="rPrice" placeholder="ہول سیل قیمت" class="input-style"><br>
-<input type="text" id="rContact" placeholder="فون نمبر" class="input-style"><br>
-<button class="btn-submit" style="background:#27ae60;" onclick="addRationItem()">سامان شامل کریں</button>
-</div>
-
-<div id="rationList">
-<div class="ration-card">
-<strong>سستے آلو (ڈائریکٹ فارم سٹاک)</strong><br>
-قیمت: 40 روپے فی کلو <br>
-<span style="color:#27ae60;">رابطہ: 03019876543</span>
-</div>
-</div>
-</div>
-
-<div class="site-footer">
-<a href="privacy-policy.html" target="_blank">Privacy Policy / رازداری کی پالیسی</a>
-</div>
-</div>
-
-<script>
-/* ===== LOGIN LOGIC ===== */
-function openLogin() {
-  document.getElementById('login-overlay').style.display = 'flex';
-}
-function closeLogin() {
-  document.getElementById('login-overlay').style.display = 'none';
-}
-function switchTab(type) {
-  document.getElementById('tab-gmail').classList.toggle('active', type === 'gmail');
-  document.getElementById('tab-number').classList.toggle('active', type === 'number');
-  document.getElementById('panel-gmail').classList.toggle('active', type === 'gmail');
-  document.getElementById('panel-number').classList.toggle('active', type === 'number');
-  hideError();
-}
-
-function showError(msg) {
-  var e = document.getElementById('loginError');
-  e.innerText = msg;
-  e.style.display = 'block';
-}
-function hideError() {
-  document.getElementById('loginError').style.display = 'none';
-}
-
-function loginWithGmail() {
-  var name = document.getElementById('gmailInput').value.trim();
-  var email = document.getElementById('gmailEmail').value.trim();
-  if (!name) { showError('براہ کرم اپنا نام درج کریں۔'); return; }
-  if (!/^[^\s@]+@gmail\.com$/i.test(email)) {
-    showError('براہ کرم درست Gmail ایڈریس درج کریں (مثال: name@gmail.com)');
-    return;
-  }
-  completeLogin(name, email);
-}
-
-function loginWithNumber() {
-  var name = document.getElementById('numberNameInput').value.trim();
-  var number = document.getElementById('numberInput').value.trim();
-  if (!name) { showError('براہ کرم اپنا نام درج کریں۔'); return; }
-  if (!/^03[0-9]{9}$/.test(number)) {
-    showError('براہ کرم درست موبائل نمبر درج کریں (مثال: 03001234567)');
-    return;
-  }
-  completeLogin(name, number);
-}
-
-function completeLogin(name, idValue) {
-  hideError();
-  document.getElementById('login-overlay').style.display = 'none';
-  var badge = document.getElementById('user-badge');
-  badge.style.display = 'block';
-  document.getElementById('login-open-btn').style.display = 'none';
-  document.getElementById('user-badge-text').innerText = '👋 خوش آمدید، ' + name + ' (' + idValue + ')';
-  window.currentUser = { name: name, id: idValue };
-}
-
-function logoutUser() {
-  document.getElementById('user-badge').style.display = 'none';
-  document.getElementById('login-open-btn').style.display = 'inline-block';
-  document.getElementById('login-overlay').style.display = 'none';
-  window.currentUser = null;
-}
-
-/* ===== EXISTING APP LOGIC ===== */
-function openPage(pageId) {
-document.getElementById('home-section').style.display = 'none';
-document.getElementById(pageId).style.display = 'block';
-}
-function goBack(pageId) {
-document.getElementById(pageId).style.display = 'none';
-document.getElementById('home-section').style.display = 'block';
-if(document.getElementById('resultView')) {
-document.getElementById('resultView').style.display = 'none'; }
-}
-function submitExam() {
-var resultDiv = document.getElementById('resultView');
-resultDiv.style.display = "block";
-if(document.getElementById('opt2').checked) {
-resultDiv.style.borderColor = "#2ecc71";
-resultDiv.style.color = "#27ae60";
-resultDiv.style.background = "#e8f5e9";
-resultDiv.innerHTML = "🎉 پاس! بلاک چین سرٹیفکیٹ جاری ہو گیا۔";
-} else {
-resultDiv.style.borderColor = "#e74c3c";
-resultDiv.style.color = "#c0392b";
-resultDiv.style.background = "#fce4d6";
-resultDiv.innerHTML = "❌ فیل! دوبارہ کوشش کریں۔";
-}
-}
-function addWorker() {
-var name = document.getElementById('wName').value;
-var skill = document.getElementById('wSkill').value;
-var phone = document.getElementById('wPhone').value;
-if(!name || !skill || !phone) { alert("تمام معلومات درج کریں!"); return; }
-var list = document.getElementById('workersList');
-list.innerHTML = "<div class='worker-card'><strong>"+name+"</strong> ("+skill+")<br>فون: "+phone+"</div>" + list.innerHTML;
-alert("نام شامل ہو گیا!");
-document.getElementById('wName').value = "";
-document.getElementById('wSkill').value = "";
-document.getElementById('wPhone').value = "";
-}
-function addRationItem() {
-var i = document.getElementById('rItem').value;
-var pr = document.getElementById('rPrice').value;
-var c = document.getElementById('rContact').value;
-if(!i || !pr || !c) { alert("تمام معلومات درج کریں!"); return; }
-var list = document.getElementById('rationList');
-list.innerHTML = "<div class='ration-card'><strong>"+i+"</strong><br>قیمت: "+pr+"<br>رابطہ: "+c+"</div>" + list.innerHTML;
-alert("سامان شامل ہو گیا!");
-document.getElementById('rItem').value = "";
-document.getElementById('rPrice').value = "";
-document.getElementById('rContact').value = "";
-}
-</script>
 </body>
 </html>
