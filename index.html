@@ -35,6 +35,11 @@
     .form-group label{display:block; margin-bottom:5px; font-weight:bold; font-size:14px;}
     .form-control{width:100%; padding:10px; border:1px solid var(--line); border-radius:8px;}
     .btn-action{padding:10px 15px; background:var(--primary); color:#fff; border:0; border-radius:8px; cursor:pointer;}
+    
+    /* Quiz specific layouts */
+    .quiz-option{display:block; background:#f8fafc; border:1px solid var(--line); padding:12px; margin:8px 0; border-radius:8px; cursor:pointer;}
+    .quiz-option input{margin-right:10px;}
+    .quiz-option:hover{background:#f1f5f9;}
   </style>
 </head>
 <body>
@@ -104,11 +109,39 @@
           </div>
           <button class="btn-action" style="background:var(--success)" onclick="triggerServerTransaction('credit')">Grant Secure Balance</button>
           <button class="btn-action" style="background:var(--danger)" onclick="triggerServerTransaction('debit')">Deduct/Freeze Balance</button>
+
+          <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
+
+          <h4>🎓 Add New Quiz Question</h4>
+          <div class="form-group">
+            <label>Question Text</label>
+            <input type="text" id="txtQuestionText" class="form-control" placeholder="What is HTML?">
+          </div>
+          <div class="form-group"><label>Option A</label><input type="text" id="txtOptA" class="form-control"></div>
+          <div class="form-group"><label>Option B</label><input type="text" id="txtOptB" class="form-control"></div>
+          <div class="form-group"><label>Option C</label><input type="text" id="txtOptC" class="form-control"></div>
+          <div class="form-group"><label>Option D</label><input type="text" id="txtOptD" class="form-control"></div>
+          <div class="form-group">
+            <label>Correct Answer Letter (A, B, C, or D)</label>
+            <input type="text" id="txtCorrectAnswer" class="form-control" placeholder="A">
+          </div>
+          <button class="btn-action" onclick="saveQuizQuestion()">Publish to Academy</button>
+        </div>
+      </div>
+
+      <!-- TECH ACADEMY EXAM PORTAL -->
+      <div id="page-education" class="page">
+        <div class="card">
+          <h3>🎓 Tech Academy Portal</h3>
+          <p>Complete the examination below. Your marks will be evaluated instantly and saved to your profile profile path.</p>
+        </div>
+        <div class="card" id="quizContainer">
+          <h4>Loading Active Examination Paper...</h4>
+          <!-- Automated Questions Render Natively Here -->
         </div>
       </div>
 
       <div id="page-ecommerce" class="page"><div class="card"><h3>🛒 E-Commerce Node</h3><p>Automated inventory synced by Google Cloud.</p></div></div>
-      <div id="page-education" class="page"><div class="card"><h3>🎓 Tech Academy</h3><p>Exams are evaluated natively using automated pipelines.</p></div></div>
       <div id="page-p2p" class="page"><div class="card"><h3>🤝 P2P Workers Exchange</h3><p>Workloads distributed seamlessly via background instances.</p></div></div>
       <div id="page-welfare" class="page"><div class="card"><h3>❤️ Social Welfare Pipeline</h3><p>Welfare transparency locked with programmatic rules.</p></div></div>
     </div>
@@ -117,9 +150,8 @@
   <script type="module">
     import { initializeApp } from "https://gstatic.com";
     import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://gstatic.com";
-    import { getDatabase, ref, onValue, set, get } from "https://gstatic.com";
+    import { getDatabase, ref, onValue, set, get, push } from "https://gstatic.com";
 
-    // 🔒 Real production keys securely restored from your setup
     const firebaseConfig = {
       apiKey: "AIzaSyCvbrB6vgOwLLzFLymZ3213b249DAn5jbY",
       authDomain: "://firebaseapp.com",
@@ -136,12 +168,8 @@
     const googleProvider = new GoogleAuthProvider();
 
     document.getElementById('btnGoogleLogin').addEventListener('click', async () => {
-      try {
-        await signInWithPopup(auth, googleProvider);
-      } catch (error) {
-        console.error("Auth Error details: ", error);
-        alert("Login failed: " + error.message);
-      }
+      try { await signInWithPopup(auth, googleProvider); } 
+      catch (error) { alert("Login failed: " + error.message); }
     });
 
     onAuthStateChanged(auth, (user) => {
@@ -151,7 +179,6 @@
         document.getElementById('userName').innerText = user.displayName;
         document.getElementById('userEmail').innerText = user.email;
 
-        // 🔒 Visual filter for Admin Engine access
         if (user.email === 'dewan.gee786@gmail.com') {
           document.getElementById('superAdminSection').classList.remove('hidden');
         } else {
@@ -159,61 +186,3 @@
         }
 
         onValue(ref(database, 'wallets/' + user.uid + '/balance'), (snapshot) => {
-          document.getElementById('lblWallet').innerText = (snapshot.val() ? snapshot.val() : "0.00") + " PKR";
-        });
-      } else {
-        document.getElementById('loginScreen').classList.remove('hidden');
-        document.getElementById('app').classList.add('hidden');
-      }
-    });
-
-    // 🔒 Direct Secure Firebase Database Execution (100% Free Architecture)
-    window.triggerServerTransaction = async function(type) {
-      const targetUid = document.getElementById('txtAdminTargetUid').value;
-      const amount = document.getElementById('txtAdminAmount').value;
-      const currentUser = auth.currentUser;
-
-      if(!targetUid || !amount) { alert('Please fill all fields'); return; }
-
-      // Security check: Client-side check acting as UI defense
-      if (currentUser.email !== 'dewan.gee786@gmail.com') {
-        alert("CRITICAL WARNING: Unauthorized administration action blocked.");
-        return;
-      }
-
-      const walletRef = ref(database, 'wallets/' + targetUid);
-
-      try {
-        // Database se purana data check karain
-        const snapshot = await get(walletRef);
-        let currentData = snapshot.val() ? snapshot.val() : { balance: 0, currency: "PKR" };
-        let currentBalance = parseFloat(currentData.balance || 0);
-
-        // Type ke mutabiq credit ya debit karain
-        if (type === 'credit') {
-          currentBalance += parseFloat(amount);
-        } else if (type === 'debit') {
-          currentBalance -= parseFloat(amount);
-          if (currentBalance < 0) currentBalance = 0; // Balance minus mein na jaye
-        }
-
-        // Direct database mein save karain (Kyunki aapka email rules mein allowed hai)
-        await set(walletRef, {
-          balance: currentBalance,
-          currency: "PKR"
-        });
-
-        alert(`Success! Operation completed. New Balance: ${currentBalance} PKR`);
-      } catch (err) {
-        alert("Database authorization failed: " + err.message);
-      }
-    }
-
-    window.switchPage = function(pageId) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
-      document.getElementById('page-' + pageId).classList.add('active');
-    }
-  </script>
-</body>
-</html>
