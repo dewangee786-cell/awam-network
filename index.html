@@ -1,130 +1,88 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+<script type="module">
 
-    import { 
-      getAuth, 
-      signInWithPopup, 
-      GoogleAuthProvider, 
-      signOut, 
-      onAuthStateChanged 
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+    import {
+      getAuth,
+      signInWithPopup,
+      GoogleAuthProvider,
+      signOut,
+      onAuthStateChanged
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    import {
+      getDatabase,
+      ref,
+      onValue,
+      set,
+      get,
+      push
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
 
     const firebaseConfig = {
       apiKey: "AIzaSyCvbrB6vgOwLLzFLymZ3213b249DAn5jbY",
       authDomain: "awam-network-318ec.firebaseapp.com",
+      databaseURL: "https://awam-network-318ec-default-rtdb.firebaseio.com",
       projectId: "awam-network-318ec",
       messagingSenderId: "313453438241",
       appId: "1:313453438241:web:19189b495154fc7326fea0"
     };
 
-    // Safe Core Engine Setup Initialization
-    let auth;
-    let provider;
-    try {
-      const app = initializeApp(firebaseConfig);
-      auth = getAuth(app);
-      provider = new GoogleAuthProvider();
-      console.log("Firebase 10.12.2 core operational.");
-    } catch (initError) {
-      alert("Firebase Initialization Fault: " + initError.message);
-    }
 
-    // Global Router Configuration Setup
-    window.switchPage = function(pageId) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
-      
-      const targetPage = document.getElementById('page-' + pageId);
-      const targetBtn = document.getElementById('btn-nav-' + pageId);
-      
-      if(targetPage) targetPage.classList.add('active');
-      if(targetBtn) targetBtn.classList.add('active');
-    };
+    const app = initializeApp(firebaseConfig);
 
-    // UI elements binding hooks
-    const btnGoogleLogin = document.getElementById('btnGoogleLogin');
-    const btnLogout = document.getElementById('btnLogout');
-    const loginScreen = document.getElementById('loginScreen');
-    const appContainer = document.getElementById('app');
-    const userName = document.getElementById('userName');
-    const userEmail = document.getElementById('userEmail');
+    const auth = getAuth(app);
 
-    // SECURE INTERACTIVE POPUP METHOD FLOW (Strict Event Bind)
-    if(btnGoogleLogin) {
-      btnGoogleLogin.addEventListener('click', async () => {
-        btnGoogleLogin.innerText = "⚡ Loading Cloud Gateway...";
-        btnGoogleLogin.disabled = true;
+    const database = getDatabase(app);
 
-        try {
-          // Open dynamic popup sign-in
-          await signInWithPopup(auth, provider);
-        } catch (error) {
-          console.error("Firebase Auth Exception:", error);
-          btnGoogleLogin.disabled = false;
-          btnGoogleLogin.innerText = "🚀 Sign In securely with Google";
-          
-          // Actionable alert fallback window message
-          alert(`🔒 Connection Blocked:\nCode: ${error.code}\nMessage: ${error.message}\n\nTip: Firebase Console mein 'Authorized Domains' aur 'Google Provider Status' lazmi check krein.`);
-        }
-      });
-    }
+    const googleProvider = new GoogleAuthProvider();
 
-    // AUTH OBSERVER FLOW SYSTEM (State persistence)
-    if(auth) {
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          loginScreen.classList.add('hidden');
-          appContainer.classList.remove('hidden');
-          
-          userName.innerText = user.displayName || "Network Node Member";
-          userEmail.innerText = user.email;
-          
-          startClock();
-        } else {
-          loginScreen.classList.remove('hidden');
-          appContainer.classList.add('hidden');
-        }
-      });
-    }
 
-    // DISCONNECT METHOD CONTROLLER
-    if(btnLogout) {
-      btnLogout.addEventListener('click', () => {
-        signOut(auth).then(() => {
-          console.log("Session dropped.");
-        }).catch((err) => {
-          alert("Logout sequence failure: " + err.message);
-        });
-      });
-    }
+    let examCountdownInterval = null;
+    let currentExamActive = false;
+    let serverAnswers = {};
 
-    // Register active navigation listeners
-    const pages = ['dashboard', 'ecommerce', 'education', 'p2p', 'welfare', 'adminPanel'];
-    pages.forEach(pId => {
-      const btn = document.getElementById('btn-nav-' + pId);
-      if(btn) {
-        btn.addEventListener('click', () => window.switchPage(pId));
+
+    document.getElementById('btnGoogleLogin').addEventListener('click', async () => {
+
+      try {
+
+        await signInWithPopup(auth, googleProvider);
+
+      } catch (error) {
+
+        console.error("Google Login Error:", error);
+
+        alert("Login failed: " + error.message);
+
       }
+
     });
 
-    // Modals links mapping operations
-    document.getElementById('lnkPrivacy').addEventListener('click', () => showModal('<h3>Privacy Policy</h3><p>Protected via secure OAuth parameters under Google Cloud Engine environments.</p>'));
-    document.getElementById('lnkTerms').addEventListener('click', () => showModal('<h3>Terms of Service</h3><p>Authorized terminal framework configuration nodes.</p>'));
-    document.getElementById('btnCloseLegalModal').addEventListener('click', () => document.getElementById('legalModalWrapper').classList.add('hidden'));
 
-    function showModal(content) {
-      document.getElementById('legalTextContainer').innerHTML = content;
-      document.getElementById('legalModalWrapper').classList.remove('hidden');
-    }
+    onAuthStateChanged(auth, (user) => {
 
-    // OPERATIONAL LIVE CLOCK SUBSYSTEM
-    let clockInterval;
-    function startClock() {
-      if(clockInterval) clearInterval(clockInterval);
-      clockInterval = setInterval(() => {
-        const now = new Date();
-        document.getElementById('lblDigitalClock').innerText = now.toLocaleTimeString('en-US');
-        document.getElementById('lblDigitalDate').innerText = now.toLocaleDateString('en-US', { 
-          weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
-        });
-      }, 1000);
-    }
+      if (user) {
+
+        document.getElementById('loginScreen').classList.add('hidden');
+
+        document.getElementById('app').classList.remove('hidden');
+
+        document.getElementById('userName').innerText = user.displayName || "User";
+
+        document.getElementById('userEmail').innerText = user.email || "";
+
+        if (user.email === 'dewan.gee786@gmail.com') {
+
+          document.getElementById('superAdminSection').classList.remove('hidden');
+
+        } else {
+
+          document.getElementById('superAdminSection').classList.add('hidden');
+
+        }
+
+      }
+
+    });
