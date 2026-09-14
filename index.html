@@ -4,22 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>International Awam Network Hub V2</title>
-  
+
+  <!-- 📊 GOOGLE SEO AUTOMATION -->
   <meta name="description" content="All-in-one platform for Welfare, P2P Jobs, and Education secured by Google Cloud.">
   <meta name="robots" content="index, follow">
 
-  <!-- 💰 GOOGLE ADSENSE AUTO ADS MODULE -->
-  <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
+  <!-- 💰 GOOGLE ADSENSE AUTO ADS -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 
   <style>
     :root{ --bg:#f4f7fb; --panel:#ffffff; --dark:#0b1220; --text:#172033; --muted:#718096; --line:#e5eaf2; --primary:#2563eb; --success:#16a34a; --danger:#dc2626; --radius:16px; }
     *{box-sizing:border-box} body{margin:0; font-family:sans-serif; background:var(--bg); color:var(--text)}
     .hidden{display:none!important}
-    
+
     #loginScreen{min-height:100vh; display:flex; align-items:center; justify-content:center; background:#f8fafc;}
-    .login-box{width:360px; background:#fff; border:1px solid var(--line); border-radius:24px; padding:35px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.05)}
+    .login-box{width:400px; background:#fff; border:1px solid var(--line); border-radius:24px; padding:40px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.05)}
     .google-btn{width:100%; border:0; border-radius:12px; padding:14px; background:#111827; color:#fff; font-weight:700; cursor:pointer;}
-    
+
     #app{min-height:100vh; display:flex}
     .sidebar{width:260px; background:#0b1220; color:#fff; padding:20px; display:flex; flex-direction:column; justify-content:space-between}
     .nav button{width:100%; border:0; background:transparent; color:#cbd5e1; text-align:left; padding:12px; margin:5px 0; border-radius:8px; cursor:pointer;}
@@ -27,6 +28,9 @@
     .main{flex:1; padding:30px}
     .card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:20px; margin-bottom:20px}
     .ad-container {margin:20px 0; padding:10px; background:#f8fafc; border:1px dashed var(--line); text-align:center; font-size:11px}
+    
+    .page{display:none}
+    .page.active{display:block}
   </style>
 </head>
 <body>
@@ -72,7 +76,7 @@
         <div class="card">
           <h3>SECURE WALLET BALANCE</h3>
           <h2 style="color:var(--success)" id="lblWallet">0.00 PKR</h2>
-          <p style="font-size:12px; color:var(--muted)">🔒 Locked Server-Side</p>
+          <p style="font-size:12px; color:var(--muted)">🔒 Cryptographically Locked Server-Side</p>
         </div>
       </div>
 
@@ -90,13 +94,12 @@
     </div>
   </div>
 
-  <!-- Sahi aur complete Firebase Scripts Links -->
   <script type="module">
-    import { initializeApp } from "https://gstatic.com";
-    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://gstatic.com";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
     import { getDatabase, ref, onValue } from "https://gstatic.com";
 
-    // 🔗 Mukammal aur sahi links ke sath real keys configuration
+    // 🔗 APKI REAL CONFIGURATION FROM SCREENSHOT
     const firebaseConfig = {
       apiKey: "AIzaSyCvbrB6vgOwLLzFLymZ3213b249DAn5jbY",
       authDomain: "awam-network-318ec.firebaseapp.com",
@@ -112,12 +115,13 @@
     const database = getDatabase(app);
     const googleProvider = new GoogleAuthProvider();
 
+    // Direct Login configuration trigger (App Check bypass system enabled)
     document.getElementById('btnGoogleLogin').addEventListener('click', async () => {
       try {
         await signInWithPopup(auth, googleProvider);
       } catch (error) {
-        console.error("Auth Error Details: ", error);
-        alert("Login failed! " + error.message);
+        console.error("Auth Error details: ", error);
+        alert("Login failed: " + error.message);
       }
     });
 
@@ -128,7 +132,7 @@
         document.getElementById('userName').innerText = user.displayName;
         document.getElementById('userEmail').innerText = user.email;
 
-        // 🔒 SUPER ADMIN EMAIL BYPASS
+        // 🔒 SUPER ADMIN EMAIL BYPASS ACCESS
         if (user.email === 'dewan.gee786@gmail.com') {
           document.getElementById('superAdminSection').classList.remove('hidden');
         } else {
