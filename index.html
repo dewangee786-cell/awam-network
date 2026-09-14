@@ -1,160 +1,216 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>International Awam Network Hub V2</title>
+<script type="module">
+    import { initializeApp } from "https://gstatic.com";
+    import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider, onAuthStateChanged } from "https://gstatic.com";
+    import { getDatabase, ref, onValue, set, get, push } from "https://gstatic.com";
 
-  <!-- 📊 GOOGLE SEO AUTOMATION -->
-  <meta name="description" content="All-in-one platform for Welfare, P2P Jobs, and Education secured by Google Cloud.">
-  <meta name="robots" content="index, follow">
+    const firebaseConfig = {
+      apiKey: "AIzaSyCvbrB6vgOwLLzFLymZ3213b249DAn5jbY",
+      authDomain: "://firebaseapp.com",
+      databaseURL: "https://firebaseio.com",
+      projectId: "awam-network-318ec",
+      storageBucket: "://appspot.com",
+      messagingSenderId: "313453438241",
+      appId: "1:313453438241:web:19189b495154fc7326fea0"
+    };
 
-  <!-- 💰 GOOGLE ADSENSE AUTO ADS -->
-  <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const database = getDatabase(app);
+    const googleProvider = new GoogleAuthProvider();
+    googleProvider.setCustomParameters({ prompt: 'select_account' });
 
-  <style>
-    :root{ --bg:#f4f7fb; --panel:#ffffff; --dark:#0b1220; --text:#172033; --muted:#718096; --line:#e5eaf2; --primary:#2563eb; --success:#16a34a; --danger:#dc2626; --radius:16px; }
-    *{box-sizing:border-box} body{margin:0; font-family:sans-serif; background:var(--bg); color:var(--text)}
-    .hidden{display:none!important}
+    let currentSelectedTrack = "";
+    let trackLessonsArray = [];
+    let activeLessonIndex = 0;
+    let quizTimerInterval = null;
+    let proctorExamActive = false;
 
-    #loginScreen{min-height:100vh; display:flex; align-items:center; justify-content:center; background:#f8fafc;}
-    .login-box{width:400px; background:#fff; border:1px solid var(--line); border-radius:24px; padding:40px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.05)}
-    .google-btn{width:100%; border:0; border-radius:12px; padding:14px; background:#111827; color:#fff; font-weight:700; cursor:pointer;}
+    // Secure Redirect Action to fully bypass network blocks on hosting instances
+    document.getElementById('btnGoogleLogin').addEventListener('click', async () => {
+      try { 
+        await signInWithRedirect(auth, googleProvider); 
+      } catch (error) { 
+        alert("Authentication setup error: " + error.message); 
+      }
+    });
 
-    #app{min-height:100vh; display:flex}
-    .sidebar{width:260px; background:#0b1220; color:#fff; padding:20px; display:flex; flex-direction:column; justify-content:space-between}
-    .nav button{width:100%; border:0; background:transparent; color:#cbd5e1; text-align:left; padding:12px; margin:5px 0; border-radius:8px; cursor:pointer;}
-    .nav button.active, .nav button:hover{background:rgba(37,99,235,0.2); color:#fff}
-    .main{flex:1; padding:30px}
-    .card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:20px; margin-bottom:20px}
-    .ad-container {margin:20px 0; padding:10px; background:#f8fafc; border:1px dashed var(--line); text-align:center; font-size:11px}
-    
-    .page{display:none}
-    .page.active{display:block}
-    .form-group{margin-bottom:15px; text-align:left;}
-    .form-group label{display:block; margin-bottom:5px; font-weight:bold; font-size:14px;}
-    .form-control{width:100%; padding:10px; border:1px solid var(--line); border-radius:8px;}
-    .btn-action{padding:10px 15px; background:var(--primary); color:#fff; border:0; border-radius:8px; cursor:pointer; margin-right:5px;}
-    
-    /* Academic Portal Styles */
-    .course-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:15px; margin-top:15px;}
-    .course-card{border:1px solid var(--line); padding:15px; border-radius:12px; cursor:pointer; background:#f8fafc; text-align:center; transition:0.2s;}
-    .course-card:hover{border-color:var(--primary); background:#eff6ff;}
-    .quiz-option{display:block; background:#f8fafc; border:1px solid var(--line); padding:12px; margin:8px 0; border-radius:8px; cursor:pointer;}
-    .quiz-option input{margin-right:10px;}
-    .timer-badge{display:inline-block; padding:6px 12px; background:var(--danger); color:#fff; border-radius:30px; font-weight:bold; font-size:13px; margin-bottom:15px;}
-    .nav-btn-container{display:flex; justify-content:space-between; margin-top:20px;}
-    .disabled-click{pointer-events:none; opacity:0.6;}
-  </style>
-</head>
-<body>
+    // Capture dynamic login state token natively upon redirect landing landing
+    getRedirectResult(auth).catch((error) => {
+      console.error("Redirect connection failure handler:", error);
+    });
 
-  <!-- SECURE LOGIN DOOR -->
-  <div id="loginScreen">
-    <div class="login-box">
-      <h2>Awam Network Hub v2</h2>
-      <p>Secure Enterprise Gateway Powered by Google Cloud Engine.</p>
-      <button class="google-btn" id="btnGoogleLogin">Sign in with Verified Google Account</button>
-    </div>
-  </div>
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        document.getElementById('loginScreen').classList.add('hidden');
+        document.getElementById('app').classList.remove('hidden');
+        document.getElementById('userName').innerText = user.displayName;
+        document.getElementById('userEmail').innerText = user.email;
 
-  <!-- AUTOMATED DASHBOARD SYSTEM -->
-  <div id="app" class="hidden">
-    <div class="sidebar">
-      <div>
-        <h3>AWAM NETWORK</h3>
-        <div class="nav">
-          <button class="active" onclick="switchPage('dashboard')">📊 Dashboard</button>
-          <button onclick="switchPage('ecommerce')">🛒 E-Commerce Store</button>
-          <button onclick="switchPage('education')">🎓 Tech Academy</button>
-          <button onclick="switchPage('p2p')">🤝 P2P Workforce</button>
-          <button onclick="switchPage('welfare')">❤️ Social Welfare</button>
-          <div id="superAdminSection" class="hidden">
-            <button onclick="switchPage('adminPanel')" style="color:#f43f5e">⚙️ Master Admin Core</button>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div id="userName" style="font-weight:700">Verifying User...</div>
-        <div id="userEmail" style="font-size:11px; color:#94a3b8">Loading secure link...</div>
-      </div>
-    </div>
+        if (user.email === 'dewan.gee786@gmail.com') {
+          document.getElementById('superAdminSection').classList.remove('hidden');
+          loadAdminTuitionTickets();
+        } else {
+          document.getElementById('superAdminSection').classList.add('hidden');
+        }
 
-    <div class="main">
-      <div class="ad-container">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXX" data-ad-slot="12345678" data-ad-format="auto"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-      </div>
+        onValue(ref(database, 'wallets/' + user.uid + '/balance'), (snapshot) => {
+          document.getElementById('lblWallet').innerText = (snapshot.val() ? snapshot.val() : "0.00") + " PKR";
+        });
+      } else {
+        document.getElementById('loginScreen').classList.remove('hidden');
+        document.getElementById('app').classList.add('hidden');
+      }
+    });
 
-      <!-- DASHBOARD PAGE -->
-      <div id="page-dashboard" class="page active">
-        <div class="card">
-          <h3>SECURE WALLET BALANCE</h3>
-          <h2 style="color:var(--success)" id="lblWallet">0.00 PKR</h2>
-          <p style="font-size:12px; color:var(--muted)">🔒 Cryptographically Locked Server-Side</p>
-        </div>
-      </div>
+    // 🔒 Wallet Balance Manager
+    window.triggerServerTransaction = async function(type) {
+      const targetUid = document.getElementById('txtAdminTargetUid').value;
+      const amount = document.getElementById('txtAdminAmount').value;
+      if(!targetUid || !amount) { alert('Please fill all fields'); return; }
+      const walletRef = ref(database, 'wallets/' + targetUid);
+      try {
+        const snapshot = await get(walletRef);
+        let currentData = snapshot.val() ? snapshot.val() : { balance: 0 };
+        let currentBalance = parseFloat(currentData.balance || 0);
+        if (type === 'credit') currentBalance += parseFloat(amount);
+        else if (type === 'debit') { currentBalance -= parseFloat(amount); if (currentBalance < 0) currentBalance = 0; }
+        await set(walletRef, { balance: currentBalance, currency: "PKR" });
+        alert(`Success! Updated balance.`);
+      } catch (err) { alert(err.message); }
+    };
 
-      <!-- MASTER SUPER ADMIN PANEL -->
-      <div id="page-adminPanel" class="page">
-        <div class="card" style="border:2px solid var(--danger)">
-          <h3 style="color:var(--danger)">🔒 Master Super Admin Engine</h3>
-          <p>Welcome, Creator. Gemini Automation Bot is tracking fraud, evaluating exams, and distributing user workloads natively.</p>
-          
-          <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
-          
-          <h4>💰 Super Admin Financial Controls</h4>
-          <div class="form-group">
-            <label>User Unique ID (UID)</label>
-            <input type="text" id="txtAdminTargetUid" class="form-control" placeholder="Paste user UID here...">
-          </div>
-          <div class="form-group">
-            <label>Amount (PKR)</label>
-            <input type="number" id="txtAdminAmount" class="form-control" placeholder="e.g. 5000">
-          </div>
-          <button class="btn-action" style="background:var(--success)" onclick="triggerServerTransaction('credit')">Grant Secure Balance</button>
-          <button class="btn-action" style="background:var(--danger)" onclick="triggerServerTransaction('debit')">Deduct/Freeze Balance</button>
+    // 🎓 Admin: Publish Curriculum
+    window.publishAutomatedLesson = async function() {
+      const track = document.getElementById('selAdminTrack').value;
+      const title = document.getElementById('txtLessonTitle').value;
+      const theory = document.getElementById('txtLessonTheory').value;
+      const practical = document.getElementById('txtLessonPractical').value;
+      
+      const q = document.getElementById('txtQuizQ').value;
+      const a = document.getElementById('txtQuizA').value;
+      const b = document.getElementById('txtQuizB').value;
+      const c = document.getElementById('txtQuizC').value;
+      const d = document.getElementById('txtQuizD').value;
+      const correct = document.getElementById('txtQuizCorrect').value.toUpperCase().trim();
 
-          <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
+      if(!title || !theory || !practical || !q || !a || !b || !c || !d || !correct) { alert("Fill all elements."); return; }
 
-          <h4>🎓 Curriculum Management: Upload Lesson / Quiz</h4>
-          <div class="form-group">
-            <label>Select Track Course</label>
-            <select id="selAdminTrack" class="form-control">
-              <option value="basic_it">Basic Computer Literacy</option>
-              <option value="fullstack_web">Fullstack Software Specialist</option>
-              <option value="cloud_cyber">Cloud Systems & Cyber Security</option>
-              <option value="ai_data">AI & Modern Data Engineering</option>
-            </select>
-          </div>
-          <div class="form-group"><label>Lesson Topic/Title</label><input type="text" id="txtLessonTitle" class="form-control"></div>
-          <div class="form-group"><label>Theory Text Content</label><textarea id="txtLessonTheory" class="form-control" rows="3"></textarea></div>
-          <div class="form-group"><label>Daily Practical Task Objective</label><input type="text" id="txtLessonPractical" class="form-control"></div>
-          
-          <div style="background:#f8fafc; padding:10px; border-radius:8px; margin-top:10px; border:1px solid var(--line);">
-            <h5>Associated Next-Day Test Question</h5>
-            <div class="form-group"><label>Question</label><input type="text" id="txtQuizQ" class="form-control"></div>
-            <div class="form-group"><label>Option A</label><input type="text" id="txtQuizA" class="form-control"></div>
-            <div class="form-group"><label>Option B</label><input type="text" id="txtQuizB" class="form-control"></div>
-            <div class="form-group"><label>Option C</label><input type="text" id="txtQuizC" class="form-control"></div>
-            <div class="form-group"><label>Option D</label><input type="text" id="txtQuizD" class="form-control"></div>
-            <div class="form-group"><label>Correct Answer Letter (A, B, C, or D)</label><input type="text" id="txtQuizCorrect" class="form-control"></div>
-          </div>
-          <br>
-          <button class="btn-action" style="width:100%;" onclick="publishAutomatedLesson()">Publish Day Task to Network Engine</button>
-          
-          <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
-          <h4>🤝 Live Manual Tuition Work Requests</h4>
-          <div id="adminTuitionRequestsContainer"><p>No pending assistance requests.</p></div>
-        </div>
-      </div>
+      try {
+        const lessonRef = push(ref(database, `curriculum/${track}`));
+        await set(lessonRef, {
+          title, theory, practical,
+          quiz: { question: q, options: { A: a, B: b, C: c, D: d }, answer: correct }
+        });
+        alert("Lesson with associated test published successfully!");
+      } catch (e) { alert(e.message); }
+    };
 
-      <!-- TECH ACADEMY PORTAL (WORLD CLASS EDUCATION ENVIRONMENT) -->
-      <div id="page-education" class="page">
-        <!-- Course Selection Dashboard -->
-        <div id="courseSelectionScreen" class="card">
-          <h3>🎓 Next-Generation IT Specialist Academy</h3>
-          <p>Select your specialized track program to start learning cutting-edge technologies natively from basic to advanced levels.</p>
-          <div class="course-grid">
-            <div class="course-card" onclick="startSpecializedTrack('basic_it')">💻<h5>Basic IT Specialist</h5><small>Operating Systems, Internet, Office Automation</small></div>
-            <div class="course-card" onclick="startSpecializedTrack('fullstack_web')">🌐<h5>Fullstack Web Developer</h5><small>HTML5, JS, Node.js, SQL, System Architecture</small></div>
+    // 🎓 Student Track Dynamic Initiation
+    window.startSpecializedTrack = function(trackId) {
+      currentSelectedTrack = trackId;
+      document.getElementById('courseSelectionScreen').classList.add('hidden');
+      document.getElementById('lessonActiveScreen').classList.remove('hidden');
+      
+      const names = { basic_it: "Basic IT", fullstack_web: "Fullstack Web", cloud_cyber: "Cloud & Cyber", ai_data: "AI Engineering" };
+      document.getElementById('lblActiveTrackTitle').innerText = `Track: ${names[trackId]} Program`;
+
+      onValue(ref(database, `curriculum/${trackId}`), (snapshot) => {
+        const data = snapshot.val();
+        trackLessonsArray = [];
+        if(data) {
+          Object.keys(data).forEach(k => { trackLessonsArray.push({ id: k, ...data[k] }); });
+          activeLessonIndex = trackLessonsArray.length - 1; 
+          renderActiveLessonStructure();
+        } else {
+          document.getElementById('lessonContentContainer').innerHTML = "<p>Curriculum index is being generated by automation bot.</p>";
+        }
+      });
+    };
+
+    window.exitLearningTrack = function() {
+      clearInterval(quizTimerInterval);
+      proctorExamActive = false;
+      document.getElementById('courseSelectionScreen').classList.remove('hidden');
+      document.getElementById('lessonActiveScreen').classList.add('hidden');
+    };
+
+    function renderActiveLessonStructure() {
+      clearInterval(quizTimerInterval);
+      proctorExamActive = false;
+      document.getElementById('assessmentSection').classList.add('hidden');
+
+      if(trackLessonsArray.length === 0 || !trackLessonsArray[activeLessonIndex]) return;
+      const currentLesson = trackLessonsArray[activeLessonIndex];
+
+      document.getElementById('lblLessonTopic').innerText = `Day ${activeLessonIndex + 1}: ${currentLesson.title}`;
+      document.getElementById('lblLessonTheory').innerText = currentLesson.theory;
+      document.getElementById('lblLessonPractical').innerText = currentLesson.practical;
+
+      document.getElementById('btnPrevLesson').disabled = (activeLessonIndex === 0);
+    }
+
+    window.navigateLesson = function(direction) {
+      if(direction === 1) {
+        triggerNextDayVerificationTest();
+      } else {
+        if(activeLessonIndex > 0) { activeLessonIndex--; renderActiveLessonStructure(); }
+      }
+    };
+
+    function triggerNextDayVerificationTest() {
+      const currentLesson = trackLessonsArray[activeLessonIndex];
+      if(!currentLesson || !currentLesson.quiz) return;
+
+      document.getElementById('assessmentSection').classList.remove('hidden');
+      const qBody = document.getElementById('quizQuestionBody');
+      qBody.classList.remove('disabled-click');
+      
+      qBody.innerHTML = `
+        <p style="font-weight:bold; margin-bottom:10px;">📝 ${currentLesson.quiz.question}</p>
+        <label class="quiz-option"><input type="radio" name="trackQ" value="A"> A) ${currentLesson.quiz.options.A}</label>
+        <label class="quiz-option"><input type="radio" name="trackQ" value="B"> B) ${currentLesson.quiz.options.B}</label>
+        <label class="quiz-option"><input type="radio" name="trackQ" value="C"> C) ${currentLesson.quiz.options.C}</label>
+        <label class="quiz-option"><input type="radio" name="trackQ" value="D"> D) ${currentLesson.quiz.options.D}</label>
+        <br>
+        <button class="btn-action" style="background:var(--danger); width:100%;" onclick="submitTrackVerificationTest()">Evaluate & Unlock Next Day</button>
+      `;
+
+      proctorExamActive = true;
+      let timeLimit = 45;
+      document.getElementById('secondsLeft').innerText = timeLimit;
+      
+      quizTimerInterval = setInterval(() => {
+        timeLimit--;
+        document.getElementById('secondsLeft').innerText = timeLimit;
+        if(timeLimit <= 0) {
+          clearInterval(quizTimerInterval);
+          alert("Time Expired! Moving lock status.");
+          window.submitTrackVerificationTest(true);
+        }
+      }, 1000);
+    }
+
+    window.submitTrackVerificationTest = async function(forcedFail = false) {
+      clearInterval(quizTimerInterval);
+      if(!proctorExamActive && !forcedFail) return;
+      proctorExamActive = false;
+
+      const currentLesson = trackLessonsArray[activeLessonIndex];
+      let selected = document.querySelector('input[name="trackQ"]:checked');
+      let userPassed = false;
+
+      if(!forcedFail && selected && selected.value === currentLesson.quiz.answer) {
+        userPassed = true;
+      }
+
+      const user = auth.currentUser;
+      try {
+        await set(ref(database, `exams/submissions/${user.uid}/${currentLesson.id}`), {
+          track: currentSelectedTrack,
+          lessonTitle: currentLesson.title,
+          status: userPassed ? "Passed" : "Failed (Incorrect/Timeout)",
+          timestamp: new Date().toISOString()
+        });
+
+        if(userPassed) {
+          alert("🎉 Correct Answer! Next day task unlocked successfully.");
