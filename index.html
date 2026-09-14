@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Awam Network Hub v2</title>
+  <title>International Awam Network Hub v2</title>
 
   <!-- 📊 GOOGLE SEO AUTOMATION -->
   <meta name="description" content="All-in-one platform for Welfare, P2P Jobs, and Education secured by Google Cloud.">
@@ -28,7 +28,7 @@
     .sidebar{width:260px; background:#0b1220; color:#fff; padding:20px; display:flex; flex-direction:column; justify-content:space-between}
     .nav button{width:100%; border:0; background:transparent; color:#cbd5e1; text-align:left; padding:12px; margin:5px 0; border-radius:8px; cursor:pointer;}
     .nav button.active, .nav button:hover{background:rgba(37,99,235,0.2); color:#fff}
-    .main{flex:1; padding:30px}
+    .main{flex:1; padding:30px; overflow-y:auto; max-height:100vh;}
     .card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:20px; margin-bottom:20px}
     
     .page{display:none}
@@ -36,16 +36,20 @@
     .form-group{margin-bottom:15px; text-align:left;}
     .form-group label{display:block; margin-bottom:5px; font-weight:bold; font-size:14px;}
     .form-control{width:100%; padding:10px; border:1px solid var(--line); border-radius:8px;}
-    .btn-action{padding:10px 15px; background:var(--primary); color:#fff; border:0; border-radius:8px; cursor:pointer; margin-right:5px;}
+    .btn-action{padding:10px 15px; background:var(--primary); color:#fff; border:0; border-radius:8px; cursor:pointer; margin-right:5px; font-weight:bold;}
     
     .course-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:15px; margin-top:15px;}
     .course-card{border:1px solid var(--line); padding:15px; border-radius:12px; cursor:pointer; background:#f8fafc; text-align:center;}
     .course-card:hover{border-color:var(--primary); background:#eff6ff;}
     
-    /* 🛒 E-Commerce Grid Styling Layout */
-    .product-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:20px; margin-top:15px;}
-    .product-card{border:1px solid var(--line); padding:20px; border-radius:var(--radius); background:#fff; position:relative; box-shadow:0 2px 5px rgba(0,0,0,0.02);}
-    .product-price{font-size:18px; font-weight:bold; color:var(--success); margin:10px 0;}
+    /* 🛒 Advanced Marketplace Interface */
+    .market-filter-bar{display:flex; gap:10px; margin-bottom:20px;}
+    .product-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:20px; margin-top:15px;}
+    .product-card{border:1px solid var(--line); padding:20px; border-radius:var(--radius); background:#fff; position:relative; box-shadow:0 4px 10px rgba(0,0,0,0.01); display:flex; flex-direction:column; justify-content:space-between;}
+    .product-price{font-size:19px; font-weight:bold; color:var(--success); margin:10px 0;}
+    .badge-type{position:absolute; top:12px; right:12px; padding:4px 8px; font-size:11px; font-weight:bold; border-radius:20px; color:#fff;}
+    
+    .agreement-box {background:#fff5f5; border:1px solid #feb2b2; padding:12px; border-radius:8px; margin:10px 0; font-size:12px; color:#c53030;}
   </style>
 </head>
 <body>
@@ -76,7 +80,7 @@
         <h3>AWAM NETWORK</h3>
         <div class="nav">
           <button class="active" onclick="switchPage('dashboard')">📊 Dashboard</button>
-          <button onclick="switchPage('ecommerce')">🛒 E-Commerce Store</button>
+          <button onclick="switchPage('ecommerce')">🛒 E-Commerce Mall</button>
           <button onclick="switchPage('education')">🎓 Tech Academy</button>
           <button onclick="switchPage('p2p')">🤝 P2P Workforce</button>
           <button onclick="switchPage('welfare')">❤️ Social Welfare</button>
@@ -105,7 +109,7 @@
       <div id="page-adminPanel" class="page">
         <div class="card" style="border:2px solid var(--danger)">
           <h3 style="color:var(--danger)">🔒 Master Super Admin Engine</h3>
-          <p>Welcome, Creator. Manage wallet balances and catalog inventories securely.</p>
+          <p>Welcome, Creator. Manage wallet structures and verify global network shops.</p>
           <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
           
           <h4>💰 Super Admin Financial Controls</h4>
@@ -116,60 +120,34 @@
           
           <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
           
-          <!-- 🛒 Admin Product Catalog Management -->
-          <h4>🛒 Add New Product to E-Commerce Node</h4>
-          <div class="form-group"><label>Product Name</label><input type="text" id="txtProdName" class="form-control" placeholder="e.g. Core i5 Laptop"></div>
-          <div class="form-group"><label>Product Description</label><input type="text" id="txtProdDesc" class="form-control" placeholder="Specifications details..."></div>
-          <div class="form-group"><label>Price (PKR)</label><input type="number" id="txtProdPrice" class="form-control" placeholder="e.g. 45000"></div>
-          <button class="btn-action" style="background:var(--primary); width:100%;" onclick="publishStoreProduct()">Publish Item to Store Catalog</button>
+          <h4>🏬 Shopkeeper Applications Verification Pipeline</h4>
+          <div id="adminShopRequestsContainer"><p>No pending verification applications found.</p></div>
         </div>
       </div>
 
-      <!-- 🛒 CLIENT E-COMMERCE NODE VIEW -->
+      <!-- 🛒 CLIENT MULTI-VENDOR MARKETPLACE MALL -->
       <div id="page-ecommerce" class="page">
-        <div class="card">
-          <h3>🛒 Live E-Commerce Catalog</h3>
-          <p>Purchase enterprise hardware and premium developer utility kits instantly using your secure wallet PKR tokens.</p>
-          <div class="product-grid" id="productStoreContainer">
-            <!-- Automated Products Load Here Natively -->
+        <div class="card" id="sellerProfileStatusCard">
+          <h3>🏬 Merchant Shop Workspace</h3>
+          <p>Register your corporate firm or store profile under official KYC protocols to unlock B2B, B2C, or P2P trades.</p>
+          <button class="btn-action" onclick="toggleShopRegisterForm()">Register New Merchant Shop</button>
+          
+          <!-- Vendor Registration Form -->
+          <div id="shopRegistrationForm" class="hidden" style="margin-top:20px; border-top:1px solid var(--line); padding-top:20px;">
+            <div class="form-group"><label>Shop Name</label><input type="text" id="txtShopName" class="form-control" placeholder="e.g. Al-Hamd Traders"></div>
+            <div class="form-group"><label>City</label><input type="text" id="txtShopCity" class="form-control" placeholder="e.g. Pakpattan"></div>
+            <div class="form-group"><label>CNIC / National ID Registration</label><input type="text" id="txtShopId" class="form-control" placeholder="36402-XXXXXXXX-X"></div>
+            <div class="form-group"><label>Authentic Bank Account Name & Title</label><input type="text" id="txtShopBankName" class="form-control" placeholder="e.g. Allied Bank Limited"></div>
+            <div class="form-group"><label>Bank Account IBAN Number</label><input type="text" id="txtShopIban" class="form-control" placeholder="PKXXHNBA00XXXXXXXXXXXXXXXX"></div>
+            <button class="btn-action" style="background:var(--success);" onclick="submitShopApplication()">Submit Shop for Verification</button>
           </div>
-        </div>
-      </div>
 
-      <!-- TECH ACADEMY PORTAL -->
-      <div id="page-education" class="page">
-        <div id="courseSelectionScreen" class="card">
-          <h3>🎓 Next-Generation IT Specialist Academy</h3>
-          <div class="course-grid">
-            <div class="course-card" onclick="startSpecializedTrack('basic_it')">💻<h5>Basic IT Specialist</h5></div>
-            <div class="course-card" onclick="startSpecializedTrack('fullstack_web')">🌐<h5>Fullstack Web Developer</h5></div>
-          </div>
-        </div>
-      </div>
-
-      <div id="page-p2p" class="page"><div class="card"><h3>🤝 P2P Workers Exchange</h3></div></div>
-      <div id="page-welfare" class="page"><div class="card"><h3>❤️ Social Welfare Pipeline</h3></div></div>
-    </div>
-  </div>
-
-  <script type="module">
-    import { initializeApp } from "https://gstatic.com";
-    import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider, onAuthStateChanged } from "https://gstatic.com";
-    import { getDatabase, ref, onValue, set, get, push } from "https://gstatic.com";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyCvbrB6vgOwLLzFLymZ3213b249DAn5jbY",
-      authDomain: "://firebaseapp.com",
-      databaseURL: "https://firebaseio.com",
-      projectId: "awam-network-318ec",
-      storageBucket: "://appspot.com",
-      messagingSenderId: "313453438241",
-      appId: "1:313453438241:web:19189b495154fc7326fea0"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const database = getDatabase(app);
-    const googleProvider = new GoogleAuthProvider();
-
-    document.getElementById('btnGoogleLogin').addEventListener('click', async () => {
+          <!-- Product Listing Portal for Verified Shops -->
+          <div id="verifiedShopControlArea" class="hidden" style="margin-top:20px; border-top:1px solid var(--line); padding-top:20px; background:#f8fafc; padding:15px; border-radius:12px;">
+            <h4 style="color:var(--primary);">➕ Launch Product Item onto Global Grid</h4>
+            <div class="form-group">
+              <label>Select Project Trade Protocol Category</label>
+              <select id="selProdType" class="form-control">
+                <option value="B2C">B2C Retail (Standard Client Sale)</option>
+                <option value="B2B">B2B Commercial Corporate (Bulk Wholesale)</option>
+                <option value="P2P">P2P Peer-to-Peer (Used/Direct Exchanges)</option>
