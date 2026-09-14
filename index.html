@@ -38,6 +38,11 @@
     .form-control{width:100%; padding:10px; border:1px solid var(--line); border-radius:8px;}
     .btn-action{padding:10px 15px; background:var(--primary); color:#fff; border:0; border-radius:8px; cursor:pointer; margin-right:5px; font-weight:bold;}
     
+    /* ⏰ Polished Digital Clock Style */
+    .clock-container {display:flex; justify-content:space-between; align-items:center; background:#1e293b; color:#fff; padding:15px 25px; border-radius:12px; margin-bottom:20px; box-shadow:0 4px 12px rgba(0,0,0,0.05);}
+    .digital-clock {font-size:24px; font-weight:bold; font-family:monospace; color:#38bdf8; letter-spacing:1px;}
+    .digital-date {font-size:14px; color:#94a3b8; font-weight:600;}
+
     .course-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:15px; margin-top:15px;}
     .course-card{border:1px solid var(--line); padding:15px; border-radius:12px; cursor:pointer; background:#f8fafc; text-align:center;}
     .course-card:hover{border-color:var(--primary); background:#eff6ff;}
@@ -102,6 +107,16 @@
     </div>
 
     <div class="main">
+      
+      <!-- ⏰ AUTO TIME-ZONE DIGITAL CLOCK MODULE -->
+      <div class="clock-container">
+        <div>
+          <span style="font-size:12px; text-transform:uppercase; color:#64748b; font-weight:bold; display:block; margin-bottom:2px;">Network Operational Time</span>
+          <div class="digital-date" id="lblDigitalDate">Loading network calendar...</div>
+        </div>
+        <div class="digital-clock" id="lblDigitalClock">00:00:00 AM</div>
+      </div>
+
       <!-- DASHBOARD PAGE -->
       <div id="page-dashboard" class="page active">
         <div class="card">
@@ -115,7 +130,7 @@
       <div id="page-adminPanel" class="page">
         <div class="card" style="border:2px solid var(--danger)">
           <h3 style="color:var(--danger)">🔒 Master Super Admin Engine</h3>
-          <p>Welcome, Creator. Monitor financial loops and audit global welfare requests.</p>
+          <p>Welcome, Creator. Monitor network operations, manage liquidity, and verify multi-vendor nodes.</p>
           <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
           
           <h4>💰 Super Admin Financial Controls</h4>
@@ -129,7 +144,6 @@
           <div id="adminShopRequestsContainer"><p>No pending verification applications found.</p></div>
 
           <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
-          <!-- 🏛️ Admin Foundation Verification Panel -->
           <h4>❤️ Welfare Foundation Approval Matrix</h4>
           <div id="adminWelfareRequestsContainer"><p>No pending foundation verification applications found.</p></div>
 
@@ -138,15 +152,3 @@
           <div class="form-group"><label>Campaign Title</label><input type="text" id="txtWelfareTitle" class="form-control"></div>
           <div class="form-group"><label>Campaign Mission Statement</label><input type="text" id="txtWelfareDesc" class="form-control"></div>
           <div class="form-group"><label>Required Goal Budget Target (PKR)</label><input type="number" id="txtWelfareGoal" class="form-control"></div>
-          <button class="btn-action" style="background:var(--danger); width:100%;" onclick="publishWelfareCampaign()">Broadcast Welfare Campaign Live</button>
-        </div>
-      </div>
-
-      <!-- 🛒 E-COMMERCE MALL -->
-      <div id="page-ecommerce" class="page">
-        <div class="card" id="sellerProfileStatusCard">
-          <h3>🏬 Merchant Shop Workspace</h3>
-          <p>Register your store profile under official KYC protocols to unlock B2B or B2C trade systems.</p>
-          <button class="btn-action" onclick="toggleShopRegisterForm()">Register New Merchant Shop</button>
-          <div id="shopRegistrationForm" class="hidden" style="margin-top:20px; border-top:1px solid var(--line); padding-top:20px;">
-            <div class="form-group"><label>Shop Name</label><input type="text" id="txtShopName" class="form-control"></div>
