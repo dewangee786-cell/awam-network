@@ -34,13 +34,16 @@
     .form-group{margin-bottom:15px; text-align:left;}
     .form-group label{display:block; margin-bottom:5px; font-weight:bold; font-size:14px;}
     .form-control{width:100%; padding:10px; border:1px solid var(--line); border-radius:8px;}
-    .btn-action{padding:10px 15px; background:var(--primary); color:#fff; border:0; border-radius:8px; cursor:pointer;}
+    .btn-action{padding:10px 15px; background:var(--primary); color:#fff; border:0; border-radius:8px; cursor:pointer; margin-right:5px;}
     
-    /* Timer & Security UI Styling */
+    /* Academic Portal Styles */
+    .course-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:15px; margin-top:15px;}
+    .course-card{border:1px solid var(--line); padding:15px; border-radius:12px; cursor:pointer; background:#f8fafc; text-align:center; transition:0.2s;}
+    .course-card:hover{border-color:var(--primary); background:#eff6ff;}
     .quiz-option{display:block; background:#f8fafc; border:1px solid var(--line); padding:12px; margin:8px 0; border-radius:8px; cursor:pointer;}
     .quiz-option input{margin-right:10px;}
-    .quiz-option:hover{background:#f1f5f9;}
     .timer-badge{display:inline-block; padding:6px 12px; background:var(--danger); color:#fff; border-radius:30px; font-weight:bold; font-size:13px; margin-bottom:15px;}
+    .nav-btn-container{display:flex; justify-content:space-between; margin-top:20px;}
     .disabled-click{pointer-events:none; opacity:0.6;}
   </style>
 </head>
@@ -114,73 +117,44 @@
 
           <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
 
-          <h4>🎓 Add New Quiz Question</h4>
-          <div class="form-group"><label>Question Text</label><input type="text" id="txtQuestionText" class="form-control"></div>
-          <div class="form-group"><label>Option A</label><input type="text" id="txtOptA" class="form-control"></div>
-          <div class="form-group"><label>Option B</label><input type="text" id="txtOptB" class="form-control"></div>
-          <div class="form-group"><label>Option C</label><input type="text" id="txtOptC" class="form-control"></div>
-          <div class="form-group"><label>Option D</label><input type="text" id="txtOptD" class="form-control"></div>
-          <div class="form-group"><label>Correct Answer Letter (A, B, C, or D)</label><input type="text" id="txtCorrectAnswer" class="form-control"></div>
-          <button class="btn-action" onclick="saveQuizQuestion()">Publish to Academy</button>
+          <h4>🎓 Curriculum Management: Upload Lesson / Quiz</h4>
+          <div class="form-group">
+            <label>Select Track Course</label>
+            <select id="selAdminTrack" class="form-control">
+              <option value="basic_it">Basic Computer Literacy</option>
+              <option value="fullstack_web">Fullstack Software Specialist</option>
+              <option value="cloud_cyber">Cloud Systems & Cyber Security</option>
+              <option value="ai_data">AI & Modern Data Engineering</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Lesson Topic/Title</label><input type="text" id="txtLessonTitle" class="form-control"></div>
+          <div class="form-group"><label>Theory Text Content</label><textarea id="txtLessonTheory" class="form-control" rows="3"></textarea></div>
+          <div class="form-group"><label>Daily Practical Task Objective</label><input type="text" id="txtLessonPractical" class="form-control"></div>
+          
+          <div style="background:#f8fafc; padding:10px; border-radius:8px; margin-top:10px; border:1px solid var(--line);">
+            <h5>Associated Next-Day Test Question</h5>
+            <div class="form-group"><label>Question</label><input type="text" id="txtQuizQ" class="form-control"></div>
+            <div class="form-group"><label>Option A</label><input type="text" id="txtQuizA" class="form-control"></div>
+            <div class="form-group"><label>Option B</label><input type="text" id="txtQuizB" class="form-control"></div>
+            <div class="form-group"><label>Option C</label><input type="text" id="txtQuizC" class="form-control"></div>
+            <div class="form-group"><label>Option D</label><input type="text" id="txtQuizD" class="form-control"></div>
+            <div class="form-group"><label>Correct Answer Letter (A, B, C, or D)</label><input type="text" id="txtQuizCorrect" class="form-control"></div>
+          </div>
+          <br>
+          <button class="btn-action" style="width:100%;" onclick="publishAutomatedLesson()">Publish Day Task to Network Engine</button>
+          
+          <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
+          <h4>🤝 Live Manual Tuition Work Requests</h4>
+          <div id="adminTuitionRequestsContainer"><p>No pending assistance requests.</p></div>
         </div>
       </div>
 
-      <!-- TECH ACADEMY EXAM PORTAL -->
+      <!-- TECH ACADEMY PORTAL (WORLD CLASS EDUCATION ENVIRONMENT) -->
       <div id="page-education" class="page">
-        <div class="card">
-          <h3>🎓 Tech Academy Portal</h3>
-          <p>Complete the examination below. ⚠️ <b>Warning:</b> Switching tabs or windows will auto-fail your exam instantly.</p>
-          <div id="examTimerDisplay" class="timer-badge hidden">⏳ Remaining Time: <span id="secondsLeft">30</span>s</div>
-        </div>
-        <div class="card" id="quizContainer">
-          <h4>Loading Active Examination Paper...</h4>
-        </div>
-      </div>
-
-      <div id="page-ecommerce" class="page"><div class="card"><h3>🛒 E-Commerce Node</h3></div></div>
-      <div id="page-p2p" class="page"><div class="card"><h3>🤝 P2P Workers Exchange</h3></div></div>
-      <div id="page-welfare" class="page"><div class="card"><h3>❤️ Social Welfare Pipeline</h3></div></div>
-    </div>
-  </div>
-
-  <script type="module">
-    import { initializeApp } from "https://gstatic.com";
-    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://gstatic.com";
-    import { getDatabase, ref, onValue, set, get, push } from "https://gstatic.com";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyCvbrB6vgOwLLzFLymZ3213b249DAn5jbY",
-      authDomain: "://firebaseapp.com",
-      databaseURL: "https://firebaseio.com",
-      projectId: "awam-network-318ec",
-      storageBucket: "://appspot.com",
-      messagingSenderId: "313453438241",
-      appId: "1:313453438241:web:19189b495154fc7326fea0"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const database = getDatabase(app);
-    const googleProvider = new GoogleAuthProvider();
-
-    let examCountdownInterval = null;
-    let currentExamActive = false;
-    let serverAnswers = {};
-
-    document.getElementById('btnGoogleLogin').addEventListener('click', async () => {
-      try { await signInWithPopup(auth, googleProvider); } 
-      catch (error) { alert("Login failed: " + error.message); }
-    });
-
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        document.getElementById('loginScreen').classList.add('hidden');
-        document.getElementById('app').classList.remove('hidden');
-        document.getElementById('userName').innerText = user.displayName;
-        document.getElementById('userEmail').innerText = user.email;
-
-        if (user.email === 'dewan.gee786@gmail.com') {
-          document.getElementById('superAdminSection').classList.remove('hidden');
-        } else {
-          document.getElementById('superAdminSection').classList.add('hidden');
-        }
+        <!-- Course Selection Dashboard -->
+        <div id="courseSelectionScreen" class="card">
+          <h3>🎓 Next-Generation IT Specialist Academy</h3>
+          <p>Select your specialized track program to start learning cutting-edge technologies natively from basic to advanced levels.</p>
+          <div class="course-grid">
+            <div class="course-card" onclick="startSpecializedTrack('basic_it')">💻<h5>Basic IT Specialist</h5><small>Operating Systems, Internet, Office Automation</small></div>
+            <div class="course-card" onclick="startSpecializedTrack('fullstack_web')">🌐<h5>Fullstack Web Developer</h5><small>HTML5, JS, Node.js, SQL, System Architecture</small></div>
