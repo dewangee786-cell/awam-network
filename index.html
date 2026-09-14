@@ -36,10 +36,12 @@
     .form-control{width:100%; padding:10px; border:1px solid var(--line); border-radius:8px;}
     .btn-action{padding:10px 15px; background:var(--primary); color:#fff; border:0; border-radius:8px; cursor:pointer;}
     
-    /* Quiz specific layouts */
+    /* Timer & Security UI Styling */
     .quiz-option{display:block; background:#f8fafc; border:1px solid var(--line); padding:12px; margin:8px 0; border-radius:8px; cursor:pointer;}
     .quiz-option input{margin-right:10px;}
     .quiz-option:hover{background:#f1f5f9;}
+    .timer-badge{display:inline-block; padding:6px 12px; background:var(--danger); color:#fff; border-radius:30px; font-weight:bold; font-size:13px; margin-bottom:15px;}
+    .disabled-click{pointer-events:none; opacity:0.6;}
   </style>
 </head>
 <body>
@@ -113,18 +115,12 @@
           <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
 
           <h4>🎓 Add New Quiz Question</h4>
-          <div class="form-group">
-            <label>Question Text</label>
-            <input type="text" id="txtQuestionText" class="form-control" placeholder="What is HTML?">
-          </div>
+          <div class="form-group"><label>Question Text</label><input type="text" id="txtQuestionText" class="form-control"></div>
           <div class="form-group"><label>Option A</label><input type="text" id="txtOptA" class="form-control"></div>
           <div class="form-group"><label>Option B</label><input type="text" id="txtOptB" class="form-control"></div>
           <div class="form-group"><label>Option C</label><input type="text" id="txtOptC" class="form-control"></div>
           <div class="form-group"><label>Option D</label><input type="text" id="txtOptD" class="form-control"></div>
-          <div class="form-group">
-            <label>Correct Answer Letter (A, B, C, or D)</label>
-            <input type="text" id="txtCorrectAnswer" class="form-control" placeholder="A">
-          </div>
+          <div class="form-group"><label>Correct Answer Letter (A, B, C, or D)</label><input type="text" id="txtCorrectAnswer" class="form-control"></div>
           <button class="btn-action" onclick="saveQuizQuestion()">Publish to Academy</button>
         </div>
       </div>
@@ -133,17 +129,17 @@
       <div id="page-education" class="page">
         <div class="card">
           <h3>🎓 Tech Academy Portal</h3>
-          <p>Complete the examination below. Your marks will be evaluated instantly and saved to your profile profile path.</p>
+          <p>Complete the examination below. ⚠️ <b>Warning:</b> Switching tabs or windows will auto-fail your exam instantly.</p>
+          <div id="examTimerDisplay" class="timer-badge hidden">⏳ Remaining Time: <span id="secondsLeft">30</span>s</div>
         </div>
         <div class="card" id="quizContainer">
           <h4>Loading Active Examination Paper...</h4>
-          <!-- Automated Questions Render Natively Here -->
         </div>
       </div>
 
-      <div id="page-ecommerce" class="page"><div class="card"><h3>🛒 E-Commerce Node</h3><p>Automated inventory synced by Google Cloud.</p></div></div>
-      <div id="page-p2p" class="page"><div class="card"><h3>🤝 P2P Workers Exchange</h3><p>Workloads distributed seamlessly via background instances.</p></div></div>
-      <div id="page-welfare" class="page"><div class="card"><h3>❤️ Social Welfare Pipeline</h3><p>Welfare transparency locked with programmatic rules.</p></div></div>
+      <div id="page-ecommerce" class="page"><div class="card"><h3>🛒 E-Commerce Node</h3></div></div>
+      <div id="page-p2p" class="page"><div class="card"><h3>🤝 P2P Workers Exchange</h3></div></div>
+      <div id="page-welfare" class="page"><div class="card"><h3>❤️ Social Welfare Pipeline</h3></div></div>
     </div>
   </div>
 
@@ -167,6 +163,10 @@
     const database = getDatabase(app);
     const googleProvider = new GoogleAuthProvider();
 
+    let examCountdownInterval = null;
+    let currentExamActive = false;
+    let serverAnswers = {};
+
     document.getElementById('btnGoogleLogin').addEventListener('click', async () => {
       try { await signInWithPopup(auth, googleProvider); } 
       catch (error) { alert("Login failed: " + error.message); }
@@ -184,5 +184,3 @@
         } else {
           document.getElementById('superAdminSection').classList.add('hidden');
         }
-
-        onValue(ref(database, 'wallets/' + user.uid + '/balance'), (snapshot) => {
