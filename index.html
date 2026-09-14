@@ -20,9 +20,8 @@
     .legal-footer-links{margin-top:20px; font-size:12px;}
     .legal-footer-links a{color:var(--primary); text-decoration:none; margin:0 10px; cursor:pointer; font-weight:bold;}
 
-    /* 🛡️ Secure Legal Modal Dialog Popup Styling */
     .legal-modal{position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(11,18,32,0.6); display:flex; align-items:center; justify-content:center; z-index:9999; padding:20px;}
-    .legal-modal-content{background:#fff; padding:30px; border-radius:var(--radius); max-width:500px; width:100%; box-shadow:0 20px 40px rgba(0,0,0,0.2); max-height:85vh; overflow-y:auto; position:relative;}
+    .legal-modal-content{background:#fff; padding:30px; border-radius:var(--radius); max-width:500px; width:100%; box-shadow:0 20px 40px rgba(0,0,0,0.2); max-height:85vh; overflow-y:auto;}
     .close-legal-btn{margin-top:20px; padding:10px 20px; background:var(--dark); color:#fff; border:0; border-radius:8px; cursor:pointer; width:100%; font-weight:bold;}
 
     #app{min-height:100vh; display:flex}
@@ -42,6 +41,11 @@
     .course-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:15px; margin-top:15px;}
     .course-card{border:1px solid var(--line); padding:15px; border-radius:12px; cursor:pointer; background:#f8fafc; text-align:center;}
     .course-card:hover{border-color:var(--primary); background:#eff6ff;}
+    
+    /* 🛒 E-Commerce Grid Styling Layout */
+    .product-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:20px; margin-top:15px;}
+    .product-card{border:1px solid var(--line); padding:20px; border-radius:var(--radius); background:#fff; position:relative; box-shadow:0 2px 5px rgba(0,0,0,0.02);}
+    .product-price{font-size:18px; font-weight:bold; color:var(--success); margin:10px 0;}
   </style>
 </head>
 <body>
@@ -53,15 +57,11 @@
       <p>Secure Enterprise Gateway Powered by Google Cloud Engine.</p>
       <button class="google-btn" id="btnGoogleLogin">Sign in with Verified Google Account</button>
     </div>
-    
-    <!-- ⚖️ GOOGLE COMPLIANCE MANDATORY PUBLIC LINKS -->
     <div class="legal-footer-links">
-      <a id="lnkPrivacy">Privacy Policy</a> | 
-      <a id="lnkTerms">Terms of Service</a>
+      <a id="lnkPrivacy">Privacy Policy</a> | <a id="lnkTerms">Terms of Service</a>
     </div>
   </div>
 
-  <!-- ⚖️ MODAL CONTAINER BOX FOR GOOGLE POLICY COMPLIANCE -->
   <div id="legalModalWrapper" class="legal-modal hidden">
     <div class="legal-modal-content">
       <div id="legalTextContainer"></div>
@@ -105,13 +105,34 @@
       <div id="page-adminPanel" class="page">
         <div class="card" style="border:2px solid var(--danger)">
           <h3 style="color:var(--danger)">🔒 Master Super Admin Engine</h3>
-          <p>Welcome, Creator. Gemini Automation Bot is tracking fraud natively.</p>
+          <p>Welcome, Creator. Manage wallet balances and catalog inventories securely.</p>
           <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
+          
           <h4>💰 Super Admin Financial Controls</h4>
           <div class="form-group"><label>User Unique ID (UID)</label><input type="text" id="txtAdminTargetUid" class="form-control"></div>
           <div class="form-group"><label>Amount (PKR)</label><input type="number" id="txtAdminAmount" class="form-control"></div>
           <button class="btn-action" style="background:var(--success)" onclick="triggerServerTransaction('credit')">Grant Secure Balance</button>
           <button class="btn-action" style="background:var(--danger)" onclick="triggerServerTransaction('debit')">Deduct Balance</button>
+          
+          <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
+          
+          <!-- 🛒 Admin Product Catalog Management -->
+          <h4>🛒 Add New Product to E-Commerce Node</h4>
+          <div class="form-group"><label>Product Name</label><input type="text" id="txtProdName" class="form-control" placeholder="e.g. Core i5 Laptop"></div>
+          <div class="form-group"><label>Product Description</label><input type="text" id="txtProdDesc" class="form-control" placeholder="Specifications details..."></div>
+          <div class="form-group"><label>Price (PKR)</label><input type="number" id="txtProdPrice" class="form-control" placeholder="e.g. 45000"></div>
+          <button class="btn-action" style="background:var(--primary); width:100%;" onclick="publishStoreProduct()">Publish Item to Store Catalog</button>
+        </div>
+      </div>
+
+      <!-- 🛒 CLIENT E-COMMERCE NODE VIEW -->
+      <div id="page-ecommerce" class="page">
+        <div class="card">
+          <h3>🛒 Live E-Commerce Catalog</h3>
+          <p>Purchase enterprise hardware and premium developer utility kits instantly using your secure wallet PKR tokens.</p>
+          <div class="product-grid" id="productStoreContainer">
+            <!-- Automated Products Load Here Natively -->
+          </div>
         </div>
       </div>
 
@@ -126,7 +147,6 @@
         </div>
       </div>
 
-      <div id="page-ecommerce" class="page"><div class="card"><h3>🛒 E-Commerce Node</h3></div></div>
       <div id="page-p2p" class="page"><div class="card"><h3>🤝 P2P Workers Exchange</h3></div></div>
       <div id="page-welfare" class="page"><div class="card"><h3>❤️ Social Welfare Pipeline</h3></div></div>
     </div>
@@ -135,7 +155,7 @@
   <script type="module">
     import { initializeApp } from "https://gstatic.com";
     import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider, onAuthStateChanged } from "https://gstatic.com";
-    import { getDatabase, ref, onValue, set, get } from "https://gstatic.com";
+    import { getDatabase, ref, onValue, set, get, push } from "https://gstatic.com";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCvbrB6vgOwLLzFLymZ3213b249DAn5jbY",
@@ -153,30 +173,3 @@
     const googleProvider = new GoogleAuthProvider();
 
     document.getElementById('btnGoogleLogin').addEventListener('click', async () => {
-      try { await signInWithRedirect(auth, googleProvider); } 
-      catch (error) { alert("Login failed: " + error.message); }
-    });
-
-    getRedirectResult(auth).catch((e) => console.log(e));
-
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        document.getElementById('loginScreen').classList.add('hidden');
-        document.getElementById('app').classList.remove('hidden');
-        document.getElementById('userName').innerText = user.displayName;
-        document.getElementById('userEmail').innerText = user.email;
-        if (user.email === 'dewan.gee786@gmail.com') {
-          document.getElementById('superAdminSection').classList.remove('hidden');
-        }
-      } else {
-        document.getElementById('loginScreen').classList.remove('hidden');
-        document.getElementById('app').classList.add('hidden');
-      }
-    });
-
-    // 📄 DIRECT DYNAMIC MODAL TRIGGERS FOR LEGAL VERIFICATION
-    const modalWrapper = document.getElementById('legalModalWrapper');
-    const txtArea = document.getElementById('legalTextContainer');
-
-    document.getElementById('lnkPrivacy').addEventListener('click', () => {
-      
