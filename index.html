@@ -6,6 +6,11 @@
 
 <title>International Awam Network Hub V2</title>
 
+<!-- GOOGLE ADSENSE VERIFICATION -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8868471730488054"
+crossorigin="anonymous"></script>
+
 <style>
 *{
   box-sizing:border-box;
@@ -205,6 +210,17 @@ body{
 
 .account strong{
   color:#172033;
+}
+
+.digitalClock{
+  font-family:monospace;
+  font-size:14px;
+  font-weight:bold;
+  color:#087f5b;
+  background:#eef8f4;
+  padding:8px 11px;
+  border-radius:9px;
+  letter-spacing:.5px;
 }
 
 .logoutBtn{
@@ -428,6 +444,27 @@ body{
   padding:20px;
 }
 
+/* ADSENSE AREA */
+.adContainer{
+  width:100%;
+  min-height:90px;
+  margin-top:25px;
+  padding:12px;
+  background:#fff;
+  border:1px solid #e5e9ef;
+  border-radius:14px;
+  text-align:center;
+  overflow:hidden;
+}
+
+.adLabel{
+  font-size:10px;
+  color:#98a2b3;
+  margin-bottom:6px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
 /* FOOTER */
 .footer{
   margin-top:30px;
@@ -438,6 +475,7 @@ body{
 
 /* MOBILE */
 @media(max-width:1000px){
+
   .grid{
     grid-template-columns:repeat(2,1fr);
   }
@@ -445,9 +483,11 @@ body{
   .sectionGrid{
     grid-template-columns:repeat(2,1fr);
   }
+
 }
 
 @media(max-width:760px){
+
   .sidebar{
     width:220px;
     transform:translateX(-100%);
@@ -463,6 +503,10 @@ body{
     padding:0 15px;
   }
 
+  .topTitle{
+    font-size:13px;
+  }
+
   .content{
     padding:15px;
   }
@@ -476,6 +520,16 @@ body{
   .accountEmail{
     display:none;
   }
+
+  .digitalClock{
+    font-size:11px;
+    padding:6px 7px;
+  }
+
+  .logoutBtn{
+    padding:7px 9px;
+  }
+
 }
 </style>
 </head>
@@ -516,6 +570,7 @@ body{
   <aside class="sidebar">
 
     <div class="brand">
+
       <div class="brandTitle">
         INTERNATIONAL AWAM NETWORK
       </div>
@@ -523,12 +578,15 @@ body{
       <div class="brandSub">
         VIP International Digital Community Hub
       </div>
+
     </div>
 
 
     <div class="nav">
 
-      <div class="navTitle">Main</div>
+      <div class="navTitle">
+        Main
+      </div>
 
       <button class="active" data-page="dashboard">
         🏠 Dashboard
@@ -554,7 +612,9 @@ body{
       <!-- SUPER ADMIN ONLY -->
       <div id="adminNavigation" class="hidden">
 
-        <div class="navTitle">Super Admin</div>
+        <div class="navTitle">
+          Super Admin
+        </div>
 
         <button class="adminNav" data-page="wallet">
           💰 Wallet
@@ -582,12 +642,21 @@ body{
 
       <div class="account">
 
-        <span>
-          <strong id="userRole">User</strong>
+        <!-- LIVE DIGITAL CLOCK -->
+        <span id="digitalClock" class="digitalClock">
+          --:--:--
         </span>
 
-        <span class="accountEmail" id="userEmail">
-          Loading...
+        <span>
+          <strong id="userRole">
+            User
+          </strong>
+        </span>
+
+        <!-- SUPER ADMIN EMAIL ONLY -->
+        <span
+          class="accountEmail hidden"
+          id="userEmail">
         </span>
 
         <button id="btnLogout" class="logoutBtn">
@@ -606,59 +675,103 @@ body{
       <section id="page-dashboard" class="page active">
 
         <div class="pageHeader">
-          <h2>Welcome to International Awam Network</h2>
+
+          <h2>
+            Welcome to International Awam Network
+          </h2>
 
           <p>
             A professional international platform connecting
             people, education, AI, services, commerce and welfare.
           </p>
+
         </div>
 
 
         <div class="grid">
 
           <div class="card">
-            <div class="icon">🛒</div>
-            <h3>E-Commerce</h3>
+
+            <div class="icon">
+              🛒
+            </div>
+
+            <h3>
+              E-Commerce
+            </h3>
+
             <p>
               Products, services, seller profiles,
               buyer requests and future marketplace automation.
             </p>
+
           </div>
 
+
           <div class="card">
-            <div class="icon">🎓</div>
-            <h3>Education + AI</h3>
+
+            <div class="icon">
+              🎓
+            </div>
+
+            <h3>
+              Education + AI
+            </h3>
+
             <p>
               Courses, programming, AI learning,
               tests and future monitored examinations.
             </p>
+
           </div>
 
+
           <div class="card">
-            <div class="icon">🤝</div>
-            <h3>P2P Workforce</h3>
+
+            <div class="icon">
+              🤝
+            </div>
+
+            <h3>
+              P2P Workforce
+            </h3>
+
             <p>
               Connect workers, skills, services and
               international opportunities.
             </p>
+
           </div>
 
+
           <div class="card">
-            <div class="icon">❤️</div>
-            <h3>NGO & Welfare</h3>
+
+            <div class="icon">
+              ❤️
+            </div>
+
+            <h3>
+              NGO & Welfare
+            </h3>
+
             <p>
               Education, health, poverty relief,
               clean water and welfare initiatives.
             </p>
+
           </div>
 
         </div>
 
 
-        <div class="card" style="margin-top:20px;">
+        <div
+          class="card"
+          style="margin-top:20px;"
+        >
 
-          <h3>International Community Vision</h3>
+          <h3>
+            International Community Vision
+          </h3>
 
           <p>
             International Awam Network is designed as a
@@ -667,6 +780,18 @@ body{
             services and social welfare can work together.
           </p>
 
+        </div>
+
+
+        <!-- ADSENSE READY AREA -->
+        <div class="adContainer">
+
+          <div class="adLabel">
+            Advertisement
+          </div>
+
+          <!-- Google AdSense Auto Ads will use this page -->
+          
         </div>
 
 
@@ -682,7 +807,9 @@ body{
 
         <div class="pageHeader">
 
-          <h2>E-Commerce & Services</h2>
+          <h2>
+            E-Commerce & Services
+          </h2>
 
           <p>
             International marketplace and professional service network.
@@ -694,57 +821,119 @@ body{
         <div class="sectionGrid">
 
           <div class="card feature">
-            <div class="icon">📦</div>
-            <h3>Products</h3>
+
+            <div class="icon">
+              📦
+            </div>
+
+            <h3>
+              Products
+            </h3>
+
             <p>
               Sellers can eventually publish products,
               prices, descriptions and locations.
             </p>
+
           </div>
 
+
           <div class="card feature">
-            <div class="icon">🧑‍💼</div>
-            <h3>Seller Profiles</h3>
+
+            <div class="icon">
+              🧑‍💼
+            </div>
+
+            <h3>
+              Seller Profiles
+            </h3>
+
             <p>
               Professional seller identity,
               verification and service history.
             </p>
+
           </div>
 
+
           <div class="card feature">
-            <div class="icon">🔎</div>
-            <h3>Buyer Requests</h3>
+
+            <div class="icon">
+              🔎
+            </div>
+
+            <h3>
+              Buyer Requests
+            </h3>
+
             <p>
               Buyers can post requirements and
               connect with suitable sellers.
             </p>
+
           </div>
 
+
           <div class="card feature">
-            <div class="icon">🤝</div>
-            <h3>P2P Services</h3>
+
+            <div class="icon">
+              🤝
+            </div>
+
+            <h3>
+              P2P Services
+            </h3>
+
             <p>
               Skilled workers can offer services
               directly to customers.
             </p>
+
           </div>
 
+
           <div class="card feature">
-            <div class="icon">🚚</div>
-            <h3>Future Dispatch</h3>
+
+            <div class="icon">
+              🚚
+            </div>
+
+            <h3>
+              Future Dispatch
+            </h3>
+
             <p>
               Future truck dispatch and logistics
               automation can be integrated.
             </p>
+
           </div>
 
+
           <div class="card feature">
-            <div class="icon">🌍</div>
-            <h3>Global Marketplace</h3>
+
+            <div class="icon">
+              🌍
+            </div>
+
+            <h3>
+              Global Marketplace
+            </h3>
+
             <p>
               Future expansion toward international
               commerce and dropshipping.
             </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="adContainer">
+
+          <div class="adLabel">
+            Advertisement
           </div>
 
         </div>
@@ -757,7 +946,9 @@ body{
 
         <div class="pageHeader">
 
-          <h2>Education & AI Academy</h2>
+          <h2>
+            Education & AI Academy
+          </h2>
 
           <p>
             AI-powered learning system from beginner to advanced level.
@@ -769,54 +960,116 @@ body{
         <div class="sectionGrid">
 
           <div class="card feature">
-            <div class="icon">💻</div>
-            <h3>Computer Basics</h3>
+
+            <div class="icon">
+              💻
+            </div>
+
+            <h3>
+              Computer Basics
+            </h3>
+
             <p>
               Beginner computer training and digital literacy.
             </p>
+
           </div>
 
+
           <div class="card feature">
-            <div class="icon">👨‍💻</div>
-            <h3>Programming</h3>
+
+            <div class="icon">
+              👨‍💻
+            </div>
+
+            <h3>
+              Programming
+            </h3>
+
             <p>
               Web development, programming and software skills.
             </p>
+
           </div>
 
+
           <div class="card feature">
-            <div class="icon">🤖</div>
-            <h3>Artificial Intelligence</h3>
+
+            <div class="icon">
+              🤖
+            </div>
+
+            <h3>
+              Artificial Intelligence
+            </h3>
+
             <p>
               AI learning, practical use and future AI tools.
             </p>
+
           </div>
 
+
           <div class="card feature">
-            <div class="icon">🛍️</div>
-            <h3>E-Commerce Training</h3>
+
+            <div class="icon">
+              🛍️
+            </div>
+
+            <h3>
+              E-Commerce Training
+            </h3>
+
             <p>
               Amazon, eBay, Shopify, Walmart, Alibaba,
               Daraz and dropshipping concepts.
             </p>
+
           </div>
 
+
           <div class="card feature">
-            <div class="icon">📝</div>
-            <h3>AI Exams</h3>
+
+            <div class="icon">
+              📝
+            </div>
+
+            <h3>
+              AI Exams
+            </h3>
+
             <p>
               Future AI-generated tests, evaluation
               and pass/fail results.
             </p>
+
           </div>
 
+
           <div class="card feature">
-            <div class="icon">🏆</div>
-            <h3>Certificates</h3>
+
+            <div class="icon">
+              🏆
+            </div>
+
+            <h3>
+              Certificates
+            </h3>
+
             <p>
               Future merit-based certificates under
               Dewan Traders with Super Admin approval.
             </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="adContainer">
+
+          <div class="adLabel">
+            Advertisement
           </div>
 
         </div>
@@ -829,7 +1082,9 @@ body{
 
         <div class="pageHeader">
 
-          <h2>P2P Workforce Registration</h2>
+          <h2>
+            P2P Workforce Registration
+          </h2>
 
           <p>
             Register professional skills and services.
@@ -843,54 +1098,133 @@ body{
           <div class="formGrid">
 
             <div class="inputGroup">
-              <label>Full Name</label>
-              <input id="p2pName" type="text">
+
+              <label>
+                Full Name
+              </label>
+
+              <input
+                id="p2pName"
+                type="text"
+              >
+
             </div>
 
-            <div class="inputGroup">
-              <label>Country</label>
-              <input id="p2pCountry" type="text">
-            </div>
 
             <div class="inputGroup">
-              <label>City</label>
-              <input id="p2pCity" type="text">
+
+              <label>
+                Country
+              </label>
+
+              <input
+                id="p2pCountry"
+                type="text"
+              >
+
             </div>
 
-            <div class="inputGroup">
-              <label>Skill / Work</label>
-              <input id="p2pSkill" type="text">
-            </div>
 
             <div class="inputGroup">
-              <label>Experience</label>
-              <input id="p2pExperience" type="text">
+
+              <label>
+                City
+              </label>
+
+              <input
+                id="p2pCity"
+                type="text"
+              >
+
             </div>
 
+
             <div class="inputGroup">
-              <label>Phone / WhatsApp</label>
-              <input id="p2pPhone" type="text">
+
+              <label>
+                Skill / Work
+              </label>
+
+              <input
+                id="p2pSkill"
+                type="text"
+              >
+
+            </div>
+
+
+            <div class="inputGroup">
+
+              <label>
+                Experience
+              </label>
+
+              <input
+                id="p2pExperience"
+                type="text"
+              >
+
+            </div>
+
+
+            <div class="inputGroup">
+
+              <label>
+                Phone / WhatsApp
+              </label>
+
+              <input
+                id="p2pPhone"
+                type="text"
+              >
+
             </div>
 
           </div>
 
+
           <br>
 
-          <button id="btnP2PRegister" class="primaryBtn">
+
+          <button
+            id="btnP2PRegister"
+            class="primaryBtn"
+          >
             Register P2P Profile
           </button>
 
-          <div id="p2pStatus" class="status"></div>
+
+          <div
+            id="p2pStatus"
+            class="status"
+          ></div>
 
         </div>
 
 
-        <div class="card" style="margin-top:20px;">
+        <div
+          class="card"
+          style="margin-top:20px;"
+        >
 
-          <h3>Registered P2P Workers</h3>
+          <h3>
+            Registered P2P Workers
+          </h3>
 
-          <div id="p2pList" class="workerList">
+          <div
+            id="p2pList"
+            class="workerList"
+          >
             Loading...
+          </div>
+
+        </div>
+
+
+        <div class="adContainer">
+
+          <div class="adLabel">
+            Advertisement
           </div>
 
         </div>
@@ -903,7 +1237,9 @@ body{
 
         <div class="pageHeader">
 
-          <h2>NGO & Welfare</h2>
+          <h2>
+            NGO & Welfare
+          </h2>
 
           <p>
             Lumivera Global Foundation / International welfare direction.
@@ -915,51 +1251,113 @@ body{
         <div class="sectionGrid">
 
           <div class="card feature">
-            <div class="icon">🎓</div>
-            <h3>Education</h3>
+
+            <div class="icon">
+              🎓
+            </div>
+
+            <h3>
+              Education
+            </h3>
+
             <p>
               Support for education and learning opportunities.
             </p>
+
           </div>
 
+
           <div class="card feature">
-            <div class="icon">🏥</div>
-            <h3>Health</h3>
+
+            <div class="icon">
+              🏥
+            </div>
+
+            <h3>
+              Health
+            </h3>
+
             <p>
               Future welfare and health support initiatives.
             </p>
+
           </div>
 
+
           <div class="card feature">
-            <div class="icon">💧</div>
-            <h3>Clean Water</h3>
+
+            <div class="icon">
+              💧
+            </div>
+
+            <h3>
+              Clean Water
+            </h3>
+
             <p>
               Clean water and environmental welfare projects.
             </p>
+
           </div>
 
+
           <div class="card feature">
-            <div class="icon">🤲</div>
-            <h3>Zakat & Welfare</h3>
+
+            <div class="icon">
+              🤲
+            </div>
+
+            <h3>
+              Zakat & Welfare
+            </h3>
+
             <p>
               Welfare assistance and eligible support programs.
             </p>
+
           </div>
 
+
           <div class="card feature">
-            <div class="icon">🏠</div>
-            <h3>Poverty Relief</h3>
+
+            <div class="icon">
+              🏠
+            </div>
+
+            <h3>
+              Poverty Relief
+            </h3>
+
             <p>
               Support for needy families and vulnerable communities.
             </p>
+
           </div>
 
+
           <div class="card feature">
-            <div class="icon">🌍</div>
-            <h3>International Welfare</h3>
+
+            <div class="icon">
+              🌍
+            </div>
+
+            <h3>
+              International Welfare
+            </h3>
+
             <p>
               Non-political, non-sectarian and international welfare vision.
             </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="adContainer">
+
+          <div class="adLabel">
+            Advertisement
           </div>
 
         </div>
@@ -967,12 +1365,14 @@ body{
       </section>
 
 
-      <!-- WALLET - SUPER ADMIN ONLY -->
+      <!-- WALLET -->
       <section id="page-wallet" class="page">
 
         <div class="pageHeader">
 
-          <h2>Super Admin Wallet</h2>
+          <h2>
+            Super Admin Wallet
+          </h2>
 
           <p>
             Restricted financial control area.
@@ -987,7 +1387,10 @@ body{
             SUPER ADMIN WALLET BALANCE
           </div>
 
-          <div class="walletAmount" id="walletBalance">
+          <div
+            class="walletAmount"
+            id="walletBalance"
+          >
             Loading...
           </div>
 
@@ -1000,7 +1403,9 @@ body{
 
         <div class="card">
 
-          <h3>Wallet Status</h3>
+          <h3>
+            Wallet Status
+          </h3>
 
           <p id="walletStatus">
             Secure Super Admin wallet loaded.
@@ -1016,7 +1421,9 @@ body{
 
         <div class="pageHeader">
 
-          <h2>👑 Super Admin Dashboard</h2>
+          <h2>
+            👑 Super Admin Dashboard
+          </h2>
 
           <p>
             Founder / CEO administrative control center.
@@ -1028,6 +1435,7 @@ body{
         <div class="adminWarning">
 
           🔒 <strong>Restricted Area:</strong>
+
           This dashboard is available only to the
           authorized Super Admin account.
 
@@ -1038,7 +1446,9 @@ body{
 
           <div class="card">
 
-            <h3>👑 Administrator</h3>
+            <h3>
+              👑 Administrator
+            </h3>
 
             <div class="stat">
               SUPER ADMIN
@@ -1053,7 +1463,9 @@ body{
 
           <div class="card">
 
-            <h3>🔐 Security</h3>
+            <h3>
+              🔐 Security
+            </h3>
 
             <div class="stat">
               ACTIVE
@@ -1068,7 +1480,9 @@ body{
 
           <div class="card">
 
-            <h3>💰 Wallet</h3>
+            <h3>
+              💰 Wallet
+            </h3>
 
             <div class="stat">
               PRIVATE
@@ -1083,7 +1497,9 @@ body{
 
           <div class="card">
 
-            <h3>🌍 Platform</h3>
+            <h3>
+              🌍 Platform
+            </h3>
 
             <div class="stat">
               LIVE
@@ -1098,11 +1514,18 @@ body{
         </div>
 
 
-        <div class="adminOnlyBox" style="margin-top:20px;">
+        <div
+          class="adminOnlyBox"
+          style="margin-top:20px;"
+        >
 
-          <h3>Administrative Wallet Control</h3>
+          <h3>
+            Administrative Wallet Control
+          </h3>
 
-          <p style="margin:10px 0;color:#667085;">
+          <p
+            style="margin:10px 0;color:#667085;"
+          >
             Future secure backend controls for wallet,
             approvals, fund release, holds, blocks,
             commissions and audit logs will be connected here.
@@ -1112,28 +1535,59 @@ body{
           <div class="formGrid">
 
             <div class="inputGroup">
-              <label>Target User UID</label>
-              <input id="adminTargetUid" type="text">
+
+              <label>
+                Target User UID
+              </label>
+
+              <input
+                id="adminTargetUid"
+                type="text"
+              >
+
             </div>
 
+
             <div class="inputGroup">
-              <label>Amount</label>
-              <input id="adminAmount" type="number" min="0">
+
+              <label>
+                Amount
+              </label>
+
+              <input
+                id="adminAmount"
+                type="number"
+                min="0"
+              >
+
             </div>
 
           </div>
 
+
           <br>
 
-          <button id="btnGrant" class="primaryBtn">
+
+          <button
+            id="btnGrant"
+            class="primaryBtn"
+          >
             Grant / Add
           </button>
 
-          <button id="btnDeduct" class="dangerBtn">
+
+          <button
+            id="btnDeduct"
+            class="dangerBtn"
+          >
             Deduct
           </button>
 
-          <div id="adminStatus" class="status"></div>
+
+          <div
+            id="adminStatus"
+            class="status"
+          ></div>
 
         </div>
 
@@ -1177,9 +1631,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 
-/* =========================
-   FIREBASE CONFIG
-========================= */
+/* FIREBASE CONFIG */
 
 const firebaseConfig = {
 
@@ -1206,34 +1658,33 @@ const firebaseConfig = {
 };
 
 
-/* =========================
-   INITIALIZE FIREBASE
-========================= */
+/* INITIALIZE */
 
-const app = initializeApp(firebaseConfig);
+const app =
+  initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
+const auth =
+  getAuth(app);
 
-const database = getDatabase(app);
+const database =
+  getDatabase(app);
 
-const googleProvider = new GoogleAuthProvider();
+const googleProvider =
+  new GoogleAuthProvider();
+
 
 googleProvider.setCustomParameters({
   prompt:"select_account"
 });
 
 
-/* =========================
-   SUPER ADMIN
-========================= */
+/* SUPER ADMIN */
 
 const SUPER_ADMIN_EMAIL =
   "dewan.gee786@gmail.com";
 
 
-/* =========================
-   ELEMENTS
-========================= */
+/* ELEMENTS */
 
 const loginScreen =
   document.getElementById("loginScreen");
@@ -1274,10 +1725,38 @@ const p2pStatus =
 const p2pList =
   document.getElementById("p2pList");
 
+const digitalClock =
+  document.getElementById("digitalClock");
 
-/* =========================
-   SUPER ADMIN CHECK
-========================= */
+
+/* LIVE DIGITAL CLOCK */
+
+function updateDigitalClock(){
+
+  const now =
+    new Date();
+
+  digitalClock.innerText =
+    now.toLocaleTimeString(
+      [],
+      {
+        hour:"2-digit",
+        minute:"2-digit",
+        second:"2-digit"
+      }
+    );
+
+}
+
+updateDigitalClock();
+
+setInterval(
+  updateDigitalClock,
+  1000
+);
+
+
+/* SUPER ADMIN CHECK */
 
 function isSuperAdmin(user){
 
@@ -1290,9 +1769,7 @@ function isSuperAdmin(user){
 }
 
 
-/* =========================
-   SHOW / HIDE ADMIN
-========================= */
+/* USER PERMISSIONS */
 
 function applyUserPermissions(user){
 
@@ -1302,39 +1779,66 @@ function applyUserPermissions(user){
 
   if(superAdmin){
 
-    adminNavigation.classList.remove("hidden");
+    adminNavigation.classList.remove(
+      "hidden"
+    );
 
     userRole.innerText =
       "SUPER ADMIN";
 
+
+    userEmail.innerText =
+      user.email;
+
+    userEmail.classList.remove(
+      "hidden"
+    );
+
+
     adminEmailDisplay.innerText =
       user.email;
 
+
   }else{
 
-    adminNavigation.classList.add("hidden");
+    adminNavigation.classList.add(
+      "hidden"
+    );
 
     userRole.innerText =
       "USER";
 
+
+    userEmail.innerText =
+      "";
+
+    userEmail.classList.add(
+      "hidden"
+    );
+
+
     adminEmailDisplay.innerText =
       "Restricted";
 
-    /*
-      Normal user ko agar kisi tarah
-      wallet/admin page activate ho jaye
-      to dashboard par wapas bhej dein.
-    */
 
     document
       .querySelectorAll(".page")
-      .forEach(page=>{
-        page.classList.remove("active");
-      });
+      .forEach(
+        page=>{
+          page.classList.remove(
+            "active"
+          );
+        }
+      );
+
 
     document
-      .getElementById("page-dashboard")
-      .classList.add("active");
+      .getElementById(
+        "page-dashboard"
+      )
+      .classList.add(
+        "active"
+      );
 
   }
 
@@ -1343,9 +1847,7 @@ function applyUserPermissions(user){
 }
 
 
-/* =========================
-   GOOGLE LOGIN
-========================= */
+/* GOOGLE LOGIN */
 
 googleLoginButton.addEventListener(
   "click",
@@ -1390,9 +1892,7 @@ googleLoginButton.addEventListener(
 );
 
 
-/* =========================
-   AUTH STATE
-========================= */
+/* AUTH STATE */
 
 onAuthStateChanged(
   auth,
@@ -1409,17 +1909,9 @@ onAuthStateChanged(
       );
 
 
-      userEmail.innerText =
-        user.email || "Google User";
-
-
       const superAdmin =
         applyUserPermissions(user);
 
-
-      /*
-        Wallet ONLY loads for Super Admin.
-      */
 
       if(superAdmin){
 
@@ -1451,8 +1943,18 @@ onAuthStateChanged(
         "hidden"
       );
 
+
+      userEmail.innerText =
+        "";
+
+      userEmail.classList.add(
+        "hidden"
+      );
+
+
       googleLoginButton.disabled =
         false;
+
 
       loginStatus.innerText =
         "Secure login required.";
@@ -1463,9 +1965,7 @@ onAuthStateChanged(
 );
 
 
-/* =========================
-   LOGOUT
-========================= */
+/* LOGOUT */
 
 document
   .getElementById("btnLogout")
@@ -1490,92 +1990,98 @@ document
   );
 
 
-/* =========================
-   PAGE SWITCHING
-========================= */
+/* PAGE SWITCHING */
 
 document
   .querySelectorAll(".nav button")
-  .forEach(button=>{
+  .forEach(
+    button=>{
 
-    button.addEventListener(
-      "click",
-      function(){
+      button.addEventListener(
+        "click",
+        function(){
 
-        const pageName =
-          button.dataset.page;
-
-
-        /*
-          Security check:
-          Wallet/Admin sirf Super Admin.
-        */
-
-        if(
-          (pageName === "wallet" ||
-           pageName === "admin")
-          &&
-          !isSuperAdmin(auth.currentUser)
-        ){
-
-          alert(
-            "Access denied. Super Admin only."
-          );
-
-          return;
-        }
+          const pageName =
+            button.dataset.page;
 
 
-        document
-          .querySelectorAll(".page")
-          .forEach(page=>{
-            page.classList.remove(
+          if(
+            (
+              pageName === "wallet" ||
+              pageName === "admin"
+            )
+            &&
+            !isSuperAdmin(
+              auth.currentUser
+            )
+          ){
+
+            alert(
+              "Access denied. Super Admin only."
+            );
+
+            return;
+
+          }
+
+
+          document
+            .querySelectorAll(".page")
+            .forEach(
+              page=>{
+                page.classList.remove(
+                  "active"
+                );
+              }
+            );
+
+
+          const target =
+            document.getElementById(
+              "page-" + pageName
+            );
+
+
+          if(target){
+
+            target.classList.add(
               "active"
             );
-          });
+
+          }
 
 
-        const target =
-          document.getElementById(
-            "page-" + pageName
-          );
+          document
+            .querySelectorAll(".nav button")
+            .forEach(
+              btn=>{
+                btn.classList.remove(
+                  "active"
+                );
+              }
+            );
 
 
-        if(target){
-
-          target.classList.add(
+          button.classList.add(
             "active"
           );
 
         }
+      );
+
+    }
+  );
 
 
-        document
-          .querySelectorAll(".nav button")
-          .forEach(btn=>{
-            btn.classList.remove(
-              "active"
-            );
-          });
-
-
-        button.classList.add(
-          "active"
-        );
-
-      }
-    );
-
-  });
-
-
-/* =========================
-   SUPER ADMIN WALLET
-========================= */
+/* SUPER ADMIN WALLET */
 
 function loadSuperAdminWallet(uid){
 
-  if(!isSuperAdmin(auth.currentUser)){
+  if(
+    !isSuperAdmin(
+      auth.currentUser
+    )
+  ){
 
     walletBalance.innerText =
       "LOCKED";
@@ -1588,7 +2094,9 @@ function loadSuperAdminWallet(uid){
   const walletRef =
     ref(
       database,
-      "wallets/" + uid + "/balance"
+      "wallets/" +
+      uid +
+      "/balance"
     );
 
 
@@ -1601,7 +2109,10 @@ function loadSuperAdminWallet(uid){
 
 
       walletBalance.innerText =
-        Number(balance || 0).toLocaleString();
+        Number(
+          balance || 0
+        ).toLocaleString();
+
 
       walletStatus.innerText =
         "Super Admin wallet is active.";
@@ -1614,8 +2125,10 @@ function loadSuperAdminWallet(uid){
         error
       );
 
+
       walletBalance.innerText =
         "Protected";
+
 
       walletStatus.innerText =
         "Wallet data could not be loaded.";
@@ -1626,12 +2139,12 @@ function loadSuperAdminWallet(uid){
 }
 
 
-/* =========================
-   P2P REGISTRATION
-========================= */
+/* P2P REGISTRATION */
 
 document
-  .getElementById("btnP2PRegister")
+  .getElementById(
+    "btnP2PRegister"
+  )
   .addEventListener(
     "click",
     async function(){
@@ -1655,25 +2168,30 @@ document
           .getElementById("p2pName")
           .value.trim();
 
+
       const country =
         document
           .getElementById("p2pCountry")
           .value.trim();
+
 
       const city =
         document
           .getElementById("p2pCity")
           .value.trim();
 
+
       const skill =
         document
           .getElementById("p2pSkill")
           .value.trim();
 
+
       const experience =
         document
           .getElementById("p2pExperience")
           .value.trim();
+
 
       const phone =
         document
@@ -1747,21 +2265,26 @@ document
           .getElementById("p2pName")
           .value = "";
 
+
         document
           .getElementById("p2pCountry")
           .value = "";
+
 
         document
           .getElementById("p2pCity")
           .value = "";
 
+
         document
           .getElementById("p2pSkill")
           .value = "";
 
+
         document
           .getElementById("p2pExperience")
           .value = "";
+
 
         document
           .getElementById("p2pPhone")
@@ -1775,6 +2298,7 @@ document
           error
         );
 
+
         p2pStatus.innerText =
           "Registration Error: " +
           error.message;
@@ -1785,9 +2309,7 @@ document
   );
 
 
-/* =========================
-   LOAD P2P WORKERS
-========================= */
+/* LOAD P2P WORKERS */
 
 function loadP2PWorkers(){
 
@@ -1802,7 +2324,8 @@ function loadP2PWorkers(){
     workersRef,
     function(snapshot){
 
-      p2pList.innerHTML = "";
+      p2pList.innerHTML =
+        "";
 
 
       if(!snapshot.exists()){
@@ -1827,6 +2350,7 @@ function loadP2PWorkers(){
               "div"
             );
 
+
           item.className =
             "workerItem";
 
@@ -1834,27 +2358,37 @@ function loadP2PWorkers(){
           item.innerHTML =
 
             "<strong>" +
+
             escapeHTML(
               worker.name || ""
             ) +
+
             "</strong><br>" +
 
             "<small>" +
+
             escapeHTML(
               worker.skill || ""
             ) +
+
             " • " +
+
             escapeHTML(
               worker.city || ""
             ) +
+
             ", " +
+
             escapeHTML(
               worker.country || ""
             ) +
+
             " • " +
+
             escapeHTML(
               worker.experience || ""
             ) +
+
             "</small>";
 
 
@@ -1873,6 +2407,7 @@ function loadP2PWorkers(){
         error
       );
 
+
       p2pList.innerHTML =
         "<div class='workerItem'>Unable to load P2P records.</div>";
 
@@ -1882,25 +2417,41 @@ function loadP2PWorkers(){
 }
 
 
-/* =========================
-   HTML SAFETY
-========================= */
+/* HTML SAFETY */
 
 function escapeHTML(value){
 
   return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
 
 }
 
 
-/* =========================
-   ADMIN WALLET CONTROLS
-========================= */
+/* ADMIN WALLET CONTROLS */
 
 async function changeWallet(
   addAmount
@@ -1910,7 +2461,11 @@ async function changeWallet(
     auth.currentUser;
 
 
-  if(!isSuperAdmin(currentUser)){
+  if(
+    !isSuperAdmin(
+      currentUser
+    )
+  ){
 
     adminStatus.innerText =
       "Access denied. Super Admin only.";
@@ -1922,13 +2477,18 @@ async function changeWallet(
 
   const targetUid =
     document
-      .getElementById("adminTargetUid")
+      .getElementById(
+        "adminTargetUid"
+      )
       .value.trim();
+
 
   const amount =
     Number(
       document
-        .getElementById("adminAmount")
+        .getElementById(
+          "adminAmount"
+        )
         .value
     );
 
@@ -1968,7 +2528,9 @@ async function changeWallet(
 
 
     const snapshot =
-      await get(walletRef);
+      await get(
+        walletRef
+      );
 
 
     const currentBalance =
@@ -1983,12 +2545,14 @@ async function changeWallet(
     if(addAmount){
 
       newBalance =
-        currentBalance + amount;
+        currentBalance +
+        amount;
 
     }else{
 
       newBalance =
-        currentBalance - amount;
+        currentBalance -
+        amount;
 
     }
 
@@ -2020,6 +2584,7 @@ async function changeWallet(
       error
     );
 
+
     adminStatus.innerText =
       "Wallet Error: " +
       error.message;
@@ -2029,25 +2594,40 @@ async function changeWallet(
 }
 
 
+/* GRANT */
+
 document
-  .getElementById("btnGrant")
+  .getElementById(
+    "btnGrant"
+  )
   .addEventListener(
     "click",
     function(){
-      changeWallet(true);
+
+      changeWallet(
+        true
+      );
+
     }
   );
 
 
+/* DEDUCT */
+
 document
-  .getElementById("btnDeduct")
+  .getElementById(
+    "btnDeduct"
+  )
   .addEventListener(
     "click",
     function(){
-      changeWallet(false);
+
+      changeWallet(
+        false
+      );
+
     }
   );
-
 
 </script>
 
