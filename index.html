@@ -4,97 +4,226 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>International Awam Network Hub V2</title>
+<title>International Awam Network — VVIP AI Academy</title>
 
-<!-- GOOGLE ADSENSE VERIFICATION -->
+<!-- GOOGLE ADSENSE -->
 <script async
 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8868471730488054"
-crossorigin="anonymous">
-</script>
+crossorigin="anonymous"></script>
 
-  <meta name="google-adsense-account" content="ca-pub-8868471730488054">
-  
+<meta name="google-adsense-account"
+content="ca-pub-8868471730488054">
+
 <style>
+
+:root{
+  --bg:#f4f7fb;
+  --panel:#ffffff;
+  --panel2:#f8fafc;
+  --text:#172033;
+  --muted:#667085;
+  --line:#e5e9ef;
+  --nav:#071827;
+  --nav2:#0d2639;
+  --gold:#d6a94b;
+  --green:#087f5b;
+  --green2:#0b9b70;
+  --blue:#1769aa;
+  --purple:#6941c6;
+  --red:#c62828;
+  --shadow:0 12px 35px rgba(16,24,40,.07);
+}
+
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f4f7fb;
-  color:#172033;
+  font-family:
+    Inter,
+    Arial,
+    Helvetica,
+    sans-serif;
+  background:
+    radial-gradient(
+      circle at 15% 0%,
+      rgba(8,127,91,.06),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(105,65,198,.06),
+      transparent 25%
+    ),
+    var(--bg);
+  color:var(--text);
+}
+
+button,
+input,
+select,
+textarea{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
 }
 
 .hidden{
   display:none!important;
 }
 
-/* LOGIN */
+/* =========================================================
+   LOGIN
+========================================================= */
+
 #loginScreen{
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:20px;
+  padding:22px;
   background:
-    radial-gradient(circle at top left,#dff7ec,transparent 35%),
-    radial-gradient(circle at bottom right,#dce9ff,transparent 35%),
-    #f4f7fb;
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(214,169,75,.15),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(8,127,91,.15),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      #eef5f3,
+      #f4f7fb 45%,
+      #eef2f9
+    );
 }
 
 .loginBox{
   width:100%;
-  max-width:460px;
-  background:white;
-  border-radius:24px;
-  padding:35px 28px;
+  max-width:520px;
+  background:rgba(255,255,255,.96);
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:30px;
+  padding:38px 32px;
   text-align:center;
-  box-shadow:0 20px 60px rgba(0,0,0,.12);
-  border:1px solid #e7ebf2;
+  box-shadow:
+    0 35px 90px rgba(7,24,39,.15),
+    0 2px 10px rgba(7,24,39,.05);
+  position:relative;
+  overflow:hidden;
+}
+
+.loginBox:before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:5px;
+  background:
+    linear-gradient(
+      90deg,
+      var(--green),
+      var(--gold),
+      var(--blue)
+    );
+}
+
+.loginCrown{
+  font-size:25px;
+  color:var(--gold);
+  margin-bottom:8px;
 }
 
 .logoCircle{
-  width:82px;
-  height:82px;
-  border-radius:50%;
+  width:92px;
+  height:92px;
+  border-radius:27px;
   margin:0 auto 18px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:34px;
-  font-weight:bold;
+  font-size:31px;
+  font-weight:900;
   color:white;
-  background:linear-gradient(135deg,#087f5b,#0b5ed7);
+  background:
+    linear-gradient(
+      135deg,
+      #073b2a,
+      #087f5b 52%,
+      #1769aa
+    );
+  box-shadow:
+    0 15px 35px rgba(8,127,91,.28);
+  transform:rotate(-2deg);
 }
 
 .loginBox h1{
-  font-size:25px;
-  margin-bottom:8px;
-  color:#073b2a;
+  font-size:28px;
+  color:#092f29;
+  margin-bottom:7px;
+}
+
+.loginTag{
+  color:var(--gold);
+  font-weight:800;
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:15px;
 }
 
 .loginBox p{
-  color:#667085;
-  line-height:1.6;
-  margin-bottom:25px;
+  color:var(--muted);
+  line-height:1.7;
+  margin-bottom:26px;
+  font-size:14px;
+}
+
+.loginFeatures{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-bottom:22px;
+}
+
+.loginFeature{
+  background:#f7faf9;
+  border:1px solid #e6efeb;
+  border-radius:12px;
+  padding:11px 5px;
+  font-size:10px;
+  color:#475467;
+  font-weight:700;
 }
 
 .googleBtn{
   width:100%;
   border:0;
   padding:15px;
-  border-radius:12px;
-  background:#111827;
+  border-radius:13px;
+  background:#101828;
   color:white;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
+  font-size:15px;
+  font-weight:800;
+  box-shadow:0 8px 20px rgba(16,24,40,.18);
+  transition:.2s;
 }
 
 .googleBtn:hover{
-  background:#263244;
+  transform:translateY(-1px);
+  background:#1d2939;
 }
 
 .googleBtn:disabled{
@@ -104,245 +233,669 @@ body{
 
 #loginStatus{
   margin-top:15px;
-  font-size:13px;
-  color:#667085;
+  font-size:12px;
+  color:var(--muted);
   min-height:20px;
 }
 
-/* APP */
+.loginLegal{
+  margin-top:22px;
+  font-size:10px;
+  color:#98a2b3;
+  line-height:1.6;
+}
+
+/* =========================================================
+   APP SHELL
+========================================================= */
+
 #app{
   min-height:100vh;
   display:flex;
 }
 
 .sidebar{
-  width:260px;
-  background:#071b2d;
+  width:274px;
+  background:
+    linear-gradient(
+      180deg,
+      #061724 0%,
+      #071b2d 55%,
+      #061521 100%
+    );
   color:white;
   min-height:100vh;
-  padding:20px 14px;
+  padding:17px 13px;
   position:fixed;
   left:0;
   top:0;
   bottom:0;
   overflow-y:auto;
-  z-index:20;
+  z-index:100;
+  border-right:1px solid rgba(255,255,255,.07);
 }
 
 .brand{
-  padding:10px 12px 22px;
-  border-bottom:1px solid rgba(255,255,255,.12);
-  margin-bottom:15px;
+  padding:10px 13px 18px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+  margin-bottom:13px;
+}
+
+.brandTop{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.brandMark{
+  width:38px;
+  height:38px;
+  border-radius:11px;
+  background:
+    linear-gradient(
+      135deg,
+      #087f5b,
+      #1769aa
+    );
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:13px;
+  box-shadow:0 5px 15px rgba(0,0,0,.2);
 }
 
 .brandTitle{
-  font-size:17px;
-  font-weight:bold;
-  color:#fff;
+  font-size:13px;
+  font-weight:900;
+  line-height:1.2;
+  letter-spacing:.4px;
 }
 
 .brandSub{
-  margin-top:5px;
-  font-size:11px;
-  color:#a7b7c9;
+  margin-top:7px;
+  font-size:9px;
+  color:#9aafc2;
   line-height:1.5;
+  text-transform:uppercase;
+  letter-spacing:.8px;
 }
 
 .navTitle{
-  font-size:10px;
-  color:#8092a6;
-  margin:18px 12px 7px;
+  font-size:9px;
+  color:#6f8497;
+  margin:17px 12px 7px;
   text-transform:uppercase;
-  letter-spacing:1px;
+  letter-spacing:1.5px;
+  font-weight:800;
 }
 
 .nav button{
   width:100%;
-  border:0;
+  border:1px solid transparent;
   background:transparent;
-  color:#d9e3ed;
-  padding:12px;
+  color:#cbd7e2;
+  padding:11px 12px;
   border-radius:10px;
   text-align:left;
-  margin-bottom:5px;
-  cursor:pointer;
-  font-size:14px;
+  margin-bottom:4px;
+  font-size:12px;
+  font-weight:600;
+  transition:.18s;
 }
 
 .nav button:hover,
 .nav button.active{
-  background:#123957;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(8,127,91,.28),
+      rgba(23,105,170,.18)
+    );
+  border-color:rgba(255,255,255,.07);
   color:#fff;
 }
 
-.nav button.adminNav{
-  color:#ffd166;
+.nav button.active{
+  box-shadow:
+    inset 3px 0 0 var(--gold);
 }
 
+.nav button.adminNav{
+  color:#f4ca68;
+}
+
+.aiNav{
+  position:relative;
+}
+
+.aiNav:after{
+  content:"AI";
+  position:absolute;
+  right:9px;
+  top:9px;
+  font-size:8px;
+  padding:2px 5px;
+  border-radius:5px;
+  background:rgba(105,65,198,.3);
+  color:#d9c9ff;
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
 .main{
-  margin-left:260px;
-  width:calc(100% - 260px);
+  margin-left:274px;
+  width:calc(100% - 274px);
   min-height:100vh;
 }
 
 .topbar{
-  height:70px;
-  background:white;
-  border-bottom:1px solid #e5e9ef;
+  height:72px;
+  background:
+    rgba(255,255,255,.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:0 25px;
   position:sticky;
   top:0;
-  z-index:10;
+  z-index:50;
+}
+
+.topLeft{
+  display:flex;
+  align-items:center;
+  gap:13px;
+}
+
+.mobileMenu{
+  display:none;
+  border:0;
+  background:#f1f4f8;
+  padding:8px 10px;
+  border-radius:8px;
 }
 
 .topTitle{
-  font-weight:bold;
-  color:#16324f;
+  font-weight:900;
+  color:#102f46;
+  font-size:14px;
+}
+
+.topSubtitle{
+  font-size:10px;
+  color:#98a2b3;
+  margin-top:3px;
 }
 
 .account{
   display:flex;
   align-items:center;
-  gap:12px;
-  font-size:12px;
+  gap:10px;
+  font-size:11px;
   color:#667085;
-}
-
-.account strong{
-  color:#172033;
 }
 
 .digitalClock{
   font-family:monospace;
-  font-size:14px;
-  font-weight:bold;
-  color:#087f5b;
+  font-size:12px;
+  font-weight:800;
+  color:var(--green);
   background:#eef8f4;
-  padding:8px 11px;
+  padding:8px 10px;
   border-radius:9px;
-  letter-spacing:.5px;
+}
+
+.roleBadge{
+  padding:7px 9px;
+  border-radius:8px;
+  background:#f4f6f8;
+  font-weight:800;
+  color:#344054;
 }
 
 .logoutBtn{
   border:0;
   background:#f1f4f8;
   color:#344054;
-  padding:8px 12px;
+  padding:8px 11px;
   border-radius:8px;
-  cursor:pointer;
+  font-weight:700;
 }
 
 .content{
   padding:25px;
+  max-width:1800px;
 }
 
 .page{
   display:none;
+  animation:pageIn .25s ease;
 }
 
 .page.active{
   display:block;
 }
 
+@keyframes pageIn{
+  from{
+    opacity:0;
+    transform:translateY(5px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* =========================================================
+   COMMON
+========================================================= */
+
 .pageHeader{
-  margin-bottom:20px;
+  margin-bottom:21px;
 }
 
 .pageHeader h2{
   font-size:25px;
-  color:#12324a;
+  color:#102f46;
+  letter-spacing:-.3px;
 }
 
 .pageHeader p{
   margin-top:5px;
-  color:#667085;
+  color:var(--muted);
+  font-size:13px;
 }
 
-/* CARDS */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
+.eyebrow{
+  display:inline-block;
+  color:var(--green);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  margin-bottom:6px;
 }
 
 .card{
-  background:white;
-  border:1px solid #e5e9ef;
-  border-radius:16px;
+  background:rgba(255,255,255,.95);
+  border:1px solid var(--line);
+  border-radius:17px;
   padding:20px;
-  box-shadow:0 5px 20px rgba(16,24,40,.04);
+  box-shadow:var(--shadow);
 }
 
 .card h3{
   color:#16324f;
   margin-bottom:8px;
+  font-size:15px;
 }
 
 .card p{
-  color:#667085;
-  line-height:1.6;
-  font-size:14px;
+  color:var(--muted);
+  line-height:1.65;
+  font-size:13px;
 }
 
-.stat{
-  font-size:28px;
-  font-weight:bold;
-  color:#087f5b;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
 }
 
 .sectionGrid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:18px;
+  gap:16px;
 }
 
 .feature{
-  min-height:150px;
+  min-height:145px;
+  transition:.2s;
+}
+
+.feature:hover{
+  transform:translateY(-2px);
+  box-shadow:0 15px 35px rgba(16,24,40,.1);
 }
 
 .icon{
-  font-size:28px;
+  font-size:25px;
   margin-bottom:10px;
 }
 
-/* WALLET */
-.walletBox{
-  background:linear-gradient(135deg,#073b2a,#0a7c59);
-  color:white;
-  border-radius:20px;
-  padding:28px;
-  margin-bottom:20px;
-  box-shadow:0 15px 35px rgba(7,59,42,.2);
+.stat{
+  font-size:24px;
+  font-weight:900;
+  color:var(--green);
+  margin-bottom:5px;
 }
 
-.walletLabel{
-  opacity:.8;
-  font-size:13px;
+.miniLabel{
+  font-size:10px;
+  color:#98a2b3;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  font-weight:800;
 }
 
-.walletAmount{
-  font-size:38px;
-  font-weight:bold;
-  margin-top:8px;
-}
-
-.adminBadge{
+.premiumBadge{
   display:inline-block;
-  margin-top:12px;
-  background:rgba(255,255,255,.15);
-  padding:7px 12px;
+  background:#fff8e7;
+  color:#946c17;
+  border:1px solid #f3dfab;
+  padding:5px 8px;
   border-radius:20px;
-  font-size:12px;
+  font-size:9px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.6px;
 }
 
-/* FORMS */
+.aiBadge{
+  display:inline-block;
+  background:#f1ebff;
+  color:#6941c6;
+  border:1px solid #ded1ff;
+  padding:5px 8px;
+  border-radius:20px;
+  font-size:9px;
+  font-weight:900;
+}
+
+/* =========================================================
+   HERO DASHBOARD
+========================================================= */
+
+.hero{
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(214,169,75,.16),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 15% 90%,
+      rgba(8,127,91,.2),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #062b29,
+      #073b2a 45%,
+      #102f46
+    );
+  border-radius:23px;
+  padding:28px;
+  color:white;
+  position:relative;
+  overflow:hidden;
+  margin-bottom:20px;
+  box-shadow:
+    0 20px 50px rgba(7,59,42,.2);
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:240px;
+  height:240px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:50%;
+  right:-70px;
+  top:-90px;
+  box-shadow:
+    0 0 0 30px rgba(255,255,255,.02),
+    0 0 0 60px rgba(255,255,255,.015);
+}
+
+.heroContent{
+  position:relative;
+  z-index:2;
+  max-width:850px;
+}
+
+.heroKicker{
+  color:#e9c66b;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.hero h1{
+  font-size:31px;
+  line-height:1.15;
+  margin-bottom:9px;
+}
+
+.hero p{
+  color:#d0dfdb;
+  line-height:1.65;
+  font-size:13px;
+  max-width:750px;
+}
+
+.heroActions{
+  display:flex;
+  gap:9px;
+  margin-top:18px;
+  flex-wrap:wrap;
+}
+
+.heroBtn{
+  border:0;
+  padding:10px 14px;
+  border-radius:9px;
+  font-weight:800;
+  font-size:11px;
+}
+
+.heroBtn.primary{
+  background:white;
+  color:#073b2a;
+}
+
+.heroBtn.secondary{
+  background:rgba(255,255,255,.1);
+  color:white;
+  border:1px solid rgba(255,255,255,.16);
+}
+
+/* =========================================================
+   DASHBOARD STATS
+========================================================= */
+
+.statCard{
+  position:relative;
+  overflow:hidden;
+}
+
+.statCard:after{
+  content:"";
+  position:absolute;
+  right:-22px;
+  bottom:-35px;
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:rgba(8,127,91,.05);
+}
+
+.statIcon{
+  font-size:21px;
+  margin-bottom:8px;
+}
+
+.progressBar{
+  width:100%;
+  height:7px;
+  background:#edf0f3;
+  border-radius:10px;
+  overflow:hidden;
+  margin-top:10px;
+}
+
+.progressFill{
+  height:100%;
+  width:0%;
+  background:
+    linear-gradient(
+      90deg,
+      var(--green),
+      var(--green2)
+    );
+  border-radius:10px;
+  transition:.5s;
+}
+
+/* =========================================================
+   AI COMMAND CARDS
+========================================================= */
+
+.aiPanel{
+  background:
+    linear-gradient(
+      135deg,
+      #fbf9ff,
+      #f8faff
+    );
+  border:1px solid #e5ddfa;
+}
+
+.aiHeader{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:15px;
+}
+
+.aiTitle{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.aiOrb{
+  width:42px;
+  height:42px;
+  border-radius:13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    linear-gradient(
+      135deg,
+      #6941c6,
+      #1769aa
+    );
+  color:white;
+  font-weight:900;
+  box-shadow:0 8px 20px rgba(105,65,198,.2);
+}
+
+.aiStatus{
+  font-size:9px;
+  font-weight:900;
+  color:#6941c6;
+  background:#f0eaff;
+  padding:6px 8px;
+  border-radius:20px;
+}
+
+.aiGrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:15px;
+}
+
+.aiAction{
+  border:1px solid #e7e1f5;
+  background:white;
+  border-radius:11px;
+  padding:12px;
+  text-align:left;
+  transition:.2s;
+}
+
+.aiAction:hover{
+  border-color:#cfc1ee;
+  transform:translateY(-1px);
+}
+
+.aiAction strong{
+  display:block;
+  font-size:11px;
+  color:#344054;
+  margin-bottom:4px;
+}
+
+.aiAction span{
+  font-size:10px;
+  color:#98a2b3;
+  line-height:1.4;
+}
+
+/* =========================================================
+   LEARNING ROADMAP
+========================================================= */
+
+.roadmap{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.roadStep{
+  border:1px solid var(--line);
+  background:#fff;
+  padding:15px;
+  border-radius:13px;
+  position:relative;
+}
+
+.roadNumber{
+  width:27px;
+  height:27px;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#edf8f4;
+  color:var(--green);
+  font-size:11px;
+  font-weight:900;
+  margin-bottom:9px;
+}
+
+.roadStep strong{
+  display:block;
+  color:#344054;
+  font-size:12px;
+  margin-bottom:4px;
+}
+
+.roadStep span{
+  color:#98a2b3;
+  font-size:10px;
+  line-height:1.4;
+}
+
+/* =========================================================
+   FORMS
+========================================================= */
+
 .formGrid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:15px;
+  gap:14px;
 }
 
 .inputGroup{
@@ -356,8 +909,8 @@ body{
 }
 
 .inputGroup label{
-  font-size:13px;
-  font-weight:bold;
+  font-size:11px;
+  font-weight:800;
   color:#344054;
 }
 
@@ -367,117 +920,522 @@ body{
   width:100%;
   border:1px solid #d0d5dd;
   border-radius:9px;
-  padding:11px;
-  font-size:14px;
+  padding:10px;
+  font-size:13px;
   outline:none;
+  background:white;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus,
+.inputGroup textarea:focus{
+  border-color:#77a99a;
+  box-shadow:0 0 0 3px rgba(8,127,91,.08);
 }
 
 .inputGroup textarea{
-  min-height:100px;
+  min-height:95px;
   resize:vertical;
 }
 
 .primaryBtn{
   border:0;
-  background:#087f5b;
+  background:var(--green);
   color:white;
-  padding:12px 18px;
+  padding:11px 16px;
   border-radius:9px;
   cursor:pointer;
-  font-weight:bold;
+  font-weight:800;
+  font-size:12px;
 }
 
 .primaryBtn:hover{
   background:#066747;
 }
 
+.secondaryBtn{
+  border:1px solid #d0d5dd;
+  background:white;
+  color:#344054;
+  padding:10px 14px;
+  border-radius:9px;
+  font-weight:800;
+  font-size:11px;
+}
+
 .dangerBtn{
   border:0;
-  background:#c62828;
+  background:var(--red);
   color:white;
-  padding:12px 18px;
+  padding:11px 16px;
   border-radius:9px;
   cursor:pointer;
-  font-weight:bold;
+  font-weight:800;
+  font-size:12px;
 }
 
 .status{
   margin-top:12px;
-  font-size:13px;
+  font-size:11px;
   color:#667085;
+  min-height:17px;
 }
 
-/* P2P LIST */
-.workerList{
-  margin-top:20px;
+/* =========================================================
+   EDUCATION
+========================================================= */
+
+.levelCard{
+  border-top:3px solid var(--green);
+}
+
+.levelCard:nth-child(2){
+  border-top-color:var(--blue);
+}
+
+.levelCard:nth-child(3){
+  border-top-color:var(--purple);
+}
+
+.levelCard:nth-child(4){
+  border-top-color:var(--gold);
+}
+
+.courseList{
+  margin-top:11px;
   display:grid;
-  gap:10px;
+  gap:7px;
+}
+
+.courseItem{
+  padding:8px 9px;
+  border-radius:8px;
+  background:#f7f9fb;
+  color:#475467;
+  font-size:10px;
+  font-weight:700;
+}
+
+/* =========================================================
+   PRACTICAL LAB
+========================================================= */
+
+.labLayout{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:17px;
+}
+
+.labConsole{
+  background:#071827;
+  color:#d8e7e2;
+  border-radius:14px;
+  overflow:hidden;
+  min-height:320px;
+}
+
+.consoleTop{
+  background:#0d2639;
+  padding:10px 13px;
+  display:flex;
+  justify-content:space-between;
+  font-size:10px;
+  color:#9eb0c1;
+}
+
+.consoleBody{
+  padding:17px;
+  font-family:monospace;
+  font-size:11px;
+  line-height:1.8;
+}
+
+.consoleGreen{
+  color:#7ee2b8;
+}
+
+.consoleGold{
+  color:#e9c66b;
+}
+
+.labTools{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+}
+
+.labTool{
+  padding:12px;
+  background:#f8fafc;
+  border:1px solid var(--line);
+  border-radius:10px;
+}
+
+.labTool strong{
+  display:block;
+  font-size:11px;
+  color:#344054;
+  margin-bottom:3px;
+}
+
+.labTool span{
+  font-size:9px;
+  color:#98a2b3;
+}
+
+/* =========================================================
+   EXAMS
+========================================================= */
+
+.examTimeline{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
+}
+
+.examNode{
+  text-align:center;
+  padding:13px 7px;
+  border-radius:10px;
+  background:#f8fafc;
+  border:1px solid var(--line);
+}
+
+.examNode .num{
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  background:#edf8f4;
+  color:var(--green);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 7px;
+  font-size:10px;
+  font-weight:900;
+}
+
+.examNode strong{
+  display:block;
+  font-size:10px;
+  color:#344054;
+}
+
+.examNode span{
+  display:block;
+  margin-top:3px;
+  font-size:8px;
+  color:#98a2b3;
+}
+
+/* =========================================================
+   CLASSROOM
+========================================================= */
+
+.classroom{
+  background:
+    linear-gradient(
+      135deg,
+      #fff,
+      #f8fbff
+    );
+  border:1px solid #dce6f2;
+}
+
+.classTop{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.classAvatar{
+  width:43px;
+  height:43px;
+  border-radius:13px;
+  background:
+    linear-gradient(
+      135deg,
+      #1769aa,
+      #6941c6
+    );
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:19px;
+}
+
+.classInfo{
+  flex:1;
+}
+
+.classInfo strong{
+  display:block;
+  color:#16324f;
+  font-size:12px;
+}
+
+.classInfo span{
+  color:#98a2b3;
+  font-size:9px;
+}
+
+.classTools{
+  display:flex;
+  gap:7px;
+  margin-top:14px;
+  flex-wrap:wrap;
+}
+
+.classTool{
+  padding:7px 9px;
+  border-radius:8px;
+  background:#f1f5f9;
+  color:#475467;
+  font-size:9px;
+  font-weight:800;
+}
+
+/* =========================================================
+   CERTIFICATE
+========================================================= */
+
+.certificate{
+  border:2px solid #ead79d;
+  background:
+    linear-gradient(
+      135deg,
+      #fffdf6,
+      #fff
+    );
+  position:relative;
+  overflow:hidden;
+}
+
+.certificate:after{
+  content:"VVIP";
+  position:absolute;
+  right:-15px;
+  top:15px;
+  font-size:45px;
+  font-weight:900;
+  color:rgba(214,169,75,.07);
+  transform:rotate(15deg);
+}
+
+.certificateTitle{
+  color:#8c681a;
+  font-size:10px;
+  letter-spacing:2px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.certificate h3{
+  font-size:20px;
+  margin:9px 0;
+  color:#173b3a;
+}
+
+.certificateLine{
+  width:100px;
+  height:2px;
+  background:var(--gold);
+  margin:10px 0;
+}
+
+/* =========================================================
+   P2P
+========================================================= */
+
+.workerList{
+  margin-top:17px;
+  display:grid;
+  gap:9px;
 }
 
 .workerItem{
   background:#f8fafc;
   border:1px solid #e4e7ec;
   border-radius:10px;
-  padding:14px;
+  padding:12px;
 }
 
 .workerItem strong{
   color:#16324f;
+  font-size:12px;
 }
 
 .workerItem small{
   color:#667085;
+  font-size:10px;
 }
 
-/* ADMIN */
+/* =========================================================
+   WALLET
+========================================================= */
+
+.walletBox{
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(214,169,75,.22),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #073b2a,
+      #0a7c59,
+      #102f46
+    );
+  color:white;
+  border-radius:21px;
+  padding:27px;
+  margin-bottom:18px;
+  box-shadow:0 18px 45px rgba(7,59,42,.2);
+  position:relative;
+  overflow:hidden;
+}
+
+.walletLabel{
+  opacity:.8;
+  font-size:10px;
+  letter-spacing:1px;
+  font-weight:800;
+}
+
+.walletAmount{
+  font-size:38px;
+  font-weight:900;
+  margin-top:8px;
+}
+
+.adminBadge{
+  display:inline-block;
+  margin-top:12px;
+  background:rgba(255,255,255,.13);
+  padding:7px 10px;
+  border-radius:20px;
+  font-size:9px;
+}
+
+/* =========================================================
+   ADMIN
+========================================================= */
+
 .adminWarning{
-  background:#fff4e5;
-  border:1px solid #ffd08a;
+  background:#fff8e7;
+  border:1px solid #f0d79b;
   color:#7a4b00;
   border-radius:12px;
-  padding:14px;
-  margin-bottom:20px;
+  padding:13px;
+  margin-bottom:17px;
   line-height:1.5;
+  font-size:11px;
 }
 
 .adminOnlyBox{
   background:white;
-  border:1px solid #e5e9ef;
+  border:1px solid var(--line);
   border-radius:16px;
-  padding:20px;
+  padding:19px;
+  box-shadow:var(--shadow);
 }
 
-/* ADSENSE AREA */
+.commandGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.commandCard{
+  background:#f8fafc;
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:13px;
+}
+
+.commandCard strong{
+  display:block;
+  font-size:11px;
+  color:#344054;
+  margin-bottom:4px;
+}
+
+.commandCard span{
+  font-size:9px;
+  color:#98a2b3;
+  line-height:1.5;
+}
+
+.liveDot{
+  display:inline-block;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#12b76a;
+  margin-right:5px;
+}
+
+/* =========================================================
+   LEGAL
+========================================================= */
+
+.legalBox{
+  max-width:1000px;
+  line-height:1.75;
+}
+
+.legalBox h3{
+  margin-top:19px;
+}
+
+.legalBox p{
+  margin-bottom:10px;
+}
+
+/* =========================================================
+   ADS
+========================================================= */
+
 .adContainer{
   width:100%;
-  min-height:90px;
-  margin-top:25px;
-  padding:12px;
+  min-height:82px;
+  margin-top:22px;
+  padding:10px;
   background:#fff;
-  border:1px solid #e5e9ef;
-  border-radius:14px;
+  border:1px solid var(--line);
+  border-radius:13px;
   text-align:center;
   overflow:hidden;
 }
 
 .adLabel{
-  font-size:10px;
+  font-size:8px;
   color:#98a2b3;
-  margin-bottom:6px;
-  letter-spacing:1px;
+  margin-bottom:5px;
+  letter-spacing:1.2px;
   text-transform:uppercase;
 }
 
-/* FOOTER */
+/* =========================================================
+   FOOTER
+========================================================= */
+
 .footer{
-  margin-top:30px;
+  margin-top:28px;
   color:#98a2b3;
-  font-size:12px;
+  font-size:10px;
   text-align:center;
+  line-height:1.6;
 }
 
-/* MOBILE */
-@media(max-width:1000px){
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:1150px){
 
   .grid{
     grid-template-columns:repeat(2,1fr);
@@ -487,14 +1445,35 @@ body{
     grid-template-columns:repeat(2,1fr);
   }
 
+  .aiGrid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .roadmap{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .labLayout{
+    grid-template-columns:1fr;
+  }
+
+  .commandGrid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
 }
 
 @media(max-width:760px){
 
   .sidebar{
-    width:220px;
+    width:245px;
     transform:translateX(-100%);
     transition:.25s;
+  }
+
+  .sidebar.mobileOpen{
+    transform:translateX(0);
+    box-shadow:20px 0 50px rgba(0,0,0,.25);
   }
 
   .main{
@@ -502,21 +1481,42 @@ body{
     width:100%;
   }
 
+  .mobileMenu{
+    display:block;
+  }
+
   .topbar{
-    padding:0 15px;
+    padding:0 12px;
   }
 
   .topTitle{
-    font-size:13px;
+    font-size:11px;
+  }
+
+  .topSubtitle{
+    display:none;
   }
 
   .content{
-    padding:15px;
+    padding:14px;
   }
 
   .grid,
   .sectionGrid,
-  .formGrid{
+  .formGrid,
+  .commandGrid{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding:21px;
+  }
+
+  .hero h1{
+    font-size:24px;
+  }
+
+  .loginFeatures{
     grid-template-columns:1fr;
   }
 
@@ -525,35 +1525,120 @@ body{
   }
 
   .digitalClock{
-    font-size:11px;
-    padding:6px 7px;
+    font-size:10px;
+    padding:6px;
+  }
+
+  .roleBadge{
+    display:none;
   }
 
   .logoutBtn{
-    padding:7px 9px;
+    padding:7px 8px;
+    font-size:10px;
+  }
+
+  .aiGrid,
+  .roadmap,
+  .labTools,
+  .examTimeline{
+    grid-template-columns:1fr;
+  }
+
+  .classTop{
+    align-items:flex-start;
   }
 
 }
+
+/* =========================================================
+   SMALL UTILITY
+========================================================= */
+
+.mt{
+  margin-top:17px;
+}
+
+.mb{
+  margin-bottom:17px;
+}
+
+.flex{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.space{
+  justify-content:space-between;
+}
+
+.hr{
+  height:1px;
+  background:var(--line);
+  margin:17px 0;
+}
+
+.notice{
+  background:#f7f9fb;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:11px;
+  color:#667085;
+  font-size:10px;
+  line-height:1.5;
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN SCREEN -->
+<!-- =======================================================
+     LOGIN
+======================================================= -->
+
 <section id="loginScreen">
 
   <div class="loginBox">
 
+    <div class="loginCrown">✦ VVIP DIGITAL PLATFORM ✦</div>
+
     <div class="logoCircle">AN</div>
 
-    <h1>International Awam Network</h1>
+    <div class="loginTag">
+      International AI Academy
+    </div>
+
+    <h1>
+      International Awam Network
+    </h1>
 
     <p>
-      Secure International Digital Community Hub for
-      Education, AI, E-Commerce, Services and Welfare.
+      A next-generation AI-powered education and digital
+      skills platform built around one journey:
+      <strong>Learn → Practice → Test → Improve → Build → Certify → Earn.</strong>
     </p>
 
-    <button id="btnGoogleLogin" class="googleBtn">
+    <div class="loginFeatures">
+
+      <div class="loginFeature">
+        🤖 AI Teacher
+      </div>
+
+      <div class="loginFeature">
+        💻 Practical Lab
+      </div>
+
+      <div class="loginFeature">
+        🏆 Certification
+      </div>
+
+    </div>
+
+    <button
+      id="btnGoogleLogin"
+      class="googleBtn">
       Continue with Google
     </button>
 
@@ -561,25 +1646,48 @@ body{
       Secure login required.
     </div>
 
+    <div class="loginLegal">
+      By entering the platform, you agree to the platform's
+      Terms, Privacy, AI Usage and Security policies.
+    </div>
+
   </div>
 
 </section>
 
 
-<!-- MAIN APP -->
+<!-- =======================================================
+     APPLICATION
+======================================================= -->
+
 <div id="app" class="hidden">
 
   <!-- SIDEBAR -->
-  <aside class="sidebar">
+
+  <aside id="sidebar" class="sidebar">
 
     <div class="brand">
 
-      <div class="brandTitle">
-        INTERNATIONAL AWAM NETWORK
+      <div class="brandTop">
+
+        <div class="brandMark">
+          AN
+        </div>
+
+        <div>
+
+          <div class="brandTitle">
+            INTERNATIONAL
+            <br>
+            AWAM NETWORK
+          </div>
+
+        </div>
+
       </div>
 
       <div class="brandSub">
-        VIP International Digital Community Hub
+        VVIP AI Education & Digital Skills Platform
       </div>
 
     </div>
@@ -588,19 +1696,70 @@ body{
     <div class="nav">
 
       <div class="navTitle">
-        Main
+        Command Centre
       </div>
 
-      <button class="active" data-page="dashboard">
-        🏠 Dashboard
+      <button
+        class="active"
+        data-page="dashboard">
+        ◈ Home Command
       </button>
+
+
+      <div class="navTitle">
+        AI Academy
+      </div>
+
+      <button
+        class="aiNav"
+        data-page="aiTeacher">
+        ✦ AI Teacher
+      </button>
+
+      <button
+        class="aiNav"
+        data-page="education">
+        🎓 Education Academy
+      </button>
+
+      <button
+        class="aiNav"
+        data-page="lab">
+        ⚙ AI Practical Lab
+      </button>
+
+      <button
+        class="aiNav"
+        data-page="exams">
+        📝 AI Exams
+      </button>
+
+      <button
+        class="aiNav"
+        data-page="classroom">
+        ◉ VIP Classrooms
+      </button>
+
+
+      <div class="navTitle">
+        Achievement
+      </div>
+
+      <button data-page="progress">
+        ◔ My Progress
+      </button>
+
+      <button data-page="certificates">
+        🏆 Certificates
+      </button>
+
+
+      <div class="navTitle">
+        Digital Network
+      </div>
 
       <button data-page="ecommerce">
         🛒 E-Commerce & Services
-      </button>
-
-      <button data-page="education">
-        🎓 Education & AI
       </button>
 
       <button data-page="p2p">
@@ -612,22 +1771,36 @@ body{
       </button>
 
 
-      <!-- SUPER ADMIN ONLY -->
+      <!-- SUPER ADMIN -->
+
       <div id="adminNavigation" class="hidden">
 
         <div class="navTitle">
           Super Admin
         </div>
 
-        <button class="adminNav" data-page="wallet">
-          💰 Wallet
+        <button
+          class="adminNav"
+          data-page="wallet">
+          💰 Wallet Control
         </button>
 
-        <button class="adminNav" data-page="admin">
-          👑 Super Admin Dashboard
+        <button
+          class="adminNav"
+          data-page="admin">
+          👑 Command Centre
         </button>
 
       </div>
+
+
+      <div class="navTitle">
+        Platform
+      </div>
+
+      <button data-page="security">
+        🔐 Security & Policies
+      </button>
 
     </div>
 
@@ -635,34 +1808,56 @@ body{
 
 
   <!-- MAIN -->
+
   <main class="main">
 
     <header class="topbar">
 
-      <div class="topTitle">
-        International Awam Network Hub
+      <div class="topLeft">
+
+        <button
+          id="mobileMenu"
+          class="mobileMenu">
+          ☰
+        </button>
+
+        <div>
+
+          <div class="topTitle">
+            International Awam Network
+          </div>
+
+          <div class="topSubtitle">
+            VVIP AI Education & Digital Skills Operating Platform
+          </div>
+
+        </div>
+
       </div>
+
 
       <div class="account">
 
-        <!-- LIVE DIGITAL CLOCK -->
-        <span id="digitalClock" class="digitalClock">
+        <span
+          id="digitalClock"
+          class="digitalClock">
           --:--:--
         </span>
 
-        <span>
-          <strong id="userRole">
-            User
-          </strong>
-        </span>
-
-        <!-- SUPER ADMIN EMAIL ONLY -->
         <span
-          class="accountEmail hidden"
-          id="userEmail">
+          id="userRole"
+          class="roleBadge">
+          USER
         </span>
 
-        <button id="btnLogout" class="logoutBtn">
+        <span
+          id="userEmail"
+          class="accountEmail hidden">
+        </span>
+
+        <button
+          id="btnLogout"
+          class="logoutBtn">
           Logout
         </button>
 
@@ -674,18 +1869,1511 @@ body{
     <div class="content">
 
 
-      <!-- DASHBOARD -->
-      <section id="page-dashboard" class="page active">
+      <!-- =================================================
+           DASHBOARD
+      ================================================= -->
+
+      <section
+        id="page-dashboard"
+        class="page active">
+
+        <div class="hero">
+
+          <div class="heroContent">
+
+            <div class="heroKicker">
+              VVIP AI EDUCATION & DIGITAL SKILLS PLATFORM
+            </div>
+
+            <h1>
+              Your Digital Future,
+              Powered by Human + AI.
+            </h1>
+
+            <p>
+              One intelligent environment for learning,
+              practical skills, testing, improvement,
+              certification and future earning opportunities.
+              AI handles routine learning operations while
+              human authority remains responsible for
+              sensitive decisions.
+            </p>
+
+            <div class="heroActions">
+
+              <button
+                class="heroBtn primary"
+                onclick="openPage('aiTeacher')">
+                ✦ Open AI Teacher
+              </button>
+
+              <button
+                class="heroBtn secondary"
+                onclick="openPage('education')">
+                Explore Academy
+              </button>
+
+              <button
+                class="heroBtn secondary"
+                onclick="openPage('lab')">
+                Enter Practical Lab
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="grid">
+
+          <div class="card statCard">
+
+            <div class="statIcon">
+              🎓
+            </div>
+
+            <div class="miniLabel">
+              Learning Level
+            </div>
+
+            <div
+              id="learningLevel"
+              class="stat">
+              Basic
+            </div>
+
+            <p>
+              AI learning pathway
+            </p>
+
+          </div>
+
+
+          <div class="card statCard">
+
+            <div class="statIcon">
+              📚
+            </div>
+
+            <div class="miniLabel">
+              Today's Lesson
+            </div>
+
+            <div class="stat">
+              Ready
+            </div>
+
+            <p>
+              Personalized lesson engine
+            </p>
+
+          </div>
+
+
+          <div class="card statCard">
+
+            <div class="statIcon">
+              🧠
+            </div>
+
+            <div class="miniLabel">
+              AI Support
+            </div>
+
+            <div class="stat">
+              Available
+            </div>
+
+            <p>
+              AI Teacher architecture
+            </p>
+
+          </div>
+
+
+          <div class="card statCard">
+
+            <div class="statIcon">
+              🏆
+            </div>
+
+            <div class="miniLabel">
+              Certification
+            </div>
+
+            <div class="stat">
+              Pathway
+            </div>
+
+            <p>
+              Merit-based certification
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="card aiPanel mt">
+
+          <div class="aiHeader">
+
+            <div class="aiTitle">
+
+              <div class="aiOrb">
+                AI
+              </div>
+
+              <div>
+
+                <h3>
+                  AI Autopilot Teacher
+                </h3>
+
+                <p>
+                  The future learning engine of the platform.
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="aiStatus">
+              ARCHITECTURE READY
+            </div>
+
+          </div>
+
+
+          <div class="aiGrid">
+
+            <button
+              class="aiAction"
+              onclick="openPage('aiTeacher')">
+
+              <strong>
+                ✦ Teach Me
+              </strong>
+
+              <span>
+                Lessons and explanations
+              </span>
+
+            </button>
+
+
+            <button
+              class="aiAction"
+              onclick="openPage('lab')">
+
+              <strong>
+                ⚙ Practice
+              </strong>
+
+              <span>
+                Practical skill building
+              </span>
+
+            </button>
+
+
+            <button
+              class="aiAction"
+              onclick="openPage('exams')">
+
+              <strong>
+                📝 Test Me
+              </strong>
+
+              <span>
+                Tests and evaluation
+              </span>
+
+            </button>
+
+
+            <button
+              class="aiAction"
+              onclick="openPage('progress')">
+
+              <strong>
+                ◔ Improve
+              </strong>
+
+              <span>
+                Weak-area analysis
+              </span>
+
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="card mt">
+
+          <div class="flex space mb">
+
+            <div>
+
+              <span class="eyebrow">
+                Intelligent Learning Journey
+              </span>
+
+              <h3>
+                Learn → Practice → Test → Improve → Build → Certify → Earn
+              </h3>
+
+            </div>
+
+            <span class="premiumBadge">
+              VVIP Journey
+            </span>
+
+          </div>
+
+
+          <div class="roadmap">
+
+            <div class="roadStep">
+              <div class="roadNumber">01</div>
+              <strong>Learn</strong>
+              <span>
+                AI lessons and courses
+              </span>
+            </div>
+
+            <div class="roadStep">
+              <div class="roadNumber">02</div>
+              <strong>Practice</strong>
+              <span>
+                Practical AI Lab
+              </span>
+            </div>
+
+            <div class="roadStep">
+              <div class="roadNumber">03</div>
+              <strong>Test</strong>
+              <span>
+                AI-generated tests
+              </span>
+            </div>
+
+            <div class="roadStep">
+              <div class="roadNumber">04</div>
+              <strong>Improve</strong>
+              <span>
+                AI weak-area analysis
+              </span>
+            </div>
+
+            <div class="roadStep">
+              <div class="roadNumber">05</div>
+              <strong>Build</strong>
+              <span>
+                Real projects
+              </span>
+            </div>
+
+            <div class="roadStep">
+              <div class="roadNumber">06</div>
+              <strong>Certify</strong>
+              <span>
+                Merit-based assessment
+              </span>
+            </div>
+
+            <div class="roadStep">
+              <div class="roadNumber">07</div>
+              <strong>Earn</strong>
+              <span>
+                Future digital opportunities
+              </span>
+            </div>
+
+            <div class="roadStep">
+              <div class="roadNumber">08</div>
+              <strong>Advance</strong>
+              <span>
+                Continue to mastery
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="sectionGrid mt">
+
+          <div class="card feature">
+
+            <div class="icon">
+              🤖
+            </div>
+
+            <span class="aiBadge">
+              AI
+            </span>
+
+            <h3>
+              AI Teacher
+            </h3>
+
+            <p>
+              Personalized teaching, explanations,
+              questions, homework and learning guidance.
+            </p>
+
+          </div>
+
+
+          <div class="card feature">
+
+            <div class="icon">
+              💻
+            </div>
+
+            <span class="aiBadge">
+              PRACTICAL
+            </span>
+
+            <h3>
+              AI Practical Lab
+            </h3>
+
+            <p>
+              Coding, graphics, digital skills and
+              real project practice.
+            </p>
+
+          </div>
+
+
+          <div class="card feature">
+
+            <div class="icon">
+              🏆
+            </div>
+
+            <span class="premiumBadge">
+              VVIP
+            </span>
+
+            <h3>
+              Certification
+            </h3>
+
+            <p>
+              Course completion, practical work,
+              testing and final assessment pathway.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="adContainer">
+
+          <div class="adLabel">
+            Advertisement
+          </div>
+
+        </div>
+
+
+        <div class="footer">
+          Founder: Dewan Israr Ahmad Faridi
+          <br>
+          International Awam Network — VVIP AI Education & Digital Skills Platform
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           AI TEACHER
+      ================================================= -->
+
+      <section
+        id="page-aiTeacher"
+        class="page">
 
         <div class="pageHeader">
 
+          <span class="eyebrow">
+            AI Learning Engine
+          </span>
+
           <h2>
-            Welcome to International Awam Network
+            ✦ AI Teacher
           </h2>
 
           <p>
-            A professional international platform connecting
-            people, education, AI, services, commerce and welfare.
+            Personal AI tutor architecture designed to teach,
+            explain, practice and guide each learner.
+          </p>
+
+        </div>
+
+
+        <div class="card aiPanel">
+
+          <div class="aiHeader">
+
+            <div class="aiTitle">
+
+              <div class="aiOrb">
+                AI
+              </div>
+
+              <div>
+
+                <h3>
+                  Your Personal AI Teacher
+                </h3>
+
+                <p>
+                  Secure AI connection will be connected through
+                  the backend AI service.
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="aiStatus">
+              BACKEND CONNECTION PENDING
+            </div>
+
+          </div>
+
+
+          <div class="hr"></div>
+
+
+          <div class="formGrid">
+
+            <div class="inputGroup">
+
+              <label>
+                Learning Subject
+              </label>
+
+              <select id="aiSubject">
+
+                <option>
+                  Computer Basics
+                </option>
+
+                <option>
+                  Programming
+                </option>
+
+                <option>
+                  Web Development
+                </option>
+
+                <option>
+                  Artificial Intelligence
+                </option>
+
+                <option>
+                  Graphics Design
+                </option>
+
+                <option>
+                  E-Commerce
+                </option>
+
+                <option>
+                  Digital Skills
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="inputGroup">
+
+              <label>
+                Learning Level
+              </label>
+
+              <select id="aiLevel">
+
+                <option>Basic</option>
+                <option>Intermediate</option>
+                <option>Advanced</option>
+                <option>Master</option>
+
+              </select>
+
+            </div>
+
+
+            <div class="inputGroup full">
+
+              <label>
+                Ask Your AI Teacher
+              </label>
+
+              <textarea
+                id="aiQuestion"
+                placeholder="Ask a learning question, request an explanation, or describe what you want to learn..."></textarea>
+
+            </div>
+
+          </div>
+
+
+          <br>
+
+
+          <button
+            id="btnAskAI"
+            class="primaryBtn">
+
+            ✦ Prepare AI Learning Request
+
+          </button>
+
+
+          <div
+            id="aiTeacherStatus"
+            class="status">
+
+            AI Teacher interface ready.
+            Secure backend AI connection will be added in the AI integration phase.
+
+          </div>
+
+        </div>
+
+
+        <div class="sectionGrid mt">
+
+          <div class="card feature">
+
+            <div class="icon">📖</div>
+
+            <h3>
+              Lesson Generator
+            </h3>
+
+            <p>
+              AI architecture for creating structured
+              lessons from beginner to mastery.
+            </p>
+
+          </div>
+
+
+          <div class="card feature">
+
+            <div class="icon">❓</div>
+
+            <h3>
+              Q&A Engine
+            </h3>
+
+            <p>
+              Student questions can be routed to the
+              AI teaching service.
+            </p>
+
+          </div>
+
+
+          <div class="card feature">
+
+            <div class="icon">🧭</div>
+
+            <h3>
+              Personalized Path
+            </h3>
+
+            <p>
+              Future AI analysis can recommend the next
+              lesson based on progress and weak areas.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           EDUCATION
+      ================================================= -->
+
+      <section
+        id="page-education"
+        class="page">
+
+        <div class="pageHeader">
+
+          <span class="eyebrow">
+            International AI Academy
+          </span>
+
+          <h2>
+            🎓 Education Academy
+          </h2>
+
+          <p>
+            Basic to Master learning architecture across
+            computer, programming, AI, graphics and digital commerce.
+          </p>
+
+        </div>
+
+
+        <div class="sectionGrid">
+
+          <div class="card levelCard">
+
+            <span class="premiumBadge">
+              LEVEL 01
+            </span>
+
+            <h3>
+              Basic Foundation
+            </h3>
+
+            <p>
+              Start from zero and build strong digital foundations.
+            </p>
+
+            <div class="courseList">
+
+              <div class="courseItem">
+                Computer Basics
+              </div>
+
+              <div class="courseItem">
+                Internet & Digital Literacy
+              </div>
+
+              <div class="courseItem">
+                Typing & Productivity
+              </div>
+
+              <div class="courseItem">
+                AI Introduction
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="card levelCard">
+
+            <span class="premiumBadge">
+              LEVEL 02
+            </span>
+
+            <h3>
+              Intermediate Skills
+            </h3>
+
+            <p>
+              Build practical digital and professional abilities.
+            </p>
+
+            <div class="courseList">
+
+              <div class="courseItem">
+                Web Development
+              </div>
+
+              <div class="courseItem">
+                Graphics Design
+              </div>
+
+              <div class="courseItem">
+                E-Commerce
+              </div>
+
+              <div class="courseItem">
+                Digital Marketing
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="card levelCard">
+
+            <span class="aiBadge">
+              LEVEL 03
+            </span>
+
+            <h3>
+              Advanced Academy
+            </h3>
+
+            <p>
+              Professional technical and AI-powered skills.
+            </p>
+
+            <div class="courseList">
+
+              <div class="courseItem">
+                Programming
+              </div>
+
+              <div class="courseItem">
+                AI Development
+              </div>
+
+              <div class="courseItem">
+                Full-Stack Projects
+              </div>
+
+              <div class="courseItem">
+                Automation
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="card levelCard">
+
+            <span class="premiumBadge">
+              LEVEL 04
+            </span>
+
+            <h3>
+              Master Track
+            </h3>
+
+            <p>
+              Build advanced projects and professional portfolios.
+            </p>
+
+            <div class="courseList">
+
+              <div class="courseItem">
+                AI Developer Academy
+              </div>
+
+              <div class="courseItem">
+                Advanced Programming
+              </div>
+
+              <div class="courseItem">
+                Enterprise Projects
+              </div>
+
+              <div class="courseItem">
+                Portfolio & Certification
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="card levelCard">
+
+            <span class="premiumBadge">
+              E-COMMERCE
+            </span>
+
+            <h3>
+              Global Commerce Academy
+            </h3>
+
+            <p>
+              Structured training around major global
+              commerce platforms and dropshipping.
+            </p>
+
+            <div class="courseList">
+
+              <div class="courseItem">Amazon</div>
+              <div class="courseItem">eBay</div>
+              <div class="courseItem">Shopify</div>
+              <div class="courseItem">Walmart</div>
+              <div class="courseItem">Alibaba</div>
+              <div class="courseItem">Daraz</div>
+
+            </div>
+
+          </div>
+
+
+          <div class="card levelCard">
+
+            <span class="aiBadge">
+              FUTURE
+            </span>
+
+            <h3>
+              AI Developer Academy
+            </h3>
+
+            <p>
+              Programming + AI + automation + project building
+              in one professional learning pathway.
+            </p>
+
+            <div class="courseList">
+
+              <div class="courseItem">
+                HTML / CSS / JavaScript
+              </div>
+
+              <div class="courseItem">
+                Python & APIs
+              </div>
+
+              <div class="courseItem">
+                AI Integration
+              </div>
+
+              <div class="courseItem">
+                Firebase & Cloud
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="card mt">
+
+          <div class="flex space">
+
+            <div>
+
+              <h3>
+                AI Course Autopilot
+              </h3>
+
+              <p>
+                Future AI engine will create lessons,
+                practical tasks, homework and assessments
+                according to approved course structures.
+              </p>
+
+            </div>
+
+            <span class="aiBadge">
+              ARCHITECTURE READY
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           PRACTICAL LAB
+      ================================================= -->
+
+      <section
+        id="page-lab"
+        class="page">
+
+        <div class="pageHeader">
+
+          <span class="eyebrow">
+            Build Real Skills
+          </span>
+
+          <h2>
+            ⚙ AI Practical Lab
+          </h2>
+
+          <p>
+            A practical environment where students learn by doing.
+          </p>
+
+        </div>
+
+
+        <div class="labLayout">
+
+          <div class="card">
+
+            <div class="flex space">
+
+              <div>
+
+                <h3>
+                  Project Workspace
+                </h3>
+
+                <p>
+                  Practical workspace architecture.
+                </p>
+
+              </div>
+
+              <span class="aiBadge">
+                AI GUIDANCE
+              </span>
+
+            </div>
+
+
+            <div class="labConsole mt">
+
+              <div class="consoleTop">
+
+                <span>
+                  AI PRACTICAL CONSOLE
+                </span>
+
+                <span>
+                  WORKSPACE
+                </span>
+
+              </div>
+
+              <div class="consoleBody">
+
+                <div class="consoleGreen">
+                  &gt; International Awam Network Lab
+                </div>
+
+                <div>
+                  &gt; Student workspace initialized...
+                </div>
+
+                <div>
+                  &gt; Practical objective:
+                </div>
+
+                <div class="consoleGold">
+                  &nbsp;&nbsp;Build a real digital project
+                </div>
+
+                <br>
+
+                <div>
+                  &gt; AI feedback:
+                  <span class="consoleGreen">
+                    Ready for secure AI integration
+                  </span>
+                </div>
+
+                <div>
+                  &gt; Submission engine:
+                  Pending backend connection
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="card">
+
+            <h3>
+              Practical Skill Modules
+            </h3>
+
+            <p>
+              The future lab can support multiple skill categories.
+            </p>
+
+
+            <div class="labTools mt">
+
+              <div class="labTool">
+                <strong>💻 Coding</strong>
+                <span>
+                  Code practice and debugging
+                </span>
+              </div>
+
+              <div class="labTool">
+                <strong>🎨 Graphics</strong>
+                <span>
+                  Design projects
+                </span>
+              </div>
+
+              <div class="labTool">
+                <strong>🌐 Web</strong>
+                <span>
+                  Website projects
+                </span>
+              </div>
+
+              <div class="labTool">
+                <strong>🤖 AI</strong>
+                <span>
+                  AI application projects
+                </span>
+              </div>
+
+              <div class="labTool">
+                <strong>🛒 Commerce</strong>
+                <span>
+                  Marketplace projects
+                </span>
+              </div>
+
+              <div class="labTool">
+                <strong>📁 Portfolio</strong>
+                <span>
+                  Professional project portfolio
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="card mt">
+
+          <h3>
+            AI Practical Feedback Engine
+          </h3>
+
+          <p>
+            Planned AI functions include identifying errors,
+            explaining corrections, suggesting practice,
+            scoring practical work and recommending the
+            next project. The AI will guide the learner
+            rather than simply completing the learning objective
+            on the student's behalf.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           EXAMS
+      ================================================= -->
+
+      <section
+        id="page-exams"
+        class="page">
+
+        <div class="pageHeader">
+
+          <span class="eyebrow">
+            Assessment Intelligence
+          </span>
+
+          <h2>
+            📝 AI Exams & Evaluation
+          </h2>
+
+          <p>
+            Tests, practical assessments, final examinations
+            and performance analysis.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="flex space">
+
+            <div>
+
+              <h3>
+                Intelligent Examination Pipeline
+              </h3>
+
+              <p>
+                AI-generated questions + timed assessment +
+                evaluation + improvement cycle.
+              </p>
+
+            </div>
+
+            <span class="aiBadge">
+              AI ENGINE
+            </span>
+
+          </div>
+
+
+          <div class="examTimeline mt">
+
+            <div class="examNode">
+
+              <div class="num">1</div>
+
+              <strong>
+                Question Bank
+              </strong>
+
+              <span>
+                AI generation
+              </span>
+
+            </div>
+
+
+            <div class="examNode">
+
+              <div class="num">2</div>
+
+              <strong>
+                Test
+              </strong>
+
+              <span>
+                Timed exam
+              </span>
+
+            </div>
+
+
+            <div class="examNode">
+
+              <div class="num">3</div>
+
+              <strong>
+                Evaluate
+              </strong>
+
+              <span>
+                Automated marking
+              </span>
+
+            </div>
+
+
+            <div class="examNode">
+
+              <div class="num">4</div>
+
+              <strong>
+                Improve
+              </strong>
+
+              <span>
+                Weak areas
+              </span>
+
+            </div>
+
+
+            <div class="examNode">
+
+              <div class="num">5</div>
+
+              <strong>
+                Certify
+              </strong>
+
+              <span>
+                Eligibility
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="sectionGrid mt">
+
+          <div class="card feature">
+
+            <div class="icon">⏱️</div>
+
+            <h3>
+              Timed Exams
+            </h3>
+
+            <p>
+              Structured online assessments with controlled timing.
+            </p>
+
+          </div>
+
+
+          <div class="card feature">
+
+            <div class="icon">🧠</div>
+
+            <h3>
+              Weak Topic Analysis
+            </h3>
+
+            <p>
+              AI can identify topics that need additional practice.
+            </p>
+
+          </div>
+
+
+          <div class="card feature">
+
+            <div class="icon">🔄</div>
+
+            <h3>
+              Retesting
+            </h3>
+
+            <p>
+              Future system can create targeted retests
+              after learning gaps are identified.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="notice mt">
+          Exam integrity, student data protection and final
+          certification controls will be enforced through
+          the secure backend and platform policies.
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           CLASSROOM
+      ================================================= -->
+
+      <section
+        id="page-classroom"
+        class="page">
+
+        <div class="pageHeader">
+
+          <span class="eyebrow">
+            Premium Learning Environment
+          </span>
+
+          <h2>
+            ◉ VIP Classrooms
+          </h2>
+
+          <p>
+            Individual and group learning environments with
+            AI Teacher, assignments, practical work and exams.
+          </p>
+
+        </div>
+
+
+        <div class="sectionGrid">
+
+          <div class="card classroom">
+
+            <div class="classTop">
+
+              <div class="classAvatar">
+                🤖
+              </div>
+
+              <div class="classInfo">
+
+                <strong>
+                  AI Teacher Classroom
+                </strong>
+
+                <span>
+                  Personalized learning
+                </span>
+
+              </div>
+
+              <span class="aiBadge">
+                AI
+              </span>
+
+            </div>
+
+            <div class="classTools">
+
+              <span class="classTool">
+                Lessons
+              </span>
+
+              <span class="classTool">
+                Homework
+              </span>
+
+              <span class="classTool">
+                Tests
+              </span>
+
+              <span class="classTool">
+                Progress
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="card classroom">
+
+            <div class="classTop">
+
+              <div class="classAvatar">
+                👥
+              </div>
+
+              <div class="classInfo">
+
+                <strong>
+                  Group VIP Classroom
+                </strong>
+
+                <span>
+                  Instructor + AI support
+                </span>
+
+              </div>
+
+              <span class="premiumBadge">
+                VIP
+              </span>
+
+            </div>
+
+            <div class="classTools">
+
+              <span class="classTool">
+                Members
+              </span>
+
+              <span class="classTool">
+                Assignments
+              </span>
+
+              <span class="classTool">
+                Projects
+              </span>
+
+              <span class="classTool">
+                Exams
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="card classroom">
+
+            <div class="classTop">
+
+              <div class="classAvatar">
+                💻
+              </div>
+
+              <div class="classInfo">
+
+                <strong>
+                  Developer Masterclass
+                </strong>
+
+                <span>
+                  Programming + AI
+                </span>
+
+              </div>
+
+              <span class="premiumBadge">
+                MASTER
+              </span>
+
+            </div>
+
+            <div class="classTools">
+
+              <span class="classTool">
+                Coding
+              </span>
+
+              <span class="classTool">
+                Projects
+              </span>
+
+              <span class="classTool">
+                Code Review
+              </span>
+
+              <span class="classTool">
+                Portfolio
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="card mt">
+
+          <h3>
+            VIP Classroom Engine
+          </h3>
+
+          <p>
+            Future classrooms can combine AI Teacher,
+            homework, practical lab, daily tests, monitored
+            examinations, student progress and certification
+            within one controlled environment.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           PROGRESS
+      ================================================= -->
+
+      <section
+        id="page-progress"
+        class="page">
+
+        <div class="pageHeader">
+
+          <span class="eyebrow">
+            Student Intelligence
+          </span>
+
+          <h2>
+            ◔ My Progress
+          </h2>
+
+          <p>
+            Your learning journey and future AI performance analysis.
           </p>
 
         </div>
@@ -695,17 +3383,38 @@ body{
 
           <div class="card">
 
-            <div class="icon">
-              🛒
+            <div class="miniLabel">
+              Overall Progress
             </div>
 
-            <h3>
-              E-Commerce
-            </h3>
+            <div
+              id="overallProgress"
+              class="stat">
+              0%
+            </div>
+
+            <div class="progressBar">
+              <div
+                id="overallProgressBar"
+                class="progressFill">
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="miniLabel">
+              Practical Skills
+            </div>
+
+            <div class="stat">
+              Ready
+            </div>
 
             <p>
-              Products, services, seller profiles,
-              buyer requests and future marketplace automation.
+              AI Lab tracking architecture
             </p>
 
           </div>
@@ -713,17 +3422,16 @@ body{
 
           <div class="card">
 
-            <div class="icon">
-              🎓
+            <div class="miniLabel">
+              Tests
             </div>
 
-            <h3>
-              Education + AI
-            </h3>
+            <div class="stat">
+              Ready
+            </div>
 
             <p>
-              Courses, programming, AI learning,
-              tests and future monitored examinations.
+              Assessment history architecture
             </p>
 
           </div>
@@ -731,35 +3439,16 @@ body{
 
           <div class="card">
 
-            <div class="icon">
-              🤝
+            <div class="miniLabel">
+              Next Action
             </div>
 
-            <h3>
-              P2P Workforce
-            </h3>
-
-            <p>
-              Connect workers, skills, services and
-              international opportunities.
-            </p>
-
-          </div>
-
-
-          <div class="card">
-
-            <div class="icon">
-              ❤️
+            <div class="stat">
+              Learn
             </div>
 
-            <h3>
-              NGO & Welfare
-            </h3>
-
             <p>
-              Education, health, poverty relief,
-              clean water and welfare initiatives.
+              Continue your learning pathway
             </p>
 
           </div>
@@ -767,55 +3456,139 @@ body{
         </div>
 
 
-        <div
-          class="card"
-          style="margin-top:20px;"
-        >
+        <div class="card mt">
 
           <h3>
-            International Community Vision
+            AI Progress Analysis
           </h3>
 
           <p>
-            International Awam Network is designed as a
-            professional digital community platform where
-            education, artificial intelligence, commerce,
-            services and social welfare can work together.
+            Once the secure AI engine is connected, the system
+            can analyze lessons, tests, practical submissions
+            and learning activity to recommend the next
+            appropriate action.
           </p>
 
-        </div>
-
-
-        <!-- ADSENSE READY AREA -->
-        <div class="adContainer">
-
-          <div class="adLabel">
-            Advertisement
-          </div>
-
-          <!-- Google AdSense Auto Ads will use this page -->
-          
-        </div>
-
-
-        <div class="footer">
-          Founder: Dewan Israr Ahmad Faridi
         </div>
 
       </section>
 
 
-      <!-- ECOMMERCE -->
-      <section id="page-ecommerce" class="page">
+      <!-- =================================================
+           CERTIFICATES
+      ================================================= -->
+
+      <section
+        id="page-certificates"
+        class="page">
 
         <div class="pageHeader">
 
+          <span class="eyebrow">
+            Achievement & Recognition
+          </span>
+
           <h2>
-            E-Commerce & Services
+            🏆 Certificates
           </h2>
 
           <p>
-            International marketplace and professional service network.
+            Merit-based certification pathway.
+          </p>
+
+        </div>
+
+
+        <div class="card certificate">
+
+          <div class="certificateTitle">
+            International Awam Network
+          </div>
+
+          <h3>
+            Certificate of Achievement
+          </h3>
+
+          <div class="certificateLine"></div>
+
+          <p>
+            Certificate eligibility will be based on the
+            approved learning pathway, including lessons,
+            homework, practical work, tests, final examination
+            and project requirements.
+          </p>
+
+          <div class="hr"></div>
+
+          <div class="grid">
+
+            <div>
+              <div class="miniLabel">
+                Issuing Brand
+              </div>
+
+              <strong>
+                Dewan Traders
+              </strong>
+            </div>
+
+            <div>
+              <div class="miniLabel">
+                Assessment
+              </div>
+
+              <strong>
+                AI + Human Controlled
+              </strong>
+            </div>
+
+            <div>
+              <div class="miniLabel">
+                Final Approval
+              </div>
+
+              <strong>
+                Super Admin
+              </strong>
+            </div>
+
+            <div>
+              <div class="miniLabel">
+                Status
+              </div>
+
+              <strong>
+                Architecture Ready
+              </strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           ECOMMERCE
+      ================================================= -->
+
+      <section
+        id="page-ecommerce"
+        class="page">
+
+        <div class="pageHeader">
+
+          <span class="eyebrow">
+            Digital Network
+          </span>
+
+          <h2>
+            🛒 E-Commerce & Services
+          </h2>
+
+          <p>
+            Supporting marketplace and professional service ecosystem.
           </p>
 
         </div>
@@ -825,17 +3598,15 @@ body{
 
           <div class="card feature">
 
-            <div class="icon">
-              📦
-            </div>
+            <div class="icon">📦</div>
 
             <h3>
               Products
             </h3>
 
             <p>
-              Sellers can eventually publish products,
-              prices, descriptions and locations.
+              Future product listings, pricing,
+              descriptions and seller services.
             </p>
 
           </div>
@@ -843,9 +3614,7 @@ body{
 
           <div class="card feature">
 
-            <div class="icon">
-              🧑‍💼
-            </div>
+            <div class="icon">🧑‍💼</div>
 
             <h3>
               Seller Profiles
@@ -861,17 +3630,15 @@ body{
 
           <div class="card feature">
 
-            <div class="icon">
-              🔎
-            </div>
+            <div class="icon">🔎</div>
 
             <h3>
               Buyer Requests
             </h3>
 
             <p>
-              Buyers can post requirements and
-              connect with suitable sellers.
+              Buyers can eventually post requirements
+              and connect with suitable providers.
             </p>
 
           </div>
@@ -879,9 +3646,7 @@ body{
 
           <div class="card feature">
 
-            <div class="icon">
-              🤝
-            </div>
+            <div class="icon">🤝</div>
 
             <h3>
               P2P Services
@@ -897,16 +3662,14 @@ body{
 
           <div class="card feature">
 
-            <div class="icon">
-              🚚
-            </div>
+            <div class="icon">🚚</div>
 
             <h3>
               Future Dispatch
             </h3>
 
             <p>
-              Future truck dispatch and logistics
+              Future logistics and truck dispatch
               automation can be integrated.
             </p>
 
@@ -915,28 +3678,17 @@ body{
 
           <div class="card feature">
 
-            <div class="icon">
-              🌍
-            </div>
+            <div class="icon">🌍</div>
 
             <h3>
               Global Marketplace
             </h3>
 
             <p>
-              Future expansion toward international
-              commerce and dropshipping.
+              Future international commerce and
+              dropshipping ecosystem.
             </p>
 
-          </div>
-
-        </div>
-
-
-        <div class="adContainer">
-
-          <div class="adLabel">
-            Advertisement
           </div>
 
         </div>
@@ -944,149 +3696,22 @@ body{
       </section>
 
 
-      <!-- EDUCATION -->
-      <section id="page-education" class="page">
+      <!-- =================================================
+           P2P
+      ================================================= -->
+
+      <section
+        id="page-p2p"
+        class="page">
 
         <div class="pageHeader">
 
-          <h2>
-            Education & AI Academy
-          </h2>
-
-          <p>
-            AI-powered learning system from beginner to advanced level.
-          </p>
-
-        </div>
-
-
-        <div class="sectionGrid">
-
-          <div class="card feature">
-
-            <div class="icon">
-              💻
-            </div>
-
-            <h3>
-              Computer Basics
-            </h3>
-
-            <p>
-              Beginner computer training and digital literacy.
-            </p>
-
-          </div>
-
-
-          <div class="card feature">
-
-            <div class="icon">
-              👨‍💻
-            </div>
-
-            <h3>
-              Programming
-            </h3>
-
-            <p>
-              Web development, programming and software skills.
-            </p>
-
-          </div>
-
-
-          <div class="card feature">
-
-            <div class="icon">
-              🤖
-            </div>
-
-            <h3>
-              Artificial Intelligence
-            </h3>
-
-            <p>
-              AI learning, practical use and future AI tools.
-            </p>
-
-          </div>
-
-
-          <div class="card feature">
-
-            <div class="icon">
-              🛍️
-            </div>
-
-            <h3>
-              E-Commerce Training
-            </h3>
-
-            <p>
-              Amazon, eBay, Shopify, Walmart, Alibaba,
-              Daraz and dropshipping concepts.
-            </p>
-
-          </div>
-
-
-          <div class="card feature">
-
-            <div class="icon">
-              📝
-            </div>
-
-            <h3>
-              AI Exams
-            </h3>
-
-            <p>
-              Future AI-generated tests, evaluation
-              and pass/fail results.
-            </p>
-
-          </div>
-
-
-          <div class="card feature">
-
-            <div class="icon">
-              🏆
-            </div>
-
-            <h3>
-              Certificates
-            </h3>
-
-            <p>
-              Future merit-based certificates under
-              Dewan Traders with Super Admin approval.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="adContainer">
-
-          <div class="adLabel">
-            Advertisement
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- P2P -->
-      <section id="page-p2p" class="page">
-
-        <div class="pageHeader">
+          <span class="eyebrow">
+            Digital Workforce
+          </span>
 
           <h2>
-            P2P Workforce Registration
+            🤝 P2P Workforce
           </h2>
 
           <p>
@@ -1108,8 +3733,7 @@ body{
 
               <input
                 id="p2pName"
-                type="text"
-              >
+                type="text">
 
             </div>
 
@@ -1122,8 +3746,7 @@ body{
 
               <input
                 id="p2pCountry"
-                type="text"
-              >
+                type="text">
 
             </div>
 
@@ -1136,8 +3759,7 @@ body{
 
               <input
                 id="p2pCity"
-                type="text"
-              >
+                type="text">
 
             </div>
 
@@ -1150,8 +3772,7 @@ body{
 
               <input
                 id="p2pSkill"
-                type="text"
-              >
+                type="text">
 
             </div>
 
@@ -1164,8 +3785,7 @@ body{
 
               <input
                 id="p2pExperience"
-                type="text"
-              >
+                type="text">
 
             </div>
 
@@ -1178,8 +3798,7 @@ body{
 
               <input
                 id="p2pPhone"
-                type="text"
-              >
+                type="text">
 
             </div>
 
@@ -1191,24 +3810,22 @@ body{
 
           <button
             id="btnP2PRegister"
-            class="primaryBtn"
-          >
+            class="primaryBtn">
+
             Register P2P Profile
+
           </button>
 
 
           <div
             id="p2pStatus"
-            class="status"
-          ></div>
+            class="status">
+          </div>
 
         </div>
 
 
-        <div
-          class="card"
-          style="margin-top:20px;"
-        >
+        <div class="card mt">
 
           <h3>
             Registered P2P Workers
@@ -1216,18 +3833,10 @@ body{
 
           <div
             id="p2pList"
-            class="workerList"
-          >
+            class="workerList">
+
             Loading...
-          </div>
 
-        </div>
-
-
-        <div class="adContainer">
-
-          <div class="adLabel">
-            Advertisement
           </div>
 
         </div>
@@ -1235,17 +3844,26 @@ body{
       </section>
 
 
-      <!-- WELFARE -->
-      <section id="page-welfare" class="page">
+      <!-- =================================================
+           WELFARE
+      ================================================= -->
+
+      <section
+        id="page-welfare"
+        class="page">
 
         <div class="pageHeader">
 
+          <span class="eyebrow">
+            Social Impact
+          </span>
+
           <h2>
-            NGO & Welfare
+            ❤️ NGO & Welfare
           </h2>
 
           <p>
-            Lumivera Global Foundation / International welfare direction.
+            Lumivera Global Foundation / international welfare direction.
           </p>
 
         </div>
@@ -1255,9 +3873,7 @@ body{
 
           <div class="card feature">
 
-            <div class="icon">
-              🎓
-            </div>
+            <div class="icon">🎓</div>
 
             <h3>
               Education
@@ -1272,9 +3888,7 @@ body{
 
           <div class="card feature">
 
-            <div class="icon">
-              🏥
-            </div>
+            <div class="icon">🏥</div>
 
             <h3>
               Health
@@ -1289,9 +3903,7 @@ body{
 
           <div class="card feature">
 
-            <div class="icon">
-              💧
-            </div>
+            <div class="icon">💧</div>
 
             <h3>
               Clean Water
@@ -1306,9 +3918,7 @@ body{
 
           <div class="card feature">
 
-            <div class="icon">
-              🤲
-            </div>
+            <div class="icon">🤲</div>
 
             <h3>
               Zakat & Welfare
@@ -1323,9 +3933,7 @@ body{
 
           <div class="card feature">
 
-            <div class="icon">
-              🏠
-            </div>
+            <div class="icon">🏠</div>
 
             <h3>
               Poverty Relief
@@ -1340,27 +3948,17 @@ body{
 
           <div class="card feature">
 
-            <div class="icon">
-              🌍
-            </div>
+            <div class="icon">🌍</div>
 
             <h3>
               International Welfare
             </h3>
 
             <p>
-              Non-political, non-sectarian and international welfare vision.
+              International, non-political and non-sectarian
+              welfare direction.
             </p>
 
-          </div>
-
-        </div>
-
-
-        <div class="adContainer">
-
-          <div class="adLabel">
-            Advertisement
           </div>
 
         </div>
@@ -1368,13 +3966,22 @@ body{
       </section>
 
 
-      <!-- WALLET -->
-      <section id="page-wallet" class="page">
+      <!-- =================================================
+           WALLET
+      ================================================= -->
+
+      <section
+        id="page-wallet"
+        class="page">
 
         <div class="pageHeader">
 
+          <span class="eyebrow">
+            Restricted Finance
+          </span>
+
           <h2>
-            Super Admin Wallet
+            💰 Super Admin Wallet
           </h2>
 
           <p>
@@ -1392,8 +3999,7 @@ body{
 
           <div
             class="walletAmount"
-            id="walletBalance"
-          >
+            id="walletBalance">
             Loading...
           </div>
 
@@ -1407,11 +4013,12 @@ body{
         <div class="card">
 
           <h3>
-            Wallet Status
+            Wallet Security Notice
           </h3>
 
           <p id="walletStatus">
-            Secure Super Admin wallet loaded.
+            Secure backend financial controls are required
+            before production money movement.
           </p>
 
         </div>
@@ -1419,17 +4026,26 @@ body{
       </section>
 
 
-      <!-- SUPER ADMIN DASHBOARD -->
-      <section id="page-admin" class="page">
+      <!-- =================================================
+           SUPER ADMIN COMMAND CENTRE
+      ================================================= -->
+
+      <section
+        id="page-admin"
+        class="page">
 
         <div class="pageHeader">
 
+          <span class="eyebrow">
+            Founder / CEO
+          </span>
+
           <h2>
-            👑 Super Admin Dashboard
+            👑 Super Admin Command Centre
           </h2>
 
           <p>
-            Founder / CEO administrative control center.
+            Silent Supervisor / Final Authority.
           </p>
 
         </div>
@@ -1438,8 +4054,7 @@ body{
         <div class="adminWarning">
 
           🔒 <strong>Restricted Area:</strong>
-
-          This dashboard is available only to the
+          This command centre is available only to the
           authorized Super Admin account.
 
         </div>
@@ -1449,9 +4064,9 @@ body{
 
           <div class="card">
 
-            <h3>
-              👑 Administrator
-            </h3>
+            <div class="miniLabel">
+              Administrator
+            </div>
 
             <div class="stat">
               SUPER ADMIN
@@ -1466,16 +4081,16 @@ body{
 
           <div class="card">
 
-            <h3>
-              🔐 Security
-            </h3>
+            <div class="miniLabel">
+              Authentication
+            </div>
 
             <div class="stat">
               ACTIVE
             </div>
 
             <p>
-              Google authentication is required.
+              Google authentication required.
             </p>
 
           </div>
@@ -1483,16 +4098,16 @@ body{
 
           <div class="card">
 
-            <h3>
-              💰 Wallet
-            </h3>
+            <div class="miniLabel">
+              AI Supervisor
+            </div>
 
             <div class="stat">
-              PRIVATE
+              READY
             </div>
 
             <p>
-              Wallet interface is hidden from normal users.
+              AI operations architecture prepared.
             </p>
 
           </div>
@@ -1500,16 +4115,16 @@ body{
 
           <div class="card">
 
-            <h3>
-              🌍 Platform
-            </h3>
+            <div class="miniLabel">
+              Human Authority
+            </div>
 
             <div class="stat">
-              LIVE
+              FINAL
             </div>
 
             <p>
-              International Awam Network Hub.
+              Sensitive actions require authorized control.
             </p>
 
           </div>
@@ -1517,21 +4132,137 @@ body{
         </div>
 
 
-        <div
-          class="adminOnlyBox"
-          style="margin-top:20px;"
-        >
+        <div class="card mt">
+
+          <div class="flex space mb">
+
+            <div>
+
+              <h3>
+                AI Autopilot Monitoring
+              </h3>
+
+              <p>
+                Planned command centre monitoring areas.
+              </p>
+
+            </div>
+
+            <span class="aiBadge">
+              SILENT SUPERVISOR
+            </span>
+
+          </div>
+
+
+          <div class="commandGrid">
+
+            <div class="commandCard">
+              <strong>
+                <span class="liveDot"></span>
+                Students
+              </strong>
+              <span>
+                Learning activity and progress monitoring.
+              </span>
+            </div>
+
+            <div class="commandCard">
+              <strong>
+                <span class="liveDot"></span>
+                Courses
+              </strong>
+              <span>
+                Course and lesson operations.
+              </span>
+            </div>
+
+            <div class="commandCard">
+              <strong>
+                <span class="liveDot"></span>
+                Exams
+              </strong>
+              <span>
+                Assessment monitoring and alerts.
+              </span>
+            </div>
+
+            <div class="commandCard">
+              <strong>
+                <span class="liveDot"></span>
+                Practical Lab
+              </strong>
+              <span>
+                Project submissions and AI feedback.
+              </span>
+            </div>
+
+            <div class="commandCard">
+              <strong>
+                <span class="liveDot"></span>
+                Certificates
+              </strong>
+              <span>
+                Eligibility and approval workflow.
+              </span>
+            </div>
+
+            <div class="commandCard">
+              <strong>
+                <span class="liveDot"></span>
+                Security
+              </strong>
+              <span>
+                Authentication, abuse and system alerts.
+              </span>
+            </div>
+
+            <div class="commandCard">
+              <strong>
+                <span class="liveDot"></span>
+                Revenue
+              </strong>
+              <span>
+                Future membership and platform revenue.
+              </span>
+            </div>
+
+            <div class="commandCard">
+              <strong>
+                <span class="liveDot"></span>
+                Advertising
+              </strong>
+              <span>
+                Ad placement and policy monitoring.
+              </span>
+            </div>
+
+            <div class="commandCard">
+              <strong>
+                <span class="liveDot"></span>
+                Audit
+              </strong>
+              <span>
+                Administrative action history.
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="adminOnlyBox mt">
 
           <h3>
             Administrative Wallet Control
           </h3>
 
-          <p
-            style="margin:10px 0;color:#667085;"
-          >
-            Future secure backend controls for wallet,
-            approvals, fund release, holds, blocks,
-            commissions and audit logs will be connected here.
+          <p style="margin:10px 0;color:#667085;font-size:12px;">
+            Temporary interface retained from the existing
+            system. Production financial operations should
+            be moved to secure backend authorization before
+            real funds are introduced.
           </p>
 
 
@@ -1545,8 +4276,7 @@ body{
 
               <input
                 id="adminTargetUid"
-                type="text"
-              >
+                type="text">
 
             </div>
 
@@ -1560,8 +4290,7 @@ body{
               <input
                 id="adminAmount"
                 type="number"
-                min="0"
-              >
+                min="0">
 
             </div>
 
@@ -1573,30 +4302,242 @@ body{
 
           <button
             id="btnGrant"
-            class="primaryBtn"
-          >
+            class="primaryBtn">
             Grant / Add
           </button>
 
 
           <button
             id="btnDeduct"
-            class="dangerBtn"
-          >
+            class="dangerBtn">
             Deduct
           </button>
 
 
           <div
             id="adminStatus"
-            class="status"
-          ></div>
+            class="status">
+          </div>
 
         </div>
 
 
         <div class="footer">
           Super Admin: Dewan Israr Ahmad Faridi
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           SECURITY & POLICIES
+      ================================================= -->
+
+      <section
+        id="page-security"
+        class="page">
+
+        <div class="pageHeader">
+
+          <span class="eyebrow">
+            Trust & Governance
+          </span>
+
+          <h2>
+            🔐 Security & Platform Policies
+          </h2>
+
+          <p>
+            The platform is designed around controlled access,
+            privacy, auditability and responsible AI operation.
+          </p>
+
+        </div>
+
+
+        <div class="sectionGrid">
+
+          <div class="card feature">
+
+            <div class="icon">🔑</div>
+
+            <h3>
+              Authentication
+            </h3>
+
+            <p>
+              Google authentication is required before
+              accessing the application.
+            </p>
+
+          </div>
+
+
+          <div class="card feature">
+
+            <div class="icon">🛡️</div>
+
+            <h3>
+              Role Control
+            </h3>
+
+            <p>
+              Super Admin functions are separated from
+              ordinary user functions.
+            </p>
+
+          </div>
+
+
+          <div class="card feature">
+
+            <div class="icon">🤖</div>
+
+            <h3>
+              AI Permission Layer
+            </h3>
+
+            <p>
+              AI should not independently perform sensitive
+              financial, destructive or security actions.
+            </p>
+
+          </div>
+
+
+          <div class="card feature">
+
+            <div class="icon">📋</div>
+
+            <h3>
+              Audit Logs
+            </h3>
+
+            <p>
+              Administrative and sensitive system activity
+              should be recorded through the backend.
+            </p>
+
+          </div>
+
+
+          <div class="card feature">
+
+            <div class="icon">🚨</div>
+
+            <h3>
+              Alerts
+            </h3>
+
+            <p>
+              Future monitoring can notify authorized
+              administrators about security or abuse signals.
+            </p>
+
+          </div>
+
+
+          <div class="card feature">
+
+            <div class="icon">🔒</div>
+
+            <h3>
+              Data Protection
+            </h3>
+
+            <p>
+              Student, exam, certificate and administrative
+              records require appropriate backend protection.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="card legalBox mt">
+
+          <span class="eyebrow">
+            Platform Governance
+          </span>
+
+          <h3>
+            Privacy Policy
+          </h3>
+
+          <p>
+            The platform is intended to collect and process
+            only information necessary for account operation,
+            learning, assessment, certification and approved
+            platform services. Specific data handling,
+            retention and deletion rules should be finalized
+            before public production launch.
+          </p>
+
+
+          <h3>
+            Terms & Conditions
+          </h3>
+
+          <p>
+            Users are expected to use the platform lawfully,
+            honestly and responsibly. Abuse, fraud,
+            impersonation, cheating, unauthorized access and
+            misuse of platform services may result in account
+            restrictions according to the finalized policy.
+          </p>
+
+
+          <h3>
+            AI Usage Policy
+          </h3>
+
+          <p>
+            AI is intended to assist learning, generate
+            educational material, provide explanations,
+            analyze progress and support practical learning.
+            Sensitive administrative actions require
+            appropriate permission and human oversight.
+          </p>
+
+
+          <h3>
+            Exam Policy
+          </h3>
+
+          <p>
+            Examinations may include timed tests, practical
+            assessments and final evaluations. Exam integrity,
+            identity controls, monitoring and retesting rules
+            will be implemented as the examination backend
+            is developed.
+          </p>
+
+
+          <h3>
+            Certificate Policy
+          </h3>
+
+          <p>
+            Completion of lessons alone does not automatically
+            guarantee certification. Eligibility can depend
+            on the approved combination of learning,
+            homework, practical work, tests, final examination
+            and project requirements. Final approval remains
+            under authorized Super Admin control.
+          </p>
+
+
+          <h3>
+            Account & Security Policy
+          </h3>
+
+          <p>
+            Accounts may be restricted, suspended or reviewed
+            where platform rules, security requirements or
+            abuse-prevention procedures require action.
+          </p>
+
         </div>
 
       </section>
@@ -1609,7 +4550,10 @@ body{
 </div>
 
 
-<!-- FIREBASE -->
+<!-- =======================================================
+     FIREBASE
+======================================================= -->
+
 <script type="module">
 
 import {
@@ -1634,7 +4578,9 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 
-/* FIREBASE CONFIG */
+/* =========================================================
+   FIREBASE CONFIG
+========================================================= */
 
 const firebaseConfig = {
 
@@ -1661,16 +4607,18 @@ const firebaseConfig = {
 };
 
 
-/* INITIALIZE */
+/* =========================================================
+   INITIALIZE
+========================================================= */
 
-const app =
+const firebaseApp =
   initializeApp(firebaseConfig);
 
 const auth =
-  getAuth(app);
+  getAuth(firebaseApp);
 
 const database =
-  getDatabase(app);
+  getDatabase(firebaseApp);
 
 const googleProvider =
   new GoogleAuthProvider();
@@ -1681,13 +4629,17 @@ googleProvider.setCustomParameters({
 });
 
 
-/* SUPER ADMIN */
+/* =========================================================
+   SUPER ADMIN
+========================================================= */
 
 const SUPER_ADMIN_EMAIL =
   "dewan.gee786@gmail.com";
 
 
-/* ELEMENTS */
+/* =========================================================
+   ELEMENTS
+========================================================= */
 
 const loginScreen =
   document.getElementById("loginScreen");
@@ -1731,8 +4683,13 @@ const p2pList =
 const digitalClock =
   document.getElementById("digitalClock");
 
+const sidebar =
+  document.getElementById("sidebar");
 
-/* LIVE DIGITAL CLOCK */
+
+/* =========================================================
+   DIGITAL CLOCK
+========================================================= */
 
 function updateDigitalClock(){
 
@@ -1759,7 +4716,9 @@ setInterval(
 );
 
 
-/* SUPER ADMIN CHECK */
+/* =========================================================
+   SUPER ADMIN CHECK
+========================================================= */
 
 function isSuperAdmin(user){
 
@@ -1767,12 +4726,17 @@ function isSuperAdmin(user){
     return false;
   }
 
-  return user.email.toLowerCase() ===
-    SUPER_ADMIN_EMAIL.toLowerCase();
+  return (
+    user.email.toLowerCase() ===
+    SUPER_ADMIN_EMAIL.toLowerCase()
+  );
+
 }
 
 
-/* USER PERMISSIONS */
+/* =========================================================
+   USER PERMISSIONS
+========================================================= */
 
 function applyUserPermissions(user){
 
@@ -1789,7 +4753,6 @@ function applyUserPermissions(user){
     userRole.innerText =
       "SUPER ADMIN";
 
-
     userEmail.innerText =
       user.email;
 
@@ -1797,10 +4760,8 @@ function applyUserPermissions(user){
       "hidden"
     );
 
-
     adminEmailDisplay.innerText =
       user.email;
-
 
   }else{
 
@@ -1811,7 +4772,6 @@ function applyUserPermissions(user){
     userRole.innerText =
       "USER";
 
-
     userEmail.innerText =
       "";
 
@@ -1819,10 +4779,8 @@ function applyUserPermissions(user){
       "hidden"
     );
 
-
     adminEmailDisplay.innerText =
       "Restricted";
-
 
     document
       .querySelectorAll(".page")
@@ -1834,7 +4792,6 @@ function applyUserPermissions(user){
         }
       );
 
-
     document
       .getElementById(
         "page-dashboard"
@@ -1845,12 +4802,14 @@ function applyUserPermissions(user){
 
   }
 
-
   return superAdmin;
+
 }
 
 
-/* GOOGLE LOGIN */
+/* =========================================================
+   GOOGLE LOGIN
+========================================================= */
 
 googleLoginButton.addEventListener(
   "click",
@@ -1864,12 +4823,10 @@ googleLoginButton.addEventListener(
       googleLoginButton.disabled =
         true;
 
-
       await signInWithPopup(
         auth,
         googleProvider
       );
-
 
     }catch(error){
 
@@ -1878,13 +4835,11 @@ googleLoginButton.addEventListener(
         error
       );
 
-
       loginStatus.innerText =
         "Login Error: " +
         error.code +
         " - " +
         error.message;
-
 
       googleLoginButton.disabled =
         false;
@@ -1895,7 +4850,9 @@ googleLoginButton.addEventListener(
 );
 
 
-/* AUTH STATE */
+/* =========================================================
+   AUTH STATE
+========================================================= */
 
 onAuthStateChanged(
   auth,
@@ -1910,7 +4867,6 @@ onAuthStateChanged(
       appScreen.classList.remove(
         "hidden"
       );
-
 
       const superAdmin =
         applyUserPermissions(user);
@@ -1935,7 +4891,6 @@ onAuthStateChanged(
 
       loadP2PWorkers();
 
-
     }else{
 
       loginScreen.classList.remove(
@@ -1946,7 +4901,6 @@ onAuthStateChanged(
         "hidden"
       );
 
-
       userEmail.innerText =
         "";
 
@@ -1954,10 +4908,8 @@ onAuthStateChanged(
         "hidden"
       );
 
-
       googleLoginButton.disabled =
         false;
-
 
       loginStatus.innerText =
         "Secure login required.";
@@ -1968,7 +4920,9 @@ onAuthStateChanged(
 );
 
 
-/* LOGOUT */
+/* =========================================================
+   LOGOUT
+========================================================= */
 
 document
   .getElementById("btnLogout")
@@ -1993,7 +4947,99 @@ document
   );
 
 
-/* PAGE SWITCHING */
+/* =========================================================
+   PAGE SYSTEM
+========================================================= */
+
+window.openPage =
+function(pageName){
+
+  if(
+    (
+      pageName === "wallet" ||
+      pageName === "admin"
+    )
+    &&
+    !isSuperAdmin(
+      auth.currentUser
+    )
+  ){
+
+    alert(
+      "Access denied. Super Admin only."
+    );
+
+    return;
+
+  }
+
+
+  document
+    .querySelectorAll(".page")
+    .forEach(
+      page=>{
+        page.classList.remove(
+          "active"
+        );
+      }
+    );
+
+
+  const target =
+    document.getElementById(
+      "page-" + pageName
+    );
+
+
+  if(target){
+
+    target.classList.add(
+      "active"
+    );
+
+  }
+
+
+  document
+    .querySelectorAll(".nav button")
+    .forEach(
+      btn=>{
+        btn.classList.remove(
+          "active"
+        );
+      }
+    );
+
+
+  const activeButton =
+    document.querySelector(
+      '.nav button[data-page="' +
+      pageName +
+      '"]'
+    );
+
+
+  if(activeButton){
+
+    activeButton.classList.add(
+      "active"
+    );
+
+  }
+
+
+  if(
+    window.innerWidth <= 760
+  ){
+
+    sidebar.classList.remove(
+      "mobileOpen"
+    );
+
+  }
+
+};
+
 
 document
   .querySelectorAll(".nav button")
@@ -2004,69 +5050,8 @@ document
         "click",
         function(){
 
-          const pageName =
-            button.dataset.page;
-
-
-          if(
-            (
-              pageName === "wallet" ||
-              pageName === "admin"
-            )
-            &&
-            !isSuperAdmin(
-              auth.currentUser
-            )
-          ){
-
-            alert(
-              "Access denied. Super Admin only."
-            );
-
-            return;
-
-          }
-
-
-          document
-            .querySelectorAll(".page")
-            .forEach(
-              page=>{
-                page.classList.remove(
-                  "active"
-                );
-              }
-            );
-
-
-          const target =
-            document.getElementById(
-              "page-" + pageName
-            );
-
-
-          if(target){
-
-            target.classList.add(
-              "active"
-            );
-
-          }
-
-
-          document
-            .querySelectorAll(".nav button")
-            .forEach(
-              btn=>{
-                btn.classList.remove(
-                  "active"
-                );
-              }
-            );
-
-
-          button.classList.add(
-            "active"
+          openPage(
+            button.dataset.page
           );
 
         }
@@ -2076,7 +5061,79 @@ document
   );
 
 
-/* SUPER ADMIN WALLET */
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+document
+  .getElementById("mobileMenu")
+  .addEventListener(
+    "click",
+    function(){
+
+      sidebar.classList.toggle(
+        "mobileOpen"
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   AI TEACHER INTERFACE
+========================================================= */
+
+document
+  .getElementById("btnAskAI")
+  .addEventListener(
+    "click",
+    function(){
+
+      const subject =
+        document
+          .getElementById("aiSubject")
+          .value;
+
+      const level =
+        document
+          .getElementById("aiLevel")
+          .value;
+
+      const question =
+        document
+          .getElementById("aiQuestion")
+          .value.trim();
+
+
+      const status =
+        document
+          .getElementById("aiTeacherStatus");
+
+
+      if(!question){
+
+        status.innerText =
+          "Please enter your learning question first.";
+
+        return;
+
+      }
+
+
+      status.innerText =
+        "Learning request prepared for secure AI backend: " +
+        subject +
+        " / " +
+        level +
+        ". Gemini/AI backend connection will be added in the next integration phase.";
+
+    }
+  );
+
+
+/* =========================================================
+   SUPER ADMIN WALLET
+========================================================= */
 
 function loadSuperAdminWallet(uid){
 
@@ -2110,7 +5167,6 @@ function loadSuperAdminWallet(uid){
       const balance =
         snapshot.val();
 
-
       walletBalance.innerText =
         Number(
           balance || 0
@@ -2128,10 +5184,8 @@ function loadSuperAdminWallet(uid){
         error
       );
 
-
       walletBalance.innerText =
         "Protected";
-
 
       walletStatus.innerText =
         "Wallet data could not be loaded.";
@@ -2142,7 +5196,9 @@ function loadSuperAdminWallet(uid){
 }
 
 
-/* P2P REGISTRATION */
+/* =========================================================
+   P2P REGISTRATION
+========================================================= */
 
 document
   .getElementById(
@@ -2237,25 +5293,15 @@ document
         await set(
           workerRef,
           {
-
             name:name,
-
             country:country,
-
             city:city,
-
             skill:skill,
-
             experience:experience,
-
             phone:phone,
-
             uid:user.uid,
-
             createdAt:Date.now(),
-
             status:"pending"
-
           }
         );
 
@@ -2268,26 +5314,21 @@ document
           .getElementById("p2pName")
           .value = "";
 
-
         document
           .getElementById("p2pCountry")
           .value = "";
-
 
         document
           .getElementById("p2pCity")
           .value = "";
 
-
         document
           .getElementById("p2pSkill")
           .value = "";
 
-
         document
           .getElementById("p2pExperience")
           .value = "";
-
 
         document
           .getElementById("p2pPhone")
@@ -2301,7 +5342,6 @@ document
           error
         );
 
-
         p2pStatus.innerText =
           "Registration Error: " +
           error.message;
@@ -2312,7 +5352,9 @@ document
   );
 
 
-/* LOAD P2P WORKERS */
+/* =========================================================
+   LOAD P2P WORKERS
+========================================================= */
 
 function loadP2PWorkers(){
 
@@ -2410,7 +5452,6 @@ function loadP2PWorkers(){
         error
       );
 
-
       p2pList.innerHTML =
         "<div class='workerItem'>Unable to load P2P records.</div>";
 
@@ -2420,7 +5461,9 @@ function loadP2PWorkers(){
 }
 
 
-/* HTML SAFETY */
+/* =========================================================
+   HTML SAFETY
+========================================================= */
 
 function escapeHTML(value){
 
@@ -2454,7 +5497,9 @@ function escapeHTML(value){
 }
 
 
-/* ADMIN WALLET CONTROLS */
+/* =========================================================
+   ADMIN WALLET CONTROLS
+========================================================= */
 
 async function changeWallet(
   addAmount
@@ -2597,7 +5642,9 @@ async function changeWallet(
 }
 
 
-/* GRANT */
+/* =========================================================
+   GRANT
+========================================================= */
 
 document
   .getElementById(
@@ -2615,7 +5662,9 @@ document
   );
 
 
-/* DEDUCT */
+/* =========================================================
+   DEDUCT
+========================================================= */
 
 document
   .getElementById(
@@ -2631,6 +5680,43 @@ document
 
     }
   );
+
+
+/* =========================================================
+   INITIAL LOCAL PROGRESS DISPLAY
+========================================================= */
+
+function initializeProgress(){
+
+  const progress =
+    0;
+
+  const number =
+    document.getElementById(
+      "overallProgress"
+    );
+
+  const bar =
+    document.getElementById(
+      "overallProgressBar"
+    );
+
+
+  if(number){
+    number.innerText =
+      progress + "%";
+  }
+
+
+  if(bar){
+    bar.style.width =
+      progress + "%";
+  }
+
+}
+
+initializeProgress();
+
 
 </script>
 
