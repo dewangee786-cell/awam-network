@@ -3,23 +3,44 @@ service cloud.firestore {
   match /databases/{database}/documents {
     function signedIn() { return request.auth != null; }
     function admin() { return signedIn() && request.auth.token.admin == true; }
+    function moderator() { return signedIn() && (request.auth.token.moderator == true || request.auth.token.role == 'moderator'); }
+    function staff() { return admin() || moderator(); }
+
     match /users/{uid} {
       allow read, create, update: if signedIn() && (request.auth.uid == uid || admin());
       allow delete: if admin();
       match /tasks/{taskId} {
-        allow read, create, update: if signedIn() && (request.auth.uid == uid || admin());
+        allow read, create, update: if signedIn() && (request.auth.uid == uid || staff());
+        allow delete: if signedIn() && (request.auth.uid == uid || admin());
+      }
+      match /labWork/{workId} {
+        allow read, create, update: if signedIn() && (request.auth.uid == uid || staff());
+        allow delete: if signedIn() && (request.auth.uid == uid || admin());
+      }
+      match /tests/{testId} {
+        allow read, create, update: if signedIn() && (request.auth.uid == uid || staff());
         allow delete: if admin();
       }
     }
+
     match /complaints/{id} {
       allow create: if signedIn() && request.resource.data.uid == request.auth.uid;
-      allow read: if signedIn() && (resource.data.uid == request.auth.uid || admin());
-      allow update: if admin();
+      allow read: if signedIn() && (resource.data.uid == request.auth.uid || staff());
+      allow update: if staff();
       allow delete: if admin();
+    }
+    match /moderators/{id} {
+      allow read, create, update, delete: if admin();
     }
     match /courses/{id} {
       allow read: if signedIn();
       allow write: if admin();
+    }
+    match /courseEnrollments/{id} {
+      allow create: if signedIn() && request.resource.data.uid == request.auth.uid;
+      allow read: if signedIn() && (resource.data.uid == request.auth.uid || staff());
+      allow update: if signedIn() && (resource.data.uid == request.auth.uid || staff());
+      allow delete: if admin();
     }
     match /auditLogs/{id} {
       allow read: if admin();
