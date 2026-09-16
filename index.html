@@ -4587,7 +4587,20 @@ import {
   getGenerativeModel,
   GoogleAIBackend
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-ai.js";
+  
+import {
+  getDatabase,
+  ref,
+  onValue,
+  push,
+  set,
+  get
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
 
+  import {
+  initializeAppCheck,
+  ReCaptchaEnterpriseProvider
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app-check.js";
 
 /* =========================================================
    FIREBASE CONFIG
