@@ -4620,6 +4620,9 @@ const firebaseConfig = {
 const firebaseApp =
   initializeApp(firebaseConfig);
 
+  const ai = getAI(app, { backend: new GoogleAIBackend() });
+const model = getGenerativeModel(ai, { model: "gemini-3.8-flash" });
+
 const auth =
   getAuth(firebaseApp);
 
