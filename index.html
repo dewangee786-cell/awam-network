@@ -4638,6 +4638,18 @@ const firebaseConfig = {
 const firebaseApp =
   initializeApp(firebaseConfig);
 
+  /* =========================================================
+   FIREBASE APP CHECK
+   reCAPTCHA Enterprise
+========================================================= */
+
+const appCheck = initializeAppCheck(firebaseApp, {
+  provider: new ReCaptchaEnterpriseProvider(
+    "YAHAN_APNI_RECAPTCHA_ENTERPRISE_WEB_KEY_LAGAYEIN"
+  ),
+  isTokenAutoRefreshEnabled: true
+});
+
 
 /* =========================================================
    FIREBASE AUTHENTICATION
