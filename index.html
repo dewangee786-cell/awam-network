@@ -4635,8 +4635,15 @@ const firebaseConfig = {
    FIREBASE INITIALIZATION
 ========================================================= */
 
-const firebaseApp =
-  initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
+
+// Firebase App Check
+const appCheck = initializeAppCheck(firebaseApp, {
+  provider: new ReCaptchaEnterpriseProvider(
+    "6Lfyz70tAAAAAJOu1uAU-LK6OqE_0mu8j2bT1Gqe"
+  ),
+  isTokenAutoRefreshEnabled: true
+});
 
   /* =========================================================
    FIREBASE APP CHECK
