@@ -4556,9 +4556,14 @@ button{
 
 <script type="module">
 
+/* =========================================================
+   FIREBASE SDK IMPORTS
+   Firebase JS SDK 12.19.0
+========================================================= */
+
 import {
   initializeApp
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
 import {
   getAuth,
@@ -4566,7 +4571,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signOut
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
 import {
   getDatabase,
@@ -4575,7 +4580,13 @@ import {
   push,
   set,
   get
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
+
+import {
+  getAI,
+  getGenerativeModel,
+  GoogleAIBackend
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-ai.js";
 
 
 /* =========================================================
@@ -4608,27 +4619,138 @@ const firebaseConfig = {
 
 
 /* =========================================================
-   INITIALIZE
+   FIREBASE INITIALIZATION
 ========================================================= */
 
 const firebaseApp =
   initializeApp(firebaseConfig);
 
+
+/* =========================================================
+   FIREBASE AUTHENTICATION
+========================================================= */
+
 const auth =
   getAuth(firebaseApp);
+
+
+/* =========================================================
+   FIREBASE REALTIME DATABASE
+========================================================= */
 
 const database =
   getDatabase(firebaseApp);
 
+
+/* =========================================================
+   GOOGLE LOGIN PROVIDER
+========================================================= */
+
 const googleProvider =
   new GoogleAuthProvider();
 
-
 googleProvider.setCustomParameters({
-  prompt:"select_account"
+  prompt: "select_account"
 });
 
 
+/* =========================================================
+   FIREBASE AI LOGIC — GEMINI
+========================================================= */
+
+const ai =
+  getAI(firebaseApp, {
+    backend: new GoogleAIBackend()
+  });
+
+
+/* =========================================================
+   GEMINI MODEL
+========================================================= */
+
+const model =
+  getGenerativeModel(ai, {
+    model: "gemini-3.8-flash"
+  });
+
+
+/* =========================================================
+   AI CONNECTION TEST FUNCTION
+   Actual AI Teacher button will use this later.
+========================================================= */
+
+async function testGeminiConnection() {
+
+  try {
+
+    const prompt =
+      "You are the AI Teacher of International Awam Network. "
+      + "Reply with a short welcome message for a new student.";
+
+    const result =
+      await model.generateContent(prompt);
+
+    const response =
+      result.response;
+
+    const text =
+      response.text();
+
+    console.log("Gemini AI Connected:", text);
+
+    return text;
+
+  } catch (error) {
+
+    console.error(
+      "Gemini AI Connection Error:",
+      error
+    );
+
+    throw error;
+  }
+}
+
+
+/* =========================================================
+   GLOBAL AI OBJECTS
+   These will be used by AI Teacher / Academy / Exams.
+========================================================= */
+
+window.awamAI = ai;
+window.awamAIModel = model;
+window.testGeminiConnection = testGeminiConnection;
+
+
+/* =========================================================
+   FIREBASE CONNECTION READY
+========================================================= */
+
+console.log(
+  "Firebase + Google Login + Realtime Database + Gemini AI initialized."
+);
+
+
+/* =========================================================
+   YOUR EXISTING CODE CONTINUES BELOW
+========================================================= */
+
+/*
+   IMPORTANT:
+
+   Do NOT remove your existing:
+   - Google Login button code
+   - onAuthStateChanged code
+   - signOut code
+   - Super Admin code
+   - P2P code
+   - Wallet code
+   - page navigation code
+   - AI Teacher HTML
+   - Education Academy code
+
+   They continue BELOW this block.
+*/
 /* =========================================================
    SUPER ADMIN
 ========================================================= */
