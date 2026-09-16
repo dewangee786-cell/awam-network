@@ -5883,6 +5883,105 @@ Explain step by step and use simple examples where helpful.
   }
 
 });
+/* =========================================================
+   AI TEACHER — GEMINI CONNECTION
+========================================================= */
+
+const btnAskAI = document.getElementById("btnAskAI");
+const aiQuestion = document.getElementById("aiQuestion");
+const aiSubject = document.getElementById("aiSubject");
+const aiLevel = document.getElementById("aiLevel");
+const aiTeacherStatus = document.getElementById("aiTeacherStatus");
+
+if (btnAskAI) {
+
+  btnAskAI.addEventListener("click", async () => {
+
+    const question = aiQuestion?.value.trim();
+    const subject = aiSubject?.value || "Digital Skills";
+    const level = aiLevel?.value || "Basic";
+
+    if (!question) {
+
+      aiTeacherStatus.textContent =
+        "Please write your learning question first.";
+
+      return;
+    }
+
+    btnAskAI.disabled = true;
+    btnAskAI.textContent = "✦ AI Teacher is thinking...";
+
+    aiTeacherStatus.textContent =
+      "Connecting to your AI Teacher...";
+
+    try {
+
+      const prompt = `
+You are the official AI Teacher of International Awam Network — VVIP AI Academy.
+
+Your role:
+- Teach students clearly and professionally.
+- Explain concepts step-by-step.
+- Adapt explanations to the student's level.
+- Use simple language for beginners.
+- Give practical examples.
+- Never intentionally provide harmful, fraudulent, illegal, or unsafe instructions.
+- Encourage ethical and responsible learning.
+
+Student Subject:
+${subject}
+
+Student Level:
+${level}
+
+Student Question:
+${question}
+
+Answer the student as a professional personal AI Teacher.
+
+Structure your answer with:
+1. Direct explanation
+2. Simple example
+3. Practical steps
+4. Short practice task
+5. What the student should learn next
+`;
+
+      const result =
+        await window.awamAIModel.generateContent(prompt);
+
+      const response =
+        result.response;
+
+      const text =
+        response.text();
+
+      aiTeacherStatus.innerHTML =
+        escapeHTML(text).replace(/\n/g, "<br>");
+
+    } catch (error) {
+
+      console.error(
+        "AI Teacher Error:",
+        error
+      );
+
+      aiTeacherStatus.textContent =
+        "AI Teacher connection failed. Please try again.";
+
+    } finally {
+
+      btnAskAI.disabled = false;
+
+      btnAskAI.textContent =
+        "✦ Ask AI Teacher";
+
+    }
+
+  });
+
+}
   
 </script>
 
