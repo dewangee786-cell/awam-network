@@ -5726,7 +5726,51 @@ function initializeProgress(){
 
 initializeProgress();
 
+document.getElementById("btnAskAI").addEventListener("click", async () => {
 
+  const subject = document.getElementById("aiSubject").value;
+  const level = document.getElementById("aiLevel").value;
+  const question = document.getElementById("aiQuestion").value.trim();
+  const status = document.getElementById("aiTeacherStatus");
+
+  if (!question) {
+    status.textContent = "Please enter your learning question first.";
+    return;
+  }
+
+  try {
+
+    status.textContent = "AI Teacher is preparing your answer...";
+
+    const prompt = `
+You are a professional AI Teacher for the International Awam Network.
+
+Subject: ${subject}
+Student Level: ${level}
+Student Question: ${question}
+
+Give a clear educational answer suitable for the student's level.
+Explain step by step and use simple examples where helpful.
+`;
+
+    const result = await model.generateContent(prompt);
+
+    const response = result.response;
+    const answer = response.text();
+
+    status.textContent = answer;
+
+  } catch (error) {
+
+    console.error(error);
+
+    status.textContent =
+      "AI connection error. Please try again.";
+
+  }
+
+});
+  
 </script>
 
 </body>
