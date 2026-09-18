@@ -80,6 +80,7 @@ $('aiForm').onsubmit=async e=>{
     }
 
     $('aiOutput').textContent=answer;
+    await saveAIHistory(prompt, answer, "pending");
     msg($('aiStatus'),'AI Program Leader response generated successfully.');
 
   }catch(error){
@@ -90,6 +91,24 @@ $('aiForm').onsubmit=async e=>{
     btn.disabled=false;
   }
 };
+
+ // ===== AI HISTORY + ANSWER EVALUATION =====
+async function saveAIHistory(question, answer, evaluation = "pending"){
+  if(!user) return;
+
+  try{
+    await addDoc(collection(db,"aiHistory"),{
+      uid:user.uid,
+      studentEmail:user.email || "",
+      question:question,
+      answer:answer,
+      evaluation:evaluation,
+      createdAt:serverTimestamp()
+    });
+  }catch(error){
+    console.error("AI history save error:",error);
+  }
+} 
 $('moderatorForm').onsubmit=async e=>{e.preventDefault();if(!isAdmin)return msg($('moderatorStatus'),'Admin permission required.');const permissions=[...document.querySelectorAll('#moderatorForm input[type=checkbox]:checked')].map(x=>x.value);try{await addDoc(collection(db,'moderators'),{email:$('moderatorEmail').value.trim().toLowerCase(),displayName:$('moderatorName').value.trim(),permissions,status:'active',createdBy:user.uid,createdAt:serverTimestamp()});msg($('moderatorStatus'),'Moderator added securely.');e.target.reset();await loadModerators()}catch(err){msg($('moderatorStatus'),'Could not add moderator: '+err.message)}};
 async function loadModerators(){try{const snap=await getDocs(collection(db,'moderators'));$('moderatorList').innerHTML='';if(snap.empty){$('moderatorList').innerHTML='<tr><td colspan="4">No moderators loaded.</td></tr>';return}snap.forEach(s=>{const d=s.data(),tr=document.createElement('tr');tr.innerHTML='<td>'+safe(d.displayName)+'</td><td><span class="tag">'+safe(d.status||'active')+'</span></td><td>'+safe((d.permissions||[]).join(', '))+'</td><td><button class="danger" data-remove="'+s.id+'">Remove</button></td>';$('moderatorList').appendChild(tr)});document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=async()=>{if(confirm('Remove this moderator?')){await deleteDoc(doc(db,'moderators',b.dataset.remove));await loadModerators()}})}catch(e){msg($('moderatorStatus'),'Moderator list unavailable. Deploy secure Firestore rules first.')}}function safe(v){return String(v||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 </script></body></html>
