@@ -23,7 +23,56 @@
 import{initializeApp}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";import{getAuth,GoogleAuthProvider,signInWithPopup,onAuthStateChanged,signOut}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";import{getFirestore,doc,setDoc,getDoc,addDoc,collection,serverTimestamp,getDocs,query,where,deleteDoc}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 const cfg={apiKey:"AIzaSyCVbrB6vg0wLLzfLymZ3213b249DAo5jbY",authDomain:"awam-network-318ec.firebaseapp.com",projectId:"awam-network-318ec",storageBucket:"awam-network-318ec.firebasestorage.app",messagingSenderId:"313453430241",appId:"1:313453430241:web:dce88e6141a5390826fea0"};const app=initializeApp(cfg),auth=getAuth(app),db=getFirestore(app),provider=new GoogleAuthProvider();provider.setCustomParameters({prompt:"select_account"});const $=id=>document.getElementById(id);let user=null,isAdmin=false,currentLab="";const msg=(e,t)=>{if(e)e.textContent=t};
 function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id))}document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{if(b.dataset.page==='admin'&&!isAdmin)return;go(b.dataset.page)});document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>go(b.dataset.open));function tick(){$('clock').textContent=new Date().toLocaleTimeString([], {hour12:false})}setInterval(tick,1000);tick();
-$('loginBtn').onclick=async()=>{if(!$('consent').checked)return msg($('loginStatus'),'Please accept the Terms and policies first.');$('loginBtn').disabled=true;msg($('loginStatus'),'Opening secure Google login…');try{await signInWithPopup(auth,provider)}catch(e){msg($('loginStatus'),e.code||'Login failed');$('loginBtn').disabled=false}};$('logout').onclick=()=>signOut(auth);
+// ===== INDEPENDENT GOOGLE LOGIN =====
+$('loginBtn').onclick=async()=>{
+  const loginButton=$('loginBtn');
+  const status=$('loginStatus');
+
+  if(!$('consent').checked){
+    msg(status,'Please accept the Terms and policies first.');
+    return;
+  }
+
+  loginButton.disabled=true;
+  msg(status,'Opening secure Google login…');
+
+  try{
+    await signInWithPopup(auth,provider);
+
+    msg(status,'Google login successful.');
+
+  }catch(error){
+    console.error('Google Login Error:',error);
+
+    let errorMessage='Login failed. Please try again.';
+
+    if(error.code==='auth/popup-closed-by-user'){
+      errorMessage='Login popup was closed. Please try again.';
+    }else if(error.code==='auth/popup-blocked'){
+      errorMessage='Google login popup was blocked by the browser. Please allow popups for this site.';
+    }else if(error.code==='auth/cancelled-popup-request'){
+      errorMessage='Another login request is already active. Please try again.';
+    }else if(error.code==='auth/network-request-failed'){
+      errorMessage='Network connection problem. Please check your internet and try again.';
+    }else if(error.code){
+      errorMessage='Login failed: '+error.code;
+    }
+
+    msg(status,errorMessage);
+
+  }finally{
+    loginButton.disabled=false;
+  }
+};
+
+// ===== LOGOUT =====
+$('logout').onclick=async()=>{
+  try{
+    await signOut(auth);
+  }catch(error){
+    console.error('Logout Error:',error);
+  }
+};
 onAuthStateChanged(auth,async u=>{user=u;if(!u){$('login').classList.remove('hidden');$('app').classList.add('hidden');return}$('login').classList.add('hidden');$('app').classList.remove('hidden');$('name').textContent='';const token=await u.getIdTokenResult(true);isAdmin=token.claims.admin===true||token.claims.role==='superAdmin';$('role').textContent=isAdmin?'Super Admin':'Member';$('adminNav').classList.toggle('hidden',!isAdmin);if(isAdmin)await loadModerators();await loadProfile()});
 async function loadProfile(){try{const s=await getDoc(doc(db,'users',user.uid));if(!s.exists())return;const d=s.data();['fullName','phone','city','country','skills'].forEach(id=>{if($(id)&&d[id])$(id).value=d[id]});if(d.goal)$('goal').value=d.goal}catch(e){console.warn(e)}}$('profileForm').onsubmit=async e=>{e.preventDefault();try{await setDoc(doc(db,'users',user.uid),{uid:user.uid,email:user.email||'',fullName:$('fullName').value,phone:$('phone').value,city:$('city').value,country:$('country').value,goal:$('goal').value,skills:$('skills').value,updatedAt:serverTimestamp()},{merge:true});msg($('profileStatus'),'Profile saved successfully.')}catch(e){msg($('profileStatus'),e.message)}};
 $('generateTask').onclick=async()=>{const text='Today: study one professional skill for 30 minutes, complete one practical exercise, and write three learning notes.';$('lesson').textContent=text;msg($('taskStatus'),'Task created.');try{await addDoc(collection(db,'users',user.uid,'tasks'),{text,status:'assigned',createdAt:serverTimestamp()})}catch(e){msg($('taskStatus'),'Database setup is required for cloud sync.')}};$('generateTest').onclick=async()=>{if(!currentLab)return msg($('testStatus'),'Complete today’s task first, then try again.');$('testText').textContent='Next-day test prepared for '+currentLab+'. Questions will be reviewed by the AI learning workflow.';msg($('testStatus'),'Test prepared.')};
