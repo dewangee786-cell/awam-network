@@ -12,13 +12,49 @@
 <section id="dashboard" class="page active"><div class="hero"><small>INTERNATIONAL PROGRAM</small><h1>Learn, practise, test and build.</h1><p>AI recommends a learning path from Basic to Master across office management, data entry, MS Office, design, video, business and digital skills.</p></div><div class="grid"><div class="card"><div class="stat">0%</div><h3>Progress</h3><p>Your learning journey.</p></div><div class="card"><div class="stat">24/7</div><h3>AI mentor</h3><p>Guidance and recommendations.</p></div><div class="card"><div class="stat">Auto</div><h3>Daily task</h3><p>Lesson and homework workflow.</p></div><div class="card"><div class="stat">Safe</div><h3>Protection</h3><p>Rules, authentication and audit.</p></div></div><div class="cols"><div class="card"><h3>Recommended next steps</h3><div class="list"><button class="row" data-open="profile">Complete your profile <span class="tag">Start</span></button><button class="row" data-open="academy">Choose your target skill <span class="tag">Start</span></button></div></div><div class="card"><h3>Live platform status</h3><div class="list"><div class="row">Authentication <span class="tag">Online</span></div><div class="row">AI policy guard <span class="tag">Active</span></div><div class="row">Admin audit <span class="tag">Enabled</span></div></div></div></div></section>
 <section id="profile" class="page"><h2>Student profile</h2><p class="status">AI uses this information to recommend courses.</p><div class="card"><form id="profileForm" class="form"><label>Full name<input id="fullName" required></label><label>Phone / WhatsApp<input id="phone" type="tel"></label><label>City<input id="city"></label><label>Country<input id="country"></label><label>Learning goal<select id="goal"><option>Office management</option><option>Data entry</option><option>MS Office</option><option>Excel and reporting</option><option>Graphic design</option><option>Video editing</option><option>Digital marketing</option><option>Programming and AI</option><option>Freelancing</option></select></label><label>Current skills<textarea id="skills"></textarea></label><button class="btn">Save profile</button><div id="profileStatus" class="status"></div></form></div></section>
 <section id="academy" class="page"><h2>Academy &amp; professional skills</h2><div class="grid" style="margin-top:14px"><div class="card"><h3>Basic foundation</h3><p>Computer basics, typing, internet, email, files and digital safety.</p></div><div class="card"><h3>Office management</h3><p>Word, Excel, records, calendars, communication and administration.</p></div><div class="card"><h3>Data entry</h3><p>Accuracy, spreadsheets, forms, databases, reporting and quality control.</p></div><div class="card"><h3>Creative studio</h3><p>Graphic design, Canva, presentations and video editing.</p></div></div></section>
-<section id="ai" class="page"><h2>AI mentor &amp; generator</h2><div class="card"><form id="aiForm" class="form"><label>Your request<textarea id="aiPrompt" required placeholder="Example: Create a 7-day Excel course for a beginner."></textarea></label><button class="btn">Generate with AI</button></form><div id="aiStatus" class="status"></div><pre id="aiOutput" style="white-space:pre-wrap;line-height:1.6"></pre></div></section>
-<section id="tasks" class="page"><h2>Daily lessons &amp; home task</h2><div class="cols"><div class="card"><h3>Today’s lesson</h3><p id="lesson">Choose a course to receive a lesson.</p><button id="generateTask" class="btn">Create today’s task</button><div id="taskStatus" class="status"></div></div><div class="card"><h3>Next-day AI test</h3><p id="testText">Complete today’s task, then generate a test.</p><button id="generateTest" class="btn secondary">Generate next-day test</button><div id="testStatus" class="status"></div></div></div></section>
-<section id="lab" class="page"><h2>Practical lab</h2><div class="grid"><div class="card"><h3>Office simulation</h3><p>Create a document, email and meeting schedule.</p><button class="btn" data-lab="Office simulation">Open workspace</button></div><div class="card"><h3>Data-entry practice</h3><p>Clean records and prepare a report.</p><button class="btn" data-lab="Data-entry practice">Open workspace</button></div><div class="card"><h3>Creative studio</h3><p>Plan a graphic or short educational video.</p><button class="btn" data-lab="Creative studio">Open workspace</button></div></div><div id="labBox" class="card hidden" style="margin-top:14px"><h3 id="labTitle"></h3><p>Write your work below and save it for review.</p><textarea id="labWork" style="width:100%;min-height:120px;padding:10px"></textarea><button id="saveLab" class="btn" style="margin-top:10px">Save practice</button><div id="labStatus" class="status"></div></div></section>
-<section id="support" class="page"><h2>Complaint &amp; AI support</h2><div class="card"><form id="supportForm" class="form"><label>Issue type<select id="issueType"><option>Learning question</option><option>Technical problem</option><option>Account or security</option><option>Complaint</option><option>Payment or wallet</option></select></label><label>Describe your issue<textarea id="issue" required></textarea></label><button class="btn">Submit secure report</button></form><div id="supportStatus" class="status"></div></div></section>
-<section id="policies" class="page"><h2>Rules, privacy and terms</h2><div class="card terms"><h4>Responsible AI</h4><p>AI is for lawful education, guidance and productivity. Users must verify important outputs and must not use the platform for abuse, fraud or illegal activity.</p><h4>Privacy</h4><p>Student data is used for account operation and personalised learning. Access is limited by authentication and database rules.</p><h4>Security</h4><p>Do not share credentials, bypass controls, automate abuse or attempt unauthorised access. Sensitive actions require human review.</p></div></section>
-<section id="admin" class="page"><h2>Super Admin control</h2><div class="card"><div class="status">Only Firebase custom-claim administrators can access this area. Personal admin details remain private.</div><h3 style="margin-top:18px">Moderator management</h3><p>Add as many moderators as needed and assign only the permissions they require.</p><form id="moderatorForm" class="form"><label>Moderator email<input id="moderatorEmail" type="email" required placeholder="moderator@example.com"></label><label>Display name<input id="moderatorName" required></label><div class="permission"><label><input type="checkbox" value="support" checked> Support</label><label><input type="checkbox" value="lessons"> Lessons</label><label><input type="checkbox" value="tests"> Tests</label><label><input type="checkbox" value="reports"> Reports</label></div><button class="btn">Add moderator</button></form><div id="moderatorStatus" class="status"></div><table class="table"><thead><tr><th>Name</th><th>Status</th><th>Permissions</th><th>Action</th></tr></thead><tbody id="moderatorList"><tr><td colspan="4">No moderators loaded.</td></tr></tbody></table></div></section>
-</div></main></section>
+<section id="ai" class="page">
+  <h2>AI mentor &amp; generator</h2>
+
+  <div class="card">
+    <form id="aiForm" class="form">
+      <label>
+        Your request
+        <textarea
+          id="aiPrompt"
+          required
+          placeholder="Example: Create a 7-day Excel course for a beginner."
+        ></textarea>
+      </label>
+
+      <button type="submit" class="btn">
+        🤖 Generate with AI
+      </button>
+    </form>
+
+    <div id="aiStatus" class="status"></div>
+
+    <pre
+      id="aiOutput"
+      style="white-space:pre-wrap;line-height:1.6"
+    ></pre>
+
+    <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+      <button
+        type="button"
+        id="aiHistoryBtn"
+        class="btn secondary"
+      >
+        📚 AI Learning History
+      </button>
+
+      <div
+        id="aiHistoryStatus"
+        class="status"
+        style="margin-top:8px"
+      ></div>
+    </div>
+  </div>
+</section>
 <script type="module">
 import{initializeApp}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";import{getAuth,GoogleAuthProvider,signInWithPopup,onAuthStateChanged,signOut}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";import{getFirestore,doc,setDoc,getDoc,addDoc,collection,serverTimestamp,getDocs,query,where,deleteDoc}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 const cfg={apiKey:"AIzaSyCVbrB6vg0wLLzfLymZ3213b249DAo5jbY",authDomain:"awam-network-318ec.firebaseapp.com",projectId:"awam-network-318ec",storageBucket:"awam-network-318ec.firebasestorage.app",messagingSenderId:"313453430241",appId:"1:313453430241:web:dce88e6141a5390826fea0"};const app=initializeApp(cfg),auth=getAuth(app),db=getFirestore(app),provider=new GoogleAuthProvider();provider.setCustomParameters({prompt:"select_account"});const $=id=>document.getElementById(id);let user=null,isAdmin=false,currentLab="";const msg=(e,t)=>{if(e)e.textContent=t};
