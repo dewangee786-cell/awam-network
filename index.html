@@ -252,7 +252,7 @@ msg($('aiStatus'),'AI Program Leader response generated successfully.');
   }
 };
 
- // ===== AI HISTORY + ANSWER EVALUATION =====
+// ===== AI HISTORY + ANSWER EVALUATION =====
 async function saveAIHistory(question, answer, evaluation = "pending"){
   if(!user) return;
 
@@ -268,7 +268,211 @@ async function saveAIHistory(question, answer, evaluation = "pending"){
   }catch(error){
     console.error("AI history save error:",error);
   }
-} 
-$('moderatorForm').onsubmit=async e=>{e.preventDefault();if(!isAdmin)return msg($('moderatorStatus'),'Admin permission required.');const permissions=[...document.querySelectorAll('#moderatorForm input[type=checkbox]:checked')].map(x=>x.value);try{await addDoc(collection(db,'moderators'),{email:$('moderatorEmail').value.trim().toLowerCase(),displayName:$('moderatorName').value.trim(),permissions,status:'active',createdBy:user.uid,createdAt:serverTimestamp()});msg($('moderatorStatus'),'Moderator added securely.');e.target.reset();await loadModerators()}catch(err){msg($('moderatorStatus'),'Could not add moderator: '+err.message)}};
-async function loadModerators(){try{const snap=await getDocs(collection(db,'moderators'));$('moderatorList').innerHTML='';if(snap.empty){$('moderatorList').innerHTML='<tr><td colspan="4">No moderators loaded.</td></tr>';return}snap.forEach(s=>{const d=s.data(),tr=document.createElement('tr');tr.innerHTML='<td>'+safe(d.displayName)+'</td><td><span class="tag">'+safe(d.status||'active')+'</span></td><td>'+safe((d.permissions||[]).join(', '))+'</td><td><button class="danger" data-remove="'+s.id+'">Remove</button></td>';$('moderatorList').appendChild(tr)});document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=async()=>{if(confirm('Remove this moderator?')){await deleteDoc(doc(db,'moderators',b.dataset.remove));await loadModerators()}})}catch(e){msg($('moderatorStatus'),'Moderator list unavailable. Deploy secure Firestore rules first.')}}function safe(v){return String(v||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
-</script></body></html>
+}
+
+// ===== INDEPENDENT AI LEARNING HISTORY BUTTON =====
+$('aiHistoryBtn').onclick=async()=>{
+  if(!user){
+    msg($('aiHistoryStatus'),'Please login first.');
+    return;
+  }
+
+  msg($('aiHistoryStatus'),'Loading your AI Learning History...');
+
+  try{
+    const historyQuery=query(
+      collection(db,'aiHistory'),
+      where('uid','==',user.uid)
+    );
+
+    const snapshot=await getDocs(historyQuery);
+
+    if(snapshot.empty){
+      $('aiOutput').textContent='No AI learning history found yet.';
+      msg(
+        $('aiHistoryStatus'),
+        'No AI learning history found yet.'
+      );
+      return;
+    }
+
+    const history=[];
+
+    snapshot.forEach(docSnap=>{
+      history.push({
+        id:docSnap.id,
+        ...docSnap.data()
+      });
+    });
+
+  history.sort((a,b)=>{
+      const aTime=a.createdAt?.seconds||0;
+      const bTime=b.createdAt?.seconds||0;
+      return bTime-aTime;
+    });
+
+    let output='AI LEARNING HISTORY\n\n';
+
+    history.forEach((item,index)=>{
+      let mark='⏳';
+
+      if(item.evaluation==='correct'){
+        mark='✅';
+      }else if(item.evaluation==='incorrect'){
+        mark='❌';
+      }
+
+      output+=
+        '━━━━━━━━━━━━━━━━━━━━\n'+
+        '📚 Record '+(index+1)+' '+mark+'\n\n'+
+        '❓ Question:\n'+
+        (item.question||'')+
+        '\n\n'+
+        '🤖 AI Answer:\n'+
+        (item.answer||'')+
+        '\n\n'+
+        '📊 Evaluation: '+
+        (item.evaluation||'pending')+
+        '\n\n';
+    });
+
+    $('aiOutput').textContent=output;
+
+    msg(
+      $('aiHistoryStatus'),
+      'AI Learning History loaded successfully.'
+    );
+
+  }catch(error){
+    console.error('AI History load error:',error);
+
+    msg(
+      $('aiHistoryStatus'),
+      'History could not be loaded. Please try again.'
+    );
+  }
+};
+
+// ===== MODERATOR MANAGEMENT =====
+$('moderatorForm').onsubmit=async e=>{
+  e.preventDefault();
+
+  if(!isAdmin){
+    return msg(
+      $('moderatorStatus'),
+      'Admin permission required.'
+    );
+  }
+
+  const permissions=[
+    ...document.querySelectorAll(
+      '#moderatorForm input[type=checkbox]:checked'
+    )
+  ].map(x=>x.value);
+
+  try{
+    await addDoc(
+      collection(db,'moderators'),
+      {
+        email:$('moderatorEmail').value.trim().toLowerCase(),
+        displayName:$('moderatorName').value.trim(),
+        permissions,
+        status:'active',
+        createdBy:user.uid,
+        createdAt:serverTimestamp()
+      }
+    );
+
+    msg(
+      $('moderatorStatus'),
+      'Moderator added securely.'
+    );
+
+    e.target.reset();
+
+    await loadModerators();
+
+  }catch(err){
+    msg(
+      $('moderatorStatus'),
+      'Could not add moderator: '+err.message
+    );
+  }
+};
+
+ // ===== LOAD MODERATORS =====
+async function loadModerators(){
+  try{
+    const snap=await getDocs(
+      collection(db,'moderators')
+    );
+
+    $('moderatorList').innerHTML='';
+
+    if(snap.empty){
+      $('moderatorList').innerHTML=
+        '<tr><td colspan="4">No moderators loaded.</td></tr>';
+      return;
+    }
+
+    snap.forEach(s=>{
+      const d=s.data();
+
+      const tr=document.createElement('tr');
+
+      tr.innerHTML=
+        '<td>'+
+        safe(d.displayName)+
+        '</td>'+
+        '<td><span class="tag">'+
+        safe(d.status||'active')+
+        '</span></td>'+
+        '<td>'+
+        safe((d.permissions||[]).join(', '))+
+        '</td>'+
+        '<td>'+
+        '<button class="danger" data-remove="'+
+        s.id+
+        '">Remove</button>'+
+        '</td>';
+
+      $('moderatorList').appendChild(tr);
+    });
+
+    document.querySelectorAll('[data-remove]').forEach(b=>{
+      b.onclick=async()=>{
+        if(confirm('Remove this moderator?')){
+          await deleteDoc(
+            doc(db,'moderators',b.dataset.remove)
+          );
+
+          await loadModerators();
+        }
+      };
+    });
+
+  }catch(e){
+    msg(
+      $('moderatorStatus'),
+      'Moderator list unavailable. Deploy secure Firestore rules first.'
+    );
+  }
+}
+
+  // ===== SAFE TEXT =====
+function safe(v){
+  return String(v||'').replace(
+    /[&<>'"]/g,
+    c=>({
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      "'":'&#39;',
+      '"':'&quot;'
+    }[c])
+  );
+}
+
+</script>
+</body>
+</html>
