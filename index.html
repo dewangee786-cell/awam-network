@@ -33,10 +33,85 @@ $('aiForm').onsubmit=async e=>{
   e.preventDefault();
 
   const prompt=$('aiPrompt').value.trim();
+
   if(!prompt){
     msg($('aiStatus'),'Please enter your request.');
     return;
   }
+
+  const btn=$('aiForm').querySelector('button');
+  btn.disabled=true;
+
+  msg($('aiStatus'),'AI Program Leader is preparing your learning response...');
+  $('aiOutput').textContent='';
+
+  try{
+    const response=await fetch('https://awam-ai-engine.dewan-gee786.workers.dev/ai',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify({
+        prompt:
+          'Student request:\n'+prompt+
+          '\n\nAct as the AI Program Leader of International Awam Network VVIP AI Academy. '+
+          'Follow the Academy master curriculum, prerequisites, structured learning path, practical exercises, assessment and feedback rules. '+
+          'Do not assume or invent the student answers.'
+      })
+    });
+
+    const data=await response.json();
+
+    if(!response.ok){
+      throw new Error(data.error||'AI service request failed.');
+    }
+
+    let answer='';
+
+    if(typeof data.reply==='string'){
+      answer=data.reply;
+    }else if(typeof data.text==='string'){
+      answer=data.text;
+    }else if(data.candidates?.[0]?.content?.parts){
+      answer=data.candidates[0].content.parts
+        .map(p=>p.text||'')
+        .join('\n')
+        .trim();
+    }
+
+    if(!answer){
+      answer=JSON.stringify(data,null,2);
+    }
+
+    // Show AI answer first so the working AI connection is never blocked by history saving.
+    $('aiOutput').textContent=answer;
+
+    msg(
+      $('aiStatus'),
+      'AI Program Leader response generated successfully.'
+    );
+
+    // Save history separately. Any history error must not break the AI response.
+    try{
+      await saveAIHistory(prompt,answer,'pending');
+    }catch(historyError){
+      console.error('AI history save error:',historyError);
+    }
+
+  }catch(error){
+    console.error('AI Mentor error:',error);
+
+    msg(
+      $('aiStatus'),
+      'AI connection error: '+(error.message||'Please try again.')
+    );
+
+    $('aiOutput').textContent='';
+
+  }finally{
+    btn.disabled=false;
+  }
+};
 
   const btn=$('aiForm').querySelector('button');
   btn.disabled=true;
