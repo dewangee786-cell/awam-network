@@ -12,108 +12,66 @@
 <section id="dashboard" class="page active"><div class="hero"><small>INTERNATIONAL PROGRAM</small><h1>Learn, practise, test and build.</h1><p>AI recommends a learning path from Basic to Master across office management, data entry, MS Office, design, video, business and digital skills.</p></div><div class="grid"><div class="card"><div class="stat">0%</div><h3>Progress</h3><p>Your learning journey.</p></div><div class="card"><div class="stat">24/7</div><h3>AI mentor</h3><p>Guidance and recommendations.</p></div><div class="card"><div class="stat">Auto</div><h3>Daily task</h3><p>Lesson and homework workflow.</p></div><div class="card"><div class="stat">Safe</div><h3>Protection</h3><p>Rules, authentication and audit.</p></div></div><div class="cols"><div class="card"><h3>Recommended next steps</h3><div class="list"><button class="row" data-open="profile">Complete your profile <span class="tag">Start</span></button><button class="row" data-open="academy">Choose your target skill <span class="tag">Start</span></button></div></div><div class="card"><h3>Live platform status</h3><div class="list"><div class="row">Authentication <span class="tag">Online</span></div><div class="row">AI policy guard <span class="tag">Active</span></div><div class="row">Admin audit <span class="tag">Enabled</span></div></div></div></div></section>
 <section id="profile" class="page"><h2>Student profile</h2><p class="status">AI uses this information to recommend courses.</p><div class="card"><form id="profileForm" class="form"><label>Full name<input id="fullName" required></label><label>Phone / WhatsApp<input id="phone" type="tel"></label><label>City<input id="city"></label><label>Country<input id="country"></label><label>Learning goal<select id="goal"><option>Office management</option><option>Data entry</option><option>MS Office</option><option>Excel and reporting</option><option>Graphic design</option><option>Video editing</option><option>Digital marketing</option><option>Programming and AI</option><option>Freelancing</option></select></label><label>Current skills<textarea id="skills"></textarea></label><button class="btn">Save profile</button><div id="profileStatus" class="status"></div></form></div></section>
 <section id="academy" class="page"><h2>Academy &amp; professional skills</h2><div class="grid" style="margin-top:14px"><div class="card"><h3>Basic foundation</h3><p>Computer basics, typing, internet, email, files and digital safety.</p></div><div class="card"><h3>Office management</h3><p>Word, Excel, records, calendars, communication and administration.</p></div><div class="card"><h3>Data entry</h3><p>Accuracy, spreadsheets, forms, databases, reporting and quality control.</p></div><div class="card"><h3>Creative studio</h3><p>Graphic design, Canva, presentations and video editing.</p></div></div></section>
-<section id="ai" class="page">
-  <h2>AI mentor &amp; generator</h2>
+<section id="ai" class="page"><h2>AI mentor &amp; generator</h2><div class="card"><form id="aiForm" class="form"><label>Your request<textarea id="aiPrompt" required placeholder="Example: Create a 7-day Excel course for a beginner."></textarea></label><button class="btn">Generate with AI</button></form><div id="aiStatus" class="status"></div><pre id="aiOutput" style="white-space:pre-wrap;line-height:1.6"></pre></div></section>
+<section id="tasks" class="page"><h2>Daily lessons &amp; home task</h2><div class="cols"><div class="card"><h3>Today’s lesson</h3><p id="lesson">Choose a course to receive a lesson.</p><button id="generateTask" class="btn">Create today’s task</button><div id="taskStatus" class="status"></div></div><div class="card"><h3>Next-day AI test</h3><p id="testText">Complete today’s task, then generate a test.</p><button id="generateTest" class="btn secondary">Generate next-day test</button><div id="testStatus" class="status"></div></div></div></section>
+<section id="lab" class="page"><h2>Practical lab</h2><div class="grid"><div class="card"><h3>Office simulation</h3><p>Create a document, email and meeting schedule.</p><button class="btn" data-lab="Office simulation">Open workspace</button></div><div class="card"><h3>Data-entry practice</h3><p>Clean records and prepare a report.</p><button class="btn" data-lab="Data-entry practice">Open workspace</button></div><div class="card"><h3>Creative studio</h3><p>Plan a graphic or short educational video.</p><button class="btn" data-lab="Creative studio">Open workspace</button></div></div><div id="labBox" class="card hidden" style="margin-top:14px"><h3 id="labTitle"></h3><p>Write your work below and save it for review.</p><textarea id="labWork" style="width:100%;min-height:120px;padding:10px"></textarea><button id="saveLab" class="btn" style="margin-top:10px">Save practice</button><div id="labStatus" class="status"></div></div></section>
+<section id="support" class="page"><h2>Complaint &amp; AI support</h2><div class="card"><form id="supportForm" class="form"><label>Issue type<select id="issueType"><option>Learning question</option><option>Technical problem</option><option>Account or security</option><option>Complaint</option><option>Payment or wallet</option></select></label><label>Describe your issue<textarea id="issue" required></textarea></label><button class="btn">Submit secure report</button></form><div id="supportStatus" class="status"></div></div></section>
+<section id="policies" class="page"><h2>Rules, privacy and terms</h2><div class="card terms"><h4>Responsible AI</h4><p>AI is for lawful education, guidance and productivity. Users must verify important outputs and must not use the platform for abuse, fraud or illegal activity.</p><h4>Privacy</h4><p>Student data is used for account operation and personalised learning. Access is limited by authentication and database rules.</p><h4>Security</h4><p>Do not share credentials, bypass controls, automate abuse or attempt unauthorised access. Sensitive actions require human review.</p></div></section>
+<section id="admin" class="page"><h2>Super Admin control</h2><div class="card"><div class="status">Only Firebase custom-claim administrators can access this area. Personal admin details remain private.</div><h3 style="margin-top:18px">Moderator management</h3><p>Add as many moderators as needed and assign only the permissions they require.</p><form id="moderatorForm" class="form"><label>Moderator email<input id="moderatorEmail" type="email" required placeholder="moderator@example.com"></label><label>Display name<input id="moderatorName" required></label><div class="permission"><label><input type="checkbox" value="support" checked> Support</label><label><input type="checkbox" value="lessons"> Lessons</label><label><input type="checkbox" value="tests"> Tests</label><label><input type="checkbox" value="reports"> Reports</label></div><button class="btn">Add moderator</button></form><div id="moderatorStatus" class="status"></div><table class="table"><thead><tr><th>Name</th><th>Status</th><th>Permissions</th><th>Action</th></tr></thead><tbody id="moderatorList"><tr><td colspan="4">No moderators loaded.</td></tr></tbody></table></div></section>
+</div></main></section>
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";import{getAuth,GoogleAuthProvider,signInWithPopup,onAuthStateChanged,signOut}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";import{getFirestore,doc,setDoc,getDoc,addDoc,collection,serverTimestamp,getDocs,query,where,deleteDoc}from"https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+const cfg={apiKey:"AIzaSyCVbrB6vg0wLLzfLymZ3213b249DAo5jbY",authDomain:"awam-network-318ec.firebaseapp.com",projectId:"awam-network-318ec",storageBucket:"awam-network-318ec.firebasestorage.app",messagingSenderId:"313453430241",appId:"1:313453430241:web:dce88e6141a5390826fea0"};const app=initializeApp(cfg),auth=getAuth(app),db=getFirestore(app),provider=new GoogleAuthProvider();provider.setCustomParameters({prompt:"select_account"});const $=id=>document.getElementById(id);let user=null,isAdmin=false,currentLab="";const msg=(e,t)=>{if(e)e.textContent=t};
+function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id))}document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{if(b.dataset.page==='admin'&&!isAdmin)return;go(b.dataset.page)});document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>go(b.dataset.open));function tick(){$('clock').textContent=new Date().toLocaleTimeString([], {hour12:false})}setInterval(tick,1000);tick();
+$('loginBtn').onclick=async()=>{if(!$('consent').checked)return msg($('loginStatus'),'Please accept the Terms and policies first.');$('loginBtn').disabled=true;msg($('loginStatus'),'Opening secure Google login…');try{await signInWithPopup(auth,provider)}catch(e){msg($('loginStatus'),e.code||'Login failed');$('loginBtn').disabled=false}};$('logout').onclick=()=>signOut(auth);
+onAuthStateChanged(auth,async u=>{user=u;if(!u){$('login').classList.remove('hidden');$('app').classList.add('hidden');return}$('login').classList.add('hidden');$('app').classList.remove('hidden');$('name').textContent='';const token=await u.getIdTokenResult(true);isAdmin=token.claims.admin===true||token.claims.role==='superAdmin';$('role').textContent=isAdmin?'Super Admin':'Member';$('adminNav').classList.toggle('hidden',!isAdmin);if(isAdmin)await loadModerators();await loadProfile()});
+async function loadProfile(){try{const s=await getDoc(doc(db,'users',user.uid));if(!s.exists())return;const d=s.data();['fullName','phone','city','country','skills'].forEach(id=>{if($(id)&&d[id])$(id).value=d[id]});if(d.goal)$('goal').value=d.goal}catch(e){console.warn(e)}}$('profileForm').onsubmit=async e=>{e.preventDefault();try{await setDoc(doc(db,'users',user.uid),{uid:user.uid,email:user.email||'',fullName:$('fullName').value,phone:$('phone').value,city:$('city').value,country:$('country').value,goal:$('goal').value,skills:$('skills').value,updatedAt:serverTimestamp()},{merge:true});msg($('profileStatus'),'Profile saved successfully.')}catch(e){msg($('profileStatus'),e.message)}};
+$('generateTask').onclick=async()=>{const text='Today: study one professional skill for 30 minutes, complete one practical exercise, and write three learning notes.';$('lesson').textContent=text;msg($('taskStatus'),'Task created.');try{await addDoc(collection(db,'users',user.uid,'tasks'),{text,status:'assigned',createdAt:serverTimestamp()})}catch(e){msg($('taskStatus'),'Database setup is required for cloud sync.')}};$('generateTest').onclick=async()=>{if(!currentLab)return msg($('testStatus'),'Complete today’s task first, then try again.');$('testText').textContent='Next-day test prepared for '+currentLab+'. Questions will be reviewed by the AI learning workflow.';msg($('testStatus'),'Test prepared.')};
+document.querySelectorAll('[data-lab]').forEach(b=>b.onclick=()=>{currentLab=b.dataset.lab;$('labBox').classList.remove('hidden');$('labTitle').textContent=currentLab;go('lab')});$('saveLab').onclick=async()=>{if(!$('labWork').value.trim())return msg($('labStatus'),'Write your work first.');try{await addDoc(collection(db,'users',user.uid,'labWork'),{room:currentLab,work:$('labWork').value,status:'submitted',createdAt:serverTimestamp()});msg($('labStatus'),'Practice submitted for review.')}catch(e){msg($('labStatus'),e.message)}};
+$('supportForm').onsubmit=async e=>{e.preventDefault();try{const r=await addDoc(collection(db,'complaints'),{uid:user.uid,email:user.email||'',type:$('issueType').value,message:$('issue').value,status:'open',createdAt:serverTimestamp()});msg($('supportStatus'),'Report submitted. Reference: '+r.id);e.target.reset()}catch(e){msg($('supportStatus'),e.message)}};
+$('aiForm').onsubmit=async e=>{
+  e.preventDefault();
 
-  <div class="card">
-    <form id="aiForm" class="form">
-      <label>
-        Your request
-        <textarea
-          id="aiPrompt"
-          required
-          placeholder="Example: Create a 7-day Excel course for a beginner."
-        ></textarea>
-      </label>
-
-      <button type="submit" class="btn">
-        🤖 Generate with AI
-      </button>
-    </form>
-
-    <div id="aiStatus" class="status"></div>
-
-    <pre
-      id="aiOutput"
-      style="white-space:pre-wrap;line-height:1.6"
-    ></pre>
-
-    <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
-      <button
-        type="button"
-        id="aiHistoryBtn"
-        class="btn secondary"
-      >
-        📚 AI Learning History
-      </button>
-
-      <div
-        id="aiHistoryStatus"
-        class="status"
-        style="margin-top:8px"
-      ></div>
-    </div>
-  </div>
-</section>
-
-// ===== AI MENTOR =====
-$('generateAiBtn').onclick=async()=>{
   const prompt=$('aiPrompt').value.trim();
-
   if(!prompt){
     msg($('aiStatus'),'Please enter your request.');
     return;
   }
 
-  const btn=$('generateAiBtn');
-
+  const btn=$('aiForm').querySelector('button');
   btn.disabled=true;
-
-  msg(
-    $('aiStatus'),
-    'AI Program Leader is preparing your learning response...'
-  );
-
+  msg($('aiStatus'),'AI Program Leader is preparing your learning response...');
   $('aiOutput').textContent='';
 
   try{
-    const response=await fetch(
-      'https://awam-ai-engine.dewan-gee786.workers.dev/ai',
-      {
-        method:'POST',
-        headers:{
-          'Content-Type':'application/json'
-        },
-        body:JSON.stringify({
-          prompt:
-            'Student request:\n'+prompt+
-            '\n\nAct as the AI Program Leader of International Awam Network VVIP AI Academy. '+
-            'Follow the Academy master curriculum, prerequisites, structured learning path, practical exercises, assessment and feedback rules. '+
-            'Do not assume or invent the student answers.'
-        })
-      }
-    );
+    const response=await fetch('https://awam-ai-engine.dewan-gee786.workers.dev/ai',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        prompt:
+          'Student request:\\n'+prompt+
+          '\\n\\nAct as the AI Program Leader of International Awam Network VVIP AI Academy. '+
+          'Follow the Academy master curriculum, prerequisites, structured learning path, practical exercises, assessment and feedback rules. '+
+          'Do not assume or invent the student answers.'
+      })
+    });
 
     const data=await response.json();
 
     if(!response.ok){
-      throw new Error(
-        data.error||'AI service request failed.'
-      );
+      throw new Error(data.error||'AI service request failed.');
     }
 
     let answer='';
 
     if(typeof data.reply==='string'){
       answer=data.reply;
-
     }else if(typeof data.text==='string'){
       answer=data.text;
-
     }else if(data.candidates?.[0]?.content?.parts){
       answer=data.candidates[0].content.parts
         .map(p=>p.text||'')
-        .join('\n')
+        .join('\\n')
         .trim();
     }
 
@@ -122,305 +80,16 @@ $('generateAiBtn').onclick=async()=>{
     }
 
     $('aiOutput').textContent=answer;
-
-    msg(
-      $('aiStatus'),
-      'AI Program Leader response generated successfully.'
-    );
-
-    try{
-      if(typeof saveAIHistory==='function'){
-        await saveAIHistory(
-          prompt,
-          answer,
-          'pending'
-        );
-      }
-    }catch(historyError){
-      console.error(
-        'AI history save error:',
-        historyError
-      );
-    }
-
-  }catch(error){
-    console.error(
-      'AI Mentor error:',
-      error
-    );
-
-    msg(
-      $('aiStatus'),
-      'AI connection error: '+
-      (error.message||'Please try again.')
-    );
-
-    $('aiOutput').textContent='';
-
-  }finally{
-    btn.disabled=false;
-  }
-};
-
-// ===== LOGOUT =====
-$('logout').onclick=async()=>{
-  try{
-    await signOut(auth);
-  }catch(error){
-    console.error('Logout Error:',error);
-  }
-};
-onAuthStateChanged(auth,async u=>{user=u;if(!u){$('login').classList.remove('hidden');$('app').classList.add('hidden');return}$('login').classList.add('hidden');$('app').classList.remove('hidden');$('name').textContent='';const token=await u.getIdTokenResult(true);isAdmin=token.claims.admin===true||token.claims.role==='superAdmin';$('role').textContent=isAdmin?'Super Admin':'Member';$('adminNav').classList.toggle('hidden',!isAdmin);if(isAdmin)await loadModerators();await loadProfile()});
-async function loadProfile(){try{const s=await getDoc(doc(db,'users',user.uid));if(!s.exists())return;const d=s.data();['fullName','phone','city','country','skills'].forEach(id=>{if($(id)&&d[id])$(id).value=d[id]});if(d.goal)$('goal').value=d.goal}catch(e){console.warn(e)}}$('profileForm').onsubmit=async e=>{e.preventDefault();try{await setDoc(doc(db,'users',user.uid),{uid:user.uid,email:user.email||'',fullName:$('fullName').value,phone:$('phone').value,city:$('city').value,country:$('country').value,goal:$('goal').value,skills:$('skills').value,updatedAt:serverTimestamp()},{merge:true});msg($('profileStatus'),'Profile saved successfully.')}catch(e){msg($('profileStatus'),e.message)}};
-$('generateTask').onclick=async()=>{const text='Today: study one professional skill for 30 minutes, complete one practical exercise, and write three learning notes.';$('lesson').textContent=text;msg($('taskStatus'),'Task created.');try{await addDoc(collection(db,'users',user.uid,'tasks'),{text,status:'assigned',createdAt:serverTimestamp()})}catch(e){msg($('taskStatus'),'Database setup is required for cloud sync.')}};$('generateTest').onclick=async()=>{if(!currentLab)return msg($('testStatus'),'Complete today’s task first, then try again.');$('testText').textContent='Next-day test prepared for '+currentLab+'. Questions will be reviewed by the AI learning workflow.';msg($('testStatus'),'Test prepared.')};
-document.querySelectorAll('[data-lab]').forEach(b=>b.onclick=()=>{currentLab=b.dataset.lab;$('labBox').classList.remove('hidden');$('labTitle').textContent=currentLab;go('lab')});$('saveLab').onclick=async()=>{if(!$('labWork').value.trim())return msg($('labStatus'),'Write your work first.');try{await addDoc(collection(db,'users',user.uid,'labWork'),{room:currentLab,work:$('labWork').value,status:'submitted',createdAt:serverTimestamp()});msg($('labStatus'),'Practice submitted for review.')}catch(e){msg($('labStatus'),e.message)}};
-$('supportForm').onsubmit=async e=>{e.preventDefault();try{const r=await addDoc(collection(db,'complaints'),{uid:user.uid,email:user.email||'',type:$('issueType').value,message:$('issue').value,status:'open',createdAt:serverTimestamp()});msg($('supportStatus'),'Report submitted. Reference: '+r.id);e.target.reset()}catch(e){msg($('supportStatus'),e.message)}};
-
-
-    // Save history separately. Any history error must not break the AI response.
-    try{
-      await saveAIHistory(prompt,answer,'pending');
-    }catch(historyError){
-      console.error('AI history save error:',historyError);
-    }
+    msg($('aiStatus'),'AI Program Leader response generated successfully.');
 
   }catch(error){
     console.error('AI Mentor error:',error);
-
-    msg(
-      $('aiStatus'),
-      'AI connection error: '+(error.message||'Please try again.')
-    );
-
+    msg($('aiStatus'),'AI connection error: '+(error.message||'Please try again.'));
     $('aiOutput').textContent='';
-
   }finally{
     btn.disabled=false;
   }
 };
-
- 
-// ===== AI HISTORY + ANSWER EVALUATION =====
-async function saveAIHistory(question, answer, evaluation = "pending"){
-  if(!user) return;
-
-  try{
-    await addDoc(collection(db,"aiHistory"),{
-      uid:user.uid,
-      studentEmail:user.email || "",
-      question:question,
-      answer:answer,
-      evaluation:evaluation,
-      createdAt:serverTimestamp()
-    });
-  }catch(error){
-    console.error("AI history save error:",error);
-  }
-}
-
-// ===== INDEPENDENT AI LEARNING HISTORY BUTTON =====
-$('aiHistoryBtn').onclick=async()=>{
-  if(!user){
-    msg($('aiHistoryStatus'),'Please login first.');
-    return;
-  }
-
-  msg($('aiHistoryStatus'),'Loading your AI Learning History...');
-
-  try{
-    const historyQuery=query(
-      collection(db,'aiHistory'),
-      where('uid','==',user.uid)
-    );
-
-    const snapshot=await getDocs(historyQuery);
-
-    if(snapshot.empty){
-      $('aiOutput').textContent='No AI learning history found yet.';
-      msg(
-        $('aiHistoryStatus'),
-        'No AI learning history found yet.'
-      );
-      return;
-    }
-
-    const history=[];
-
-    snapshot.forEach(docSnap=>{
-      history.push({
-        id:docSnap.id,
-        ...docSnap.data()
-      });
-    });
-
-  history.sort((a,b)=>{
-      const aTime=a.createdAt?.seconds||0;
-      const bTime=b.createdAt?.seconds||0;
-      return bTime-aTime;
-    });
-
-    let output='AI LEARNING HISTORY\n\n';
-
-    history.forEach((item,index)=>{
-      let mark='⏳';
-
-      if(item.evaluation==='correct'){
-        mark='✅';
-      }else if(item.evaluation==='incorrect'){
-        mark='❌';
-      }
-
-      output+=
-        '━━━━━━━━━━━━━━━━━━━━\n'+
-        '📚 Record '+(index+1)+' '+mark+'\n\n'+
-        '❓ Question:\n'+
-        (item.question||'')+
-        '\n\n'+
-        '🤖 AI Answer:\n'+
-        (item.answer||'')+
-        '\n\n'+
-        '📊 Evaluation: '+
-        (item.evaluation||'pending')+
-        '\n\n';
-    });
-
-    $('aiOutput').textContent=output;
-
-    msg(
-      $('aiHistoryStatus'),
-      'AI Learning History loaded successfully.'
-    );
-
-  }catch(error){
-    console.error('AI History load error:',error);
-
-    msg(
-      $('aiHistoryStatus'),
-      'History could not be loaded. Please try again.'
-    );
-  }
-};
-
-// ===== MODERATOR MANAGEMENT =====
-$('moderatorForm').onsubmit=async e=>{
-  e.preventDefault();
-
-  if(!isAdmin){
-    return msg(
-      $('moderatorStatus'),
-      'Admin permission required.'
-    );
-  }
-
-  const permissions=[
-    ...document.querySelectorAll(
-      '#moderatorForm input[type=checkbox]:checked'
-    )
-  ].map(x=>x.value);
-
-  try{
-    await addDoc(
-      collection(db,'moderators'),
-      {
-        email:$('moderatorEmail').value.trim().toLowerCase(),
-        displayName:$('moderatorName').value.trim(),
-        permissions,
-        status:'active',
-        createdBy:user.uid,
-        createdAt:serverTimestamp()
-      }
-    );
-
-    msg(
-      $('moderatorStatus'),
-      'Moderator added securely.'
-    );
-
-    e.target.reset();
-
-    await loadModerators();
-
-  }catch(err){
-    msg(
-      $('moderatorStatus'),
-      'Could not add moderator: '+err.message
-    );
-  }
-};
-
- // ===== LOAD MODERATORS =====
-async function loadModerators(){
-  try{
-    const snap=await getDocs(
-      collection(db,'moderators')
-    );
-
-    $('moderatorList').innerHTML='';
-
-    if(snap.empty){
-      $('moderatorList').innerHTML=
-        '<tr><td colspan="4">No moderators loaded.</td></tr>';
-      return;
-    }
-
-    snap.forEach(s=>{
-      const d=s.data();
-
-      const tr=document.createElement('tr');
-
-      tr.innerHTML=
-        '<td>'+
-        safe(d.displayName)+
-        '</td>'+
-        '<td><span class="tag">'+
-        safe(d.status||'active')+
-        '</span></td>'+
-        '<td>'+
-        safe((d.permissions||[]).join(', '))+
-        '</td>'+
-        '<td>'+
-        '<button class="danger" data-remove="'+
-        s.id+
-        '">Remove</button>'+
-        '</td>';
-
-      $('moderatorList').appendChild(tr);
-    });
-
-    document.querySelectorAll('[data-remove]').forEach(b=>{
-      b.onclick=async()=>{
-        if(confirm('Remove this moderator?')){
-          await deleteDoc(
-            doc(db,'moderators',b.dataset.remove)
-          );
-
-          await loadModerators();
-        }
-      };
-    });
-
-  }catch(e){
-    msg(
-      $('moderatorStatus'),
-      'Moderator list unavailable. Deploy secure Firestore rules first.'
-    );
-  }
-}
-
-  // ===== SAFE TEXT =====
-function safe(v){
-  return String(v||'').replace(
-    /[&<>'"]/g,
-    c=>({
-      '&':'&amp;',
-      '<':'&lt;',
-      '>':'&gt;',
-      "'":'&#39;',
-      '"':'&quot;'
-    }[c])
-  );
-}
-
-</script>
-</body>
-</html>
+$('moderatorForm').onsubmit=async e=>{e.preventDefault();if(!isAdmin)return msg($('moderatorStatus'),'Admin permission required.');const permissions=[...document.querySelectorAll('#moderatorForm input[type=checkbox]:checked')].map(x=>x.value);try{await addDoc(collection(db,'moderators'),{email:$('moderatorEmail').value.trim().toLowerCase(),displayName:$('moderatorName').value.trim(),permissions,status:'active',createdBy:user.uid,createdAt:serverTimestamp()});msg($('moderatorStatus'),'Moderator added securely.');e.target.reset();await loadModerators()}catch(err){msg($('moderatorStatus'),'Could not add moderator: '+err.message)}};
+async function loadModerators(){try{const snap=await getDocs(collection(db,'moderators'));$('moderatorList').innerHTML='';if(snap.empty){$('moderatorList').innerHTML='<tr><td colspan="4">No moderators loaded.</td></tr>';return}snap.forEach(s=>{const d=s.data(),tr=document.createElement('tr');tr.innerHTML='<td>'+safe(d.displayName)+'</td><td><span class="tag">'+safe(d.status||'active')+'</span></td><td>'+safe((d.permissions||[]).join(', '))+'</td><td><button class="danger" data-remove="'+s.id+'">Remove</button></td>';$('moderatorList').appendChild(tr)});document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=async()=>{if(confirm('Remove this moderator?')){await deleteDoc(doc(db,'moderators',b.dataset.remove));await loadModerators()}})}catch(e){msg($('moderatorStatus'),'Moderator list unavailable. Deploy secure Firestore rules first.')}}function safe(v){return String(v||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+</script></body></html>
