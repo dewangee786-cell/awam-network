@@ -29,7 +29,67 @@ async function loadProfile(){try{const s=await getDoc(doc(db,'users',user.uid));
 $('generateTask').onclick=async()=>{const text='Today: study one professional skill for 30 minutes, complete one practical exercise, and write three learning notes.';$('lesson').textContent=text;msg($('taskStatus'),'Task created.');try{await addDoc(collection(db,'users',user.uid,'tasks'),{text,status:'assigned',createdAt:serverTimestamp()})}catch(e){msg($('taskStatus'),'Database setup is required for cloud sync.')}};$('generateTest').onclick=async()=>{if(!currentLab)return msg($('testStatus'),'Complete today’s task first, then try again.');$('testText').textContent='Next-day test prepared for '+currentLab+'. Questions will be reviewed by the AI learning workflow.';msg($('testStatus'),'Test prepared.')};
 document.querySelectorAll('[data-lab]').forEach(b=>b.onclick=()=>{currentLab=b.dataset.lab;$('labBox').classList.remove('hidden');$('labTitle').textContent=currentLab;go('lab')});$('saveLab').onclick=async()=>{if(!$('labWork').value.trim())return msg($('labStatus'),'Write your work first.');try{await addDoc(collection(db,'users',user.uid,'labWork'),{room:currentLab,work:$('labWork').value,status:'submitted',createdAt:serverTimestamp()});msg($('labStatus'),'Practice submitted for review.')}catch(e){msg($('labStatus'),e.message)}};
 $('supportForm').onsubmit=async e=>{e.preventDefault();try{const r=await addDoc(collection(db,'complaints'),{uid:user.uid,email:user.email||'',type:$('issueType').value,message:$('issue').value,status:'open',createdAt:serverTimestamp()});msg($('supportStatus'),'Report submitted. Reference: '+r.id);e.target.reset()}catch(e){msg($('supportStatus'),e.message)}};
-$('aiForm').onsubmit=async e=>{e.preventDefault();msg($('aiStatus'),'AI backend connection is required. Your request is ready for secure Cloud Function integration.');$('aiOutput').textContent='AI request: '+$('aiPrompt').value+'\n\nNext step: connect this action to a server-side Gemini/Firebase AI function. Never place a private API key in this page.'};
+$('aiForm').onsubmit=async e=>{
+  e.preventDefault();
+
+  const prompt=$('aiPrompt').value.trim();
+  if(!prompt){
+    msg($('aiStatus'),'Please enter your request.');
+    return;
+  }
+
+  const btn=$('aiForm').querySelector('button');
+  btn.disabled=true;
+  msg($('aiStatus'),'AI Program Leader is preparing your learning response...');
+  $('aiOutput').textContent='';
+
+  try{
+    const response=await fetch('https://awam-ai-engine.dewan-gee786.workers.dev/ai',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        prompt:
+          'Student request:\\n'+prompt+
+          '\\n\\nAct as the AI Program Leader of International Awam Network VVIP AI Academy. '+
+          'Follow the Academy master curriculum, prerequisites, structured learning path, practical exercises, assessment and feedback rules. '+
+          'Do not assume or invent the student\\'s answers.'
+      })
+    });
+
+    const data=await response.json();
+
+    if(!response.ok){
+      throw new Error(data.error||'AI service request failed.');
+    }
+
+    let answer='';
+
+    if(typeof data.reply==='string'){
+      answer=data.reply;
+    }else if(typeof data.text==='string'){
+      answer=data.text;
+    }else if(data.candidates?.[0]?.content?.parts){
+      answer=data.candidates[0].content.parts
+        .map(p=>p.text||'')
+        .join('\\n')
+        .trim();
+    }
+
+    if(!answer){
+      answer=JSON.stringify(data,null,2);
+    }
+
+    $('aiOutput').textContent=answer;
+    msg($('aiStatus'),'AI Program Leader response generated successfully.');
+
+  }catch(error){
+    console.error('AI Mentor error:',error);
+    msg($('aiStatus'),'AI connection error: '+(error.message||'Please try again.'));
+    $('aiOutput').textContent='';
+  }finally{
+    btn.disabled=false;
+  }
+};
 $('moderatorForm').onsubmit=async e=>{e.preventDefault();if(!isAdmin)return msg($('moderatorStatus'),'Admin permission required.');const permissions=[...document.querySelectorAll('#moderatorForm input[type=checkbox]:checked')].map(x=>x.value);try{await addDoc(collection(db,'moderators'),{email:$('moderatorEmail').value.trim().toLowerCase(),displayName:$('moderatorName').value.trim(),permissions,status:'active',createdBy:user.uid,createdAt:serverTimestamp()});msg($('moderatorStatus'),'Moderator added securely.');e.target.reset();await loadModerators()}catch(err){msg($('moderatorStatus'),'Could not add moderator: '+err.message)}};
 async function loadModerators(){try{const snap=await getDocs(collection(db,'moderators'));$('moderatorList').innerHTML='';if(snap.empty){$('moderatorList').innerHTML='<tr><td colspan="4">No moderators loaded.</td></tr>';return}snap.forEach(s=>{const d=s.data(),tr=document.createElement('tr');tr.innerHTML='<td>'+safe(d.displayName)+'</td><td><span class="tag">'+safe(d.status||'active')+'</span></td><td>'+safe((d.permissions||[]).join(', '))+'</td><td><button class="danger" data-remove="'+s.id+'">Remove</button></td>';$('moderatorList').appendChild(tr)});document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=async()=>{if(confirm('Remove this moderator?')){await deleteDoc(doc(db,'moderators',b.dataset.remove));await loadModerators()}})}catch(e){msg($('moderatorStatus'),'Moderator list unavailable. Deploy secure Firestore rules first.')}}function safe(v){return String(v||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 </script></body></html>
