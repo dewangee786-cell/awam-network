@@ -249,7 +249,8 @@ msg($('aiStatus'),'AI Program Leader response generated successfully.');
   }finally{
     btn.disabled=false;
   }
-
+}
+  
 // ===== AI HISTORY + ANSWER EVALUATION =====
 async function saveAIHistory(question, answer, evaluation = "pending"){
   if(!user) return;
